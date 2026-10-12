@@ -8,6 +8,78 @@ import pandas as pd
 
 from best_cars.analysis import reliability_ranking
 from best_cars.schema import validate_evidence
+from best_cars.weighting import PRESETS, preference_weights
+
+
+def cohort_peer_benchmarks(*, scored: pd.DataFrame) -> pd.DataFrame:
+    """Compare each model rate with other models in its exact published cohort.
+
+    Args:
+        scored: Canonical selected evidence; grouped series are excluded.
+
+    Returns:
+        Observation-level peer medians, peer counts and rate gaps. The target
+        model is excluded from its reference median. Gaps retain source units;
+        negative values mean a lower rate. No significance or causal inference
+        is implied, and cohorts with fewer than four other models are omitted.
+
+    Raises:
+        ValueError: If evidence is invalid or a model has duplicate cohort rows.
+    """
+    frame = validate_evidence(frame=scored).reset_index(drop=True)
+    frame = frame.loc[~frame.model_grouped].copy()
+    if frame.duplicated(subset=MATCH_KEYS + ["model_id"]).any():
+        raise ValueError("Peer benchmarks require unique model-cohort rows.")
+    records = []
+    for _, group in frame.groupby(by=MATCH_KEYS, dropna=False, sort=False):
+        if len(group) < 5:
+            continue
+        for index, row in group.iterrows():
+            peers = group.loc[group.index != index, "value"]
+            record = row.to_dict()
+            record.update(
+                peer_models=len(peers),
+                peer_median_rate=float(peers.median()),
+                rate_gap=float(row.value - peers.median()),
+            )
+            records.append(record)
+    columns = list(frame.columns) + ["peer_models", "peer_median_rate", "rate_gap"]
+    return pd.DataFrame.from_records(data=records, columns=columns)
+
+
+def weighting_scenarios(
+    *, scored: pd.DataFrame, min_sources: int = 2, min_cohorts: int = 3
+) -> pd.DataFrame:
+    """Compare preference scenarios within their common eligible model set.
+
+    Args:
+        scored: Selected evidence with unchanged full-peer scores.
+        min_sources: Minimum active sources required by every scenario.
+        min_cohorts: Minimum scored observations required by every scenario.
+
+    Returns:
+        Long-form scores and ranks using the same competitors in all scenarios.
+        These are descriptive preference scenarios, not uncertainty intervals.
+    """
+    frames = {}
+    for preset in PRESETS:
+        frames[preset] = reliability_ranking(
+            scored=scored,
+            weights=preference_weights(
+                sources=list(scored.source_id.unique()), preset=preset
+            ),
+            min_sources=min_sources,
+            min_cohorts=min_cohorts,
+        )
+    common = set.intersection(*(set(frame.model_id) for frame in frames.values()))
+    records = []
+    for preset, frame in frames.items():
+        selected = frame.loc[frame.model_id.isin(common)].copy()
+        selected["scenario_rank"] = selected.score.rank(method="min", ascending=False)
+        selected["scenario"] = preset
+        records.append(selected)
+    return pd.concat(objs=records, ignore_index=True)
+
 
 MATCH_KEYS = [
     "source_id",

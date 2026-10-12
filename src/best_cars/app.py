@@ -4,6 +4,7 @@ import logging
 from pathlib import Path
 
 import pandas as pd
+import plotly.express as px
 import streamlit as st
 
 from best_cars.analysis import (
@@ -24,11 +25,14 @@ from best_cars.charts import (
     score_spread_chart,
 )
 from best_cars.interrogation import (
+    cohort_peer_benchmarks,
     shared_cohort_contrasts,
     shared_cohort_evidence,
     source_omission_sensitivity,
+    weighting_scenarios,
 )
 from best_cars.pipeline import nhtsa_lookup, refresh_sources
+from best_cars.propulsion import propulsion_catalogue, select_propulsion
 from best_cars.statistics import (
     counted_failure_rates,
     pairwise_source_agreement,
@@ -57,6 +61,7 @@ PAGES = [
     "Age and mileage",
     "Evidence agreement",
     "Deeper analysis",
+    "Electric and hybrid vehicles",
     "Recalls and complaints",
     "Sources and methods",
     "Data management",
@@ -116,7 +121,16 @@ def show_table(*, frame: pd.DataFrame, name: str, key: str) -> None:
             )
         else:
             config[column] = st.column_config.TextColumn(label=title)
-    st.dataframe(data=frame, hide_index=True, width="stretch", column_config=config)
+    displayed = frame.copy()
+    for column in ["source_ids", "omitted_source"]:
+        if column in displayed:
+            displayed[column] = displayed[column].map(
+                arg=lambda value: "; ".join(
+                    SOURCE_NAMES.get(item.strip(), item.strip())
+                    for item in str(value).split(";")
+                )
+            )
+    st.dataframe(data=displayed, hide_index=True, width="stretch", column_config=config)
     left, right = st.columns(spec=2)
     with left:
         st.download_button(
@@ -268,7 +282,7 @@ def sidebar_filters(
             )
             for source in selected:
                 weights[source] = st.slider(
-                    label=f"{source} weight",
+                    label=f"{SOURCE_NAMES.get(source, source)} weight",
                     min_value=0.0,
                     max_value=3.0,
                     value=None,
@@ -481,7 +495,9 @@ def find_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
         names = dict(
             zip(ungrouped.model_id, ungrouped.make + " " + ungrouped.model, strict=True)
         )
-        inspector_ids = list(names)
+        inspector_ids = list(
+            dict.fromkeys(list(ranking.model_id) + sorted(names, key=names.get))
+        )
         if query:
             inspector_ids = [
                 key
@@ -497,6 +513,10 @@ def find_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
                 key="inspect_model",
             )
             rows = scored.loc[scored.model_id.eq(chosen)].copy()
+            if chosen not in set(ranking.model_id):
+                st.info(
+                    body="This model has observations, but does not meet the current combined-ranking thresholds. It is not assigned a combined rank."
+                )
             profile = (
                 rows.groupby(by=["source_name", "unit"], dropna=False)
                 .agg(
@@ -687,6 +707,19 @@ def age_mileage_page(*, scored: pd.DataFrame) -> None:
             body="Mean odometer data are unavailable for this source. Select Traficom or TÜV to explore mileage; ADAC reports a different annual-mileage measure."
         )
     st.subheader(body="Better and poorer evidence across ages")
+    map_measure = st.selectbox(
+        label="Heatmap cell values",
+        options=["relative", "rate"],
+        format_func=lambda value: (
+            "Relative score · higher is better"
+            if value == "relative"
+            else "Published fault/breakdown rate · lower is better"
+        ),
+        key="age_heatmap_measure",
+    )
+    st.caption(
+        body="Cell numbers and colours use the same measure. Teal = better; red = poorer; grey dash = unavailable. Relative scores use a fixed 0–100 scale. Published rates use this source/report's maximum rate; rates at different ages are not directly comparable."
+    )
     map_order = st.selectbox(
         label="Age heatmap ordering",
         options=["both", "weakest", "strongest"],
@@ -717,7 +750,11 @@ def age_mileage_page(*, scored: pd.DataFrame) -> None:
         ]
     show_chart(
         figure=age_score_heatmap(
-            scored=map_rows, max_models=map_limit, order=map_order
+            scored=map_rows,
+            max_models=map_limit,
+            order=map_order,
+            measure=map_measure,
+            rate_ceiling=float(rows.value.max()),
         ),
         key="age_heatmap",
         explanation="Each cell compares a model with its original source-cohort peers. Teal means lower published rates relative to peers; red means higher rates. Grey cells have no score and are never zero. Hover for the raw rate in this source's units. Row ordering averages available age scores, so coverage can differ. These are different cars/cohorts, not longitudinal survival or controlled engine comparisons.",
@@ -835,6 +872,7 @@ def deeper_analysis_page(
     weights: dict[str, float],
     min_sources: int,
     min_cohorts: int,
+    peer_evidence: pd.DataFrame | None = None,
 ) -> None:
     """Explore descriptive distributions, actual counts and source sensitivity.
 
@@ -844,6 +882,8 @@ def deeper_analysis_page(
         weights: Current non-negative source weights.
         min_sources: Baseline minimum source count.
         min_cohorts: Required scored source-cohort observations.
+        peer_evidence: Optional complete filtered reference population, retained
+            when examining a propulsion subset.
     """
     st.title(body="Deeper data interrogation")
     st.caption(
@@ -852,6 +892,148 @@ def deeper_analysis_page(
     if scored.empty:
         st.info(body="No evidence matches the current filters.")
         return
+    st.subheader(body="How does a model compare with peers at the same age?")
+    reference = scored if peer_evidence is None else peer_evidence
+    benchmarks = cohort_peer_benchmarks(scored=reference)
+    benchmarks = benchmarks.loc[benchmarks.model_id.isin(scored.model_id)]
+    if benchmarks.empty:
+        st.info(
+            body="Same-cohort benchmarking needs at least five ungrouped model series in a published cohort."
+        )
+    else:
+        identities = benchmarks.drop_duplicates(subset="model_id")
+        names = dict(
+            zip(
+                identities.model_id,
+                identities.make + " " + identities.model,
+                strict=True,
+            )
+        )
+        chosen = st.selectbox(
+            label="Model for same-cohort interrogation",
+            options=sorted(names, key=names.get),
+            format_func=lambda key: names[key],
+            key="deep_peer_model",
+        )
+        profile = benchmarks.loc[benchmarks.model_id.eq(chosen)].copy()
+        profile["age_band"] = (
+            profile.age_min.astype(str) + "–" + profile.age_max.astype(str)
+        )
+        profile["panel"] = (
+            profile.source_name
+            + " · "
+            + profile.unit
+            + " · report "
+            + profile.report_year.astype(str)
+        )
+        figure = px.bar(
+            data_frame=profile,
+            x="age_band",
+            y="rate_gap",
+            facet_row="panel",
+            color="panel",
+            hover_data=[
+                "value",
+                "peer_median_rate",
+                "peer_models",
+                "report_year",
+                "sample_size",
+            ],
+            labels={
+                "rate_gap": "Rate minus peer median",
+                "age_band": "Published age band",
+            },
+        )
+        figure.update_yaxes(matches=None)
+        figure.update_layout(
+            height=max(420, profile.panel.nunique() * 240), showlegend=False
+        )
+        for annotation in figure.layout.annotations:
+            annotation.update(text=annotation.text.replace("panel=", ""), textangle=0)
+        show_chart(
+            figure=figure,
+            key="deep_peer_gaps",
+            explanation="Each bar compares this model with the median of OTHER ungrouped model series in the exact same source, report, outcome, age and registration cohort. Negative is a lower, favourable rate. Sources keep their own units. These descriptive gaps do not adjust for mileage, maintenance, engine or selection effects. Propulsion filtering retains the full filtered reference population.",
+        )
+        show_table(
+            frame=profile.loc[
+                :,
+                [
+                    "source_name",
+                    "report_year",
+                    "age_min",
+                    "age_max",
+                    "unit",
+                    "value",
+                    "peer_median_rate",
+                    "rate_gap",
+                    "peer_models",
+                    "sample_size",
+                ],
+            ],
+            name="same_cohort_peer_benchmarks",
+            key="deep_peer_table",
+        )
+    st.subheader(body="Which models remain strong under different priorities?")
+    scenarios = weighting_scenarios(
+        scored=scored, min_sources=min_sources, min_cohorts=min_cohorts
+    )
+    if scenarios.empty:
+        st.info(
+            body="No models meet the current coverage thresholds in all three preference scenarios. Lower the page's coverage thresholds or broaden age/source filters."
+        )
+    else:
+        bounds = scenarios.groupby(
+            by=["model_id", "make", "model"], as_index=False
+        ).agg(
+            best_rank=("scenario_rank", "min"),
+            worst_rank=("scenario_rank", "max"),
+            lowest_score=("score", "min"),
+            highest_score=("score", "max"),
+        )
+        bounds["rank_range"] = bounds.worst_rank - bounds.best_rank
+        order = st.selectbox(
+            label="Weighting sensitivity view",
+            options=["Strongest worst-case rank", "Largest rank movement"],
+            key="deep_scenario_order",
+        )
+        bounds = bounds.sort_values(
+            by="worst_rank" if order.startswith("Strongest") else "rank_range",
+            ascending=order.startswith("Strongest"),
+        )
+        plotted = scenarios.loc[
+            scenarios.model_id.isin(bounds.head(n=20).model_id)
+        ].copy()
+        plotted["car"] = plotted.make + " " + plotted.model
+        figure = px.line(
+            data_frame=plotted,
+            x="scenario",
+            y="scenario_rank",
+            color="car",
+            markers=True,
+            hover_data=["score", "cohorts", "sources"],
+            labels={
+                "scenario_rank": "Rank within common eligible models",
+                "scenario": "Preference scenario",
+                "car": "Model",
+            },
+        )
+        figure.update_yaxes(autorange="reversed")
+        figure.update_layout(height=520)
+        show_chart(
+            figure=figure,
+            key="deep_scenario_chart",
+            explanation="Ranks use the same eligible model set in all three illustrative weighting scenarios. Rank 1 is best; large movement indicates dependence on priorities. These scenarios are not confidence bounds and do not establish calibrated source trust. Your custom sidebar weights are examined separately in the source-omission analysis below.",
+        )
+        show_table(
+            frame=bounds,
+            name="weighting_scenario_rank_ranges",
+            key="deep_scenario_bounds",
+        )
+        with st.expander(label="All scenario scores and ranks"):
+            show_table(
+                frame=scenarios, name="weighting_scenarios", key="deep_scenarios"
+            )
     st.subheader(body="Rate distributions and data coverage")
     show_chart(
         figure=rate_distribution_chart(evidence=scored),
@@ -910,6 +1092,107 @@ def deeper_analysis_page(
             name="source_omission_sensitivity",
             key="deep_sensitivity",
         )
+
+
+def electrified_page(*, scored: pd.DataFrame, weights: dict[str, float]) -> None:
+    """Explore reviewed electric/hybrid series without guessing variant rates.
+
+    Args:
+        scored: Full filtered evidence retaining original peer scores.
+        weights: Current sidebar source preference weights.
+    """
+    st.title(body="Electric and hybrid vehicles")
+    st.caption(
+        body="Separate battery-electric, plug-in hybrid and conventional hybrid views. This is a conservative reviewed catalogue, not complete market coverage. Unreviewed models remain unclassified."
+    )
+    category = st.selectbox(
+        label="Propulsion to explore",
+        options=["Battery electric", "Plug-in hybrid", "Hybrid"],
+        key="electric_category",
+    )
+    mixed = st.checkbox(
+        label="Include mixed model families for context",
+        value=False,
+        key="electric_mixed",
+        help="Mixed-family reliability observations are not specific to the electric or hybrid variant. They remain explicitly labelled in the catalogue.",
+    )
+    catalogue = propulsion_catalogue(evidence=scored)
+    with st.expander(
+        label="Reviewed eligibility, exclusions and manufacturer references"
+    ):
+        show_table(
+            frame=catalogue, name="propulsion_eligibility", key="electric_catalogue"
+        )
+    selected = select_propulsion(
+        evidence=scored, category=category, include_mixed=mixed
+    )
+    if mixed:
+        st.warning(
+            body="Mixed families are included only for context. Their rates cannot be attributed to a hybrid or plug-in variant."
+        )
+    if selected.empty:
+        st.info(
+            body="No reviewed series in this category match the current age/source filters. Broaden those filters; unclassified models are not silently reassigned."
+        )
+        return
+    st.info(
+        body="Published inspection and breakdown results do not measure traction-battery capacity, degradation, charging reliability or battery replacement costs. Those outcomes need additional data."
+    )
+    minimum = st.number_input(
+        label="Minimum sources for this propulsion view",
+        min_value=1,
+        max_value=max(1, selected.source_id.nunique()),
+        value=1,
+        key="electric_min_sources",
+    )
+    cohorts = st.number_input(
+        label="Minimum observations for this propulsion view",
+        min_value=1,
+        max_value=100,
+        value=1,
+        key="electric_min_cohorts",
+    )
+    ranking = reliability_ranking(
+        scored=selected,
+        weights=weights,
+        min_sources=int(minimum),
+        min_cohorts=int(cohorts),
+    )
+    st.caption(
+        body=f"{selected.model_id.nunique()} eligible model series · {len(selected):,} observations · page-specific coverage thresholds above. Original scores still compare with the full source-cohort peer population."
+    )
+    show_chart(
+        figure=ranking_chart(ranking=ranking, top_n=20),
+        key="electric_ranking",
+        explanation="This ordering is restricted to the selected reviewed propulsion series. Scores retain their original full-peer comparisons; this is not a controlled electric-versus-petrol comparison.",
+    )
+    show_table(frame=ranking, name="electrified_ranking", key="electric_rank_table")
+    available = selected.drop_duplicates(subset="model_id")
+    names = dict(
+        zip(available.model_id, available.make + " " + available.model, strict=True)
+    )
+    model_ids = st.multiselect(
+        label="Compare electrified model age profiles",
+        options=sorted(names, key=names.get),
+        default=list(names)[:3],
+        format_func=lambda key: names[key],
+        key="electric_age_models",
+    )
+    show_chart(
+        figure=age_chart(scored=selected, model_ids=model_ids),
+        key="electric_age_chart",
+        explanation="Rates are separated by source and units. Colours identify the same model across panels. Age cohorts contain different cars; lines do not measure battery degradation or track individual vehicles.",
+    )
+    with st.expander(label="Exact selected observations and source links"):
+        show_table(frame=selected, name="electrified_observations", key="electric_raw")
+    deeper_analysis_page(
+        scored=selected,
+        ranking=ranking,
+        weights=weights,
+        min_sources=int(minimum),
+        min_cohorts=int(cohorts),
+        peer_evidence=scored,
+    )
 
 
 def safety_page(*, events: pd.DataFrame, directory: Path) -> None:
@@ -1179,6 +1462,8 @@ def run() -> None:
             min_sources=min_sources,
             min_cohorts=min_cohorts,
         )
+    elif page == "Electric and hybrid vehicles":
+        electrified_page(scored=scored, weights=weights)
     elif page == "Recalls and complaints":
         safety_page(events=events, directory=directory)
     elif page == "Sources and methods":

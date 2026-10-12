@@ -1,5 +1,6 @@
 """Interactive graphics with explicit scales and source-aware labels."""
 
+import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -156,7 +157,19 @@ def age_chart(
         figure.update_yaxes(range=[0, 105])
     for annotation in figure.layout.annotations:
         annotation.text = annotation.text.replace("source_panel=", "")
-        annotation.update(textangle=0, x=0, xanchor="left", font={"size": 13})
+        domain = min(
+            (axis.domain for axis in figure.select_yaxes()),
+            key=lambda bounds: abs((bounds[0] + bounds[1]) / 2 - annotation.y),
+        )
+        annotation.update(
+            textangle=0,
+            x=0,
+            xanchor="left",
+            yanchor="bottom",
+            y=domain[1],
+            yshift=6,
+            font={"size": 13},
+        )
     figure.update_layout(legend={"orientation": "h", "y": -0.15})
     return style_figure(
         figure=figure,
@@ -204,7 +217,8 @@ def agreement_heatmap(*, wide: pd.DataFrame, names: dict[str, str]) -> go.Figure
             hovertemplate="%{y}<br>%{x}: %{z:.1f}<extra></extra>",
         )
     )
-    figure.update_yaxes(autorange="reversed")
+    figure.update_yaxes(autorange="reversed", type="category")
+    figure.update_xaxes(type="category")
     figure.update_layout(plot_bgcolor="#edf1f4")
     for row_index, key in enumerate(wide.index):
         for column_index, _source in enumerate(wide.columns):
@@ -224,7 +238,12 @@ def agreement_heatmap(*, wide: pd.DataFrame, names: dict[str, str]) -> go.Figure
 
 
 def age_score_heatmap(
-    *, scored: pd.DataFrame, max_models: int = 30, order: str = "both"
+    *,
+    scored: pd.DataFrame,
+    max_models: int = 30,
+    order: str = "both",
+    measure: str = "relative",
+    rate_ceiling: float | None = None,
 ) -> go.Figure:
     """Show favourable/unfavourable cohort scores by model and observed age.
 
@@ -232,6 +251,9 @@ def age_score_heatmap(
         scored: One source/report/observation-year/metric scored selection.
         max_models: Maximum rows to show legibly.
         order: Both ranking ends, weakest first or strongest first.
+        measure: Relative percentile or published rate; labels and colours use
+            exactly the same numeric matrix in either view.
+        rate_ceiling: Optional full-source rate maximum, retained during search.
 
     Returns:
         Red-to-teal cohort percentile cells with raw rates on hover. Missing or
@@ -240,7 +262,11 @@ def age_score_heatmap(
     Raises:
         ValueError: For mixed contexts, invalid ordering or non-positive limits.
     """
-    if max_models < 1 or order not in {"both", "weakest", "strongest"}:
+    if (
+        max_models < 1
+        or order not in {"both", "weakest", "strongest"}
+        or measure not in {"relative", "rate"}
+    ):
         raise ValueError("Require a positive row limit and a recognised ordering.")
     if any(
         scored[column].nunique() > 1
@@ -296,41 +322,92 @@ def age_score_heatmap(
         f"{names_frame.loc[key, 'make']} {names_frame.loc[key, 'model']}"
         for key in keys
     ]
+    relative = measure == "relative"
+    values = scores if relative else rates
+    unit = "%" if frame.iloc[0].unit == "percent" else "per 1,000 vehicles"
+    if rate_ceiling is not None and (
+        not np.isfinite(rate_ceiling) or rate_ceiling < frame.value.max()
+    ):
+        raise ValueError("Rate ceiling must be finite and cover every observed rate.")
+    maximum = (
+        100
+        if relative
+        else float(frame.value.max() if rate_ceiling is None else rate_ceiling)
+    )
+    maximum = max(maximum, 1e-9)
     figure = go.Figure(
         data=go.Heatmap(
-            z=scores.to_numpy(),
+            z=values.to_numpy(),
             x=bands,
             y=names,
             zmin=0,
-            zmax=100,
-            colorscale=[[0, "#c95b55"], [0.5, "#f1e9c3"], [1, "#007f87"]],
+            zmax=maximum,
+            colorscale=(
+                [[0, "#c95b55"], [0.5, "#f1e9c3"], [1, "#007f87"]]
+                if relative
+                else [[0, "#007f87"], [0.5, "#f1e9c3"], [1, "#c95b55"]]
+            ),
             text=[
-                [f"{value:.0f}" if pd.notna(value) else "No score" for value in row]
-                for row in scores.to_numpy()
+                [
+                    (f"{value:.0f}" if relative else f"{value:.1f}")
+                    if pd.notna(value)
+                    else "No score"
+                    for value in row
+                ]
+                for row in values.to_numpy()
             ],
             texttemplate="%{text}",
-            customdata=rates.to_numpy(),
-            hovertemplate="%{y}<br>Age: %{x}<br>Cohort score: %{z:.1f}<br>Published rate: %{customdata:.2f}<extra></extra>",
+            customdata=(rates if relative else scores).to_numpy(),
+            hovertemplate=(
+                "%{y}<br>Age: %{x}<br>Relative score: %{z:.1f}<br>Published rate: %{customdata:.2f} "
+                + unit
+                + "<extra></extra>"
+                if relative
+                else "%{y}<br>Age: %{x}<br>Published rate: %{z:.2f} "
+                + unit
+                + "<br>Relative score: %{customdata:.1f}<extra></extra>"
+            ),
             hoverongaps=False,
-            colorbar={"title": {"text": "Relative<br>score"}},
+            colorbar={
+                "title": {
+                    "text": "Score<br>higher = better"
+                    if relative
+                    else f"Rate ({unit})<br>lower = better"
+                }
+            },
         )
     )
-    figure.update_yaxes(autorange="reversed")
-    figure.update_xaxes(title_text="Observed age (years)")
+    figure.add_trace(
+        go.Heatmap(
+            z=np.where(values.isna(), 0.0, np.nan),
+            x=bands,
+            y=names,
+            colorscale=[[0, "#edf1f4"], [1, "#edf1f4"]],
+            showscale=False,
+            zmin=0,
+            zmax=1,
+            text=np.full(shape=values.shape, fill_value="—"),
+            texttemplate="%{text}",
+            hoverongaps=False,
+            hovertemplate="%{y}<br>Age: %{x}<br>No available value<extra></extra>",
+        )
+    )
+    figure.update_yaxes(
+        autorange="reversed",
+        type="category",
+        categoryorder="array",
+        categoryarray=names,
+    )
+    figure.update_xaxes(
+        title_text="Observed age (years)",
+        type="category",
+        categoryorder="array",
+        categoryarray=bands,
+    )
     figure.update_layout(plot_bgcolor="#edf1f4")
-    for row_index, name in enumerate(names):
-        for column_index, band in enumerate(bands):
-            if pd.isna(scores.iloc[row_index, column_index]):
-                figure.add_annotation(
-                    x=band,
-                    y=name,
-                    text="No score",
-                    showarrow=False,
-                    font={"size": 11, "color": "#536570"},
-                )
     return style_figure(
         figure=figure,
-        title=f"{frame.iloc[0].source_name} · relative evidence across ages",
+        title=f"{frame.iloc[0].source_name} · {'relative scores (higher = better)' if relative else 'published rates (lower = better)'}",
         height=max(450, len(keys) * 30 + 140),
     )
 
@@ -437,8 +514,10 @@ def rate_distribution_chart(*, evidence: pd.DataFrame) -> go.Figure:
     frame["source_panel"] = frame.source_name + frame.unit.map(
         arg={"percent": " · %", "per_1000_vehicles": " · per 1,000 vehicles"}
     )
+    frame["distribution"] = "Published cohort rates"
     figure = px.box(
         data_frame=frame,
+        x="distribution",
         y="value",
         facet_row="source_panel",
         points="outliers",
@@ -449,8 +528,22 @@ def rate_distribution_chart(*, evidence: pd.DataFrame) -> go.Figure:
     )
     figure.update_traces(boxmean=True)
     figure.update_yaxes(matches=None)
+    figure.update_xaxes(showticklabels=False, title_text="")
     for annotation in figure.layout.annotations:
         annotation.text = annotation.text.replace("source_panel=", "")
+        domain = min(
+            (axis.domain for axis in figure.select_yaxes()),
+            key=lambda bounds: abs((bounds[0] + bounds[1]) / 2 - annotation.y),
+        )
+        annotation.update(
+            textangle=0,
+            x=0,
+            xanchor="left",
+            yanchor="bottom",
+            y=domain[1],
+            yshift=6,
+            font={"size": 13},
+        )
     return style_figure(
         figure=figure,
         title="Rate distributions within each source",
@@ -478,7 +571,7 @@ def count_uncertainty_chart(*, counted: pd.DataFrame, top_n: int = 24) -> go.Fig
         return style_figure(figure=go.Figure(), title="No actual test counts available")
     frame = counted.sort_values(by="sample_size", ascending=False).head(n=top_n)
     labels = [
-        f"{row.make} {row.model} · {row.source_id} · age {row.age_min:g}–{row.age_max:g}"
+        f"{row.make} {row.model} · {SOURCE_NAMES.get(row.source_id, row.source_id)} · age {row.age_min:g}–{row.age_max:g} · report {row.report_year}"
         for row in frame.itertuples()
     ]
     figure = go.Figure(

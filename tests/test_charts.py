@@ -104,6 +104,9 @@ def test_age_heatmap_uses_full_peer_scores_and_missing_cells(evidence):
     assert figure.data[0].zmin == 0 and figure.data[0].zmax == 100
     assert figure.layout.yaxis.autorange == "reversed"
     assert len(figure.data[0].y) == 6
+    assert figure.layout.xaxis.type == "category"
+    assert figure.layout.yaxis.type == "category"
+    assert len(figure.data) == 2
     assert any("No score" in row for row in figure.data[0].text)
     assert len(age_score_heatmap(scored=one, max_models=3, order="both").data[0].y) == 3
     assert age_score_heatmap(scored=one, order="weakest").data[0].y[0] == "Toyota Test5"
@@ -117,6 +120,22 @@ def test_age_heatmap_uses_full_peer_scores_and_missing_cells(evidence):
         age_score_heatmap(scored=one, max_models=0)
     with pytest.raises(ValueError):
         age_score_heatmap(scored=one, order="unknown")
+    with pytest.raises(ValueError):
+        age_score_heatmap(scored=one, measure="unknown")
+    raw = age_score_heatmap(scored=one, measure="rate")
+    assert raw.data[0].zmax == one.value.max()
+    for row, texts in zip(raw.data[0].z, raw.data[0].text, strict=True):
+        for value, label in zip(row, texts, strict=True):
+            if pd.notna(value):
+                assert label == f"{value:.1f}"
+    assert raw.data[0].colorscale[0][1] == "#007f87"
+    assert raw.data[0].colorscale[-1][1] == "#c95b55"
+    assert (
+        age_score_heatmap(scored=one, measure="rate", rate_ceiling=50).data[0].zmax
+        == 50
+    )
+    with pytest.raises(ValueError):
+        age_score_heatmap(scored=one, measure="rate", rate_ceiling=1)
     duplicate_age = one.iloc[:1].copy()
     duplicate_age["comparison_group"] = "another"
     with pytest.raises(ValueError, match="same age"):

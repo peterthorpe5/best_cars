@@ -1,0 +1,14 @@
+model_id	category	attribution	review_url	note
+tesla:model 3	Battery electric	Dedicated series	https://www.tesla.com/en_gb/model3	Battery-electric model series; no battery-health or capacity measurement is implied.
+tesla:model y	Battery electric	Dedicated series	https://www.tesla.com/en_GB/modely	Battery-electric model series; generations and specifications remain pooled.
+tesla:model s	Battery electric	Dedicated series	https://www.tesla.com/sites/default/files/tesla-model-s.pdf	Battery-electric model series; older generations remain pooled.
+tesla:model x	Battery electric	Dedicated series	https://www.tesla.com/en_GB/modelx	Battery-electric model series; older generations remain pooled.
+volkswagen:id 4	Battery electric	Dedicated series	https://www.volkswagen-newsroom.com/en/press-releases/the-new-volkswagen-id4-world-premiere-of-the-fully-electrically-driven-suv-6446	Dedicated battery-electric series; grouped ID.4/ID.5 evidence is excluded.
+nissan:leaf	Battery electric	Dedicated series	https://www.nissan.co.uk/range/electric-cars.html	Battery-electric model series; generations and battery sizes remain pooled.
+volkswagen:id 3	Battery electric	Dedicated series	https://www.volkswagen-newsroom.com/en/press-releases/first-member-of-the-id-family-is-called-id3-4955	Dedicated battery-electric series.
+hyundai:ioniq 5	Battery electric	Dedicated series	https://www.hyundai.news/uk/articles/press-releases/hyundai-announces-ioniq-5-prices-and-specifications.html/	Dedicated battery-electric series; do not merge with original IONIQ.
+toyota:prius plug in hybrid	Plug-in hybrid	Dedicated series	https://media.toyota.co.uk/the-new-toyota-prius-plug-in-hybrid/	Explicit plug-in hybrid source model identity; generations remain pooled.
+toyota:prius plus	Hybrid	Dedicated series	https://media.toyota.co.uk/vehicles/prius-plus-2012-current/	Dedicated conventional full-hybrid series, distinct from Prius Plug-in.
+toyota:corolla	Hybrid	Mixed family	https://media.toyota.co.uk/toyota-announces-prices-and-specifications-for-the-all-new-corolla-hatchback-and-touring-sports/	Corolla includes petrol and hybrid versions and older generations; pooled reliability rates cannot be called hybrid-specific.
+toyota:prius	Hybrid	Mixed family	https://media.toyota.co.uk/the-new-toyota-prius-plug-in-hybrid/	Generic Prius identity may pool conventional hybrid and plug-in variants; inspect source scope.
+hyundai:ioniq	Plug-in hybrid	Mixed family	https://www.hyundai.news/uk/articles/press-releases/new-ioniq-hyundais-revolutionary-eco-friendly-model.html	Original IONIQ offered hybrid, plug-in hybrid and electric versions; generic source identity cannot separate them.

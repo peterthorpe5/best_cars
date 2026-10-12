@@ -5,10 +5,40 @@ import pytest
 
 from best_cars.analysis import cohort_scores
 from best_cars.interrogation import (
+    cohort_peer_benchmarks,
     shared_cohort_contrasts,
     shared_cohort_evidence,
     source_omission_sensitivity,
+    weighting_scenarios,
 )
+
+
+def test_peer_benchmark_excludes_target_preserves_units_and_requires_peers(evidence):
+    result = cohort_peer_benchmarks(scored=cohort_scores(evidence=evidence))
+    row = result.loc[
+        result.model_id.eq("toyota:test0") & result.source_id.eq("tuv")
+    ].iloc[0]
+    assert row.peer_median_rate == 3 and row.rate_gap == -3
+    assert result.peer_models.eq(5).all()
+    assert set(result.unit) == {"percent", "per_1000_vehicles"}
+    assert cohort_peer_benchmarks(
+        scored=evidence.loc[~evidence.model_id.isin(["toyota:test4", "toyota:test5"])]
+    ).empty
+    assert cohort_peer_benchmarks(scored=evidence.iloc[:0]).empty
+    with pytest.raises(ValueError):
+        cohort_peer_benchmarks(scored=evidence.drop(columns="model_id"))
+
+
+def test_weight_scenario_ranks_share_same_universe_and_keep_original_scores(evidence):
+    scored = cohort_scores(evidence=evidence)
+    result = weighting_scenarios(scored=scored, min_cohorts=1)
+    assert result.scenario.nunique() == 3
+    assert result.groupby(by="scenario").model_id.nunique().eq(6).all()
+    balanced = result.loc[result.scenario.eq("Balanced")]
+    assert balanced.score.eq(50).all() and balanced.scenario_rank.eq(1).all()
+    assert weighting_scenarios(scored=scored.iloc[:0]).empty
+    with pytest.raises(ValueError):
+        weighting_scenarios(scored=scored, min_sources=0)
 
 
 def test_shared_cohorts_use_every_selected_model_and_keep_units(evidence):

@@ -19,6 +19,8 @@ from best_cars.charts import (
     rate_distribution_chart,
     score_spread_chart,
 )
+from best_cars.interrogation import cohort_peer_benchmarks, weighting_scenarios
+from best_cars.propulsion import propulsion_catalogue
 from best_cars.statistics import (
     counted_failure_rates,
     pairwise_source_agreement,
@@ -97,6 +99,39 @@ def report_html(*, evidence: pd.DataFrame, events: pd.DataFrame) -> str:
         full_html=False, include_plotlyjs=False
     )
     summary = source_rate_summary(evidence=scored)
+    benchmarks = cohort_peer_benchmarks(scored=scored)
+    example_id = (
+        "toyota:corolla"
+        if "toyota:corolla" in set(benchmarks.model_id)
+        else (benchmarks.model_id.iloc[0] if not benchmarks.empty else "")
+    )
+    peer_table = report_table(
+        frame=benchmarks.loc[
+            benchmarks.model_id.eq(example_id),
+            [
+                "make",
+                "model",
+                "source_name",
+                "report_year",
+                "age_min",
+                "age_max",
+                "unit",
+                "value",
+                "peer_median_rate",
+                "rate_gap",
+                "peer_models",
+            ],
+        ],
+        table_id="peer-benchmarks",
+    )
+    scenario_table = report_table(
+        frame=weighting_scenarios(scored=scored), table_id="weight-scenarios"
+    )
+    propulsion = propulsion_catalogue(evidence=scored)
+    propulsion_table = report_table(
+        frame=propulsion.loc[~propulsion.category.eq("Unclassified")],
+        table_id="propulsion-review",
+    )
     counted = counted_failure_rates(evidence=scored)
     paired = pairwise_source_agreement(wide=wide)
     distribution_chart = rate_distribution_chart(evidence=scored).to_html(
@@ -207,6 +242,11 @@ def report_html(*, evidence: pd.DataFrame, events: pd.DataFrame) -> str:
     {first_chart}<p>Each source's cohort percentiles receive one averaged source score. The default combines available sources with equal weights. Missing source weights are reported in the table; models with different evidence sets may not be directly comparable.</p>
     {spread_chart}<p>A smaller spread means the observed source averages are closer. It is not a confidence interval, and a model observed in only one source would have no between-source comparison.</p>
     <h3>Browse all {len(ranking):,} qualifying model series</h3>{ranking_table}</section>
+    <section id="deeper"><h2>Same-cohort peers and sensitivity to priorities</h2>
+    <p>The example below compares one model with the median of other ungrouped models in its exact source, report, age and registration cohort. Negative gaps indicate a lower published rate. At least four other models are required; source units remain separate. The Streamlit app lets you choose any supported model.</p>{peer_table}
+    <details><summary>Browse all three preference scenarios</summary>{scenario_table}</details><p>Scenario ranks share the same common eligible competitors. They express preferences, not confidence intervals or calibrated trust.</p></section>
+    <section id="electrified"><h2>Electric, plug-in hybrid and hybrid eligibility</h2>{propulsion_table}
+    <p>This conservative catalogue is not exhaustive. Unreviewed identities are unclassified. Mixed-family rows are context only: their pooled reliability rates are not specific to a hybrid or electric variant. The dedicated Streamlit page excludes mixed families by default and provides age profiles, peer benchmarks and sensitivity analysis. No battery-health or battery-lifetime estimate is available.</p></section>
     <section id="rates"><h2>Means, medians and rate distributions</h2>{distribution_chart}
     <p>The box centre is the median, the box spans the 25th–75th percentiles, and the dotted marker shows the mean. These distributions give every published model-cohort observation equal weight and mix the selected ages. They are not national fleet failure rates or lifespan estimates. Each source keeps its own units and definition.</p>
     {summary_table}<p>The counted-test failure percentage pools actual failures and tests only within the displayed source/year/metric group. Count coverage shows which observations contribute. Missing denominators are not inferred; the counted subset need not represent the whole fleet.</p></section>

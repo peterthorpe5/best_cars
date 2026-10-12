@@ -21,6 +21,9 @@ def test_report_html_includes_real_coverage_and_explanations(evidence):
     assert soup.select_one("#rate-summary table") is not None
     assert soup.select_one("#counted-rates table") is not None
     assert soup.select_one("#agreement-summary table") is not None
+    assert soup.select_one("#peer-benchmarks table") is not None
+    assert soup.select_one("#weight-scenarios table") is not None
+    assert soup.select_one("#electrified") is not None
     assert soup.select_one("#model-ranking input[type=search]") is not None
     assert "No lifespan estimate has been calculated" in soup.get_text()
     assert "95% Wilson" in soup.get_text()

@@ -114,3 +114,49 @@ def test_weighting_presets_and_manual_override(running_app):
     app.selectbox(key="weight_preset").set_value(v="Balanced").run()
     assert app.slider(key="weight_adac").value == 1.0
     assert not app.exception
+
+
+def test_electric_categories_empty_and_deeper_scenario_controls(running_app):
+    app = running_app
+    app.radio(key="page").set_value(v="Electric and hybrid vehicles").run()
+    for category in ["Battery electric", "Plug-in hybrid", "Hybrid"]:
+        app.selectbox(key="electric_category").set_value(v=category).run()
+        assert not app.exception and app.info
+    app.checkbox(key="electric_mixed").set_value(v=True).run()
+    assert not app.exception
+    app.radio(key="page").set_value(v="Deeper analysis").run()
+    app.selectbox(key="deep_scenario_order").set_value(v="Largest rank movement").run()
+    app.selectbox(key="deep_peer_model").set_value(v="toyota:test0").run()
+    assert not app.exception
+
+
+def test_electric_populated_page_and_mixed_family_opt_in(
+    evidence, tmp_path, monkeypatch
+):
+    evidence["model_id"] = evidence.model_id.replace(
+        to_replace={
+            "toyota:test0": "tesla:model 3",
+            "toyota:test1": "toyota:prius plug in hybrid",
+            "toyota:test2": "toyota:prius plus",
+            "toyota:test3": "toyota:corolla",
+        }
+    )
+    save_snapshot(directory=tmp_path, evidence=evidence, events=empty_events())
+    monkeypatch.setenv("BEST_CARS_DATA_DIR", str(tmp_path))
+    app = AppTest.from_file(script_path=APP, default_timeout=45).run()
+    app.radio(key="page").set_value(v="Electric and hybrid vehicles").run()
+    assert not app.exception
+    assert app.multiselect(key="electric_age_models").value == ["tesla:model 3"]
+    for category in ["Plug-in hybrid", "Hybrid"]:
+        app.selectbox(key="electric_category").set_value(v=category).run()
+        assert not app.exception
+    app.checkbox(key="electric_mixed").set_value(v=True).run()
+    assert set(app.multiselect(key="electric_age_models").options) == {
+        "Toyota Test2",
+        "Toyota Test3",
+    }
+    assert not app.exception
+    app.radio(key="page").set_value(v="Deeper analysis").run()
+    app.selectbox(key="deep_scenario_order").set_value(v="Largest rank movement").run()
+    app.selectbox(key="deep_peer_model").set_value(v="tesla:model 3").run()
+    assert not app.exception

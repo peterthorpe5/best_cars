@@ -1,6 +1,6 @@
 # Best Cars — reliability evidence explorer
 
-An interactive **Streamlit** app and reproducible Python pipeline for comparing car reliability evidence. Version 2.2 adds a richer offline HTML report, current public MOT file support and a safer Mac update workflow. It includes model search, shortlists, comparisons, age/mileage graphics, source disagreement, safety context, provenance and expandable methods help.
+An interactive **Streamlit** app and reproducible Python pipeline for comparing car reliability evidence. Version 2.3 includes a richer offline HTML report, current public MOT file support and a safer Mac update workflow. It includes model search, shortlists, comparisons, age/mileage graphics, source disagreement, safety context, provenance and expandable methods help.
 
 Mac installation and overlay instructions are in [docs/MAC_INSTALL.md](docs/MAC_INSTALL.md). Saved-data browsing does not import PDF/native cryptography dependencies. ADAC PDF acquisition is an optional `pdf` extra.
 
@@ -11,12 +11,12 @@ All tabular outputs are **TSV**, compressed TSV or formatted Excel. No comma-sep
 The downloadable upgrade contains `overlay/` (complete runnable code), `verified_data/` (actual processed observations), `changes.patch`, an offline interactive HTML overview and `START_HERE.md`.
 
 ```bash
-cd "$HOME/Downloads/best_cars_upgrade_20261012/overlay"
+cd "$HOME/Downloads/best_cars_upgrade_20261012_v23/overlay"
 conda create --name best_cars python=3.11 pip -y
 conda activate best_cars
 python -m pip install -e '.[dev]'
 best-cars-app \
-  --data-dir "$HOME/Downloads/best_cars_upgrade_20261012/verified_data" \
+  --data-dir "$HOME/Downloads/best_cars_upgrade_20261012_v23/verified_data" \
   --server-port 8501
 ```
 
@@ -76,7 +76,14 @@ The UK recall service was inaccessible from the build environment; the app provi
 9. **Deeper analysis:** source-specific rate distributions, actual-count intervals,
    coverage statistics and rankings recalculated after omitting each source.
 
-Version 2.2 adds best-to-worst heatmap views, source-specific model-by-age
+Version 2.3 adds explicit score-versus-published-rate heatmaps, same-cohort peer
+median gaps, visual weighting-scenario sensitivity and a dedicated **Electric
+and hybrid vehicles** page. Its reviewed catalogue separates dedicated series
+from mixed families and leaves unknown propulsion unclassified. See
+[docs/PROPULSION.md](docs/PROPULSION.md) and
+[docs/SCREENSHOT_REVIEW_V23.md](docs/SCREENSHOT_REVIEW_V23.md).
+
+Version 2.2 added best-to-worst heatmap views, source-specific model-by-age
 heatmaps, fixed model colours across source labels, single-source rankings,
 model-level explanations and shared-cohort comparisons. Missing cells are grey
 and labelled rather than treated as favourable zeroes. See
@@ -201,7 +208,7 @@ censoring, inferred fleet exit, median lifetime and restricted-mean requirements
 
 The HTML overview is self-contained and works offline. CLI ranking uses equal source weights; the app supports personalised weights.
 
-Tests cover scoring, weights, missing evidence, counts, Wilson intervals, source layouts, PDF year/blank-cell alignment, initial MOT semantics, duplicate IDs, bounded caching/offline behaviour, snapshot integrity, failed refreshes, CLI settings, downloads and all nine app pages. Test fixtures are explicit synthetic examples; user-facing result tables are real evidence. New public functions use keyword-only settings, defensive validation, logging and Google-style docstrings. Calls use named arguments wherever the library API permits them.
+Tests cover scoring, weights, missing evidence, counts, Wilson intervals, source layouts, PDF year/blank-cell alignment, initial MOT semantics, duplicate IDs, bounded caching/offline behaviour, snapshot integrity, failed refreshes, CLI settings, downloads and all ten app pages. Test fixtures are explicit synthetic examples; user-facing result tables are real evidence. New public functions use keyword-only settings, defensive validation, logging and Google-style docstrings. Calls use named arguments wherever the library API permits them.
 
 | Folder/file | Purpose |
 | --- | --- |
