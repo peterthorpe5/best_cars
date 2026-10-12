@@ -1,0 +1,337 @@
+model_id	make	model	category	attribution	review_url	note
+honda:jazz	Honda	Jazz	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:golf sportsvan	Volkswagen	Golf Sportsvan	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:q2	Audi	Q2	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+porsche:911 carrera	Porsche	911 Carrera	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mitsubishi:asx	Mitsubishi	ASX	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:b class	Mercedes-Benz	B-Class	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:t roc	Volkswagen	T-Roc	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:glc	Mercedes-Benz	GLC	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:e golf	Volkswagen	e-Golf	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+hyundai:tucson	Hyundai	Tucson	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+suzuki:vitara	Suzuki	Vitara	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mazda:2	Mazda	2	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+kia:picanto	Kia	Picanto	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+toyota:rav4	Toyota	RAV4	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:q5	Audi	Q5	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+hyundai:kona elektro	Hyundai	Kona Elektro	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:a class	Mercedes-Benz	A-Class	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+suzuki:swift	Suzuki	Swift	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:2 active tourer	BMW	2 Active Tourer	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:x1	BMW	X1	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mini:cooper se	Mini	Cooper SE	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:xc60	Volvo	XC60	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+hyundai:i10	Hyundai	i10	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+smart:fortwo	Smart	ForTwo	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+hyundai:ix20	Hyundai	ix20	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+renault:captur	Renault	Captur	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+toyota:yaris	Toyota	Yaris	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:touareg	Volkswagen	Touareg	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+hyundai:kona	Hyundai	Kona	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mazda:3	Mazda	3	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:c class	Mercedes-Benz	C-Class	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:a3	Audi	A3	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:e class	Mercedes-Benz	E-Class	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+skoda:karoq	Škoda	Karoq	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+peugeot:2008	Peugeot	2008	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+seat:ateca	SEAT	Ateca	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:id 3	Volkswagen	ID.3	Battery electric	Dedicated series	https://www.volkswagen-newsroom.com/en/press-releases/first-member-of-the-id-family-is-called-id3-4955	Dedicated battery-electric series.
+citroen:c3	Citroën	C3	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+peugeot:208	Peugeot	208	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:tiguan	Volkswagen	Tiguan	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+cupra:formentor	Cupra	Formentor	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+nissan:qashqai	Nissan	Qashqai	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:t cross	Volkswagen	T-Cross	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+kia:rio	Kia	Rio	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mazda:cx 3	Mazda	CX-3	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:gle	Mercedes-Benz	GLE	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:q3	Audi	Q3	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:ecosport	Ford	Ecosport	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mazda:cx 5	Mazda	CX-5	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:mokka	Opel	Mokka	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+nissan:micra	Nissan	Micra	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+renault:clio	Renault	Clio	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+kia:ceed	Kia	Ceed	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:puma	Ford	Puma	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+renault:scenic	Renault	Scenic	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+skoda:fabia	Škoda	Fabia	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+fiat:500	Fiat	500	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:fiesta	Ford	Fiesta	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:golf	Volkswagen	Golf	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+hyundai:i30	Hyundai	i30	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:corsa	Opel	Corsa	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+renault:twingo	Renault	Twingo	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+peugeot:e 208	Peugeot	e-208	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:polo	Volkswagen	Polo	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+skoda:kodiaq	Škoda	Kodiaq	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+kia:sportage	Kia	Sportage	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+toyota:corolla	Toyota	Corolla	Hybrid	Mixed family	https://media.toyota.co.uk/toyota-announces-prices-and-specifications-for-the-all-new-corolla-hatchback-and-touring-sports/	Corolla includes petrol and hybrid versions and older generations; pooled reliability rates cannot be called hybrid-specific.
+volkswagen:touran	Volkswagen	Touran	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:grandland	Opel	Grandland	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+toyota:aygo	Toyota	Aygo	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:up	Volkswagen	Up!	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+fiat:panda	Fiat	Panda	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:e up	Volkswagen	e-Up!	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+renault:megane	Renault	Megane	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+seat:ibiza	SEAT	Ibiza	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+dacia:sandero	Dacia	Sandero	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:astra	Opel	Astra	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+seat:arona	SEAT	Arona	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:sharan	Volkswagen	Sharan	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:e corsa	Opel	e-Corsa	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+dacia:duster	Dacia	Duster	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:insignia	Opel	Insignia	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+citroen:berlingo	Citroën	Berlingo	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+seat:leon	SEAT	Leon	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:a1	Audi	A1	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+renault:zoe	Renault	Zoe	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+skoda:citigo	Škoda	Citigo	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:kuga	Ford	Kuga	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+seat:alhambra	SEAT	Alhambra	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+skoda:octavia	Škoda	Octavia	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+dacia:dokker	Dacia	Dokker	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+skoda:kamiq	Škoda	Kamiq	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:passat	Volkswagen	Passat	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+peugeot:308	Peugeot	308	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:crossland	Opel	Crossland	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:caddy	Volkswagen	Caddy	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:focus	Ford	Focus	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:s max	Ford	S-Max	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+skoda:superb	Škoda	Superb	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+skoda:scala	Škoda	Scala	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:mondeo	Ford	Mondeo	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+tesla:model 3	Tesla	Model 3	Battery electric	Dedicated series	https://www.tesla.com/en_gb/model3	Battery-electric model series; no battery-health or capacity measurement is implied.
+volkswagen:beetle	Volkswagen	Beetle	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+hyundai:i20	Hyundai	i20	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:adam	Opel	Adam	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+seat:mii	SEAT	Mii	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+skoda:rapid	Škoda	Rapid	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:c max	Ford	C-Max	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:ka	Ford	Ka+	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+dacia:logan	Dacia	Logan	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:meriva	Opel	Meriva	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+skoda:yeti	Škoda	Yeti	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+toyota:auris	Toyota	Auris	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:b max	Ford	B-Max	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+hyundai:ix35	Hyundai	ix35	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+skoda:roomster	Škoda	Roomster	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:golf plus	Volkswagen	Golf Plus	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:glk	Mercedes-Benz	GLK	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+suzuki:grand vitara	Suzuki	Grand Vitara	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:1	BMW	1	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:3	BMW	3	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+peugeot:207	Peugeot	207	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+dacia:spring	Dacia	Spring	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:karl	Opel	KARL	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+smart:forfour	Smart	forfour	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+suzuki:ignis	Suzuki	Ignis	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:i3	BMW	i3	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:fiesta courier	Ford	Fiesta (Courier)	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mini:mini	Mini	MINI	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mitsubishi:space star	Mitsubishi	Space Star	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+toyota:yaris cross	Toyota	Yaris Cross	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:taigo	Volkswagen	Taigo	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:1 series	BMW	1 Series	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:x2	BMW	X2	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+cupra:born	Cupra	Born	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+cupra:leon	Cupra	Leon	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+dacia:jogger	Dacia	Jogger	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+fiat:tipo	Fiat	Tipo	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mazda:cx 30	Mazda	CX-30	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:citan	Mercedes-Benz	Citan	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:cla	Mercedes-Benz	CLA	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:gla	Mercedes-Benz	GLA	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mitsubishi:eclipse cross	Mitsubishi	Eclipse Cross	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:combo	Opel	Combo	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:zafira	Opel	Zafira	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+peugeot:3008	Peugeot	3008	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+renault:kadjar	Renault	Kadjar	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+toyota:c hr	Toyota	C-HR	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:xc40	Volvo	XC40	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:a4	Audi	A4	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:a5	Audi	A5	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:q4 e tron	Audi	Q4 e-tron	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:3 series	BMW	3 Series	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:4 series	BMW	4 Series	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:x3	BMW	X3	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+hyundai:ioniq 5	Hyundai	IONIQ 5	Battery electric	Dedicated series	https://www.hyundai.news/uk/articles/press-releases/hyundai-announces-ioniq-5-prices-and-specifications.html/	Dedicated battery-electric series; do not merge with original IONIQ.
+mercedes benz:glb	Mercedes-Benz	GLB	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mitsubishi:outlander	Mitsubishi	Outlander	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+seat:tarraco	SEAT	Tarraco	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+skoda:enyaq	Škoda	Enyaq	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+tesla:model y	Tesla	Model Y	Battery electric	Dedicated series	https://www.tesla.com/en_GB/modely	Battery-electric model series; generations and specifications remain pooled.
+volkswagen:id 4	Volkswagen	ID.4	Battery electric	Dedicated series	https://www.volkswagen-newsroom.com/en/press-releases/the-new-volkswagen-id4-world-premiere-of-the-fully-electrically-driven-suv-6446	Dedicated battery-electric series; grouped ID.4/ID.5 evidence is excluded.
+audi:a6	Audi	A6	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:5 series	BMW	5 Series	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:x5	BMW	X5	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:ranger	Ford	Ranger	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+renault:trafic	Renault	Trafic	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:arteon	Volkswagen	Arteon	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:transporter	Volkswagen	Transporter	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+fiat:ducato	Fiat	Ducato	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:transit	Ford	Transit	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:sprinter	Mercedes-Benz	Sprinter	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+renault:master	Renault	Master	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+alfa romeo:giulietta	Alfa Romeo	GIULIETTA	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+alfa romeo:mito	Alfa Romeo	MITO	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:a7	Audi	A7	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:a8	Audi	A8	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:e tron	Audi	E-TRON	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:q4	Audi	Q4	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:q7	Audi	Q7	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:q8	Audi	Q8	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+audi:s3	Audi	S3	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:2 series	BMW	2 Series	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:7 series	BMW	7 Series	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:ix	BMW	IX	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:ix3	BMW	IX3	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:x4	BMW	X4	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+bmw:x6	BMW	X6	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+chevrolet:aveo	Chevrolet	AVEO	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+chevrolet:cruze	Chevrolet	CRUZE	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+chevrolet:malibu	Chevrolet	MALIBU	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+chevrolet:spark	Chevrolet	SPARK	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+chevrolet:trax	Chevrolet	TRAX	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+citroen:c1	Citroën	C1	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+citroen:c3 aircross	Citroën	C3 AIRCROSS	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+citroen:c3 picasso	Citroën	C3 PICASSO	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+citroen:c4	Citroën	C4	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+citroen:c4 cactus	Citroën	C4 CACTUS	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+citroen:c4 picasso	Citroën	C4 PICASSO	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+citroen:c5	Citroën	C5	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+citroen:c5 aircross	Citroën	C5 AIRCROSS	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+citroen:ds3	Citroën	DS3	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+citroen:ds4	Citroën	DS4	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+citroen:ds5	Citroën	DS5	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+cupra:mallit yhteensa	Cupra	Mallit yhteensä	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+cupra:leon sportstourer	Cupra	LEON SPORTSTOURER	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+fiat:500l	Fiat	500L	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+fiat:bravo	Fiat	BRAVO	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+fiat:linea	Fiat	LINEA	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+fiat:punto	Fiat	PUNTO	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:explorer	Ford	EXPLORER	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:fusion	Ford	FUSION	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:galaxy	Ford	GALAXY	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:grand c max	Ford	GRAND C-MAX	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:mustang mach e	Ford	MUSTANG MACH-E	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:tourneo connect	Ford	TOURNEO CONNECT	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+ford:tourneo custom	Ford	TOURNEO CUSTOM	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+honda:accord	Honda	ACCORD	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+honda:civic	Honda	CIVIC	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+honda:cr v	Honda	CR-V	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+honda:hr v	Honda	HR-V	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+honda:insight	Honda	INSIGHT	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+hyundai:i40	Hyundai	I40	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+hyundai:ioniq	Hyundai	IONIQ	Plug-in hybrid	Mixed family	https://www.hyundai.news/uk/articles/press-releases/new-ioniq-hyundais-revolutionary-eco-friendly-model.html	Original IONIQ offered hybrid, plug-in hybrid and electric versions; generic source identity cannot separate them.
+hyundai:sonata	Hyundai	SONATA	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+jaguar:i pace	Jaguar	I-PACE	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+jaguar:xe	Jaguar	XE	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+jaguar:xf	Jaguar	XF	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+jeep:compass	Jeep	COMPASS	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+kia:carens	Kia	CARENS	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+kia:ev6	Kia	EV6	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+kia:niro	Kia	NIRO	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+kia:optima	Kia	OPTIMA	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+kia:proceed	Kia	PROCEED	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+kia:sorento	Kia	SORENTO	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+kia:soul	Kia	SOUL	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+kia:stonic	Kia	STONIC	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+kia:venga	Kia	VENGA	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+kia:xceed	Kia	XCEED	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+land rover:discovery sport	Land Rover	DISCOVERY SPORT	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+land rover:range rover	Land Rover	RANGE ROVER	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+land rover:range rover evoque	Land Rover	RANGE ROVER EVOQUE	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+land rover:range rover sport	Land Rover	RANGE ROVER SPORT	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+lexus:ct	Lexus	CT	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+lexus:is	Lexus	IS	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+lexus:nx	Lexus	NX	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+lexus:rx	Lexus	RX	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+lexus:ux	Lexus	UX	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mazda:5	Mazda	5	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mazda:6	Mazda	6	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:cls	Mercedes-Benz	CLS	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:eqa	Mercedes-Benz	EQA	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:eqc	Mercedes-Benz	EQC	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:ml	Mercedes-Benz	ML	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:r	Mercedes-Benz	R	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:s class	Mercedes-Benz	S-Class	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:slk	Mercedes-Benz	SLK	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:v	Mercedes-Benz	V	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mercedes benz:vito	Mercedes-Benz	VITO	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mini:cooper	Mini	COOPER	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mini:countryman	Mini	COUNTRYMAN	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mitsubishi:colt	Mitsubishi	COLT	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+mitsubishi:lancer	Mitsubishi	LANCER	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+nissan:juke	Nissan	JUKE	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+nissan:leaf	Nissan	LEAF	Battery electric	Dedicated series	https://www.nissan.co.uk/range/electric-cars.html	Battery-electric model series; generations and battery sizes remain pooled.
+nissan:note	Nissan	NOTE	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+nissan:pulsar	Nissan	PULSAR	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+nissan:qashqai 2	Nissan	QASHQAI+2	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+nissan:tiida	Nissan	TIIDA	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+nissan:x trail	Nissan	X-TRAIL	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:ampera	Opel	AMPERA	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:corsa e	Opel	CORSA-E	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:crossland x	Opel	CROSSLAND X	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:grandland x	Opel	GRANDLAND X	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+opel:zafira tourer	Opel	ZAFIRA TOURER	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+peugeot:107	Peugeot	107	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+peugeot:206	Peugeot	206	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+peugeot:407	Peugeot	407	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+peugeot:5008	Peugeot	5008	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+peugeot:508	Peugeot	508	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+peugeot:rcz	Peugeot	RCZ	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+peugeot:rifter	Peugeot	RIFTER	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+polestar:2	Polestar	2	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+porsche:cayenne	Porsche	CAYENNE	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+porsche:macan	Porsche	MACAN	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+porsche:panamera	Porsche	PANAMERA	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+porsche:taycan	Porsche	TAYCAN	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+renault:laguna	Renault	LAGUNA	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+renault:megane scenic	Renault	MEGANE SCENIC	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+renault:talisman	Renault	TALISMAN	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+saab:9 3	Saab	9-3	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+saab:9 5	Saab	9-5	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+seat:altea xl	SEAT	ALTEA XL	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+seat:exeo st	SEAT	EXEO ST	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+seat:ibiza st	SEAT	IBIZA ST	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+seat:leon st	SEAT	LEON ST	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+seat:leon x perience	SEAT	LEON X-PERIENCE	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+seat:toledo	SEAT	TOLEDO	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+subaru:forester	Subaru	FORESTER	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+subaru:legacy	Subaru	LEGACY	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+subaru:outback	Subaru	OUTBACK	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+subaru:xv	Subaru	XV	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+suzuki:alto	Suzuki	ALTO	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+suzuki:swace	Suzuki	SWACE	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+suzuki:sx4	Suzuki	SX4	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+tesla:model s	Tesla	MODEL S	Battery electric	Dedicated series	https://www.tesla.com/sites/default/files/tesla-model-s.pdf	Battery-electric model series; older generations remain pooled.
+tesla:model x	Tesla	MODEL X	Battery electric	Dedicated series	https://www.tesla.com/en_GB/modelx	Battery-electric model series; older generations remain pooled.
+toyota:avensis	Toyota	AVENSIS	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+toyota:camry	Toyota	CAMRY	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+toyota:land cruiser	Toyota	LAND CRUISER	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+toyota:prius	Toyota	PRIUS	Hybrid	Mixed family	https://media.toyota.co.uk/the-new-toyota-prius-plug-in-hybrid/	Generic Prius identity may pool conventional hybrid and plug-in variants; inspect source scope.
+toyota:prius plug in hybrid	Toyota	PRIUS PLUG-IN HYBRID	Plug-in hybrid	Dedicated series	https://media.toyota.co.uk/the-new-toyota-prius-plug-in-hybrid/	Explicit plug-in hybrid source model identity; generations remain pooled.
+toyota:prius plus	Toyota	PRIUS PLUS	Hybrid	Dedicated series	https://media.toyota.co.uk/vehicles/prius-plus-2012-current/	Dedicated conventional full-hybrid series, distinct from Prius Plug-in.
+toyota:proace	Toyota	PROACE	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+toyota:urban cruiser	Toyota	URBAN CRUISER	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+toyota:verso	Toyota	VERSO	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+toyota:verso s	Toyota	VERSO-S	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:caravelle	Volkswagen	CARAVELLE	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:cc	Volkswagen	CC	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:jetta	Volkswagen	JETTA	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volkswagen:scirocco	Volkswagen	SCIROCCO	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:c30	Volvo	C30	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:s40	Volvo	S40	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:s60	Volvo	S60	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:s80	Volvo	S80	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:s90	Volvo	S90	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:v40	Volvo	V40	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:v40 cross country	Volvo	V40 CROSS COUNTRY	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:v50	Volvo	V50	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:v60	Volvo	V60	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:v60 cross country	Volvo	V60 CROSS COUNTRY	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:v70	Volvo	V70	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:v90	Volvo	V90	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:v90 cross country	Volvo	V90 CROSS COUNTRY	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:xc70	Volvo	XC70	Unclassified	Not reviewed		No propulsion-specific classification is asserted.
+volvo:xc90	Volvo	XC90	Unclassified	Not reviewed		No propulsion-specific classification is asserted.

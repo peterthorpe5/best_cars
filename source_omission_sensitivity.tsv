@@ -1,0 +1,430 @@
+model_id	make	model	omitted_source	baseline_score	score_without_source	score_change	paired_models	baseline_paired_rank	rank_without_source	rank_movement	status
+volkswagen:golf sportsvan	Volkswagen	Golf Sportsvan	adac	97.19635743914998	97.19635743914998	0.0	131	1.0	1.0	0.0	Descriptive sensitivity
+volkswagen:t roc	Volkswagen	T-Roc	adac	93.95082338869203	96.43338286033386	2.482559471641835	131	2.0	2.0	0.0	Descriptive sensitivity
+volkswagen:golf plus	Volkswagen	Golf Plus	adac	90.91007265550786	90.91007265550786	0.0	131	3.0	6.0	-3.0	Descriptive sensitivity
+honda:jazz	Honda	Jazz	adac	90.23981523483914	90.23981523483914	0.0	131	4.0	7.0	-3.0	Descriptive sensitivity
+audi:q2	Audi	Q2	adac	89.14288358638726	92.14104090148052	2.998157315093266	131	5.0	4.0	1.0	Descriptive sensitivity
+suzuki:vitara	Suzuki	Vitara	adac	85.81823065084897	91.27717269109974	5.458942040250761	131	6.0	5.0	1.0	Descriptive sensitivity
+mitsubishi:asx	Mitsubishi	ASX	adac	85.58634362236863	81.56856566772353	-4.017777954645098	131	7.0	15.0	-8.0	Descriptive sensitivity
+audi:a4	Audi	A4	adac	83.87684736136194	72.59225136097398	-11.284596000387964	131	8.0	28.0	-20.0	Descriptive sensitivity
+audi:q5	Audi	Q5	adac	82.38923152799805	82.23065861280816	-0.15857291518989314	131	9.0	13.0	-4.0	Descriptive sensitivity
+audi:a5	Audi	A5	adac	80.65243580940054	77.68780809505961	-2.964627714340935	131	10.0	20.0	-10.0	Descriptive sensitivity
+bmw:i3	BMW	i3	adac	79.92066355713051	62.62266614560006	-17.297997411530453	131	11.0	42.0	-31.0	Descriptive sensitivity
+mazda:cx 3	Mazda	CX-3	adac	79.91630920576705	80.2609088615001	0.34459965573304885	131	12.0	17.0	-5.0	Descriptive sensitivity
+volkswagen:touareg	Volkswagen	Touareg	adac	79.34754065167141	82.35498990587811	3.007449254206705	131	13.0	12.0	1.0	Descriptive sensitivity
+audi:a3	Audi	A3	adac	78.86345709242754	83.47197220837951	4.608515115951974	131	14.0	11.0	3.0	Descriptive sensitivity
+volvo:xc40	Volvo	XC40	adac	77.89446820087332	87.08544690878348	9.190978707910162	131	15.0	8.0	7.0	Descriptive sensitivity
+suzuki:grand vitara	Suzuki	Grand Vitara	adac	77.6834042887352	77.6834042887352	0.0	131	16.0	21.0	-5.0	Descriptive sensitivity
+suzuki:swift	Suzuki	Swift	adac	77.16559412954422	75.12740285052108	-2.0381912790231382	131	17.0	25.0	-8.0	Descriptive sensitivity
+bmw:1 series	BMW	1 Series	adac	76.99527417289607	63.374330446651605	-13.62094372624447	131	18.0	40.0	-22.0	Descriptive sensitivity
+mercedes benz:b class	Mercedes-Benz	B-Class	adac	76.60448575214362	82.1522537753581	5.547768023214488	131	19.0	14.0	5.0	Descriptive sensitivity
+seat:ateca	SEAT	Ateca	adac	76.12083705238705	79.07283671039411	2.951999658007068	131	20.0	19.0	1.0	Descriptive sensitivity
+bmw:x5	BMW	X5	adac	75.55346438467855	65.67124872815009	-9.882215656528459	131	21.0	34.0	-13.0	Descriptive sensitivity
+mitsubishi:space star	Mitsubishi	Space Star	adac	75.44347877417877			131				Insufficient remaining evidence
+volkswagen:golf	Volkswagen	Golf	adac	74.95729876604103	77.07613028618216	2.1188315201411285	131	22.0	23.0	-1.0	Descriptive sensitivity
+mercedes benz:gla	Mercedes-Benz	GLA	adac	74.42569003554243	83.68835113875089	9.262661103208458	131	23.0	10.0	13.0	Descriptive sensitivity
+mercedes benz:a class	Mercedes-Benz	A-Class	adac	74.11108390391534	80.81102909026976	6.699945186354412	131	24.0	16.0	8.0	Descriptive sensitivity
+volkswagen:id 3	Volkswagen	ID.3	adac	73.60508930192839	63.49524079049941	-10.109848511428979	131	25.0	39.0	-14.0	Descriptive sensitivity
+audi:q3	Audi	Q3	adac	73.15474896740989	71.09092763372547	-2.063821333684416	131	26.0	29.0	-3.0	Descriptive sensitivity
+bmw:x3	BMW	X3	adac	72.69568719675242	52.29257861624508	-20.403108580507336	131	27.0	65.0	-38.0	Descriptive sensitivity
+volvo:xc60	Volvo	XC60	adac	72.39170857275245	76.4506927870334	4.0589842142809545	131	28.0	24.0	4.0	Descriptive sensitivity
+mazda:2	Mazda	2	adac	72.38617923385159	68.64839262953055	-3.7377866043210446	131	29.0	30.0	-1.0	Descriptive sensitivity
+mitsubishi:eclipse cross	Mitsubishi	Eclipse Cross	adac	71.8620500370879			131				Insufficient remaining evidence
+mercedes benz:glc	Mercedes-Benz	GLC	adac	71.26652282634588	62.56915192737772	-8.69737089896816	131	30.0	43.0	-13.0	Descriptive sensitivity
+audi:a6	Audi	A6	adac	70.5512051280966	74.08296672258453	3.531761594487932	131	31.0	26.0	5.0	Descriptive sensitivity
+skoda:karoq	Škoda	Karoq	adac	70.2878086931117	73.65378113056789	3.3659724374561932	131	32.0	27.0	5.0	Descriptive sensitivity
+bmw:5 series	BMW	5 Series	adac	69.50068480759835	52.08197036123423	-17.41871444636412	131	33.0	66.0	-33.0	Descriptive sensitivity
+skoda:yeti	Škoda	Yeti	adac	68.69377405419537	62.95742453464189	-5.736349519553485	131	34.0	41.0	-7.0	Descriptive sensitivity
+volkswagen:beetle	Volkswagen	Beetle	adac	68.38865856956525	64.93249130316245	-3.456167266402801	131	35.0	35.0	0.0	Descriptive sensitivity
+audi:a1	Audi	A1	adac	67.90681380030867	58.39479308885717	-9.512020711451498	131	36.0	52.0	-16.0	Descriptive sensitivity
+volkswagen:id 4	Volkswagen	ID.4	adac	66.32791777188329			131				Insufficient remaining evidence
+seat:leon	SEAT	Leon	adac	65.66140978496078	63.71408395340198	-1.9473258315587998	131	37.0	38.0	-1.0	Descriptive sensitivity
+bmw:4 series	BMW	4 Series	adac	65.58082077541567	49.76286274441729	-15.817958030998383	131	38.0	71.0	-33.0	Descriptive sensitivity
+mazda:cx 5	Mazda	CX-5	adac	64.44494475307881	66.69848047989419	2.2535357268153717	131	39.0	33.0	6.0	Descriptive sensitivity
+toyota:auris	Toyota	Auris	adac	64.00474639960918	79.7675938646766	15.762847465067424	131	40.0	18.0	22.0	Descriptive sensitivity
+cupra:formentor	Cupra	Formentor	adac	63.980097169752334			131				Insufficient remaining evidence
+mazda:3	Mazda	3	adac	62.88541438195329	68.2144914922105	5.329077110257209	131	41.0	31.0	10.0	Descriptive sensitivity
+bmw:3 series	BMW	3 Series	adac	62.20167738420703	37.277622014136305	-24.924055370070725	131	42.0	88.0	-46.0	Descriptive sensitivity
+volkswagen:tiguan	Volkswagen	Tiguan	adac	61.27288836207999	64.22506465785612	2.952176295776134	131	43.0	37.0	6.0	Descriptive sensitivity
+skoda:rapid	Škoda	Rapid	adac	60.7287540464396	50.05402976224185	-10.674724284197744	131	44.0	70.0	-26.0	Descriptive sensitivity
+kia:rio	Kia	Rio	adac	59.060652773269055	59.060652773269055	0.0	131	45.0	49.0	-4.0	Descriptive sensitivity
+mercedes benz:gle	Mercedes-Benz	GLE	adac	58.83185915336892	57.585094594303726	-1.2467645590651912	131	46.0	54.0	-8.0	Descriptive sensitivity
+volkswagen:polo	Volkswagen	Polo	adac	58.42931508242548	50.32254358502565	-8.106771497399833	131	47.0	69.0	-22.0	Descriptive sensitivity
+bmw:x1	BMW	X1	adac	58.393826711689286	52.64825538915662	-5.745571322532669	131	48.0	64.0	-16.0	Descriptive sensitivity
+opel:adam	Opel	Adam	adac	58.20961754838593	67.2350590907068	9.02544154232087	131	49.0	32.0	17.0	Descriptive sensitivity
+skoda:citigo	Škoda	Citigo	adac	58.163536651997184	57.6058610606733	-0.5576755913238856	131	50.0	53.0	-3.0	Descriptive sensitivity
+skoda:fabia	Škoda	Fabia	adac	57.82569092068699	51.48239760777109	-6.343293312915897	131	51.0	67.0	-16.0	Descriptive sensitivity
+mercedes benz:glb	Mercedes-Benz	GLB	adac	57.44387955594853			131				Insufficient remaining evidence
+volkswagen:up	Volkswagen	Up!	adac	57.3829061023257	55.918056202973865	-1.464849899351833	131	52.0	55.0	-3.0	Descriptive sensitivity
+ford:puma	Ford	Puma	adac	57.19123482413712	77.27545622480967	20.084221400672554	131	53.0	22.0	31.0	Descriptive sensitivity
+toyota:rav4	Toyota	RAV4	adac	56.472820566848135	83.74475529629132	27.27193472944318	131	54.0	9.0	45.0	Descriptive sensitivity
+mercedes benz:glk	Mercedes-Benz	GLK	adac	55.84155762680203	55.84155762680203	0.0	131	55.0	56.0	-1.0	Descriptive sensitivity
+opel:karl	Opel	KARL	adac	55.46225383712314			131				Insufficient remaining evidence
+mercedes benz:c class	Mercedes-Benz	C-Class	adac	55.35966504928722	45.7959857552346	-9.563679294052626	131	56.0	72.0	-16.0	Descriptive sensitivity
+skoda:enyaq	Škoda	Enyaq	adac	53.47286693191866			131				Insufficient remaining evidence
+mercedes benz:cla	Mercedes-Benz	CLA	adac	53.15345744852091	59.713329758156	6.5598723096350895	131	57.0	48.0	9.0	Descriptive sensitivity
+volkswagen:t cross	Volkswagen	T-Cross	adac	53.07998496038488	44.14599601264852	-8.93398894773636	131	58.0	75.0	-17.0	Descriptive sensitivity
+skoda:octavia	Škoda	Octavia	adac	52.57062849162721	53.18464886934777	0.6140203777205571	131	59.0	60.0	-1.0	Descriptive sensitivity
+hyundai:tucson	Hyundai	Tucson	adac	52.24651388785654	52.83874437114274	0.5922304832862011	131	60.0	62.0	-2.0	Descriptive sensitivity
+toyota:aygo	Toyota	Aygo	adac	52.098979890916866	44.89457479819232	-7.204405092724542	131	61.0	73.0	-12.0	Descriptive sensitivity
+hyundai:kona	Hyundai	Kona	adac	50.59322305814661	60.05858277981679	9.465359721670175	131	62.0	47.0	15.0	Descriptive sensitivity
+hyundai:i20	Hyundai	i20	adac	49.93012948446998	62.004069506201866	12.073940021731886	131	63.0	44.0	19.0	Descriptive sensitivity
+skoda:kodiaq	Škoda	Kodiaq	adac	49.75818519858046	58.951264329794896	9.193079131214432	131	64.0	50.0	14.0	Descriptive sensitivity
+seat:arona	SEAT	Arona	adac	49.71402571626836	34.74352357295662	-14.970502143311741	131	65.0	91.0	-26.0	Descriptive sensitivity
+toyota:yaris	Toyota	Yaris	adac	48.16495919981105	64.7015829382517	16.536623738440653	131	66.0	36.0	30.0	Descriptive sensitivity
+ford:c max	Ford	C-Max	adac	47.688446102147196	61.016736725385556	13.32829062323836	131	67.0	46.0	21.0	Descriptive sensitivity
+toyota:c hr	Toyota	C-HR	adac	47.619833161380654	93.1938455841052	45.57401242272455	131	68.0	3.0	65.0	Descriptive sensitivity
+mercedes benz:e class	Mercedes-Benz	E-Class	adac	46.93317178785643	42.07116325230744	-4.862008535548988	131	69.0	78.0	-9.0	Descriptive sensitivity
+opel:mokka	Opel	Mokka	adac	46.048182912826974	53.963986762454695	7.915803849627721	131	70.0	58.0	12.0	Descriptive sensitivity
+opel:astra	Opel	Astra	adac	45.573593882614595	51.377597015887154	5.804003133272559	131	71.0	68.0	3.0	Descriptive sensitivity
+ford:ecosport	Ford	Ecosport	adac	45.553383332224705	53.21798491766354	7.664601585438838	131	72.0	59.0	13.0	Descriptive sensitivity
+renault:captur	Renault	Captur	adac	44.8364843389993	44.8364843389993	0.0	131	73.0	74.0	-1.0	Descriptive sensitivity
+toyota:corolla	Toyota	Corolla	adac	44.8245169177957	61.70674436968886	16.882227451893165	131	74.0	45.0	29.0	Descriptive sensitivity
+seat:ibiza	SEAT	Ibiza	adac	44.54328325577223	30.83162071723435	-13.71166253853788	131	75.0	99.0	-24.0	Descriptive sensitivity
+opel:corsa	Opel	Corsa	adac	44.4569042464938	43.39933931205907	-1.0575649344347298	131	76.0	76.0	0.0	Descriptive sensitivity
+seat:tarraco	SEAT	Tarraco	adac	44.435886901246775			131				Insufficient remaining evidence
+peugeot:208	Peugeot	208	adac	44.07573790240955	38.44276743303321	-5.632970469376339	131	77.0	85.0	-8.0	Descriptive sensitivity
+volkswagen:touran	Volkswagen	Touran	adac	43.83181802293117	41.96519049225194	-1.8666275306792244	131	78.0	80.0	-2.0	Descriptive sensitivity
+seat:mii	SEAT	Mii	adac	42.8864893565659	38.38372289751453	-4.502766459051372	131	79.0	86.0	-7.0	Descriptive sensitivity
+ford:b max	Ford	B-Max	adac	42.77129491492996	42.185692225110856	-0.5856026898191047	131	80.0	77.0	3.0	Descriptive sensitivity
+opel:grandland	Opel	Grandland	adac	42.334502668384246	54.81997169497169	12.485469026587445	131	81.0	57.0	24.0	Descriptive sensitivity
+skoda:roomster	Škoda	Roomster	adac	41.96924163883292	41.96924163883292	0.0	131	82.0	79.0	3.0	Descriptive sensitivity
+volkswagen:passat	Volkswagen	Passat	adac	41.90886816579775	33.71386282229815	-8.195005343499602	131	83.0	93.0	-10.0	Descriptive sensitivity
+dacia:dokker	Dacia	Dokker	adac	40.46046764093979	4.0625	-36.39796764093979	131	84.0	129.0	-45.0	Descriptive sensitivity
+smart:fortwo	Smart	ForTwo	adac	39.556678784113544	58.93805304821961	19.381374264106064	131	85.0	51.0	34.0	Descriptive sensitivity
+ford:kuga	Ford	Kuga	adac	39.10884662347024	52.973198994505005	13.864352371034762	131	86.0	61.0	25.0	Descriptive sensitivity
+ford:fiesta	Ford	Fiesta	adac	37.698921494416325	37.698921494416325	0.0	131	87.0	87.0	0.0	Descriptive sensitivity
+kia:picanto	Kia	Picanto	adac	36.97306925212694	41.17532149679268	4.202252244665736	131	88.0	81.0	7.0	Descriptive sensitivity
+opel:meriva	Opel	Meriva	adac	36.83632294713226	52.70419742714523	15.867874480012972	131	89.0	63.0	26.0	Descriptive sensitivity
+volkswagen:arteon	Volkswagen	Arteon	adac	36.57869052230457	25.09114172836982	-11.48754879393475	131	90.0	109.0	-19.0	Descriptive sensitivity
+hyundai:ix20	Hyundai	ix20	adac	36.5519824034267	38.947555225880656	2.395572822453957	131	91.0	84.0	7.0	Descriptive sensitivity
+volkswagen:caddy	Volkswagen	Caddy	adac	36.21744605948566	24.935965288413154	-11.281480771072506	131	92.0	110.0	-18.0	Descriptive sensitivity
+skoda:kamiq	Škoda	Kamiq	adac	36.008431622655756	15.754100425436633	-20.254331197219123	131	93.0	119.0	-26.0	Descriptive sensitivity
+mercedes benz:sprinter	Mercedes-Benz	Sprinter	adac	35.87930680971039	3.295481888744829	-32.58382492096556	131	94.0	130.0	-36.0	Descriptive sensitivity
+mitsubishi:outlander	Mitsubishi	Outlander	adac	35.159140360698046	28.393285675693846	-6.7658546850042	131	95.0	104.0	-9.0	Descriptive sensitivity
+kia:ceed	Kia	Ceed	adac	34.2491644605999	34.2491644605999	0.0	131	96.0	92.0	4.0	Descriptive sensitivity
+fiat:panda	Fiat	Panda	adac	33.66514483923328	23.712914985514587	-9.952229853718691	131	97.0	112.0	-15.0	Descriptive sensitivity
+skoda:superb	Škoda	Superb	adac	33.0608979198712	29.01475043171513	-4.046147488156073	131	98.0	103.0	-5.0	Descriptive sensitivity
+peugeot:2008	Peugeot	2008	adac	32.826105798157535	24.089884420847397	-8.736221377310137	131	99.0	111.0	-12.0	Descriptive sensitivity
+nissan:micra	Nissan	Micra	adac	32.45752225792428	29.889776915467507	-2.5677453424567744	131	100.0	100.0	0.0	Descriptive sensitivity
+ford:mondeo	Ford	Mondeo	adac	31.374806844406987	39.82787662796721	8.45306978356022	131	101.0	82.0	19.0	Descriptive sensitivity
+hyundai:i10	Hyundai	i10	adac	31.11027592766922	35.13995305220937	4.02967712454015	131	102.0	89.0	13.0	Descriptive sensitivity
+volkswagen:transporter	Volkswagen	Transporter	adac	30.93899342902265	22.35515395975903	-8.58383946926362	131	103.0	113.0	-10.0	Descriptive sensitivity
+hyundai:i30	Hyundai	i30	adac	30.87543610547966	27.38876900042014	-3.486667105059521	131	104.0	106.0	-2.0	Descriptive sensitivity
+kia:sportage	Kia	Sportage	adac	30.82782223223391	29.173607914008173	-1.654214318225737	131	105.0	102.0	3.0	Descriptive sensitivity
+tesla:model 3	Tesla	Model 3	adac	30.69226332667803	0.1149425287356322	-30.5773207979424	131	106.0	131.0	-25.0	Descriptive sensitivity
+renault:zoe	Renault	Zoe	adac	30.269568984235494	11.377681226819158	-18.891887757416335	131	107.0	124.0	-17.0	Descriptive sensitivity
+hyundai:ix35	Hyundai	ix35	adac	29.57726181969167	29.57726181969167	0.0	131	108.0	101.0	7.0	Descriptive sensitivity
+fiat:500	Fiat	500	adac	28.61638404571539	25.463471451133223	-3.1529125945821654	131	109.0	108.0	1.0	Descriptive sensitivity
+seat:alhambra	SEAT	Alhambra	adac	28.33017063627482	31.890055973636674	3.5598853373618553	131	110.0	97.0	13.0	Descriptive sensitivity
+volkswagen:sharan	Volkswagen	Sharan	adac	27.9300088555528	32.45261084131483	4.52260198576203	131	111.0	96.0	15.0	Descriptive sensitivity
+ford:focus	Ford	Focus	adac	27.858571382893384	33.333686813897096	5.475115431003712	131	112.0	94.0	18.0	Descriptive sensitivity
+ford:ka	Ford	Ka+	adac	27.842110434977663	27.842110434977663	0.0	131	113.0	105.0	8.0	Descriptive sensitivity
+skoda:scala	Škoda	Scala	adac	27.48852397294623	10.50359921049576	-16.98492476245047	131	114.0	125.0	-11.0	Descriptive sensitivity
+opel:crossland	Opel	Crossland	adac	26.69680470612442	16.762063367666816	-9.934741338457606	131	115.0	118.0	-3.0	Descriptive sensitivity
+nissan:qashqai	Nissan	Qashqai	adac	26.555322518564783	31.827738889162763	5.2724163705979805	131	116.0	98.0	18.0	Descriptive sensitivity
+renault:kadjar	Renault	Kadjar	adac	26.35575087498317	34.89847269004187	8.542721815058702	131	117.0	90.0	27.0	Descriptive sensitivity
+dacia:sandero	Dacia	Sandero	adac	25.794802580602298	9.026816659559694	-16.7679859210426	131	118.0	126.0	-8.0	Descriptive sensitivity
+mazda:cx 30	Mazda	CX-30	adac	24.866807560165988			131				Insufficient remaining evidence
+renault:twingo	Renault	Twingo	adac	23.48079595370217	18.335269156166227	-5.145526797535943	131	119.0	117.0	2.0	Descriptive sensitivity
+opel:insignia	Opel	Insignia	adac	22.987455350370823	32.69491713196723	9.707461781596407	131	120.0	95.0	25.0	Descriptive sensitivity
+renault:scenic	Renault	Scenic	adac	22.03610602335005	39.74215099467981	17.70604497132976	131	121.0	83.0	38.0	Descriptive sensitivity
+ford:s max	Ford	S-Max	adac	20.396646727149573	26.26402076619352	5.867374039043948	131	122.0	107.0	15.0	Descriptive sensitivity
+peugeot:3008	Peugeot	3008	adac	20.378007422317005	14.252747338979631	-6.125260083337373	131	123.0	120.0	3.0	Descriptive sensitivity
+citroen:berlingo	Citroën	Berlingo	adac	20.255449084194233	20.255449084194233	0.0	131	124.0	115.0	9.0	Descriptive sensitivity
+peugeot:308	Peugeot	308	adac	19.348739264504086	22.09952753315359	2.7507882686495044	131	125.0	114.0	11.0	Descriptive sensitivity
+citroen:c3	Citroën	C3	adac	18.779260268217605	18.779260268217605	0.0	131	126.0	116.0	10.0	Descriptive sensitivity
+dacia:logan	Dacia	Logan	adac	17.167766964267788	6.5784200521831036	-10.589346912084684	131	127.0	127.0	0.0	Descriptive sensitivity
+opel:combo	Opel	Combo	adac	17.059359785569015			131				Insufficient remaining evidence
+renault:megane	Renault	Megane	adac	15.742958529640807	13.837581872136774	-1.9053766575040338	131	128.0	122.0	6.0	Descriptive sensitivity
+dacia:duster	Dacia	Duster	adac	14.726330011933674	4.74161023652848	-9.984719775405194	131	129.0	128.0	1.0	Descriptive sensitivity
+renault:clio	Renault	Clio	adac	14.246267862819924	14.246267862819924	0.0	131	130.0	121.0	9.0	Descriptive sensitivity
+peugeot:207	Peugeot	207	adac	13.32681272822118	13.32681272822118	0.0	131	131.0	123.0	8.0	Descriptive sensitivity
+opel:zafira	Opel	Zafira	adac	12.327563972775131			131				Insufficient remaining evidence
+hyundai:ioniq 5	Hyundai	IONIQ 5	adac	11.912393162393162			131				Insufficient remaining evidence
+volkswagen:golf sportsvan	Volkswagen	Golf Sportsvan	traficom	97.19635743914998	98.57062718209626	1.3742697429462822	135	1.0	1.0	0.0	Descriptive sensitivity
+volkswagen:t roc	Volkswagen	T-Roc	traficom	93.95082338869203	93.2016434314954	-0.7491799571966311	135	2.0	4.0	-2.0	Descriptive sensitivity
+volkswagen:golf plus	Volkswagen	Golf Plus	traficom	90.91007265550786			135				Insufficient remaining evidence
+honda:jazz	Honda	Jazz	traficom	90.23981523483914	92.66516661495507	2.425351380115927	135	3.0	7.0	-4.0	Descriptive sensitivity
+audi:q2	Audi	Q2	traficom	89.14288358638726	89.87238121469709	0.7294976283098293	135	4.0	9.0	-5.0	Descriptive sensitivity
+suzuki:vitara	Suzuki	Vitara	traficom	85.81823065084897	82.63152302435208	-3.186707626496897	135	5.0	17.0	-12.0	Descriptive sensitivity
+mitsubishi:asx	Mitsubishi	ASX	traficom	85.58634362236863	93.06632488876585	7.479981266397218	135	6.0	6.0	0.0	Descriptive sensitivity
+audi:a4	Audi	A4	traficom	83.87684736136194	95.16144336174992	11.284596000387978	135	7.0	3.0	4.0	Descriptive sensitivity
+audi:q5	Audi	Q5	traficom	82.38923152799805	83.40794238621001	1.0187108582119606	135	8.0	16.0	-8.0	Descriptive sensitivity
+audi:a5	Audi	A5	traficom	80.65243580940054	83.61706352374149	2.964627714340949	135	9.0	15.0	-6.0	Descriptive sensitivity
+bmw:i3	BMW	i3	traficom	79.92066355713051	97.21866096866097	17.29799741153046	135	10.0	2.0	8.0	Descriptive sensitivity
+mazda:cx 3	Mazda	CX-3	traficom	79.91630920576705	76.95943823053376	-2.9568709752332865	135	11.0	23.0	-12.0	Descriptive sensitivity
+volkswagen:touareg	Volkswagen	Touareg	traficom	79.34754065167141	75.16514896855693	-4.182391683114474	135	12.0	26.0	-14.0	Descriptive sensitivity
+audi:a3	Audi	A3	traficom	78.86345709242754	78.5838305369949	-0.2796265554326425	135	13.0	20.0	-7.0	Descriptive sensitivity
+volvo:xc40	Volvo	XC40	traficom	77.89446820087332	68.70348949296317	-9.190978707910148	135	14.0	38.0	-24.0	Descriptive sensitivity
+suzuki:grand vitara	Suzuki	Grand Vitara	traficom	77.6834042887352			135				Insufficient remaining evidence
+suzuki:swift	Suzuki	Swift	traficom	77.16559412954422	77.80687219238509	0.6412780628408683	135	15.0	21.0	-6.0	Descriptive sensitivity
+bmw:1 series	BMW	1 Series	traficom	76.99527417289607	90.61621789914054	13.620943726244462	135	16.0	8.0	8.0	Descriptive sensitivity
+mercedes benz:b class	Mercedes-Benz	B-Class	traficom	76.60448575214362	76.81015630503606	0.20567055289244252	135	17.0	24.0	-7.0	Descriptive sensitivity
+seat:ateca	SEAT	Ateca	traficom	76.12083705238705	74.65793185519942	-1.4629051971876237	135	18.0	27.0	-9.0	Descriptive sensitivity
+bmw:x5	BMW	X5	traficom	75.55346438467855	85.43568004120701	9.882215656528459	135	19.0	13.0	6.0	Descriptive sensitivity
+mitsubishi:space star	Mitsubishi	Space Star	traficom	75.44347877417877	53.671227989425816	-21.772250784752956	135	20.0	59.0	-39.0	Descriptive sensitivity
+volkswagen:golf	Volkswagen	Golf	traficom	74.95729876604103	73.60618653681523	-1.351112229225805	135	21.0	32.0	-11.0	Descriptive sensitivity
+mercedes benz:gla	Mercedes-Benz	GLA	traficom	74.42569003554243	65.16302893233399	-9.262661103208444	135	22.0	46.0	-24.0	Descriptive sensitivity
+mercedes benz:a class	Mercedes-Benz	A-Class	traficom	74.11108390391534	73.67264152153595	-0.43844238237939237	135	23.0	31.0	-8.0	Descriptive sensitivity
+volkswagen:id 3	Volkswagen	ID.3	traficom	73.60508930192839	85.36612692862693	11.761037626698538	135	24.0	14.0	10.0	Descriptive sensitivity
+audi:q3	Audi	Q3	traficom	73.15474896740989	77.51155346369916	4.356804496289271	135	25.0	22.0	3.0	Descriptive sensitivity
+bmw:x3	BMW	X3	traficom	72.69568719675242	93.09879577725975	20.403108580507336	135	26.0	5.0	21.0	Descriptive sensitivity
+volvo:xc60	Volvo	XC60	traficom	72.39170857275245	72.02418961922479	-0.3675189535276644	135	27.0	33.0	-6.0	Descriptive sensitivity
+mazda:2	Mazda	2	traficom	72.38617923385159	79.87356503607543	7.487385802223841	135	28.0	19.0	9.0	Descriptive sensitivity
+mitsubishi:eclipse cross	Mitsubishi	Eclipse Cross	traficom	71.8620500370879	69.10778147291305	-2.7542685641748506	135	29.0	36.0	-7.0	Descriptive sensitivity
+mercedes benz:glc	Mercedes-Benz	GLC	traficom	71.26652282634588	86.42028878968418	15.153765963338302	135	30.0	12.0	18.0	Descriptive sensitivity
+audi:a6	Audi	A6	traficom	70.5512051280966	67.01944353360868	-3.531761594487918	135	31.0	40.0	-9.0	Descriptive sensitivity
+skoda:karoq	Škoda	Karoq	traficom	70.2878086931117	71.1366981428659	0.8488894497541963	135	32.0	34.0	-2.0	Descriptive sensitivity
+bmw:5 series	BMW	5 Series	traficom	69.50068480759835	86.91939925396247	17.41871444636412	135	33.0	11.0	22.0	Descriptive sensitivity
+skoda:yeti	Škoda	Yeti	traficom	68.69377405419537	73.93372046814997	5.239946413954598	135	34.0	28.0	6.0	Descriptive sensitivity
+volkswagen:beetle	Volkswagen	Beetle	traficom	68.38865856956525	66.77025268187438	-1.6184058876908693	135	35.0	41.0	-6.0	Descriptive sensitivity
+audi:a1	Audi	A1	traficom	67.90681380030867	73.78848565117835	5.8816718508696795	135	36.0	30.0	6.0	Descriptive sensitivity
+volkswagen:id 4	Volkswagen	ID.4	traficom	66.32791777188329			135				Insufficient remaining evidence
+seat:leon	SEAT	Leon	traficom	65.66140978496078	59.87270076068491	-5.7887090242758745	135	37.0	51.0	-14.0	Descriptive sensitivity
+bmw:4 series	BMW	4 Series	traficom	65.58082077541567	81.39877880641404	15.81795803099837	135	38.0	18.0	20.0	Descriptive sensitivity
+mazda:cx 5	Mazda	CX-5	traficom	64.44494475307881	62.27346942711184	-2.1714753259669735	135	39.0	50.0	-11.0	Descriptive sensitivity
+toyota:auris	Toyota	Auris	traficom	64.00474639960918	49.15593165337399	-14.848814746235185	135	40.0	68.0	-28.0	Descriptive sensitivity
+cupra:formentor	Cupra	Formentor	traficom	63.980097169752334	62.34945609945609	-1.6306410702962424	135	41.0	49.0	-8.0	Descriptive sensitivity
+mazda:3	Mazda	3	traficom	62.88541438195329	58.265585089434595	-4.619829292518695	135	42.0	53.0	-11.0	Descriptive sensitivity
+bmw:3 series	BMW	3 Series	traficom	62.20167738420703	87.12573275427775	24.924055370070718	135	43.0	10.0	33.0	Descriptive sensitivity
+volkswagen:tiguan	Volkswagen	Tiguan	traficom	61.27288836207999	59.6114707312084	-1.6614176308715898	135	44.0	52.0	-8.0	Descriptive sensitivity
+skoda:rapid	Škoda	Rapid	traficom	60.7287540464396	66.5305075393355	5.801753492895905	135	45.0	42.0	3.0	Descriptive sensitivity
+kia:rio	Kia	Rio	traficom	59.060652773269055	52.92582423119503	-6.134828542074025	135	46.0	60.0	-14.0	Descriptive sensitivity
+mercedes benz:gle	Mercedes-Benz	GLE	traficom	58.83185915336892	66.17405777211329	7.342198618744369	135	47.0	43.0	4.0	Descriptive sensitivity
+volkswagen:polo	Volkswagen	Polo	traficom	58.42931508242548	63.78282492698787	5.353509844562389	135	48.0	47.0	1.0	Descriptive sensitivity
+bmw:x1	BMW	X1	traficom	58.393826711689286	65.50572516327051	7.111898451581226	135	49.0	45.0	4.0	Descriptive sensitivity
+opel:adam	Opel	Adam	traficom	58.20961754838593	49.210978046716825	-8.998639501669103	135	50.0	66.0	-16.0	Descriptive sensitivity
+skoda:citigo	Škoda	Citigo	traficom	58.163536651997184	55.73206029246711	-2.4314763595300732	135	51.0	57.0	-6.0	Descriptive sensitivity
+skoda:fabia	Škoda	Fabia	traficom	57.82569092068699	63.45793596441128	5.632245043724289	135	52.0	48.0	4.0	Descriptive sensitivity
+mercedes benz:glb	Mercedes-Benz	GLB	traficom	57.44387955594853	73.85327635327636	16.40939679732783	135	53.0	29.0	24.0	Descriptive sensitivity
+volkswagen:up	Volkswagen	Up!	traficom	57.3829061023257	57.59160111074749	0.20869500842179178	135	54.0	54.0	0.0	Descriptive sensitivity
+ford:puma	Ford	Puma	traficom	57.19123482413712	37.510990167240166	-19.680244656896953	135	55.0	97.0	-42.0	Descriptive sensitivity
+toyota:rav4	Toyota	RAV4	traficom	56.472820566848135	44.85587903086548	-11.616941535982654	135	56.0	77.0	-21.0	Descriptive sensitivity
+mercedes benz:glk	Mercedes-Benz	GLK	traficom	55.84155762680203			135				Insufficient remaining evidence
+opel:karl	Opel	KARL	traficom	55.46225383712314	43.020039951083966	-12.442213886039177	135	57.0	80.0	-23.0	Descriptive sensitivity
+mercedes benz:c class	Mercedes-Benz	C-Class	traficom	55.35966504928722	70.82921805822181	15.46955300893459	135	58.0	35.0	23.0	Descriptive sensitivity
+skoda:enyaq	Škoda	Enyaq	traficom	53.47286693191866			135				Insufficient remaining evidence
+mercedes benz:cla	Mercedes-Benz	CLA	traficom	53.15345744852091	46.59358513888582	-6.5598723096350895	135	59.0	73.0	-14.0	Descriptive sensitivity
+volkswagen:t cross	Volkswagen	T-Cross	traficom	53.07998496038488	68.99265025909762	15.912665298712739	135	60.0	37.0	23.0	Descriptive sensitivity
+skoda:octavia	Škoda	Octavia	traficom	52.57062849162721	48.60332886988195	-3.967299621745262	135	61.0	69.0	-8.0	Descriptive sensitivity
+hyundai:tucson	Hyundai	Tucson	traficom	52.24651388785654	55.49616548828109	3.2496516004245564	135	62.0	58.0	4.0	Descriptive sensitivity
+toyota:aygo	Toyota	Aygo	traficom	52.098979890916866	56.210927243196736	4.11194735227987	135	63.0	55.0	8.0	Descriptive sensitivity
+hyundai:kona	Hyundai	Kona	traficom	50.59322305814661	50.080440119091435	-0.5127829390551781	135	64.0	64.0	0.0	Descriptive sensitivity
+hyundai:i20	Hyundai	i20	traficom	49.93012948446998	38.34766594196092	-11.58246354250906	135	65.0	94.0	-29.0	Descriptive sensitivity
+skoda:kodiaq	Škoda	Kodiaq	traficom	49.75818519858046	50.03791156997391	0.27972637139344414	135	66.0	65.0	1.0	Descriptive sensitivity
+seat:arona	SEAT	Arona	traficom	49.71402571626836	65.54055196448289	15.826526248214527	135	67.0	44.0	23.0	Descriptive sensitivity
+toyota:yaris	Toyota	Yaris	traficom	48.16495919981105	39.40790554025812	-8.75705365955293	135	68.0	90.0	-22.0	Descriptive sensitivity
+ford:c max	Ford	C-Max	traficom	47.688446102147196	32.76236878589308	-14.926077316254116	135	69.0	102.0	-33.0	Descriptive sensitivity
+toyota:c hr	Toyota	C-HR	traficom	47.619833161380654	2.0458207386561047	-45.57401242272455	135	70.0	135.0	-65.0	Descriptive sensitivity
+mercedes benz:e class	Mercedes-Benz	E-Class	traficom	46.93317178785643	55.75393976812899	8.820767980272556	135	71.0	56.0	15.0	Descriptive sensitivity
+opel:mokka	Opel	Mokka	traficom	46.048182912826974	47.06601474689984	1.0178318340728651	135	72.0	72.0	0.0	Descriptive sensitivity
+opel:astra	Opel	Astra	traficom	45.573593882614595	37.682715069163876	-7.890878813450719	135	73.0	96.0	-23.0	Descriptive sensitivity
+ford:ecosport	Ford	Ecosport	traficom	45.553383332224705	40.81123388146035	-4.742149450764352	135	74.0	86.0	-12.0	Descriptive sensitivity
+renault:captur	Renault	Captur	traficom	44.8364843389993	76.54619778846583	31.709713449466534	135	75.0	25.0	50.0	Descriptive sensitivity
+toyota:corolla	Toyota	Corolla	traficom	44.8245169177957	19.5154206173943	-25.309096300401396	135	76.0	124.0	-48.0	Descriptive sensitivity
+seat:ibiza	SEAT	Ibiza	traficom	44.54328325577223	49.18020408427942	4.636920828507186	135	77.0	67.0	10.0	Descriptive sensitivity
+opel:corsa	Opel	Corsa	traficom	44.4569042464938	42.279811392485826	-2.1770928540079737	135	78.0	83.0	-5.0	Descriptive sensitivity
+seat:tarraco	SEAT	Tarraco	traficom	44.435886901246775	45.351861223571746	0.9159743223249706	135	79.0	76.0	3.0	Descriptive sensitivity
+peugeot:208	Peugeot	208	traficom	44.07573790240955	47.746686053440555	3.6709481510310056	135	80.0	70.0	10.0	Descriptive sensitivity
+volkswagen:touran	Volkswagen	Touran	traficom	43.83181802293117	50.2911444272746	6.459326404343436	135	81.0	63.0	18.0	Descriptive sensitivity
+seat:mii	SEAT	Mii	traficom	42.8864893565659	51.05387196588334	8.167382609317436	135	82.0	62.0	20.0	Descriptive sensitivity
+ford:b max	Ford	B-Max	traficom	42.77129491492996	52.37825630670129	9.606961391771328	135	83.0	61.0	22.0	Descriptive sensitivity
+opel:grandland	Opel	Grandland	traficom	42.334502668384246	42.334502668384246	0.0	135	84.0	82.0	2.0	Descriptive sensitivity
+skoda:roomster	Škoda	Roomster	traficom	41.96924163883292	42.62167425526994	0.652432616437018	135	85.0	81.0	4.0	Descriptive sensitivity
+volkswagen:passat	Volkswagen	Passat	traficom	41.90886816579775	45.71882111536803	3.809952949570281	135	86.0	75.0	11.0	Descriptive sensitivity
+dacia:dokker	Dacia	Dokker	traficom	40.46046764093979	40.46046764093979	0.0	135	87.0	87.0	0.0	Descriptive sensitivity
+smart:fortwo	Smart	ForTwo	traficom	39.556678784113544	39.556678784113544	0.0	135	88.0	88.0	0.0	Descriptive sensitivity
+ford:kuga	Ford	Kuga	traficom	39.10884662347024	27.602308871152736	-11.506537752317506	135	89.0	111.0	-22.0	Descriptive sensitivity
+ford:fiesta	Ford	Fiesta	traficom	37.698921494416325	34.63974907882411	-3.059172415592215	135	90.0	99.0	-9.0	Descriptive sensitivity
+kia:picanto	Kia	Picanto	traficom	36.97306925212694	37.0476000137709	0.07453076164395611	135	91.0	98.0	-7.0	Descriptive sensitivity
+opel:meriva	Opel	Meriva	traficom	36.83632294713226	39.058532059434576	2.222209112302316	135	92.0	93.0	-1.0	Descriptive sensitivity
+volkswagen:arteon	Volkswagen	Arteon	traficom	36.57869052230457			135				Insufficient remaining evidence
+hyundai:ix20	Hyundai	ix20	traficom	36.5519824034267	43.677559564848366	7.125577161421667	135	93.0	79.0	14.0	Descriptive sensitivity
+volkswagen:caddy	Volkswagen	Caddy	traficom	36.21744605948566	44.5676978962278	8.350251836742139	135	94.0	78.0	16.0	Descriptive sensitivity
+skoda:kamiq	Škoda	Kamiq	traficom	36.008431622655756	47.11609570984571	11.107664087189953	135	95.0	71.0	24.0	Descriptive sensitivity
+mercedes benz:sprinter	Mercedes-Benz	Sprinter	traficom	35.87930680971039	68.46313173067595	32.58382492096556	135	96.0	39.0	57.0	Descriptive sensitivity
+mitsubishi:outlander	Mitsubishi	Outlander	traficom	35.159140360698046	41.924995045702246	6.7658546850042	135	97.0	84.0	13.0	Descriptive sensitivity
+kia:ceed	Kia	Ceed	traficom	34.2491644605999	33.48357432239254	-0.765590138207358	135	98.0	101.0	-3.0	Descriptive sensitivity
+fiat:panda	Fiat	Panda	traficom	33.66514483923328	39.23011162504711	5.56496678581383	135	99.0	92.0	7.0	Descriptive sensitivity
+skoda:superb	Škoda	Superb	traficom	33.0608979198712	37.924206083280296	4.863308163409094	135	100.0	95.0	5.0	Descriptive sensitivity
+peugeot:2008	Peugeot	2008	traficom	32.826105798157535	41.52162580525024	8.695520007092703	135	101.0	85.0	16.0	Descriptive sensitivity
+nissan:micra	Nissan	Micra	traficom	32.45752225792428	30.675257049731627	-1.7822652081926549	135	102.0	106.0	-4.0	Descriptive sensitivity
+ford:mondeo	Ford	Mondeo	traficom	31.374806844406987	19.567740978459263	-11.807065865947724	135	103.0	123.0	-20.0	Descriptive sensitivity
+hyundai:i10	Hyundai	i10	traficom	31.11027592766922	28.787022348456482	-2.3232535792127393	135	104.0	109.0	-5.0	Descriptive sensitivity
+volkswagen:transporter	Volkswagen	Transporter	traficom	30.93899342902265	39.52283289828627	8.58383946926362	135	105.0	89.0	16.0	Descriptive sensitivity
+hyundai:i30	Hyundai	i30	traficom	30.87543610547966	29.33181023342339	-1.5436258720562712	135	106.0	108.0	-2.0	Descriptive sensitivity
+kia:sportage	Kia	Sportage	traficom	30.82782223223391	31.380700833428044	0.5528786011941342	135	107.0	104.0	3.0	Descriptive sensitivity
+tesla:model 3	Tesla	Model 3	traficom	30.69226332667803	45.923452461281414	15.231189134603383	135	108.0	74.0	34.0	Descriptive sensitivity
+renault:zoe	Renault	Zoe	traficom	30.269568984235494	39.36987071773255	9.100301733497059	135	109.0	91.0	18.0	Descriptive sensitivity
+hyundai:ix35	Hyundai	ix35	traficom	29.57726181969167	31.297274808711084	1.7200129890194127	135	110.0	105.0	5.0	Descriptive sensitivity
+fiat:500	Fiat	500	traficom	28.61638404571539	29.86505531688972	1.2486712711743309	135	111.0	107.0	4.0	Descriptive sensitivity
+seat:alhambra	SEAT	Alhambra	traficom	28.33017063627482	22.164248809690065	-6.1659218265847535	135	112.0	117.0	-5.0	Descriptive sensitivity
+volkswagen:sharan	Volkswagen	Sharan	traficom	27.9300088555528	19.293940940702573	-8.636067914850226	135	113.0	125.0	-12.0	Descriptive sensitivity
+ford:focus	Ford	Focus	traficom	27.858571382893384	14.839919175919984	-13.0186522069734	135	114.0	132.0	-18.0	Descriptive sensitivity
+ford:ka	Ford	Ka+	traficom	27.842110434977663	17.61288965687037	-10.229220778107294	135	115.0	128.0	-13.0	Descriptive sensitivity
+skoda:scala	Škoda	Scala	traficom	27.48852397294623	31.6382776580145	4.149753685068269	135	116.0	103.0	13.0	Descriptive sensitivity
+opel:crossland	Opel	Crossland	traficom	26.69680470612442	26.769344990221114	0.07254028409669289	135	117.0	113.0	4.0	Descriptive sensitivity
+nissan:qashqai	Nissan	Qashqai	traficom	26.555322518564783	27.18568253887897	0.630360020314189	135	118.0	112.0	6.0	Descriptive sensitivity
+renault:kadjar	Renault	Kadjar	traficom	26.35575087498317	17.813029059924467	-8.542721815058702	135	119.0	127.0	-8.0	Descriptive sensitivity
+dacia:sandero	Dacia	Sandero	traficom	25.794802580602298	34.49936044580266	8.70455786520036	135	120.0	100.0	20.0	Descriptive sensitivity
+mazda:cx 30	Mazda	CX-30	traficom	24.866807560165988	8.265669515669515	-16.601138044496473	135	121.0	134.0	-13.0	Descriptive sensitivity
+renault:twingo	Renault	Twingo	traficom	23.48079595370217	27.828720812273684	4.347924858571513	135	122.0	110.0	12.0	Descriptive sensitivity
+opel:insignia	Opel	Insignia	traficom	22.987455350370823	15.145641405320825	-7.8418139450499975	135	123.0	131.0	-8.0	Descriptive sensitivity
+renault:scenic	Renault	Scenic	traficom	22.03610602335005	22.03610602335005	0.0	135	124.0	118.0	6.0	Descriptive sensitivity
+ford:s max	Ford	S-Max	traficom	20.396646727149573	17.579066516131757	-2.817580211017816	135	125.0	129.0	-4.0	Descriptive sensitivity
+peugeot:3008	Peugeot	3008	traficom	20.378007422317005	26.503267505654378	6.125260083337373	135	126.0	114.0	12.0	Descriptive sensitivity
+citroen:berlingo	Citroën	Berlingo	traficom	20.255449084194233	20.59408193294865	0.33863284875441835	135	127.0	120.0	7.0	Descriptive sensitivity
+peugeot:308	Peugeot	308	traficom	19.348739264504086	19.09698633879755	-0.25175292570653696	135	128.0	126.0	2.0	Descriptive sensitivity
+citroen:c3	Citroën	C3	traficom	18.779260268217605	22.96654428333289	4.187284015115285	135	129.0	116.0	13.0	Descriptive sensitivity
+dacia:logan	Dacia	Logan	traficom	17.167766964267788	20.43014135903332	3.2623743947655335	135	130.0	122.0	8.0	Descriptive sensitivity
+opel:combo	Opel	Combo	traficom	17.059359785569015	26.37224069789859	9.312880912329575	135	131.0	115.0	16.0	Descriptive sensitivity
+renault:megane	Renault	Megane	traficom	15.742958529640807	17.496493447219603	1.7535349175787953	135	132.0	130.0	2.0	Descriptive sensitivity
+dacia:duster	Dacia	Duster	traficom	14.726330011933674	20.677723698382547	5.951393686448872	135	133.0	119.0	14.0	Descriptive sensitivity
+renault:clio	Renault	Clio	traficom	14.246267862819924	20.47978797886421	6.233520116044286	135	134.0	121.0	13.0	Descriptive sensitivity
+peugeot:207	Peugeot	207	traficom	13.32681272822118			135				Insufficient remaining evidence
+opel:zafira	Opel	Zafira	traficom	12.327563972775131	13.857763111383974	1.5301991386088432	135	135.0	133.0	2.0	Descriptive sensitivity
+hyundai:ioniq 5	Hyundai	IONIQ 5	traficom	11.912393162393162			135				Insufficient remaining evidence
+volkswagen:golf sportsvan	Volkswagen	Golf Sportsvan	tuv	97.19635743914998	95.8220876962037	-1.3742697429462822	140	1.0	1.0	0.0	Descriptive sensitivity
+volkswagen:t roc	Volkswagen	T-Roc	tuv	93.95082338869203	92.21744387424685	-1.7333795144451756	140	2.0	2.0	0.0	Descriptive sensitivity
+volkswagen:golf plus	Volkswagen	Golf Plus	tuv	90.91007265550786	85.74288525526104	-5.167187400246817	140	3.0	4.0	-1.0	Descriptive sensitivity
+honda:jazz	Honda	Jazz	tuv	90.23981523483914	87.81446385472321	-2.425351380115927	140	4.0	3.0	1.0	Descriptive sensitivity
+audi:q2	Audi	Q2	tuv	89.14288358638726	85.41522864298413	-3.727654943403124	140	5.0	5.0	0.0	Descriptive sensitivity
+suzuki:vitara	Suzuki	Vitara	tuv	85.81823065084897	83.54599623709512	-2.27223441375385	140	6.0	7.0	-1.0	Descriptive sensitivity
+mitsubishi:asx	Mitsubishi	ASX	tuv	85.58634362236863	82.12414031061647	-3.4622033117521624	140	7.0	9.0	-2.0	Descriptive sensitivity
+audi:a4	Audi	A4	tuv	83.87684736136194	83.87684736136194	0.0	140	8.0	6.0	2.0	Descriptive sensitivity
+audi:q5	Audi	Q5	tuv	82.38923152799805	81.52909358497598	-0.8601379430220675	140	9.0	10.0	-1.0	Descriptive sensitivity
+audi:a5	Audi	A5	tuv	80.65243580940054	80.65243580940054	0.0	140	10.0	11.0	-1.0	Descriptive sensitivity
+bmw:i3	BMW	i3	tuv	79.92066355713051	79.92066355713051	0.0	140	11.0	13.0	-2.0	Descriptive sensitivity
+mazda:cx 3	Mazda	CX-3	tuv	79.91630920576705	82.5285805252673	2.612271319500252	140	12.0	8.0	4.0	Descriptive sensitivity
+volkswagen:touareg	Volkswagen	Touareg	tuv	79.34754065167141	80.52248308057918	1.1749424289077695	140	13.0	12.0	1.0	Descriptive sensitivity
+audi:a3	Audi	A3	tuv	78.86345709242754	74.53456853190818	-4.32888856051936	140	14.0	21.0	-7.0	Descriptive sensitivity
+volvo:xc40	Volvo	XC40	tuv	77.89446820087332	77.89446820087332	0.0	140	15.0	15.0	0.0	Descriptive sensitivity
+suzuki:grand vitara	Suzuki	Grand Vitara	tuv	77.6834042887352			140				Insufficient remaining evidence
+suzuki:swift	Suzuki	Swift	tuv	77.16559412954422	78.56250734572647	1.3969132161822557	140	16.0	14.0	2.0	Descriptive sensitivity
+bmw:1 series	BMW	1 Series	tuv	76.99527417289607	76.99527417289607	0.0	140	17.0	16.0	1.0	Descriptive sensitivity
+mercedes benz:b class	Mercedes-Benz	B-Class	tuv	76.60448575214362	70.85104717603669	-5.75343857610693	140	18.0	31.0	-13.0	Descriptive sensitivity
+seat:ateca	SEAT	Ateca	tuv	76.12083705238705	74.63174259156759	-1.4890944608194587	140	19.0	20.0	-1.0	Descriptive sensitivity
+bmw:x5	BMW	X5	tuv	75.55346438467855	75.55346438467855	0.0	140	20.0	18.0	2.0	Descriptive sensitivity
+mitsubishi:space star	Mitsubishi	Space Star	tuv	75.44347877417877	75.44347877417877	0.0	140	21.0	19.0	2.0	Descriptive sensitivity
+volkswagen:golf	Volkswagen	Golf	tuv	74.95729876604103	74.18957947512573	-0.7677192909153092	140	22.0	23.0	-1.0	Descriptive sensitivity
+mercedes benz:gla	Mercedes-Benz	GLA	tuv	74.42569003554243	74.42569003554243	0.0	140	23.0	22.0	1.0	Descriptive sensitivity
+mercedes benz:a class	Mercedes-Benz	A-Class	tuv	74.11108390391534	67.84958109994028	-6.261502803975063	140	24.0	37.0	-13.0	Descriptive sensitivity
+volkswagen:id 3	Volkswagen	ID.3	tuv	73.60508930192839	71.95390018665881	-1.651189115269574	140	25.0	27.0	-2.0	Descriptive sensitivity
+audi:q3	Audi	Q3	tuv	73.15474896740989	70.861765804805	-2.2929831626048838	140	26.0	30.0	-4.0	Descriptive sensitivity
+bmw:x3	BMW	X3	tuv	72.69568719675242	72.69568719675242	0.0	140	27.0	26.0	1.0	Descriptive sensitivity
+volvo:xc60	Volvo	XC60	tuv	72.39170857275245	68.70024331199915	-3.6914652607533043	140	28.0	35.0	-7.0	Descriptive sensitivity
+mazda:2	Mazda	2	tuv	72.38617923385159	68.6365800359488	-3.7495991979027963	140	29.0	36.0	-7.0	Descriptive sensitivity
+mitsubishi:eclipse cross	Mitsubishi	Eclipse Cross	tuv	71.8620500370879	71.8620500370879	0.0	140	30.0	28.0	2.0	Descriptive sensitivity
+mercedes benz:glc	Mercedes-Benz	GLC	tuv	71.26652282634588	64.81012776197575	-6.456395064370128	140	31.0	44.0	-13.0	Descriptive sensitivity
+audi:a6	Audi	A6	tuv	70.5512051280966	70.5512051280966	0.0	140	32.0	32.0	0.0	Descriptive sensitivity
+skoda:karoq	Škoda	Karoq	tuv	70.2878086931117	66.07294680590132	-4.214861887210375	140	33.0	40.0	-7.0	Descriptive sensitivity
+bmw:5 series	BMW	5 Series	tuv	69.50068480759835	69.50068480759835	0.0	140	34.0	33.0	1.0	Descriptive sensitivity
+skoda:yeti	Škoda	Yeti	tuv	68.69377405419537	69.19017715979429	0.4964031055989153	140	35.0	34.0	1.0	Descriptive sensitivity
+volkswagen:beetle	Volkswagen	Beetle	tuv	68.38865856956525	73.46323172365892	5.07457315409367	140	36.0	24.0	12.0	Descriptive sensitivity
+audi:a1	Audi	A1	tuv	67.90681380030867	71.53716266089049	3.630348860581819	140	37.0	29.0	8.0	Descriptive sensitivity
+volkswagen:id 4	Volkswagen	ID.4	tuv	66.32791777188329	66.32791777188329	0.0	140	38.0	39.0	-1.0	Descriptive sensitivity
+seat:leon	SEAT	Leon	tuv	65.66140978496078	73.39744464079547	7.7360348558346885	140	39.0	25.0	14.0	Descriptive sensitivity
+bmw:4 series	BMW	4 Series	tuv	65.58082077541567	65.58082077541567	0.0	140	40.0	42.0	-2.0	Descriptive sensitivity
+mazda:cx 5	Mazda	CX-5	tuv	64.44494475307881	64.36288435223045	-0.08206040084836275	140	41.0	45.0	-4.0	Descriptive sensitivity
+toyota:auris	Toyota	Auris	tuv	64.00474639960918	63.09071368077693	-0.9140327188322459	140	42.0	46.0	-4.0	Descriptive sensitivity
+cupra:formentor	Cupra	Formentor	tuv	63.980097169752334	66.87923666371941	2.899139493967077	140	43.0	38.0	5.0	Descriptive sensitivity
+mazda:3	Mazda	3	tuv	62.88541438195329	62.17616656421477	-0.7092478177385217	140	44.0	48.0	-4.0	Descriptive sensitivity
+bmw:3 series	BMW	3 Series	tuv	62.20167738420703	62.20167738420703	0.0	140	45.0	47.0	-2.0	Descriptive sensitivity
+volkswagen:tiguan	Volkswagen	Tiguan	tuv	61.27288836207999	59.98212969717546	-1.29075866490453	140	46.0	51.0	-5.0	Descriptive sensitivity
+skoda:rapid	Škoda	Rapid	tuv	60.7287540464396	65.60172483774143	4.872970791301832	140	47.0	41.0	6.0	Descriptive sensitivity
+kia:rio	Kia	Rio	tuv	59.060652773269055	65.19548131534309	6.1348285420740325	140	48.0	43.0	5.0	Descriptive sensitivity
+mercedes benz:gle	Mercedes-Benz	GLE	tuv	58.83185915336892	52.736425093689725	-6.095434059679192	140	49.0	65.0	-16.0	Descriptive sensitivity
+volkswagen:polo	Volkswagen	Polo	tuv	58.42931508242548	61.18257673526293	2.7532616528374447	140	50.0	49.0	1.0	Descriptive sensitivity
+bmw:x1	BMW	X1	tuv	58.393826711689286	57.02749958264073	-1.3663271290485568	140	51.0	56.0	-5.0	Descriptive sensitivity
+opel:adam	Opel	Adam	tuv	58.20961754838593	58.18281550773417	-0.026802040651759285	140	52.0	54.0	-2.0	Descriptive sensitivity
+skoda:citigo	Škoda	Citigo	tuv	58.163536651997184	61.15268860285112	2.9891519508539375	140	53.0	50.0	3.0	Descriptive sensitivity
+skoda:fabia	Škoda	Fabia	tuv	57.82569092068699	58.53673918987859	0.7110482691916005	140	54.0	53.0	1.0	Descriptive sensitivity
+mercedes benz:glb	Mercedes-Benz	GLB	tuv	57.44387955594853	57.44387955594853	0.0	140	55.0	55.0	0.0	Descriptive sensitivity
+volkswagen:up	Volkswagen	Up!	tuv	57.3829061023257	58.63906099325574	1.2561548909300413	140	56.0	52.0	4.0	Descriptive sensitivity
+ford:puma	Ford	Puma	tuv	57.19123482413712	56.787258080361525	-0.4039767437755941	140	57.0	57.0	0.0	Descriptive sensitivity
+toyota:rav4	Toyota	RAV4	tuv	56.472820566848135	40.81782737338764	-15.654993193460498	140	58.0	84.0	-26.0	Descriptive sensitivity
+mercedes benz:glk	Mercedes-Benz	GLK	tuv	55.84155762680203	31.117603505296618	-24.72395412150541	140	59.0	112.0	-53.0	Descriptive sensitivity
+opel:karl	Opel	KARL	tuv	55.46225383712314	55.46225383712314	0.0	140	60.0	59.0	1.0	Descriptive sensitivity
+mercedes benz:c class	Mercedes-Benz	C-Class	tuv	55.35966504928722	49.45379133440526	-5.905873714881963	140	61.0	66.0	-5.0	Descriptive sensitivity
+skoda:enyaq	Škoda	Enyaq	tuv	53.47286693191866	53.47286693191866	0.0	140	62.0	62.0	0.0	Descriptive sensitivity
+mercedes benz:cla	Mercedes-Benz	CLA	tuv	53.15345744852091	53.15345744852091	0.0	140	63.0	64.0	-1.0	Descriptive sensitivity
+volkswagen:t cross	Volkswagen	T-Cross	tuv	53.07998496038488	46.10130860940848	-6.9786763509764	140	64.0	75.0	-11.0	Descriptive sensitivity
+skoda:octavia	Škoda	Octavia	tuv	52.57062849162721	55.9239077356519	3.353279244024691	140	65.0	58.0	7.0	Descriptive sensitivity
+hyundai:tucson	Hyundai	Tucson	tuv	52.24651388785654	48.40463180414578	-3.8418820837107575	140	66.0	70.0	-4.0	Descriptive sensitivity
+toyota:aygo	Toyota	Aygo	tuv	52.098979890916866	55.19143763136154	3.0924577404446723	140	67.0	60.0	7.0	Descriptive sensitivity
+hyundai:kona	Hyundai	Kona	tuv	50.59322305814661	41.6406462755316	-8.952576782615012	140	68.0	82.0	-14.0	Descriptive sensitivity
+hyundai:i20	Hyundai	i20	tuv	49.93012948446998	49.438653005247176	-0.49147647922280413	140	69.0	67.0	2.0	Descriptive sensitivity
+skoda:kodiaq	Škoda	Kodiaq	tuv	49.75818519858046	40.2853796959726	-9.472805502607862	140	70.0	88.0	-18.0	Descriptive sensitivity
+seat:arona	SEAT	Arona	tuv	49.71402571626836	48.858001611365566	-0.8560241049027937	140	71.0	69.0	2.0	Descriptive sensitivity
+toyota:yaris	Toyota	Yaris	tuv	48.16495919981105	40.38538912092332	-7.77957007888773	140	72.0	86.0	-14.0	Descriptive sensitivity
+ford:c max	Ford	C-Max	tuv	47.688446102147196	49.28623279516294	1.5977866930157418	140	73.0	68.0	5.0	Descriptive sensitivity
+toyota:c hr	Toyota	C-HR	tuv	47.619833161380654	47.619833161380654	0.0	140	74.0	73.0	1.0	Descriptive sensitivity
+mercedes benz:e class	Mercedes-Benz	E-Class	tuv	46.93317178785643	42.974412343132855	-3.958759444723576	140	75.0	80.0	-5.0	Descriptive sensitivity
+opel:mokka	Opel	Mokka	tuv	46.048182912826974	37.11454722912639	-8.933635683700587	140	76.0	94.0	-18.0	Descriptive sensitivity
+opel:astra	Opel	Astra	tuv	45.573593882614595	47.660469562792755	2.08687568017816	140	77.0	72.0	5.0	Descriptive sensitivity
+ford:ecosport	Ford	Ecosport	tuv	45.553383332224705	42.63093119755021	-2.9224521346744936	140	78.0	81.0	-3.0	Descriptive sensitivity
+renault:captur	Renault	Captur	tuv	44.8364843389993	13.126770889532759	-31.70971344946654	140	79.0	136.0	-57.0	Descriptive sensitivity
+toyota:corolla	Toyota	Corolla	tuv	44.8245169177957	53.25138576630394	8.426868848508242	140	80.0	63.0	17.0	Descriptive sensitivity
+seat:ibiza	SEAT	Ibiza	tuv	44.54328325577223	53.61802496580293	9.0747417100307	140	81.0	61.0	20.0	Descriptive sensitivity
+opel:corsa	Opel	Corsa	tuv	44.4569042464938	47.691562034936496	3.2346577884426964	140	82.0	71.0	11.0	Descriptive sensitivity
+seat:tarraco	SEAT	Tarraco	tuv	44.435886901246775	44.435886901246775	0.0	140	83.0	79.0	4.0	Descriptive sensitivity
+peugeot:208	Peugeot	208	tuv	44.07573790240955	46.0377602207549	1.9620223183453476	140	84.0	77.0	7.0	Descriptive sensitivity
+volkswagen:touran	Volkswagen	Touran	tuv	43.83181802293117	39.239119149266955	-4.592698873664212	140	85.0	90.0	-5.0	Descriptive sensitivity
+seat:mii	SEAT	Mii	tuv	42.8864893565659	39.22187320629984	-3.6646161502660632	140	86.0	91.0	-5.0	Descriptive sensitivity
+ford:b max	Ford	B-Max	tuv	42.77129491492996	33.74993621297773	-9.02135870195223	140	87.0	106.0	-19.0	Descriptive sensitivity
+opel:grandland	Opel	Grandland	tuv	42.334502668384246	29.8490336417968	-12.485469026587445	140	88.0	116.0	-28.0	Descriptive sensitivity
+skoda:roomster	Škoda	Roomster	tuv	41.96924163883292	41.3168090223959	-0.652432616437018	140	89.0	83.0	6.0	Descriptive sensitivity
+volkswagen:passat	Volkswagen	Passat	tuv	41.90886816579775	46.293920559727084	4.385052393929335	140	90.0	74.0	16.0	Descriptive sensitivity
+dacia:dokker	Dacia	Dokker	tuv	40.46046764093979	76.85843528187958	36.39796764093979	140	91.0	17.0	74.0	Descriptive sensitivity
+smart:fortwo	Smart	ForTwo	tuv	39.556678784113544	20.175304520007483	-19.38137426410606	140	92.0	127.0	-35.0	Descriptive sensitivity
+ford:kuga	Ford	Kuga	tuv	39.10884662347024	36.75103200475299	-2.3578146187172493	140	93.0	96.0	-3.0	Descriptive sensitivity
+ford:fiesta	Ford	Fiesta	tuv	37.698921494416325	40.75809391000855	3.059172415592222	140	94.0	85.0	9.0	Descriptive sensitivity
+kia:picanto	Kia	Picanto	tuv	36.97306925212694	32.696286245817234	-4.2767830063097065	140	95.0	108.0	-13.0	Descriptive sensitivity
+opel:meriva	Opel	Meriva	tuv	36.83632294713226	18.746239354816982	-18.090083592315278	140	96.0	130.0	-34.0	Descriptive sensitivity
+volkswagen:arteon	Volkswagen	Arteon	tuv	36.57869052230457	36.57869052230457	0.0	140	97.0	97.0	0.0	Descriptive sensitivity
+hyundai:ix20	Hyundai	ix20	tuv	36.5519824034267	27.030832419551075	-9.521149983875624	140	98.0	119.0	-21.0	Descriptive sensitivity
+volkswagen:caddy	Volkswagen	Caddy	tuv	36.21744605948566	39.148674993816016	2.931228934330356	140	99.0	92.0	7.0	Descriptive sensitivity
+skoda:kamiq	Škoda	Kamiq	tuv	36.008431622655756	45.155098732684934	9.146667110029178	140	100.0	78.0	22.0	Descriptive sensitivity
+mercedes benz:sprinter	Mercedes-Benz	Sprinter	tuv	35.87930680971039	35.87930680971039	0.0	140	101.0	100.0	1.0	Descriptive sensitivity
+mitsubishi:outlander	Mitsubishi	Outlander	tuv	35.159140360698046	35.159140360698046	0.0	140	102.0	102.0	0.0	Descriptive sensitivity
+kia:ceed	Kia	Ceed	tuv	34.2491644605999	35.01475459880725	0.7655901382073509	140	103.0	103.0	0.0	Descriptive sensitivity
+fiat:panda	Fiat	Panda	tuv	33.66514483923328	38.05240790713815	4.387263067904868	140	104.0	93.0	11.0	Descriptive sensitivity
+skoda:superb	Škoda	Superb	tuv	33.0608979198712	32.24373724461819	-0.8171606752530138	140	105.0	109.0	-4.0	Descriptive sensitivity
+peugeot:2008	Peugeot	2008	tuv	32.826105798157535	32.86680716837496	0.04070137021742681	140	106.0	107.0	-1.0	Descriptive sensitivity
+nissan:micra	Nissan	Micra	tuv	32.45752225792428	36.80753280857371	4.350010550649429	140	107.0	95.0	12.0	Descriptive sensitivity
+ford:mondeo	Ford	Mondeo	tuv	31.374806844406987	34.72880292679448	3.353996082387493	140	108.0	104.0	4.0	Descriptive sensitivity
+hyundai:i10	Hyundai	i10	tuv	31.11027592766922	29.403852382341817	-1.7064235453274037	140	109.0	117.0	-8.0	Descriptive sensitivity
+volkswagen:transporter	Volkswagen	Transporter	tuv	30.93899342902265	30.93899342902265	0.0	140	110.0	113.0	-3.0	Descriptive sensitivity
+hyundai:i30	Hyundai	i30	tuv	30.87543610547966	35.90572908259544	5.030292977115781	140	111.0	99.0	12.0	Descriptive sensitivity
+kia:sportage	Kia	Sportage	tuv	30.82782223223391	31.929157949265516	1.1013357170316063	140	112.0	111.0	1.0	Descriptive sensitivity
+tesla:model 3	Tesla	Model 3	tuv	30.69226332667803	46.038394990017046	15.346131663339015	140	113.0	76.0	37.0	Descriptive sensitivity
+renault:zoe	Renault	Zoe	tuv	30.269568984235494	40.06115500815478	9.791586023919283	140	114.0	89.0	25.0	Descriptive sensitivity
+hyundai:ix35	Hyundai	ix35	tuv	29.57726181969167	27.85724883067226	-1.7200129890194127	140	115.0	118.0	-3.0	Descriptive sensitivity
+fiat:500	Fiat	500	tuv	28.61638404571539	30.520625369123223	1.9042413234078346	140	116.0	115.0	1.0	Descriptive sensitivity
+seat:alhambra	SEAT	Alhambra	tuv	28.33017063627482	30.936207125497713	2.6060364892228947	140	117.0	114.0	3.0	Descriptive sensitivity
+volkswagen:sharan	Volkswagen	Sharan	tuv	27.9300088555528	32.04347478464099	4.113465929088193	140	118.0	110.0	8.0	Descriptive sensitivity
+ford:focus	Ford	Focus	tuv	27.858571382893384	35.40210815886307	7.543536775969688	140	119.0	101.0	18.0	Descriptive sensitivity
+ford:ka	Ford	Ka+	tuv	27.842110434977663			140				Insufficient remaining evidence
+skoda:scala	Škoda	Scala	tuv	27.48852397294623	40.32369505032844	12.83517107738221	140	120.0	87.0	33.0	Descriptive sensitivity
+opel:crossland	Opel	Crossland	tuv	26.69680470612442	36.559005760485334	9.862201054360913	140	121.0	98.0	23.0	Descriptive sensitivity
+nissan:qashqai	Nissan	Qashqai	tuv	26.555322518564783	20.652546127652617	-5.902776390912166	140	122.0	125.0	-3.0	Descriptive sensitivity
+renault:kadjar	Renault	Kadjar	tuv	26.35575087498317	26.35575087498317	0.0	140	123.0	120.0	3.0	Descriptive sensitivity
+dacia:sandero	Dacia	Sandero	tuv	25.794802580602298	33.85823063644454	8.063428055842241	140	124.0	105.0	19.0	Descriptive sensitivity
+mazda:cx 30	Mazda	CX-30	tuv	24.866807560165988	24.866807560165988	0.0	140	125.0	121.0	4.0	Descriptive sensitivity
+renault:twingo	Renault	Twingo	tuv	23.48079595370217	24.278397892666597	0.7976019389644264	140	126.0	123.0	3.0	Descriptive sensitivity
+opel:insignia	Opel	Insignia	tuv	22.987455350370823	21.121807513824418	-1.8656478365464046	140	127.0	124.0	3.0	Descriptive sensitivity
+renault:scenic	Renault	Scenic	tuv	22.03610602335005	4.3300610520202945	-17.706044971329757	140	128.0	140.0	-12.0	Descriptive sensitivity
+ford:s max	Ford	S-Max	tuv	20.396646727149573	17.346852899123444	-3.0497938280261288	140	129.0	131.0	-2.0	Descriptive sensitivity
+peugeot:3008	Peugeot	3008	tuv	20.378007422317005	20.378007422317005	0.0	140	130.0	126.0	4.0	Descriptive sensitivity
+citroen:berlingo	Citroën	Berlingo	tuv	20.255449084194233	19.91681623543981	-0.3386328487544219	140	131.0	128.0	3.0	Descriptive sensitivity
+peugeot:308	Peugeot	308	tuv	19.348739264504086	16.849703921561115	-2.499035342942971	140	132.0	133.0	-1.0	Descriptive sensitivity
+citroen:c3	Citroën	C3	tuv	18.779260268217605	14.59197625310232	-4.187284015115285	140	133.0	135.0	-2.0	Descriptive sensitivity
+dacia:logan	Dacia	Logan	tuv	17.167766964267788	24.494739481586937	7.326972517319149	140	134.0	122.0	12.0	Descriptive sensitivity
+opel:combo	Opel	Combo	tuv	17.059359785569015	17.059359785569015	0.0	140	135.0	132.0	3.0	Descriptive sensitivity
+renault:megane	Renault	Megane	tuv	15.742958529640807	15.894800269566044	0.15184173992523675	140	136.0	134.0	2.0	Descriptive sensitivity
+dacia:duster	Dacia	Duster	tuv	14.726330011933674	18.759656100889995	4.03332608895632	140	137.0	129.0	8.0	Descriptive sensitivity
+renault:clio	Renault	Clio	tuv	14.246267862819924	8.01274774677564	-6.233520116044284	140	138.0	139.0	-1.0	Descriptive sensitivity
+peugeot:207	Peugeot	207	tuv	13.32681272822118			140				Insufficient remaining evidence
+opel:zafira	Opel	Zafira	tuv	12.327563972775131	12.327563972775131	0.0	140	139.0	137.0	2.0	Descriptive sensitivity
+hyundai:ioniq 5	Hyundai	IONIQ 5	tuv	11.912393162393162	11.912393162393162	0.0	140	140.0	138.0	2.0	Descriptive sensitivity

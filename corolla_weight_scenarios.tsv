@@ -1,0 +1,4 @@
+rank	model_id	make	model	score	sources	cohorts	score_spread	worst_cohort_score	weight_coverage	source_ids	scenario
+83	toyota:corolla	Toyota	Corolla	43.253152069713416	3	20	83.43740107129564	9.774436090225564	100.0	adac; traficom; tuv	Balanced
+100	toyota:corolla	Toyota	Corolla	35.328335230229925	3	20	83.43740107129564	9.774436090225564	100.0	adac; traficom; tuv	Emphasise avoiding breakdowns
+47	toyota:corolla	Toyota	Corolla	62.56394275323589	3	20	83.43740107129564	9.774436090225564	100.0	adac; traficom; tuv	Emphasise inspection condition

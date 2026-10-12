@@ -1,0 +1,4 @@
+source_id	source_name	report_year	observation_year	metric	unit	observations	model_series	mean_rate	median_rate	p10_rate	p25_rate	p75_rate	p90_rate	minimum_rate	maximum_rate	counted_observations	count_coverage_pct	counted_tests	counted_failures	counted_test_failure_pct
+adac	ADAC breakdown statistics	2025	2024	breakdowns_per_1000	per_1000_vehicles	969	158	11.404437564499483	9.3	2.5	4.9	16.0	22.9	0.2	63.1	0	0.0			
+traficom	Traficom inspections	2026	2025	inspection_failure_pct	percent	1595	304	20.848652037617555	19.8	5.640000000000001	10.8	29.4	37.6	0.8	62.7	1595	100.0	1088886.0	220692.0	20.26768642447419
+tuv	TÜV (Car-Recalls.eu tables)	2025	2024	significant_defects_pct	percent	603	133	15.943615257048092	14.4	5.3	8.4	22.45	28.880000000000006	2.4	41.5	0	0.0			

@@ -1,0 +1,4 @@
+first_source	second_source	paired_models	spearman_rho	median_absolute_score_gap	status
+adac	traficom	125	0.17258398246407836	20.385128163180866	Descriptive association; cohorts may differ
+adac	tuv	96	0.41022788931090615	16.891114615518042	Descriptive association; cohorts may differ
+traficom	tuv	108	0.6917809687372997	10.83077354486245	Descriptive association; cohorts may differ
