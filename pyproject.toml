@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "best-cars"
+version = "2.2.0"
+description = "An evidence-led car reliability explorer and reproducible data pipeline"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "pandas>=2.2,<4", "numpy>=1.26,<3", "requests>=2.32,<3",
+  "beautifulsoup4>=4.12,<5", "streamlit>=1.50,<2", "plotly>=6,<8",
+  "openpyxl>=3.1,<4",
+]
+
+[project.optional-dependencies]
+pdf = ["pdfplumber>=0.11,<1"]
+dev = ["pytest>=8,<10", "pytest-cov>=6,<8", "ruff>=0.11,<1", "build>=1.2,<2"]
+
+[project.scripts]
+best-cars = "best_cars.cli:main"
+best-cars-app = "best_cars.launcher:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+best_cars = ["data/*.tsv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+include = ["src/**/*.py", "tests/**/*.py", "app.py", "scripts/**/*.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.coverage.run]
+source = ["best_cars"]
+
+[tool.coverage.report]
+fail_under = 95

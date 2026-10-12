@@ -1,0 +1,8 @@
+include README.md app.py requirements.txt environment.yml
+include scrape_tuv_2025.py scrape_tuv_multi.py tuv_multiyear.tsv tuv2025_all.tsv
+include .streamlit/config.toml
+recursive-include src/best_cars/data *.tsv *.md
+recursive-include docs *.md
+recursive-include scripts *.py *.md
+recursive-include tests *.py *.md
+recursive-exclude * __pycache__ *.py[cod]
