@@ -1,3 +1,3 @@
 # Documentation
 
-`DATA_SOURCES.md` audits usable sources and limitations; `METHODS.md` explains comparison and interpretation; `MIGRATION.md` covers compatibility; `LEGACY_README.md` preserves the original instructions.
+Start with [FAIR_COMPARISONS.md](FAIR_COMPARISONS.md) for version 3.0 methodology and [MAC_INSTALL.md](MAC_INSTALL.md) for safe updates. Earlier weighting reviews are historical. DATA_SOURCES.md records provenance; LONGEVITY.md explains why missing MOT tests do not establish death.

@@ -1,6 +1,6 @@
 # Best Cars — reliability evidence explorer
 
-An interactive **Streamlit** app and reproducible Python pipeline for comparing car reliability evidence. Version 2.3 includes a richer offline HTML report, current public MOT file support and a safer Mac update workflow. It includes model search, shortlists, comparisons, age/mileage graphics, source disagreement, safety context, provenance and expandable methods help.
+An interactive **Streamlit** app and reproducible Python pipeline for comparing car reliability evidence. Version 3.1 includes a richer offline HTML report, current public MOT file support and a safer Mac update workflow. It includes model search, shortlists, comparisons, age/mileage graphics, source disagreement, safety context, provenance and expandable methods help.
 
 Mac installation and overlay instructions are in [docs/MAC_INSTALL.md](docs/MAC_INSTALL.md). Saved-data browsing does not import PDF/native cryptography dependencies. ADAC PDF acquisition is an optional `pdf` extra.
 
@@ -11,12 +11,12 @@ All tabular outputs are **TSV**, compressed TSV or formatted Excel. No comma-sep
 The downloadable upgrade contains `overlay/` (complete runnable code), `verified_data/` (actual processed observations), `changes.patch`, an offline interactive HTML overview and `START_HERE.md`.
 
 ```bash
-cd "$HOME/Downloads/best_cars_upgrade_20261012_v23/overlay"
+cd "$HOME/Downloads/best_cars_upgrade_20261012_v24/overlay"
 conda create --name best_cars python=3.11 pip -y
 conda activate best_cars
 python -m pip install -e '.[dev]'
 best-cars-app \
-  --data-dir "$HOME/Downloads/best_cars_upgrade_20261012_v23/verified_data" \
+  --data-dir "$HOME/Downloads/best_cars_upgrade_20261012_v24/verified_data" \
   --server-port 8501
 ```
 
@@ -63,11 +63,24 @@ The **2026 ADAC and TÜV summaries are published**, but complete accessible mode
 
 The UK recall service was inaccessible from the build environment; the app provides its direct check link without claiming a downloaded UK recall database. Which?, What Car? and Consumer Reports remain documented restricted/selective candidates, without invented rows or claimed bulk integrations. See [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md).
 
+## Compare one model or several
+
+Version 3.1 expands **Compare cars** with tabs for age profiles (raw rates or
+peer percentiles), exact-cohort peer gaps, reference-model matched rates, counted
+failure intervals, a categorical evidence-coverage grid and historical summaries.
+One model is enough for the focused views; select Volkswagen T-Roc to explore
+its loaded evidence. Model/make colours, source/age filters and chart downloads
+are available. The time tab can include earlier loaded reports independently
+of the sidebar latest-only setting. It holds age bands or recorded registration
+cohorts fixed; it does not follow individual vehicles.
+
+See [Comparison views](docs/COMPARISON_VIEWS.md) for interpretation and limitations.
+
 ## App pages
 
 1. **Overview:** coverage, report/observation dates and an initial shortlist.
 2. **Find reliable cars:** search, filter age/sample/breadth, adjust source weights, save a shortlist.
-3. **Compare cars:** up to six model series, raw source panels and intervals for known test counts.
+3. **Compare cars:** up to twenty model series, raw source panels, make colours and intervals for known test counts.
 4. **Age and mileage:** cross-sectional age profiles and inspection odometer plots.
 5. **Evidence agreement:** heatmaps and pairwise source comparisons with missing cells left blank.
 6. **Recalls and complaints:** explicit US vehicle queries plus official UK check links.
@@ -75,8 +88,18 @@ The UK recall service was inaccessible from the build environment; the app provi
 8. **Data management:** explicit refreshes, statuses, reloads and complete exports.
 9. **Deeper analysis:** source-specific rate distributions, actual-count intervals,
    coverage statistics and rankings recalculated after omitting each source.
+10. **Electric and hybrid vehicles:** reviewed propulsion eligibility, rankings,
+    age profiles and deeper analyses with explicit mixed-family handling.
+11. **Mileage explorer:** source/report, make, model and age filters; manufacturer
+    colours and optional point diameters based on the current combined score.
 
-Version 2.3 adds explicit score-versus-published-rate heatmaps, same-cohort peer
+Version 2.4 adds a dedicated **Mileage explorer** page, adjustable ranking
+chart limits, stable make colours, optional score-sized scatter markers,
+Wilson-chart cohort/model/age filtering and sorting, and expanded weighting
+sensitivity controls. It fixes missing-value dashes drawn over observed heatmap
+numbers. See [docs/CHART_CONTROLS.md](docs/CHART_CONTROLS.md).
+
+Version 2.3 added explicit score-versus-published-rate heatmaps, same-cohort peer
 median gaps, visual weighting-scenario sensitivity and a dedicated **Electric
 and hybrid vehicles** page. Its reviewed catalogue separates dedicated series
 from mixed families and leaves unknown propulsion unclassified. See
@@ -94,17 +117,27 @@ Charts support hover, zoom, PNG export and offline interactive HTML downloads. T
 
 ## Ranking methods
 
-- Lower observed rates receive higher relative percentiles **within each source/report/age or registration cohort**. Ties use average ranks; at least five peers are required.
-- Cohort scores are averaged once per model per source, then combined using selected source weights. More rows from one source do not give it more votes.
-- Missing sources are omitted, never zero. `weight_coverage` reports the fraction of selected weight actually available.
-- `sources`, `cohorts`, `worst_cohort_score` and `score_spread` expose breadth and disagreement; they are not calibrated confidence measures.
-- Display searches happen after peer-percentile calculation, so searching one make does not change the original peer comparison.
-- Grouped/unspecified model labels remain in raw evidence but are excluded from cross-source rankings.
-- Recall/complaint counts do not enter scores because those endpoints lack a comparable fleet denominator.
+Start with separate inspection and breakdown outcomes and exact published cohorts.
+The optional combined view offers two modes:
 
-The score is an **exploratory relative ordering**, not a failure probability, forecast or a substitute for checking an individual car. Sources differ in outcome, country, climate, cohorts, test rules and usage. Restrict the age range, inspect raw evidence and check the actual vehicle's service history.
+- **Exploratory:** rank across different evidence coverage, showing missing sources,
+  age bounds, cohort counts and available published sample sizes. Sources combine
+  within outcomes before inspection and breakdown receive equal default weights.
+  Missing source percentiles explicitly assume 50. Score and possible-rank bounds
+  substitute 0 and 100, and describe missing-evidence sensitivity, not confidence.
+- **Strict:** require every active source and identical recorded source/cohort
+  coverage. Ranks apply within one comparison block. Singletons have no composite rank.
 
-The old `faults_per_thousand_km` field remains in the original scripts. The new app does not use it: dividing a failure percentage by mean odometer mileage is not a valid mileage-adjusted rate. The original `year_of_production` label is replaced with explicitly qualified approximate registration-cohort bounds. Engines and exact generations are not inferred. See [docs/METHODS.md](docs/METHODS.md).
+Neither view estimates failure probability, lifespan or repair costs. Differing age
+mixes, generations, countries and maintenance remain limitations in exploratory
+ordering. No source is universally trusted and Toyota receives no special treatment.
+See [Fair comparisons](docs/FAIR_COMPARISONS.md) for the methodology and trade-offs.
+
+The old `faults_per_thousand_km` calculation is not used. TÜV percentages measure
+vehicles with significant inspection defects, not faults per mile. The repair page
+provides dated generic UK price context and user-entered job budgets, not annual
+model ownership-cost predictions. A dedicated source-definition page and page help
+explain faults, denominators and limitations.
 
 ## Refreshes and offline browsing
 
@@ -208,7 +241,7 @@ censoring, inferred fleet exit, median lifetime and restricted-mean requirements
 
 The HTML overview is self-contained and works offline. CLI ranking uses equal source weights; the app supports personalised weights.
 
-Tests cover scoring, weights, missing evidence, counts, Wilson intervals, source layouts, PDF year/blank-cell alignment, initial MOT semantics, duplicate IDs, bounded caching/offline behaviour, snapshot integrity, failed refreshes, CLI settings, downloads and all ten app pages. Test fixtures are explicit synthetic examples; user-facing result tables are real evidence. New public functions use keyword-only settings, defensive validation, logging and Google-style docstrings. Calls use named arguments wherever the library API permits them.
+Tests cover scoring, weights, missing evidence, counts, Wilson intervals, source layouts, PDF year/blank-cell alignment, initial MOT semantics, duplicate IDs, bounded caching/offline behaviour, snapshot integrity, failed refreshes, CLI settings, downloads and all thirteen app pages. Test fixtures are explicit synthetic examples; user-facing result tables are real evidence. New public functions use keyword-only settings, defensive validation, logging and Google-style docstrings. Calls use named arguments wherever the library API permits them.
 
 | Folder/file | Purpose |
 | --- | --- |

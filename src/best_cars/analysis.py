@@ -145,7 +145,11 @@ def reliability_ranking(
     min_sources: int = 1,
     min_cohorts: int = 1,
 ) -> pd.DataFrame:
-    """Average cohort percentiles per source, then weight sources equally by default.
+    """Reproduce the legacy unbalanced source-average ordering.
+
+    Historical API retained for reproducibility and low-level summaries. This
+    is not the current app/CLI ranking: use coverage_matched_ranking for
+    outcome-balanced, identical-coverage preference comparisons.
 
     Args:
         scored: Output of select_evidence, with scores calculated before filtering.

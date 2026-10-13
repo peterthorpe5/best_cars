@@ -1,3 +1,5 @@
+Historical version 2.x documentation. Current comparison methods are in FAIR_COMPARISONS.md; old global ranks and source-weight defaults are not current app results.
+
 # Screenshot review and version 2.3 — 12 October 2026
 
 Ten usable screenshots show all nine version 2.2 pages, including two deeper

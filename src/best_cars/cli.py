@@ -7,7 +7,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from best_cars.analysis import reliability_ranking, select_evidence
+from best_cars.analysis import select_evidence
+from best_cars.fairness import coverage_matched_ranking as reliability_ranking
 from best_cars.mot import aggregate_mot_raw, parse_mot_aggregate
 from best_cars.parsers import (
     parse_adac_pdf,
@@ -51,7 +52,9 @@ def build_parser() -> argparse.ArgumentParser:
     refresh.add_argument("--tuv-years", nargs="+", type=int, default=[2024, 2025])
     refresh.add_argument("--offline", action="store_true")
     refresh.add_argument("--force", action="store_true")
-    rank = commands.add_parser("rank", help="Export a relative evidence ranking as TSV")
+    rank = commands.add_parser(
+        "rank", help="Export optional coverage-matched preference comparisons as TSV"
+    )
     rank.add_argument("--data-dir", type=Path)
     rank.add_argument("--output", type=Path, required=True)
     rank.add_argument("--min-sources", type=int, default=1)
@@ -60,6 +63,8 @@ def build_parser() -> argparse.ArgumentParser:
     rank.add_argument("--age-min", type=int, default=2)
     rank.add_argument("--age-max", type=int, default=15)
     rank.add_argument("--all-reports", action="store_true")
+    rank.add_argument("--inspection-weight", type=float, default=1.0)
+    rank.add_argument("--breakdown-weight", type=float, default=1.0)
     importer = commands.add_parser("import", help="Import local real source data")
     importer.add_argument("--data-dir", type=Path)
     importer.add_argument(
@@ -192,6 +197,8 @@ def main(*, argv: list[str] | None = None) -> int:
                 scored=scored,
                 min_sources=args.min_sources,
                 min_cohorts=args.min_cohorts,
+                inspection_weight=args.inspection_weight,
+                breakdown_weight=args.breakdown_weight,
             )
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_bytes(tsv_bytes(frame=ranking))

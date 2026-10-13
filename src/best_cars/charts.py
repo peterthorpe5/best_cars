@@ -1,9 +1,14 @@
 """Interactive graphics with explicit scales and source-aware labels."""
 
+import colorsys
+import hashlib
+
 import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+
+from best_cars.weighting import PRESETS
 
 PALETTE = ["#007f87", "#2856a8", "#d8832f", "#8545a8", "#c24a62", "#568337"]
 SOURCE_NAMES = {
@@ -12,6 +17,26 @@ SOURCE_NAMES = {
     "tuv": "TÜV defects",
     "mot": "UK MOT",
 }
+
+
+def _make_colours(*, makes: list[str]) -> dict[str, str]:
+    """Return deterministic make colours that survive filtering and sorting.
+
+    Args:
+        makes: Manufacturer display names.
+
+    Returns:
+        Stable hexadecimal colours; large legends can still have similar hues.
+    """
+    colours = {}
+    for make in sorted(set(makes)):
+        hue = (
+            int(hashlib.sha256(make.casefold().encode()).hexdigest()[:8], 16)
+            / 0xFFFFFFFF
+        )
+        rgb = colorsys.hls_to_rgb(h=hue, l=0.42, s=0.65)
+        colours[make] = "#" + "".join(f"{round(channel * 255):02x}" for channel in rgb)
+    return colours
 
 
 def style_figure(*, figure: go.Figure, title: str, height: int = 480) -> go.Figure:
@@ -37,12 +62,15 @@ def style_figure(*, figure: go.Figure, title: str, height: int = 480) -> go.Figu
     return figure
 
 
-def ranking_chart(*, ranking: pd.DataFrame, top_n: int = 15) -> go.Figure:
+def ranking_chart(
+    *, ranking: pd.DataFrame, top_n: int = 15, colour_by: str = "sources"
+) -> go.Figure:
     """Show the highest relative evidence scores alongside source breadth.
 
     Args:
         ranking: Validated ranking table.
         top_n: Maximum models shown.
+        colour_by: Evidence source count or manufacturer.
 
     Returns:
         Interactive bar chart; a score is not a failure probability.
@@ -50,7 +78,7 @@ def ranking_chart(*, ranking: pd.DataFrame, top_n: int = 15) -> go.Figure:
     Raises:
         ValueError: If top_n is non-positive.
     """
-    if top_n < 1:
+    if top_n < 1 or colour_by not in {"sources", "make"}:
         raise ValueError("Chart model count must be positive.")
     frame = ranking.head(n=top_n).copy()
     if frame.empty:
@@ -62,13 +90,17 @@ def ranking_chart(*, ranking: pd.DataFrame, top_n: int = 15) -> go.Figure:
         x="score",
         y="car",
         orientation="h",
-        color="source_count",
-        color_discrete_map={
-            "1 sources": "#8596a6",
-            "2 sources": "#70aca8",
-            "3 sources": "#007f87",
-            "4 sources": "#2856a8",
-        },
+        color="source_count" if colour_by == "sources" else "make",
+        color_discrete_map=(
+            {
+                "1 sources": "#8596a6",
+                "2 sources": "#70aca8",
+                "3 sources": "#007f87",
+                "4 sources": "#2856a8",
+            }
+            if colour_by == "sources"
+            else _make_colours(makes=frame.make.tolist())
+        ),
         text=frame.iloc[::-1].score.round(decimals=1),
         hover_data=["cohorts", "score_spread", "weight_coverage", "worst_cohort_score"],
         labels={
@@ -87,13 +119,20 @@ def ranking_chart(*, ranking: pd.DataFrame, top_n: int = 15) -> go.Figure:
     )
     return style_figure(
         figure=figure,
-        title="Models with the strongest relative evidence",
+        title=ranking.attrs.get(
+            "ranking_label",
+            "Optional preference comparison · same evidence coverage required",
+        ),
         height=max(400, len(frame) * 27 + 100),
     )
 
 
 def age_chart(
-    *, scored: pd.DataFrame, model_ids: list[str], relative: bool = False
+    *,
+    scored: pd.DataFrame,
+    model_ids: list[str],
+    relative: bool = False,
+    colour_by: str = "model",
 ) -> go.Figure:
     """Plot observed age profiles separately for each source and report.
 
@@ -101,10 +140,13 @@ def age_chart(
         scored: Selected canonical evidence.
         model_ids: Explicit model IDs to compare.
         relative: Show cohort percentiles instead of different raw rates.
+        colour_by: Separate model colours or stable manufacturer colours.
 
     Returns:
         Faceted line/marker chart. Points are cross-sectional, not tracked cars.
     """
+    if colour_by not in {"model", "make"}:
+        raise ValueError("Age-profile colours must use model or make.")
     frame = scored.loc[scored.model_id.isin(model_ids)].copy()
     if frame.empty:
         return style_figure(
@@ -132,11 +174,15 @@ def age_chart(
         data_frame=frame,
         x="age",
         y=value,
-        color="car",
+        color="car" if colour_by == "model" else "make",
+        line_group="car",
         line_dash="report",
         facet_row="source_panel",
         markers=True,
-        color_discrete_map=colour_map,
+        color_discrete_map=colour_map
+        if colour_by == "model"
+        else _make_colours(makes=frame.make.tolist()),
+        hover_name="car",
         hover_data=[
             "age_min",
             "age_max",
@@ -175,6 +221,92 @@ def age_chart(
         figure=figure,
         title="How the observed results vary with age",
         height=max(420, frame.source_panel.nunique() * 260),
+    )
+
+
+def scenario_rank_chart(
+    *,
+    scenarios: pd.DataFrame,
+    model_ids: list[str],
+    colour_by: str = "model",
+    size_by_score: bool = False,
+) -> go.Figure:
+    """Plot scenario rank movement without joining different models of a make.
+
+    Args:
+        scenarios: Long-form scenario ranks and current scenario scores.
+        model_ids: Explicit model identities to display; ranks remain untouched.
+        colour_by: Model or stable manufacturer colours.
+        size_by_score: Marker diameters increase with each scenario's score.
+
+    Returns:
+        Separate model trajectories, even when makes share a colour.
+
+    Raises:
+        ValueError: For invalid columns, scores, duplicate cells or selection.
+    """
+    required = {
+        "model_id",
+        "make",
+        "model",
+        "scenario",
+        "scenario_rank",
+        "score",
+        "cohorts",
+        "sources",
+    }
+    if (
+        colour_by not in {"model", "make"}
+        or not required.issubset(scenarios.columns)
+        or len(model_ids) != len(set(model_ids))
+    ):
+        raise ValueError(
+            "Require valid scenario data, colour mode and distinct models."
+        )
+    if (
+        scenarios.duplicated(subset=["model_id", "scenario"]).any()
+        or not scenarios.score.between(left=0, right=100).all()
+        or not scenarios.scenario_rank.ge(1).all()
+        or not scenarios.scenario.isin(PRESETS).all()
+    ):
+        raise ValueError("Scenario cells must be unique with valid scores and ranks.")
+    if not set(model_ids).issubset(set(scenarios.model_id)):
+        raise ValueError("Selected scenario model is unavailable.")
+    frame = scenarios.loc[scenarios.model_id.isin(model_ids)].copy()
+    if frame.empty:
+        return style_figure(figure=go.Figure(), title="No scenario models selected")
+    frame["car"] = frame.make + " " + frame.model
+    frame["scenario"] = pd.Categorical(
+        values=frame.scenario, categories=list(PRESETS), ordered=True
+    )
+    frame = frame.sort_values(by=["model_id", "scenario"])
+    figure = px.line(
+        data_frame=frame,
+        x="scenario",
+        y="scenario_rank",
+        color="car" if colour_by == "model" else "make",
+        line_group="model_id",
+        markers=True,
+        hover_name="car",
+        hover_data=["score", "cohorts", "sources"],
+        color_discrete_map=_make_colours(makes=frame.make.tolist())
+        if colour_by == "make"
+        else None,
+        category_orders={"scenario": list(PRESETS)},
+        labels={
+            "scenario_rank": "Rank within common eligible models",
+            "scenario": "Preference scenario",
+            "car": "Model",
+            "make": "Make",
+        },
+    )
+    for trace in figure.data:
+        trace.marker.size = [
+            7 + float(row[0]) * 0.18 if size_by_score else 7 for row in trace.customdata
+        ]
+    figure.update_yaxes(autorange="reversed", rangemode="tozero")
+    return style_figure(
+        figure=figure, title="Rank sensitivity to evidence priorities", height=560
     )
 
 
@@ -264,7 +396,7 @@ def age_score_heatmap(
     """
     if (
         max_models < 1
-        or order not in {"both", "weakest", "strongest"}
+        or order not in {"alphabetical", "both", "weakest", "strongest"}
         or measure not in {"relative", "rate"}
     ):
         raise ValueError("Require a positive row limit and a recognised ordering.")
@@ -283,7 +415,14 @@ def age_score_heatmap(
         .relative_score.mean()
         .sort_values(ascending=False, kind="stable")
     )
-    if order == "weakest":
+    if order == "alphabetical":
+        keys = (
+            frame.sort_values(by=["make", "model"])
+            .model_id.drop_duplicates()
+            .head(n=max_models)
+            .tolist()
+        )
+    elif order == "weakest":
         keys = (
             means.sort_values(ascending=True, kind="stable")
             .head(n=max_models)
@@ -386,7 +525,7 @@ def age_score_heatmap(
             showscale=False,
             zmin=0,
             zmax=1,
-            text=np.full(shape=values.shape, fill_value="—"),
+            text=np.where(values.isna(), "—", ""),
             texttemplate="%{text}",
             hoverongaps=False,
             hovertemplate="%{y}<br>Age: %{x}<br>No available value<extra></extra>",
@@ -412,11 +551,21 @@ def age_score_heatmap(
     )
 
 
-def mileage_chart(*, evidence: pd.DataFrame) -> go.Figure:
+def mileage_chart(
+    *,
+    evidence: pd.DataFrame,
+    colour_by: str = "age",
+    model_scores: pd.DataFrame | None = None,
+    size_by_score: bool = False,
+) -> go.Figure:
     """Compare odometer mileage and inspection failure rates within one source.
 
     Args:
         evidence: Selected rows from one source/report, with odometer metadata.
+        colour_by: Observed age or manufacturer.
+        model_scores: Current combined model ranking, with model_id and score.
+        size_by_score: Use marker diameters of 7–25 pixels for known scores.
+            Unscored models retain seven-pixel markers and an explicit status.
 
     Returns:
         Scatter plot showing published cohort rates, not individual vehicles.
@@ -424,7 +573,14 @@ def mileage_chart(*, evidence: pd.DataFrame) -> go.Figure:
     Raises:
         ValueError: If incompatible evidence sources/units are mixed.
     """
-    if evidence.source_id.nunique() > 1 or evidence.unit.nunique() > 1:
+    if colour_by not in {"age", "make"}:
+        raise ValueError("Mileage colours must use age or make.")
+    if (
+        evidence.source_id.nunique() > 1
+        or evidence.unit.nunique() > 1
+        or evidence.report_year.nunique() > 1
+        or evidence.metric.nunique() > 1
+    ):
         raise ValueError("Mileage charts require one source and one metric unit.")
     frame = evidence.loc[
         evidence.mileage_basis.eq("mean_odometer") & evidence.mileage_km.notna()
@@ -435,19 +591,68 @@ def mileage_chart(*, evidence: pd.DataFrame) -> go.Figure:
         )
     frame["car"] = frame.make + " " + frame.model
     frame["age_mid"] = (frame.age_min + frame.age_max) / 2
+    scores = pd.Series(dtype=float)
+    if model_scores is not None:
+        if (
+            not {"model_id", "score"}.issubset(model_scores.columns)
+            or model_scores.model_id.duplicated().any()
+            or not model_scores.score.between(left=0, right=100).all()
+        ):
+            raise ValueError(
+                "Marker scores require unique models and finite 0–100 scores."
+            )
+        scores = model_scores.set_index(keys="model_id").score
+    if size_by_score and model_scores is None:
+        raise ValueError("Score-sized markers require a current model ranking.")
+    frame["model_score"] = frame.model_id.map(arg=scores)
+    frame["score_status"] = np.where(
+        frame.model_score.notna(),
+        "Optional within-block preference score",
+        "No optional preference score in this coverage block",
+    )
+    frame["marker_diameter"] = 7.0 + (
+        frame.model_score.fillna(value=0) * 0.18 if size_by_score else 0
+    )
     figure = px.scatter(
         data_frame=frame,
         x="mileage_km",
         y="value",
-        color="age_mid",
+        color="age_mid" if colour_by == "age" else "make",
+        size="marker_diameter",
+        symbol="score_status" if size_by_score else None,
+        symbol_map={
+            "Optional within-block preference score": "circle",
+            "No optional preference score in this coverage block": "circle-open",
+        },
         hover_name="car",
-        hover_data=["source_model", "sample_size", "report_year", "age_min", "age_max"],
+        hover_data={
+            "source_model": True,
+            "sample_size": True,
+            "report_year": True,
+            "age_min": True,
+            "age_max": True,
+            "model_score": ":.1f",
+            "score_status": True,
+            "marker_diameter": False,
+        },
         color_continuous_scale="Teal",
+        color_discrete_map=_make_colours(makes=frame.make.tolist()),
         labels={
             "mileage_km": "Mean odometer reading (km)",
             "value": "Inspection failure/defect rate (%)",
             "age_mid": "Age (years)",
+            "model_score": "Optional within-block preference score",
+            "score_status": "Score coverage",
+            "make": "Make",
         },
+    )
+    figure.update_traces(
+        marker={
+            "sizemode": "diameter",
+            "sizeref": 1,
+            "opacity": 0.75,
+            "line": {"width": 0.4, "color": "#ffffff"},
+        }
     )
     return style_figure(figure=figure, title="Mileage, age and inspection outcomes")
 
@@ -551,12 +756,22 @@ def rate_distribution_chart(*, evidence: pd.DataFrame) -> go.Figure:
     )
 
 
-def count_uncertainty_chart(*, counted: pd.DataFrame, top_n: int = 24) -> go.Figure:
+def count_uncertainty_chart(
+    *,
+    counted: pd.DataFrame,
+    top_n: int = 24,
+    sort_by: str = "sample_size",
+    ascending: bool = False,
+    colour_by: str = "uniform",
+) -> go.Figure:
     """Show actual test-failure percentages and their sampling uncertainty.
 
     Args:
         counted: Output of counted_failure_rates, with known denominators.
         top_n: Maximum cohorts displayed, chosen by largest test sample.
+        sort_by: Sample size, failure rate, age, make or original input order.
+        ascending: Ascending sort; ignored for original input order.
+        colour_by: Uniform markers or stable manufacturer colours.
 
     Returns:
         Count-based point estimates and 95% Wilson error bars. Ordering by
@@ -565,72 +780,112 @@ def count_uncertainty_chart(*, counted: pd.DataFrame, top_n: int = 24) -> go.Fig
     Raises:
         ValueError: If top_n is non-positive.
     """
-    if top_n < 1:
+    if (
+        top_n < 1
+        or sort_by
+        not in {"sample_size", "counted_rate_pct", "age_min", "make", "original"}
+        or colour_by not in {"uniform", "make"}
+    ):
         raise ValueError("Chart cohort count must be positive.")
     if counted.empty:
         return style_figure(figure=go.Figure(), title="No actual test counts available")
-    frame = counted.sort_values(by="sample_size", ascending=False).head(n=top_n)
-    labels = [
+    frame = counted.copy()
+    if sort_by != "original":
+        frame = frame.sort_values(by=sort_by, ascending=ascending, kind="stable")
+    frame = frame.head(n=top_n)
+    frame["label"] = [
         f"{row.make} {row.model} · {SOURCE_NAMES.get(row.source_id, row.source_id)} · age {row.age_min:g}–{row.age_max:g} · report {row.report_year}"
         for row in frame.itertuples()
     ]
-    figure = go.Figure(
-        data=go.Scatter(
-            x=frame.counted_rate_pct,
-            y=labels,
-            mode="markers",
-            marker={"color": PALETTE[0], "size": 8},
-            error_x={
-                "type": "data",
-                "symmetric": False,
-                "array": frame.wilson_upper_pct - frame.counted_rate_pct,
-                "arrayminus": frame.counted_rate_pct - frame.wilson_lower_pct,
-            },
-            customdata=frame.loc[:, ["sample_size", "event_count", "value"]].to_numpy(),
-            hovertemplate=(
-                "%{y}<br>Counted failure rate: %{x:.2f}%"
-                "<br>Tests: %{customdata[0]:,.0f}<br>Failed tests: %{customdata[1]:,.0f}"
-                "<br>Published rate: %{customdata[2]:.2f}%<extra></extra>"
-            ),
-        )
+    figure = go.Figure()
+    colours = _make_colours(makes=frame.make.tolist())
+    groups = (
+        list(frame.groupby(by="make", sort=False))
+        if colour_by == "make"
+        else [("Counted cohorts", frame)]
     )
+    for make, group in groups:
+        figure.add_trace(
+            go.Scatter(
+                x=group.counted_rate_pct,
+                y=group.label,
+                name=make,
+                showlegend=colour_by == "make",
+                mode="markers",
+                marker={
+                    "color": colours[make] if colour_by == "make" else PALETTE[0],
+                    "size": 8,
+                },
+                error_x={
+                    "type": "data",
+                    "symmetric": False,
+                    "array": group.wilson_upper_pct - group.counted_rate_pct,
+                    "arrayminus": group.counted_rate_pct - group.wilson_lower_pct,
+                },
+                customdata=group.loc[
+                    :, ["sample_size", "event_count", "value"]
+                ].to_numpy(),
+                hovertemplate=(
+                    "%{y}<br>Counted failure rate: %{x:.2f}%"
+                    "<br>Tests: %{customdata[0]:,.0f}<br>Failed tests: %{customdata[1]:,.0f}"
+                    "<br>Published rate: %{customdata[2]:.2f}%<extra></extra>"
+                ),
+            )
+        )
     figure.update_xaxes(title_text="Counted inspection failures (%)")
-    figure.update_yaxes(autorange="reversed")
+    figure.update_yaxes(
+        autorange="reversed",
+        type="category",
+        categoryorder="array",
+        categoryarray=frame.label.tolist(),
+    )
     return style_figure(
         figure=figure,
-        title="Largest counted cohorts: rates and 95% Wilson intervals",
+        title="Counted cohorts: rates and 95% Wilson intervals",
         height=max(420, len(frame) * 27 + 110),
     )
 
 
-def score_spread_chart(*, ranking: pd.DataFrame) -> go.Figure:
+def score_spread_chart(
+    *, ranking: pd.DataFrame, colour_by: str = "sources", size_by_score: bool = False
+) -> go.Figure:
     """Compare composite evidence scores with the spread between source means.
 
     Args:
         ranking: Ranked ungrouped models with source breadth and disagreement.
+        colour_by: Source breadth or manufacturer.
+        size_by_score: Larger markers indicate higher combined scores.
 
     Returns:
         An interactive model-series scatter plot; spread is not uncertainty.
     """
+    if colour_by not in {"sources", "make"}:
+        raise ValueError("Scatter colours must use source breadth or make.")
     if ranking.empty:
         return style_figure(figure=go.Figure(), title="No ranked models available")
     frame = ranking.copy()
     frame["car"] = frame.make + " " + frame.model
     frame["source_count"] = frame.sources.astype(str)
+    frame["marker_diameter"] = 7.0 + (frame.score * 0.18 if size_by_score else 0)
     figure = px.scatter(
         data_frame=frame,
         x="score",
         y="score_spread",
-        color="source_count",
+        color="source_count" if colour_by == "sources" else "make",
+        size="marker_diameter",
         hover_name="car",
         hover_data=["cohorts", "worst_cohort_score", "weight_coverage", "source_ids"],
         color_discrete_sequence=PALETTE,
+        color_discrete_map=_make_colours(makes=frame.make.tolist())
+        if colour_by == "make"
+        else None,
         labels={
             "score": "Relative evidence score (0–100)",
             "score_spread": "Range of source means (percentile points)",
             "source_count": "Scored sources",
         },
     )
+    figure.update_traces(marker={"sizemode": "diameter", "sizeref": 1, "opacity": 0.8})
     figure.update_xaxes(range=[-2, 102])
     figure.update_yaxes(range=[-2, 102])
     return style_figure(

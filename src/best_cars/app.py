@@ -1,5 +1,6 @@
 """Streamlit reliability explorer: evidence, comparison and interpretable graphics."""
 
+import io
 import logging
 from pathlib import Path
 
@@ -8,7 +9,6 @@ import plotly.express as px
 import streamlit as st
 
 from best_cars.analysis import (
-    reliability_ranking,
     select_evidence,
     source_agreement,
     wilson_interval,
@@ -22,9 +22,29 @@ from best_cars.charts import (
     mileage_chart,
     ranking_chart,
     rate_distribution_chart,
+    scenario_rank_chart,
     score_spread_chart,
 )
+from best_cars.comparison import (
+    matched_model_rates,
+    temporal_profiles,
+    wilson_age_groups,
+)
+from best_cars.comparison_charts import (
+    evidence_coverage_chart,
+    matched_rate_chart,
+    peer_gap_chart,
+    temporal_chart,
+)
+from best_cars.fairness import (
+    cohort_contexts,
+    evidence_profiles,
+    exploratory_ranking,
+    source_cohort_ranking,
+)
+from best_cars.fairness import coverage_matched_ranking as reliability_ranking
 from best_cars.interrogation import (
+    MATCH_KEYS,
     cohort_peer_benchmarks,
     shared_cohort_contrasts,
     shared_cohort_evidence,
@@ -33,6 +53,8 @@ from best_cars.interrogation import (
 )
 from best_cars.pipeline import nhtsa_lookup, refresh_sources
 from best_cars.propulsion import propulsion_catalogue, select_propulsion
+from best_cars.repair_costs import repair_budget, repair_references
+from best_cars.source_guide import PAGE_HELP, SOURCE_GUIDE
 from best_cars.statistics import (
     counted_failure_rates,
     pairwise_source_agreement,
@@ -59,14 +81,17 @@ PAGES = [
     "Find reliable cars",
     "Compare cars",
     "Age and mileage",
+    "Mileage explorer",
     "Evidence agreement",
     "Deeper analysis",
     "Electric and hybrid vehicles",
+    "Repair costs",
+    "Data sources and fault definitions",
     "Recalls and complaints",
     "Sources and methods",
     "Data management",
 ]
-METHODS = """Scores compare published rates within each source, report and age/registration-year cohort. Lower rates receive higher relative percentiles. At least five peers are needed. Cohort scores are averaged per model per source; selected source weights then combine those averages. Missing sources are omitted and available weight is reported. The score is an exploratory ordering, not a probability, prediction, causal estimate or recommendation for an individual car. Grouped/unspecified models are shown in raw evidence but excluded from cross-source rankings. Recalls and voluntary complaints never enter the score."""
+METHODS = """Start with separate inspection-condition and roadside-breakdown evidence. Source rankings use explicit published cohorts. The optional combined view weights sources within outcomes, then inspection and breakdown outcomes. Exploratory mode retains differing coverage: missing source percentiles explicitly assume 50; bounds substitute 0 and 100 and are sensitivity ranges, not confidence intervals. Ages, sample sizes and missing sources remain visible. Strict mode requires every active source and identical recorded source/cohort coverage; ranks apply within one block only. Neither mode estimates engine durability, lifetime, repair cost or failure probability. Recalls and voluntary complaints never enter scores."""
 
 
 def show_table(*, frame: pd.DataFrame, name: str, key: str) -> None:
@@ -96,6 +121,11 @@ def show_table(*, frame: pd.DataFrame, name: str, key: str) -> None:
         "tuv": "TÜV score",
         "mot": "UK MOT score",
     }
+    labels["score"] = (
+        "Source-cohort percentile"
+        if frame.attrs.get("ranking_label")
+        else "Optional preference score"
+    )
     config = {}
     for column in frame.columns:
         title = labels.get(column, column.replace("_", " ").capitalize())
@@ -273,12 +303,35 @@ def sidebar_filters(
             )
             starting = preference_weights(sources=selected, preset=preset)
             changed_preset = st.session_state.get("previous_weight_preset") != preset
+            if changed_preset or "inspection_weight" not in st.session_state:
+                st.session_state["inspection_weight"] = (
+                    2.0 if preset == "Emphasise inspection condition" else 1.0
+                )
+                st.session_state["breakdown_weight"] = (
+                    2.0 if preset == "Emphasise avoiding breakdowns" else 1.0
+                )
             for source, value in starting.items():
                 if changed_preset or f"weight_{source}" not in st.session_state:
                     st.session_state[f"weight_{source}"] = value
             st.session_state["previous_weight_preset"] = preset
             st.caption(
-                body="Scenarios express priorities, not measured trust. Balanced uses 1:1:1; breakdown emphasis sets ADAC to 2; inspection emphasis sets official inspection counts to 2 and ADAC to 0.5. Other sources remain 1. Sliders can override; zero omits a source. Weights cannot fix different ages, generations or markets."
+                body="These controls affect only optional preference composites. Inspection and breakdown outcomes receive separate weights first. Source sliders distribute influence within an outcome; with one source in an outcome, its non-zero source weight cancels. Zero omits a source. No weights establish trust, lifetime or repair cost. Exploratory comparisons display gaps; strict comparisons require identical coverage."
+            )
+            st.slider(
+                label="Inspection outcome preference",
+                min_value=0.0,
+                max_value=3.0,
+                value=None,
+                step=0.25,
+                key="inspection_weight",
+            )
+            st.slider(
+                label="Roadside breakdown outcome preference",
+                min_value=0.0,
+                max_value=3.0,
+                value=None,
+                step=0.25,
+                key="breakdown_weight",
             )
             for source in selected:
                 weights[source] = st.slider(
@@ -319,12 +372,12 @@ def overview_page(
         ranking: Model ranking meeting coverage filters.
         manifest: Verified snapshot metadata.
     """
-    st.title(body="Find a car you can trust")
+    st.title(body="Understand a car's reliability evidence")
     st.write(
         "Explore inspection failures and roadside breakdowns. Compare models, follow the age patterns, and see how strong the evidence is."
     )
     st.caption(
-        body=f"Current filters: {len(scored):,} observations · {len(ranking):,} qualifying models. Model series can span engines and generations; relative scores are not failure probabilities."
+        body=f"Current filters: {len(scored):,} observations. Inspection condition and roadside breakdowns are different outcomes. Model series can span engines and generations; scores do not predict lifetime or repair bills."
     )
     columns = st.columns(spec=4)
     for column, label, value in zip(
@@ -372,16 +425,28 @@ def overview_page(
         hide_index=True,
         width="stretch",
     )
-    if not ranking.empty:
-        show_chart(
-            figure=ranking_chart(ranking=ranking, top_n=12),
-            key="overview_rank",
-            explanation="Bars show relative cohort performance across the selected sources. Higher scores mean lower observed rates relative to peers, not lower predicted failure probability. Colour shows source breadth. Use Find reliable cars to inspect coverage and change weights.",
-        )
-    else:
-        st.info(
-            body="No models meet the current coverage filters. Reduce the minimum sources or cohort count, or load another dataset."
-        )
+    st.subheader(body="Separate source evidence comes first")
+    profile_query = st.text_input(
+        label="Search evidence profiles by make or model", key="overview_profile_query"
+    )
+    profiles = evidence_profiles(scored=scored)
+    if profile_query:
+        profiles = profiles.loc[
+            (profiles.make + " " + profiles.model).str.contains(
+                pat=profile_query, case=False, regex=False
+            )
+        ]
+    st.caption(
+        body="These are source profiles, not an overall league table. Mean percentiles can cover different ages. Use Find reliable cars to choose a source and exact published cohort, or search a model here to inspect conflicting outcomes."
+    )
+    show_table(
+        frame=profiles,
+        name="separate_source_evidence_profiles",
+        key="overview_profiles",
+    )
+    st.info(
+        body="An excellent inspection result can coexist with roadside breakdowns. Neither alone establishes expensive mechanical faults or short service life. Optional preference comparisons are secondary. Choose exploratory coverage with explicit gaps or strict matching."
+    )
     with st.expander(label="? How should I use this evidence?"):
         st.write(
             "Start with cars of the age you intend to buy. Prefer model series with several sources and cohorts, then check the raw observations for disagreement. These tables rarely separate engines, trim or generation; inspect service history and the actual vehicle before buying. German and Finnish observations are useful evidence, with different market and climate conditions from the UK."
@@ -401,9 +466,17 @@ def find_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
     )
     ranking_view = st.selectbox(
         label="Rank evidence by",
-        options=["combined", *sorted(scored.source_id.unique())],
+        options=[
+            "choose",
+            *sorted(
+                scored.source_id.unique(),
+            ),
+            "combined",
+        ],
         format_func=lambda source: (
-            "Combined sources"
+            "Select the outcome and source to compare"
+            if source == "choose"
+            else "Optional combined preference comparison"
             if source == "combined"
             else {
                 "adac": "ADAC breakdowns only",
@@ -414,21 +487,29 @@ def find_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
         ),
         key="ranking_view",
     )
-    if ranking_view != "combined":
-        source_cohorts = st.number_input(
-            label="Minimum scored cohorts in this single-source view",
-            min_value=1,
-            value=3,
-            step=1,
-            key="single_source_cohorts",
+    if ranking_view == "choose":
+        st.info(
+            body="Choose an inspection source to compare roadworthiness, or ADAC to compare attended breakdowns. There is no default universal reliability league table."
         )
-        ranking = reliability_ranking(
-            scored=scored.loc[scored.source_id.eq(ranking_view)],
-            min_sources=1,
-            min_cohorts=int(source_cohorts),
+        ranking = ranking.iloc[:0]
+    elif ranking_view != "combined":
+        contexts = cohort_contexts(scored=scored, source_id=ranking_view)
+        labels = dict(zip(contexts.context_id, contexts.context_label, strict=True))
+        chosen_context = st.selectbox(
+            label="Exact published cohort to compare",
+            options=list(labels),
+            format_func=lambda key: labels[key],
+            key="find_cohort",
+        )
+        ranking = source_cohort_ranking(
+            scored=scored, source_id=ranking_view, context_id=chosen_context
         )
         st.caption(
-            body="Single-source ranking uses only this source and the cohort minimum above. The sidebar's cross-source count and weights apply to the combined view. Outcomes and peer sets differ between sources."
+            body="This ranking compares one source, outcome, report, observed age band and registration cohort. Sidebar source-count and preference weights affect only optional composites. Scores retain original full-peer comparisons and do not measure lifetime, repair costs or faults per distance."
+        )
+    else:
+        st.warning(
+            body="This is an optional preference ordering. Exploratory mode shows differing coverage and neutral missing-source assumptions; strict mode compares only matching coverage. Neither establishes a universal reliability verdict."
         )
     query = st.text_input(
         label="Search make or model",
@@ -452,8 +533,25 @@ def find_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
             body="No ranked models match. Adjust the search or evidence coverage filters."
         )
     else:
+        top_n = st.number_input(
+            label="Models in ranking chart",
+            min_value=1,
+            max_value=max(1, len(displayed)),
+            value=min(20, len(displayed)),
+            key="find_top_n",
+        )
+        rank_colour = st.selectbox(
+            label="Ranking colours",
+            options=["sources", "make"],
+            format_func=lambda value: (
+                "Evidence breadth" if value == "sources" else "Make"
+            ),
+            key="find_colour",
+        )
         show_chart(
-            figure=ranking_chart(ranking=displayed, top_n=20),
+            figure=ranking_chart(
+                ranking=displayed, top_n=int(top_n), colour_by=rank_colour
+            ),
             key="find_rank",
             explanation="Scores retain the full original peer cohort even when you search one make. Source count, cohort count, worst cohort and available weight help you judge breadth. Two scores based on different source sets may have different meanings.",
         )
@@ -505,7 +603,7 @@ def find_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
                 if query.casefold() in names[key].casefold()
             ]
         if inspector_ids:
-            st.subheader(body="Why does this model rank here?")
+            st.subheader(body="Inspect a model's evidence and disagreements")
             chosen = st.selectbox(
                 label="Inspect a model's evidence",
                 options=inspector_ids,
@@ -515,23 +613,11 @@ def find_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
             rows = scored.loc[scored.model_id.eq(chosen)].copy()
             if chosen not in set(ranking.model_id):
                 st.info(
-                    body="This model has observations, but does not meet the current combined-ranking thresholds. It is not assigned a combined rank."
+                    body="This model is outside the selected source-cohort or optional comparison block. Its evidence remains available below; no rank against the displayed competitors is implied."
                 )
-            profile = (
-                rows.groupby(by=["source_name", "unit"], dropna=False)
-                .agg(
-                    mean_relative_score=("relative_score", "mean"),
-                    scored_cohorts=("relative_score", "count"),
-                    observations=("value", "size"),
-                    youngest_age=("age_min", "min"),
-                    oldest_age=("age_max", "max"),
-                    mean_published_rate=("value", "mean"),
-                    known_denominator_rows=("sample_size", "count"),
-                )
-                .reset_index()
-            )
+            profile = evidence_profiles(scored=rows)
             st.caption(
-                body="Each source contributes one mean cohort percentile in the combined score, with your chosen weights. Means can cover different ages, registration cohorts and generations. Published rates retain different units; they are not averaged across sources."
+                body="These separate source averages are descriptive profiles, not an overall verdict. They can cover different ages and generations. Optional composites balance outcomes first. Exploratory mode shows coverage gaps; strict mode matches coverage. Raw rates retain different units."
             )
             show_table(
                 frame=profile, name="model_source_diagnostic", key="model_diagnostic"
@@ -539,7 +625,7 @@ def find_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
             coverage = profile.loc[:, ["youngest_age", "oldest_age"]].drop_duplicates()
             if len(coverage) > 1:
                 st.warning(
-                    body="The sources cover different age ranges for this model. Treat its combined score as exploratory; use source-specific or narrow-age views and shared-cohort comparisons."
+                    body="The sources cover different age ranges for this model. These averages do not make a matched comparison. Use exact-cohort source rankings and inspect original rates."
                 )
             if (
                 profile.mean_relative_score.max() - profile.mean_relative_score.min()
@@ -558,12 +644,19 @@ def find_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
                 )
 
 
-def comparison_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
-    """Compare up to six explicitly selected model series.
+def comparison_page(
+    *,
+    scored: pd.DataFrame,
+    ranking: pd.DataFrame,
+    historical: pd.DataFrame | None = None,
+) -> None:
+    """Explore one model or compare up to twenty explicitly selected series.
 
     Args:
         scored: Selected scored evidence.
         ranking: Current eligible model ranking.
+        historical: Evidence using the same sidebar filters with older reports
+            retained, used only by the explicitly labelled historical tab.
     """
     st.title(body="Compare cars")
     identities = scored.drop_duplicates(subset="model_id").sort_values(
@@ -580,17 +673,53 @@ def comparison_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
         key for key in ranking.head(n=3).model_id if key in available
     ]
     selected = st.multiselect(
-        label="Choose up to six model series",
+        label="Choose up to twenty model series",
         options=available,
         default=default,
         format_func=lambda key: names[key],
-        max_selections=6,
+        max_selections=20,
         key="compare_models",
     )
     if not selected:
         st.info(body="Select models to display their evidence.")
         return
     selected_rows = scored.loc[scored.model_id.isin(selected)].copy()
+    st.caption(
+        body="Select one model for a detailed profile, or several to compare. Inspection percentages and breakdown events per 1,000 vehicles remain separate. Age profiles compare different cars, not a tracked vehicle's ageing."
+    )
+    with st.expander(label="Comparison chart filters"):
+        source_options = sorted(selected_rows.source_id.unique())
+        compared_sources = st.multiselect(
+            label="Sources in comparison charts",
+            options=source_options,
+            default=source_options,
+            format_func=lambda value: SOURCE_NAMES.get(value, value),
+            key="comparison_sources",
+        )
+        compared_ages = st.slider(
+            label="Comparison chart age range",
+            min_value=0,
+            max_value=40,
+            value=(0, 40),
+            key="comparison_ages",
+        )
+    selected_rows = selected_rows.loc[
+        selected_rows.source_id.isin(compared_sources)
+        & selected_rows.age_max.ge(compared_ages[0])
+        & selected_rows.age_min.le(compared_ages[1])
+    ].copy()
+    if selected_rows.empty:
+        st.info(body="No selected observations match these comparison chart filters.")
+        return
+    st.subheader(body="Selected models: separate source profiles")
+    show_table(
+        frame=evidence_profiles(scored=selected_rows),
+        name="comparison_source_profiles",
+        key="comparison_profiles",
+    )
+    st.caption(
+        body="Compare source definitions and age coverage before interpreting differences. The optional table follows the selected exploratory or strict method. In strict mode, models outside the block have no overall rank."
+    )
     matched_only = st.checkbox(
         label="Compare only cohorts shared by every selected model",
         key="comparison_shared",
@@ -598,12 +727,17 @@ def comparison_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
     )
     chart_rows = selected_rows
     if len(selected) >= 2 and not selected_rows.model_grouped.any():
-        matched = shared_cohort_evidence(scored=scored, model_ids=selected)
+        matched = shared_cohort_evidence(scored=selected_rows, model_ids=selected)
         st.caption(
             body=f"Shared-cohort support: {len(matched):,} observations of {len(selected_rows):,} selected. No missing cohorts are filled."
         )
         if matched_only:
-            chart_rows = matched
+            chart_rows = matched.merge(
+                right=scored.loc[:, MATCH_KEYS + ["model_id", "relative_score"]],
+                on=MATCH_KEYS + ["model_id"],
+                how="left",
+                validate="one_to_one",
+            )
         with st.expander(label="Compare rates on identical published cohorts"):
             contrasts = shared_cohort_contrasts(scored=scored, model_ids=selected)
             if contrasts.empty:
@@ -625,11 +759,24 @@ def comparison_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
         )
     table = ranking.loc[ranking.model_id.isin(selected)]
     if not table.empty:
-        show_table(frame=table, name="car_comparison", key="comparison_rank")
-    show_chart(
-        figure=age_chart(scored=chart_rows, model_ids=selected),
-        key="comparison_age",
-        explanation="Each source has its own panel and units. A marker is a published age cohort; lines connect different cohorts rather than following the same cars. TÜV age bins use their midpoints. Missing cohorts are absent, never zero.",
+        with st.expander(label="Optional combined preference scores and coverage"):
+            show_table(frame=table, name="car_comparison", key="comparison_rank")
+    comparison_colour = st.selectbox(
+        label="Comparison profile colours",
+        options=["model", "make"],
+        format_func=lambda value: value.capitalize(),
+        key="comparison_colour",
+    )
+    comparison_visualisations(
+        scored=scored,
+        rows=chart_rows,
+        coverage_rows=selected_rows,
+        historical=historical,
+        selected=selected,
+        names=names,
+        colour_by=comparison_colour,
+        sources=compared_sources,
+        age_range=compared_ages,
     )
     known = counted_failure_rates(evidence=chart_rows)
     if not known.empty:
@@ -647,6 +794,300 @@ def comparison_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
     with st.expander(label="All selected evidence and source links"):
         show_table(
             frame=selected_rows, name="comparison_evidence", key="comparison_raw"
+        )
+
+
+def comparison_visualisations(
+    *,
+    scored: pd.DataFrame,
+    rows: pd.DataFrame,
+    coverage_rows: pd.DataFrame,
+    historical: pd.DataFrame | None,
+    selected: list[str],
+    names: dict[str, str],
+    colour_by: str,
+    sources: list[str],
+    age_range: tuple[int, int],
+) -> None:
+    """Render focused comparison views without mixing outcomes or peer sets.
+
+    Args:
+        scored: Complete sidebar-filtered peer population, before model selection.
+        rows: Selected models and optional exact shared-cohort restriction.
+        coverage_rows: Recorded selected evidence before shared-cohort restriction.
+        historical: Older loaded reports under the same sidebar filters.
+        selected: Ordered model selections, including unavailable shared rows.
+        names: Display names for selected model IDs.
+        colour_by: Model or manufacturer colour preference.
+        sources: Page-level selected sources.
+        age_range: Page-level overlapping age bounds.
+    """
+    tabs = st.tabs(
+        tabs=[
+            "Age profiles",
+            "Same-age peers",
+            "Matched models",
+            "Count uncertainty",
+            "Evidence coverage",
+            "Across years",
+        ]
+    )
+    with tabs[0]:
+        relative = st.checkbox(
+            label="Show relative peer percentiles",
+            key="comparison_relative",
+            help="Raw rates describe the published outcome. Percentiles compare each age point with its original full peer group, and are not failure probabilities.",
+        )
+        show_chart(
+            figure=age_chart(
+                scored=rows, model_ids=selected, relative=relative, colour_by=colour_by
+            ),
+            key="comparison_age",
+            explanation="Each source has its own panel and units. A marker is a published age cohort; lines connect different cohorts rather than following the same cars. TÜV age bins use midpoints. Reports use different line styles. Missing cohorts are absent, never zero.",
+        )
+    with tabs[1]:
+        benchmarks = cohort_peer_benchmarks(scored=scored)
+        contexts = rows.loc[:, MATCH_KEYS + ["model_id"]]
+        benchmarks = benchmarks.merge(
+            right=contexts,
+            on=MATCH_KEYS + ["model_id"],
+            how="inner",
+            validate="one_to_one",
+        )
+        st.caption(
+            body="Negative bars favour the selected model: its rate is below the median of other models in that exact published cohort. Inspection gaps are percentage points; ADAC gaps are events per 1,000 vehicles."
+        )
+        show_chart(
+            figure=peer_gap_chart(benchmarks=benchmarks, colour_by=colour_by),
+            key="comparison_peers",
+            explanation="Every reference excludes the target model and needs at least four other ungrouped models. Source, report, observation year, outcome, unit, age and registration bounds match. Peer models retain the complete sidebar-filtered population. These are descriptive gaps, not significance tests or adjustments for engine, mileage and maintenance.",
+        )
+        with st.expander(label="Download exact-cohort peer comparisons"):
+            show_table(
+                frame=benchmarks,
+                name="comparison_peer_benchmarks",
+                key="comparison_peer_table",
+            )
+    with tabs[2]:
+        if len(selected) < 2 or rows.model_grouped.any():
+            st.info(
+                body="Select at least two ungrouped model series to compare exact published cohorts against a reference."
+            )
+        else:
+            reference = st.selectbox(
+                label="Reference model for matched rates",
+                options=selected,
+                format_func=lambda value: names[value],
+                key="comparison_reference",
+            )
+            paired = matched_model_rates(
+                evidence=rows, model_ids=selected, reference_id=reference
+            )
+            st.caption(
+                body=f"{len(paired):,} exact-cohort pairs. Below the diagonal favours the compared model; above favours the reference. Models can appear at several ages. Unmatched observations are omitted."
+            )
+            show_chart(
+                figure=matched_rate_chart(paired=paired, colour_by=colour_by),
+                key="comparison_matched_rates",
+                explanation="The horizontal rate belongs to the reference model and the vertical rate to the compared model. Both use the same source, report, outcome, age and registration cohort. Axes have equal numeric ranges within each panel. Different panels have different units. This controls recorded cohorts, not engines, countries across sources or individual vehicle use.",
+            )
+            show_table(
+                frame=paired,
+                name="comparison_matched_rates",
+                key="comparison_matched_table",
+            )
+    with tabs[3]:
+        counted = counted_failure_rates(evidence=rows)
+        if counted.empty:
+            st.info(
+                body="No actual failure/test count pairs are available for these models. Published ADAC and bundled TÜV denominators are unknown; confidence intervals are not invented."
+            )
+        else:
+            st.caption(
+                body="These points are failed inspections divided by recorded tests. Published rounded rates remain on hover. Unknown denominators are excluded, not treated as zero."
+            )
+            limit = st.number_input(
+                label="Counted cohorts per age chart",
+                min_value=1,
+                max_value=max(24, len(counted)),
+                value=min(24, len(counted)),
+                key="comparison_count_limit",
+            )
+            ordering = st.selectbox(
+                label="Counted cohort ordering",
+                options=["age_min", "sample_size", "counted_rate_pct", "original"],
+                format_func=lambda value: {
+                    "age_min": "Observed age",
+                    "sample_size": "Test count",
+                    "counted_rate_pct": "Failure rate",
+                    "original": "Original order",
+                }[value],
+                key="comparison_count_order",
+            )
+            ascending = st.checkbox(
+                label="Ascending counted cohort order",
+                value=True,
+                key="comparison_count_ascending",
+            )
+            show_wilson_panels(
+                counted=counted,
+                top_n=int(limit),
+                sort_by=ordering,
+                ascending=ascending,
+                colour_by="make" if colour_by == "make" else "uniform",
+                key="comparison_count_chart",
+            )
+    with tabs[4]:
+        st.caption(
+            body="This grid shows recorded evidence before the shared-cohort restriction, so unmatched observations and gaps remain visible."
+        )
+        show_chart(
+            figure=evidence_coverage_chart(
+                evidence=coverage_rows, model_ids=selected, names=names
+            ),
+            key="comparison_coverage",
+            explanation="Colours indicate evidence availability, not reliability. Grey: no recorded row under current filters. Gold: a published rate without a failure/test count pair. Teal: a rate plus actual counts, with n equal to tests for that particular cell. Counts are not pooled across years and sources; inspections need not represent unique cars.",
+        )
+    with tabs[5]:
+        earlier = st.checkbox(
+            label="Include earlier loaded reports in this time view",
+            value=True,
+            key="comparison_history",
+            help="Only this tab includes older reports. Source, age, registration-year and minimum known sample filters still apply.",
+        )
+        history = historical if earlier and historical is not None else scored
+        history = history.loc[
+            history.model_id.isin(selected)
+            & history.source_id.isin(sources)
+            & history.age_max.ge(age_range[0])
+            & history.age_min.le(age_range[1])
+        ]
+        mode = st.selectbox(
+            label="Hold constant across years",
+            options=["age", "registration"],
+            format_func=lambda value: (
+                "Published age band"
+                if value == "age"
+                else "Recorded registration cohort"
+            ),
+            key="comparison_time_mode",
+        )
+        st.caption(
+            body="This tab uses historical population summaries independently of the shared-cohort checkbox. Observation year is the calendar year for ADAC/Traficom and the inspection-window ending year for TÜV."
+        )
+        try:
+            profiles = temporal_profiles(
+                evidence=history, model_ids=selected, mode=mode
+            )
+        except ValueError as error:
+            st.warning(body=str(error))
+            profiles = pd.DataFrame()
+        if profiles.empty:
+            st.info(
+                body="No selected series has at least two loaded observation years under these filters. The saved ADAC snapshot has one observation year. Earlier reports cannot be inferred or fabricated."
+            )
+        else:
+            labels = {
+                key: f"{names.get(group.model_id.iloc[0], group.model_id.iloc[0])} · {SOURCE_NAMES.get(group.source_id.iloc[0], group.source_id.iloc[0])} · {group.series_label.iloc[0]}"
+                for key, group in profiles.groupby(by="series_id", sort=False)
+            }
+            chosen = st.multiselect(
+                label="Historical series to plot",
+                options=list(labels),
+                default=list(labels)[:6],
+                format_func=lambda value: labels[value],
+                max_selections=30,
+                key="comparison_time_series",
+            )
+            show_chart(
+                figure=temporal_chart(
+                    profiles=profiles.loc[profiles.series_id.isin(chosen)],
+                    colour_by=colour_by,
+                ),
+                key="comparison_time_chart",
+                explanation="Age mode holds age bounds fixed but compares different registration cohorts in different years. Registration mode follows summaries of the same recorded registration cohort as its age changes, not the same individual cars; survival, inspection eligibility and fleet composition can change. Approximate TÜV registration estimates are excluded from registration mode. Lines do not estimate individual ageing, service life or a causal trend.",
+            )
+            with st.expander(label="Historical observations and provenance"):
+                show_table(
+                    frame=profiles,
+                    name="comparison_historical_profiles",
+                    key="comparison_history_table",
+                )
+
+
+def show_wilson_panels(
+    *,
+    counted: pd.DataFrame,
+    top_n: int,
+    sort_by: str,
+    ascending: bool,
+    colour_by: str,
+    key: str,
+) -> None:
+    """Display independently sorted Wilson charts for selected age groups.
+
+    Args:
+        counted: Canonical rows with actual counts and precomputed intervals.
+        top_n: Maximum model-cohort rows per chart, never a pooled sample count.
+        sort_by: Existing count-chart ordering preference.
+        ascending: Ascending or descending ordering within every panel.
+        colour_by: Uniform or make colours.
+        key: Unique widget/chart key prefix for the containing app view.
+    """
+    grouping = st.selectbox(
+        label="Group Wilson charts by age",
+        options=["exact", "two_year", "mixed"],
+        format_func=lambda value: {
+            "exact": "Exact published age / cohort",
+            "two_year": "Two-year age groups",
+            "mixed": "Mixed ages within a source/report",
+        }[value],
+        key=f"{key}_grouping",
+        help="Exact matching is the default. Two-year groups deliberately allow nearby ages; rates and intervals are not pooled. Every chart keeps its source and report separate.",
+    )
+    panels = wilson_age_groups(counted=counted, grouping=grouping)
+    if not panels:
+        st.info(body="No actual counted cohorts match these Wilson filters.")
+        return
+    signature = (grouping, tuple(panels))
+    if st.session_state.get(f"{key}_panel_signature") != signature:
+        st.session_state[f"{key}_panels"] = list(panels)
+        st.session_state[f"{key}_panel_signature"] = signature
+    selected = st.multiselect(
+        label="Age panels to display",
+        options=list(panels),
+        key=f"{key}_panels",
+    )
+    if grouping != "exact":
+        st.caption(
+            body="These panels contain different recorded ages. Two-year groups are approximate comparisons; mixed-age panels do not establish an age-adjusted ranking."
+        )
+    st.caption(
+        body=f"Showing {len(selected)} age panels. The cohort limit ({top_n}) and sorting apply separately within each chart; no test counts or failure rates are combined."
+    )
+    for index, label in enumerate(selected):
+        rows = panels[label]
+        st.markdown(body=f"**{label}**")
+        st.caption(
+            body=f"Showing up to {min(top_n, len(rows)):,} of {len(rows):,} model-cohort observations in this panel."
+        )
+        figure = count_uncertainty_chart(
+            counted=rows,
+            top_n=top_n,
+            sort_by=sort_by,
+            ascending=ascending,
+            colour_by=colour_by,
+        )
+        first = rows.iloc[0]
+        low, high = int(rows.age_min.min()), int(rows.age_max.max())
+        age_label = str(low) if low == high else f"{low}–{high}"
+        figure.update_layout(
+            title=f"{SOURCE_NAMES.get(first.source_id, first.source_id)} · age {age_label} · report {int(first.report_year)} · 95% Wilson intervals"
+        )
+        show_chart(
+            figure=figure,
+            key=key if index == 0 else f"{key}_{index}",
+            explanation="Each point uses actual failed inspections divided by tests and its own 95% Wilson interval. Source/report contexts stay separate. Wide and overlapping intervals qualify apparent differences. A model can appear in different age panels; this is not a brand ranking or a tracked ageing curve. Repeated inspections, maintenance and selection effects are not covered by these sampling intervals.",
         )
 
 
@@ -684,27 +1125,41 @@ def age_mileage_page(*, scored: pd.DataFrame) -> None:
         options=list(names),
         default=list(names)[:3],
         format_func=lambda key: names[key],
-        max_selections=8,
+        max_selections=30,
         key="age_models",
     )
     relative = st.checkbox(
         label="Show relative cohort scores", value=False, key="age_relative"
     )
+    age_colour = st.selectbox(
+        label="Age profile colours",
+        options=["model", "make"],
+        format_func=lambda value: value.capitalize(),
+        key="age_colour",
+    )
     if selected:
         show_chart(
-            figure=age_chart(scored=rows, model_ids=selected, relative=relative),
+            figure=age_chart(
+                scored=rows, model_ids=selected, relative=relative, colour_by=age_colour
+            ),
             key="age_profile",
             explanation="Age profiles use different registration cohorts and may cross model generations. A rising failure rate with age does not estimate how your own car will age. Relative scores compare each point with its source-cohort peers.",
         )
     if rows.mileage_basis.eq("mean_odometer").any() and rows.mileage_km.notna().any():
+        mileage_colour = st.selectbox(
+            label="Mileage scatter colours",
+            options=["age", "make"],
+            format_func=lambda value: "Age" if value == "age" else "Make",
+            key="age_mileage_colour",
+        )
         show_chart(
-            figure=mileage_chart(evidence=rows),
+            figure=mileage_chart(evidence=rows, colour_by=mileage_colour),
             key="mileage_scatter",
             explanation="Each dot is a published model cohort. The x-axis is mean odometer mileage; the y-axis is an inspection rate. Colour represents observed age. This plot shows associations without adjusting for maintenance, generation or usage.",
         )
     else:
         st.info(
-            body="Mean odometer data are unavailable for this source. Select Traficom or TÜV to explore mileage; ADAC reports a different annual-mileage measure."
+            body="Mean odometer data are unavailable for this source. Open Mileage explorer in the sidebar, or select Traficom/TÜV above. ADAC reports a different annual-mileage measure."
         )
     st.subheader(body="Better and poorer evidence across ages")
     map_measure = st.selectbox(
@@ -722,8 +1177,9 @@ def age_mileage_page(*, scored: pd.DataFrame) -> None:
     )
     map_order = st.selectbox(
         label="Age heatmap ordering",
-        options=["both", "weakest", "strongest"],
+        options=["alphabetical", "both", "weakest", "strongest"],
         format_func=lambda value: {
+            "alphabetical": "Model names alphabetically",
             "both": "Both ranking ends",
             "weakest": "Weakest relative evidence first",
             "strongest": "Strongest relative evidence first",
@@ -765,6 +1221,84 @@ def age_mileage_page(*, scored: pd.DataFrame) -> None:
         )
 
 
+def mileage_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
+    """Expose mileage plots with filters and explicit combined-score sizing.
+
+    Args:
+        scored: Full sidebar-selected source-cohort evidence.
+        ranking: Current combined ranking, used only for optional point sizing.
+    """
+    st.title(body="Mileage explorer")
+    st.caption(
+        body="The mileage-versus-inspection chart from the HTML report. Sidebar filters apply first; controls below can narrow the plotted observations further."
+    )
+    eligible = scored.loc[
+        scored.mileage_basis.eq("mean_odometer") & scored.mileage_km.notna()
+    ]
+    if eligible.empty:
+        st.info(
+            body="No mean-odometer observations match. Include Traficom or TÜV and broaden the sidebar filters. ADAC's mileage measure is different."
+        )
+        return
+    sources = sorted(eligible.source_id.unique())
+    source = st.selectbox(
+        label="Mileage evidence source",
+        options=sources,
+        index=sources.index("traficom") if "traficom" in sources else 0,
+        format_func=lambda value: SOURCE_NAMES.get(value, value),
+        key="mileage_source",
+    )
+    rows = eligible.loc[eligible.source_id.eq(source)].copy()
+    year = st.selectbox(
+        label="Mileage report year",
+        options=sorted(rows.report_year.unique(), reverse=True),
+        key="mileage_year",
+    )
+    rows = rows.loc[rows.report_year.eq(year)]
+    makes = st.multiselect(
+        label="Mileage makes", options=sorted(rows.make.unique()), key="mileage_makes"
+    )
+    query = st.text_input(label="Search mileage models", key="mileage_query")
+    age_range = st.slider(
+        label="Mileage chart age range",
+        min_value=0,
+        max_value=40,
+        value=(2, 20),
+        key="mileage_age_range",
+    )
+    rows = rows.loc[rows.age_max.ge(age_range[0]) & rows.age_min.le(age_range[1])]
+    if makes:
+        rows = rows.loc[rows.make.isin(makes)]
+    if query:
+        rows = rows.loc[
+            (rows.make + " " + rows.model).str.contains(
+                pat=query, case=False, regex=False
+            )
+        ]
+    colour = st.selectbox(
+        label="Mileage point colours",
+        options=["age", "make"],
+        format_func=lambda value: "Observed age" if value == "age" else "Make",
+        key="mileage_colour",
+    )
+    size = st.checkbox(
+        label="Size mileage points by optional within-block preference score",
+        key="mileage_size_score",
+    )
+    st.caption(
+        body=f"{len(rows):,} plotted cohort observations. Optional point sizes follow the selected comparison method. Small open markers mean no comparable preference score, not poor reliability. Age bands overlapping the range are retained; points are cohort averages."
+    )
+    show_chart(
+        figure=mileage_chart(
+            evidence=rows, colour_by=colour, model_scores=ranking, size_by_score=size
+        ),
+        key="mileage_explorer",
+        explanation="Mean odometer against inspection failure/defect rate within one source and report. Colour may show age or make; score-sized marker diameters run from 7 to 25 pixels. The optional preference score is repeated for its model cohorts only within the selected coverage block. Missing scores are shown as small open markers, not poor reliability. Association is not controlled for maintenance, generation or usage.",
+    )
+    with st.expander(label="Plotted observations and original source links"):
+        show_table(frame=rows, name="mileage_observations", key="mileage_export")
+
+
 def agreement_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
     """Inspect contradictory evidence without forcing it into a single conclusion.
 
@@ -787,34 +1321,30 @@ def agreement_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
     heatmap_view = st.selectbox(
         label="Heatmap view",
         options=[
-            "Both ends of the ranking",
-            "Strongest relative evidence",
-            "Weakest relative evidence",
             "Largest source disagreement",
-            "All qualifying models (up to 80)",
+            "Alphabetical source profiles (up to 80)",
         ],
         key="heatmap_view",
     )
     query = st.text_input(label="Search heatmap models", key="heatmap_query")
-    candidates = ranking.copy()
+    candidates = identities.loc[
+        identities.model_id.isin(wide.index), ["model_id", "make", "model"]
+    ].copy()
+    candidates["score_spread"] = candidates.model_id.map(
+        arg=wide.max(axis=1) - wide.min(axis=1)
+    )
     if query:
         candidates = candidates.loc[
             (candidates.make + " " + candidates.model).str.contains(
                 pat=query, case=False, regex=False
             )
         ]
-    if heatmap_view.startswith("Both"):
-        selection = pd.concat(
-            objs=[candidates.head(n=12), candidates.tail(n=12)]
-        ).drop_duplicates(subset="model_id")
-    elif heatmap_view.startswith("Weakest"):
-        selection = candidates.sort_values(by="score", ascending=True).head(n=24)
-    elif heatmap_view.startswith("Largest"):
+    if heatmap_view.startswith("Largest"):
         selection = candidates.sort_values(by="score_spread", ascending=False).head(
             n=24
         )
     else:
-        selection = candidates.head(n=80 if heatmap_view.startswith("All") else 24)
+        selection = candidates.sort_values(by=["make", "model"]).head(n=80)
     top = [key for key in selection.model_id if key in wide.index]
     if not top:
         top = [
@@ -823,7 +1353,7 @@ def agreement_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
             if not query or query.casefold() in names.get(key, key).casefold()
         ][:24]
     st.caption(
-        body=f"Showing {len(top)} model series. Red = poorer relative evidence; teal = better; grey ‘No data’ = unavailable. The ‘both ends’ view omits middle-ranked models. Scores are relative percentiles, not failure probabilities."
+        body=f"Showing {len(top)} descriptive source profiles, independent of composite eligibility. Means can cover different ages and outcomes. There is no combined best-to-worst ordering on this page; grey cells are unavailable evidence."
     )
     show_chart(
         figure=agreement_heatmap(wide=wide.loc[top], names=names),
@@ -888,6 +1418,9 @@ def deeper_analysis_page(
     st.title(body="Deeper data interrogation")
     st.caption(
         body="All results use your current evidence filters. These analyses describe loaded model-series/cohort observations, not exact engines, individual cars or lifespans."
+    )
+    st.info(
+        body="Combined-score and weighting diagnostics below are secondary preference analyses. Ranks are meaningful only within an identical-coverage comparison block. Source profiles and exact-cohort raw rates remain the primary evidence."
     )
     if scored.empty:
         st.info(body="No evidence matches the current filters.")
@@ -978,6 +1511,7 @@ def deeper_analysis_page(
     scenarios = weighting_scenarios(
         scored=scored, min_sources=min_sources, min_cohorts=min_cohorts
     )
+    scenarios = scenarios.loc[scenarios.model_id.isin(ranking.model_id)]
     if scenarios.empty:
         st.info(
             body="No models meet the current coverage thresholds in all three preference scenarios. Lower the page's coverage thresholds or broaden age/source filters."
@@ -1001,25 +1535,53 @@ def deeper_analysis_page(
             by="worst_rank" if order.startswith("Strongest") else "rank_range",
             ascending=order.startswith("Strongest"),
         )
+        scenario_count = st.number_input(
+            label="Models in weighting chart",
+            min_value=1,
+            max_value=max(1, len(bounds)),
+            value=min(20, len(bounds)),
+            key="deep_scenario_count",
+        )
+        scenario_makes = st.multiselect(
+            label="Weighting chart makes",
+            options=sorted(bounds.make.unique()),
+            key="deep_scenario_makes",
+        )
+        scenario_names = dict(
+            zip(bounds.model_id, bounds.make + " " + bounds.model, strict=True)
+        )
+        scenario_models = st.multiselect(
+            label="Specific weighting chart models (optional)",
+            options=list(scenario_names),
+            format_func=lambda key: scenario_names[key],
+            key="deep_scenario_models",
+        )
+        scenario_colour = st.selectbox(
+            label="Weighting chart colours",
+            options=["model", "make"],
+            format_func=lambda value: value.capitalize(),
+            key="deep_scenario_colour",
+        )
+        scenario_size = st.checkbox(
+            label="Size weighting points by scenario score", key="deep_scenario_size"
+        )
+        chosen_bounds = (
+            bounds.loc[bounds.make.isin(scenario_makes)] if scenario_makes else bounds
+        )
+        if scenario_models:
+            chosen_bounds = chosen_bounds.loc[
+                chosen_bounds.model_id.isin(scenario_models)
+            ]
         plotted = scenarios.loc[
-            scenarios.model_id.isin(bounds.head(n=20).model_id)
+            scenarios.model_id.isin(chosen_bounds.head(n=int(scenario_count)).model_id)
         ].copy()
         plotted["car"] = plotted.make + " " + plotted.model
-        figure = px.line(
-            data_frame=plotted,
-            x="scenario",
-            y="scenario_rank",
-            color="car",
-            markers=True,
-            hover_data=["score", "cohorts", "sources"],
-            labels={
-                "scenario_rank": "Rank within common eligible models",
-                "scenario": "Preference scenario",
-                "car": "Model",
-            },
+        figure = scenario_rank_chart(
+            scenarios=plotted,
+            model_ids=plotted.model_id.drop_duplicates().tolist(),
+            colour_by=scenario_colour,
+            size_by_score=scenario_size,
         )
-        figure.update_yaxes(autorange="reversed")
-        figure.update_layout(height=520)
         show_chart(
             figure=figure,
             key="deep_scenario_chart",
@@ -1047,18 +1609,116 @@ def deeper_analysis_page(
     )
     st.subheader(body="Actual failure counts and sampling uncertainty")
     counted = counted_failure_rates(evidence=scored)
-    show_chart(
-        figure=count_uncertainty_chart(counted=counted),
+    count_sources = st.multiselect(
+        label="Wilson chart sources",
+        options=sorted(counted.source_id.unique()),
+        format_func=lambda value: SOURCE_NAMES.get(value, value),
+        key="deep_count_sources",
+    )
+    count_makes = st.multiselect(
+        label="Wilson chart makes",
+        options=sorted(counted.make.unique()),
+        key="deep_count_makes",
+    )
+    count_query = st.text_input(
+        label="Search Wilson chart models", key="deep_count_query"
+    )
+    count_identities = counted.drop_duplicates(subset="model_id")
+    count_names = dict(
+        zip(
+            count_identities.model_id,
+            count_identities.make + " " + count_identities.model,
+            strict=True,
+        )
+    )
+    count_models = st.multiselect(
+        label="Specific Wilson chart models (optional)",
+        options=sorted(count_names, key=count_names.get),
+        format_func=lambda key: count_names[key],
+        key="deep_count_models",
+    )
+    count_ages = st.slider(
+        label="Wilson chart age range",
+        min_value=0,
+        max_value=40,
+        value=(2, 20),
+        key="deep_count_age",
+    )
+    count_limit = st.number_input(
+        label="Cohorts per Wilson chart",
+        min_value=1,
+        max_value=max(24, len(counted)),
+        value=24,
+        key="deep_count_limit",
+    )
+    count_sort = st.selectbox(
+        label="Wilson chart ordering",
+        options=["sample_size", "counted_rate_pct", "age_min", "make", "original"],
+        format_func=lambda value: {
+            "sample_size": "Test count",
+            "counted_rate_pct": "Failure rate",
+            "age_min": "Observed age",
+            "make": "Make",
+            "original": "Original row order",
+        }[value],
+        key="deep_count_sort",
+    )
+    count_ascending = st.checkbox(
+        label="Sort Wilson chart ascending", key="deep_count_ascending"
+    )
+    count_colour = st.selectbox(
+        label="Wilson chart colours",
+        options=["uniform", "make"],
+        format_func=lambda value: "One colour" if value == "uniform" else "Make",
+        key="deep_count_colour",
+    )
+    plotted_counts = counted.loc[
+        counted.age_max.ge(count_ages[0]) & counted.age_min.le(count_ages[1])
+    ]
+    if count_sources:
+        plotted_counts = plotted_counts.loc[
+            plotted_counts.source_id.isin(count_sources)
+        ]
+    if count_makes:
+        plotted_counts = plotted_counts.loc[plotted_counts.make.isin(count_makes)]
+    if count_query:
+        plotted_counts = plotted_counts.loc[
+            (plotted_counts.make + " " + plotted_counts.model).str.contains(
+                pat=count_query, case=False, regex=False
+            )
+        ]
+    if count_models:
+        plotted_counts = plotted_counts.loc[plotted_counts.model_id.isin(count_models)]
+    st.caption(
+        body=f"{len(plotted_counts):,} counted cohorts match these chart filters. Points remain source/report/age-specific; a model can appear more than once. Sorting by rate does not make unmatched ages comparable."
+    )
+    show_wilson_panels(
+        counted=plotted_counts,
+        top_n=int(count_limit),
+        sort_by=count_sort,
+        ascending=count_ascending,
+        colour_by=count_colour,
         key="deep_counts",
-        explanation="These are the 24 largest counted cohorts, ordered by sample size. Points use actual failed tests divided by tests, with 95% Wilson intervals. Different ages must not be ranked directly. Repeated cars, maintenance and selection effects are outside these intervals.",
     )
     with st.expander(label="Inspect all counted rates and intervals"):
         show_table(
             frame=counted, name="counted_failure_intervals", key="deep_count_table"
         )
     st.subheader(body="How dependent is the ranking on one source?")
+    spread_colour = st.selectbox(
+        label="Score disagreement colours",
+        options=["sources", "make"],
+        format_func=lambda value: "Source breadth" if value == "sources" else "Make",
+        key="deep_spread_colour",
+    )
+    spread_size = st.checkbox(
+        label="Size disagreement points by optional preference score",
+        key="deep_spread_size",
+    )
     show_chart(
-        figure=score_spread_chart(ranking=ranking),
+        figure=score_spread_chart(
+            ranking=ranking, colour_by=spread_colour, size_by_score=spread_size
+        ),
         key="deep_spread",
         explanation="Source-score spread measures disagreement, not statistical confidence. Hover for cohort count and evidence coverage. One-source models have no between-source comparison.",
     )
@@ -1068,8 +1728,14 @@ def deeper_analysis_page(
         )
         return
     sensitivity = source_omission_sensitivity(
-        scored=scored, weights=weights, min_sources=min_sources, min_cohorts=min_cohorts
+        scored=scored,
+        weights=weights,
+        min_sources=min_sources,
+        min_cohorts=min_cohorts,
+        inspection_weight=float(st.session_state.get("inspection_weight", 1.0)),
+        breakdown_weight=float(st.session_state.get("breakdown_weight", 1.0)),
     )
+    sensitivity = sensitivity.loc[sensitivity.model_id.isin(ranking.model_id)]
     if sensitivity.empty:
         st.info(
             body="Source-omission sensitivity needs ranked models and at least two sources with positive weights."
@@ -1138,6 +1804,12 @@ def electrified_page(*, scored: pd.DataFrame, weights: dict[str, float]) -> None
     st.info(
         body="Published inspection and breakdown results do not measure traction-battery capacity, degradation, charging reliability or battery replacement costs. Those outcomes need additional data."
     )
+    st.subheader(body="Separate electrified source evidence")
+    show_table(
+        frame=evidence_profiles(scored=selected),
+        name="electrified_source_profiles",
+        key="electric_profiles",
+    )
     minimum = st.number_input(
         label="Minimum sources for this propulsion view",
         min_value=1,
@@ -1152,17 +1824,52 @@ def electrified_page(*, scored: pd.DataFrame, weights: dict[str, float]) -> None
         value=1,
         key="electric_min_cohorts",
     )
-    ranking = reliability_ranking(
+    ranking_function = (
+        exploratory_ranking
+        if str(st.session_state.get("comparison_method", "Exploratory")).startswith(
+            "Exploratory"
+        )
+        else reliability_ranking
+    )
+    ranking = ranking_function(
         scored=selected,
         weights=weights,
         min_sources=int(minimum),
         min_cohorts=int(cohorts),
+        inspection_weight=float(st.session_state.get("inspection_weight", 1.0)),
+        breakdown_weight=float(st.session_state.get("breakdown_weight", 1.0)),
+    )
+    ranking = comparison_block_selector(ranking=ranking, key="electric_block")
+    st.caption(
+        body="Charts follow the chosen exploratory or strict method. Missing categories and uncertain propulsion variants are not silently reassigned."
     )
     st.caption(
         body=f"{selected.model_id.nunique()} eligible model series · {len(selected):,} observations · page-specific coverage thresholds above. Original scores still compare with the full source-cohort peer population."
     )
+    electric_limit = 20
+    electric_colour = "sources"
+    if not ranking.empty:
+        electric_limit = int(
+            st.number_input(
+                label="Models in electrified ranking chart",
+                min_value=1,
+                max_value=len(ranking),
+                value=min(20, len(ranking)),
+                key="electric_top_n",
+            )
+        )
+        electric_colour = st.selectbox(
+            label="Electrified ranking colours",
+            options=["sources", "make"],
+            format_func=lambda value: (
+                "Evidence breadth" if value == "sources" else "Make"
+            ),
+            key="electric_rank_colour",
+        )
     show_chart(
-        figure=ranking_chart(ranking=ranking, top_n=20),
+        figure=ranking_chart(
+            ranking=ranking, top_n=electric_limit, colour_by=electric_colour
+        ),
         key="electric_ranking",
         explanation="This ordering is restricted to the selected reviewed propulsion series. Scores retain their original full-peer comparisons; this is not a controlled electric-versus-petrol comparison.",
     )
@@ -1178,8 +1885,16 @@ def electrified_page(*, scored: pd.DataFrame, weights: dict[str, float]) -> None
         format_func=lambda key: names[key],
         key="electric_age_models",
     )
+    electric_age_colour = st.selectbox(
+        label="Electrified age profile colours",
+        options=["model", "make"],
+        format_func=lambda value: value.capitalize(),
+        key="electric_age_colour",
+    )
     show_chart(
-        figure=age_chart(scored=selected, model_ids=model_ids),
+        figure=age_chart(
+            scored=selected, model_ids=model_ids, colour_by=electric_age_colour
+        ),
         key="electric_age_chart",
         explanation="Rates are separated by source and units. Colours identify the same model across panels. Age cohorts contain different cars; lines do not measure battery degradation or track individual vehicles.",
     )
@@ -1193,6 +1908,146 @@ def electrified_page(*, scored: pd.DataFrame, weights: dict[str, float]) -> None
         min_cohorts=int(cohorts),
         peer_evidence=scored,
     )
+
+
+def comparison_block_selector(*, ranking: pd.DataFrame, key: str) -> pd.DataFrame:
+    """Select one coverage block and prevent cross-block rankings on charts.
+
+    Args:
+        ranking: Coverage-matched preference profiles, including singleton rows.
+        key: Unique Streamlit comparison-block widget identifier.
+
+    Returns:
+        At least two comparable model profiles in one block, or an empty table.
+    """
+    if not ranking.empty and ranking.comparison_group_id.eq("exploratory").all():
+        st.warning(
+            body="Exploratory ordering: evidence and ages differ between cars. Missing source scores assume percentile 50. Score bounds show the effect of assuming 0 or 100 instead; they are not confidence intervals. Check source results before deciding."
+        )
+        show_table(
+            frame=ranking,
+            name="Exploratory ranking and evidence gaps",
+            key=f"{key}_coverage",
+        )
+        return ranking
+    if ranking.empty:
+        st.info(
+            body="No complete preference profile meets these settings. Models with missing evidence remain available in separate source profiles."
+        )
+        return ranking
+    groups = (
+        ranking.loc[ranking.comparison_models.ge(2)]
+        .groupby(by="comparison_group_id")
+        .agg(
+            models=("model_id", "size"),
+            cohorts=("cohorts", "first"),
+            sources=("sources", "first"),
+        )
+        .sort_values(by=["models", "cohorts"], ascending=False)
+    )
+    if groups.empty:
+        st.info(
+            body="No models share identical source and cohort coverage under these filters. No overall ranks are assigned. Use source profiles, an exact published cohort or narrower evidence filters."
+        )
+        return ranking.iloc[:0]
+    labels = {
+        group: f"{row.models} comparable models · {row.sources} sources · {row.cohorts} source-cohorts · block {group}"
+        for group, row in groups.iterrows()
+    }
+    chosen = st.selectbox(
+        label="Identical-coverage comparison block",
+        options=list(labels),
+        format_func=lambda value: labels[value],
+        key=key,
+    )
+    selected = (
+        ranking.loc[ranking.comparison_group_id.eq(chosen)]
+        .sort_values(by=["rank", "model_id"])
+        .copy()
+    )
+    st.caption(
+        body=f"Ranks use only these {len(selected)} competitors. Scores and ranks from different blocks must not be compared. Singleton evidence profiles have no rank."
+    )
+    return selected
+
+
+def repair_cost_page() -> None:
+    """Show dated generic prices and user-edited quote scenarios separately."""
+    st.title(body="Repair costs and fault severity")
+    st.write(
+        "Inspection defects, roadside inconvenience and expensive mechanical repairs are different outcomes. Our rate tables do not contain a model-specific breakdown of repair costs or fault frequencies."
+    )
+    st.info(
+        body="Corolla's ADAC 2025 fault list identifies 12 V starter-battery issues for registration years 2019–2022. This does not establish engine failure or traction-battery degradation. The source does not provide the counts needed to price those faults per Corolla."
+    )
+    st.link_button(
+        label="Read the original ADAC fault list",
+        url="https://assets.adac.de/image/upload/v1744788916/ADAC-eV/KOR/Text/PDF/Pannenstatistik_2025_final_nrmvls.pdf",
+    )
+    references = repair_references()
+    st.subheader(body="Published UK price context")
+    st.caption(
+        body="These dated marketplace averages are general job context, not quotations for your model or a repair-cost ranking. The provider's last-12-months table is the stated basis; other sections on its page quote different averages. Confirm parts, labour, VAT, engine, postcode and repair scope with a garage."
+    )
+    show_table(
+        frame=references, name="repair_price_references", key="repair_references"
+    )
+    st.link_button(
+        label="Get vehicle-specific price estimates with ClickMechanic",
+        url="https://www.clickmechanic.com/price-estimates",
+    )
+    st.subheader(body="Your explicit repair-budget scenario")
+    st.caption(
+        body="Enter actual quotes or your assumptions and choose job quantities. All quantities start at zero. This is a what-if budget, not predicted annual ownership cost. No job frequency is inferred from a percentile, inspection rate or ADAC total."
+    )
+    uploaded = st.file_uploader(
+        label="Optional quote/budget TSV", type=["tsv"], key="repair_quotes"
+    )
+    estimates = references.copy()
+    estimates["quantity"] = 0.0
+    if uploaded is not None:
+        try:
+            estimates = pd.read_csv(
+                filepath_or_buffer=io.BytesIO(uploaded.getvalue()), sep="\t"
+            )
+            repair_budget(estimates=estimates)
+        except (ValueError, TypeError) as error:
+            st.error(body=f"Quote TSV could not be validated: {error}")
+            return
+    edited = st.data_editor(
+        data=estimates,
+        num_rows="dynamic",
+        hide_index=True,
+        key="repair_editor",
+        column_config={
+            "unit_cost_gbp": st.column_config.NumberColumn(
+                label="Cost per job (£)", min_value=0.0
+            ),
+            "quantity": st.column_config.NumberColumn(
+                label="Jobs in your scenario", min_value=0.0
+            ),
+        },
+    )
+    try:
+        budget = repair_budget(estimates=edited)
+    except (ValueError, TypeError) as error:
+        st.error(body=str(error))
+        return
+    budget["entry_origin"] = (
+        "User-provided budget assumptions; not verified quotes"
+        if uploaded is not None
+        else "Editable scenario with reference prices; not a vehicle quote"
+    )
+    if budget.scenario_cost_gbp.isna().any():
+        st.warning(
+            body="A selected job has no known price. A complete total is unavailable; unknown costs are not counted as free repairs."
+        )
+    else:
+        st.metric(
+            label="Explicit scenario total",
+            value=f"£{budget.scenario_cost_gbp.sum():,.2f}",
+        )
+    show_table(frame=budget, name="repair_budget_scenario", key="repair_budget")
 
 
 def safety_page(*, events: pd.DataFrame, directory: Path) -> None:
@@ -1297,6 +2152,48 @@ def safety_page(*, events: pd.DataFrame, directory: Path) -> None:
             st.link_button(label="Official source", url=str(item.source_url))
 
 
+def source_information_page() -> None:
+    """Explain denominators, defect definitions and source provenance."""
+    st.title(body="Data sources and fault definitions")
+    st.write(
+        "A fault means something different in each source. Check the measurement, denominator, period and limits before comparing numbers."
+    )
+    source = st.selectbox(
+        label="Source definition to read",
+        options=list(SOURCE_GUIDE),
+        key="source_definition",
+    )
+    guide = SOURCE_GUIDE[source]
+    st.subheader(body="What the number measures")
+    st.write(guide["meaning"])
+    with st.expander(label="? What counts as a fault?", expanded=True):
+        st.write(guide["faults"])
+    with st.expander(label="? What conclusions are unsupported?", expanded=True):
+        st.write(guide["limits"])
+    st.link_button(label="Where the imported data come from", url=guide["data_url"])
+    st.link_button(
+        label="Read the original source definitions", url=guide["definition_url"]
+    )
+    with st.expander(
+        label="? Why isn't TÜV a faults-per-mile measurement?", expanded=True
+    ):
+        st.write(
+            "The defect percentage counts inspected vehicles with significant defects. Average odometer mileage is a separate summary. Dividing them does not give fault events per mile: that requires event counts and corresponding total distance exposure. High-mileage models can look artificially favourable under this ratio. Historical scripts retain the legacy field, but it is not used in the app's comparisons."
+        )
+    with st.expander(label="? Report year, inspection period and approximate cohorts"):
+        st.write(
+            "TÜV Report 2025 covers July 2023 to June 2024 inspections; our observation-year label 2024 denotes the window's ending year. TÜV registration bands are approximate. ADAC Report 2025 concerns calendar-year 2024 breakdowns. Traficom observations are calendar-year inspections, published later. Selecting the same age does not make these periods identical."
+        )
+        st.link_button(
+            label="TÜV's original 2025 methodology",
+            url="https://www.tuev-verband.de/pressemitteilungen/tuev-report-2025-elektroautos",
+        )
+    with st.expander(label="? What supports repair-cost or lifespan estimates?"):
+        st.write(
+            "Repair-cost predictions need variant-specific fault counts and invoice prices. Lifetimes need linked vehicle histories and censoring assumptions. These fields are absent from our summaries. Frequency, severity, repair cost and durability are separate quantities."
+        )
+
+
 def methods_page(*, evidence: pd.DataFrame) -> None:
     """Explain methodology, source availability and glossary terms.
 
@@ -1315,7 +2212,7 @@ def methods_page(*, evidence: pd.DataFrame) -> None:
     for title, body in {
         "Inspection failure": "A roadworthiness test outcome. It can reflect servicing, tyres, lights, brakes and structural faults; it does not capture every mechanical repair or roadside failure.",
         "Roadside breakdown": "A failure attended by the reporting breakdown service. The ADAC rate uses registered vehicles as exposure; it does not cover all non-breakdown repairs or every assistance provider.",
-        "Relative score": "A source-cohort percentile: 100 for the lowest rate, 0 for the highest, with average ranks for ties. Scores are averaged within each source before weighting sources. The scale is relative to available models, not a failure percentage.",
+        "Relative score": "A source-cohort percentile: 100 for the lowest rate, 0 for the highest, with average ranks for ties. It is not a failure percentage. Optional preferences balance inspection and breakdown outcomes first; exploratory ranks show coverage gaps and strict ranks apply within one matching block.",
         "Sample size and intervals": "Where actual failure/test counts exist, Wilson intervals can describe sampling uncertainty. TÜV's secondary tables and ADAC PDFs do not publish model denominators here; these remain unknown. Repeated tests can violate independent-binomial assumptions.",
         "Registration cohort and report year": "A 2025 ADAC report records 2024 breakdowns. A Traficom 2026 publication records 2025 inspections. TÜV age-bin registration-year estimates are approximate and are not confirmed production years.",
         "Model matching": "Matching is conservative and explicit: punctuation, accents and documented labels such as VW/Volkswagen or B-Klasse/B-Class are normalised. Opel and Vauxhall, distinct engines and combined model groups are not silently merged. Source labels remain visible.",
@@ -1428,20 +2325,58 @@ def run() -> None:
         )
         return
     scored, weights, min_sources, min_cohorts = sidebar_filters(evidence=evidence)
-    if page in {"Recalls and complaints", "Sources and methods", "Data management"}:
+    with st.expander(label="? How should I interpret this page?"):
+        st.markdown(body=PAGE_HELP[page])
+        st.caption(
+            body="For measurement definitions and provenance, open Data sources and fault definitions. Each chart also has interpretation help."
+        )
+    if page in {
+        "Recalls and complaints",
+        "Sources and methods",
+        "Data management",
+        "Repair costs",
+        "Data sources and fault definitions",
+    }:
         st.sidebar.caption(
             body="Reliability filters apply to the analysis pages. This page uses complete saved sources or its own safety filters."
         )
+    comparison_mode = st.sidebar.selectbox(
+        label="Combined comparison method",
+        options=[
+            "Exploratory · show incomplete evidence",
+            "Strict · identical coverage",
+        ],
+        key="comparison_method",
+        help="Exploratory rankings show missing evidence and age coverage. Missing source percentiles assume 50; bounds assume 0–100, not statistical confidence. Strict comparisons require matching evidence.",
+    )
+    ranking_function = (
+        exploratory_ranking
+        if comparison_mode.startswith("Exploratory")
+        else reliability_ranking
+    )
     try:
-        ranking = reliability_ranking(
+        ranking = ranking_function(
             scored=scored,
             weights=weights,
             min_sources=min_sources,
             min_cohorts=min_cohorts,
+            inspection_weight=float(st.session_state.get("inspection_weight", 1.0)),
+            breakdown_weight=float(st.session_state.get("breakdown_weight", 1.0)),
         )
     except ValueError as error:
         st.warning(body=str(error))
         ranking = reliability_ranking(scored=scored.iloc[:0])
+    if page not in {
+        "Recalls and complaints",
+        "Sources and methods",
+        "Data management",
+        "Repair costs",
+        "Data sources and fault definitions",
+    }:
+        with st.expander(label="Optional combined comparison · evidence coverage"):
+            ranking = comparison_block_selector(
+                ranking=ranking, key="main_comparison_block"
+            )
     if page == "Overview":
         overview_page(
             evidence=evidence, scored=scored, ranking=ranking, manifest=manifest
@@ -1449,9 +2384,23 @@ def run() -> None:
     elif page == "Find reliable cars":
         find_page(scored=scored, ranking=ranking)
     elif page == "Compare cars":
-        comparison_page(scored=scored, ranking=ranking)
+        historical = select_evidence(
+            evidence=evidence,
+            sources=st.session_state.get(
+                "filter_sources", list(evidence.source_id.unique())
+            ),
+            latest_only=False,
+            age_range=st.session_state.get("filter_age", (2, 15)),
+            cohort_range=st.session_state.get("filter_cohort_years")
+            if st.session_state.get("filter_registration", False)
+            else None,
+            min_sample=int(st.session_state.get("filter_sample", 100)),
+        )
+        comparison_page(scored=scored, ranking=ranking, historical=historical)
     elif page == "Age and mileage":
         age_mileage_page(scored=scored)
+    elif page == "Mileage explorer":
+        mileage_page(scored=scored, ranking=ranking)
     elif page == "Evidence agreement":
         agreement_page(scored=scored, ranking=ranking)
     elif page == "Deeper analysis":
@@ -1466,8 +2415,12 @@ def run() -> None:
         electrified_page(scored=scored, weights=weights)
     elif page == "Recalls and complaints":
         safety_page(events=events, directory=directory)
+    elif page == "Repair costs":
+        repair_cost_page()
     elif page == "Sources and methods":
         methods_page(evidence=evidence)
+    elif page == "Data sources and fault definitions":
+        source_information_page()
     else:
         management_page(
             directory=directory, evidence=evidence, events=events, manifest=manifest

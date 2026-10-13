@@ -6,7 +6,7 @@ from itertools import combinations
 import numpy as np
 import pandas as pd
 
-from best_cars.analysis import reliability_ranking
+from best_cars.fairness import coverage_matched_ranking as reliability_ranking
 from best_cars.schema import validate_evidence
 from best_cars.weighting import PRESETS, preference_weights
 
@@ -70,12 +70,17 @@ def weighting_scenarios(
             ),
             min_sources=min_sources,
             min_cohorts=min_cohorts,
+            inspection_weight=2.0
+            if preset == "Emphasise inspection condition"
+            else 1.0,
+            breakdown_weight=2.0 if preset == "Emphasise avoiding breakdowns" else 1.0,
         )
+        frames[preset] = frames[preset].loc[frames[preset].comparison_models.ge(2)]
     common = set.intersection(*(set(frame.model_id) for frame in frames.values()))
     records = []
     for preset, frame in frames.items():
         selected = frame.loc[frame.model_id.isin(common)].copy()
-        selected["scenario_rank"] = selected.score.rank(method="min", ascending=False)
+        selected["scenario_rank"] = selected["rank"]
         selected["scenario"] = preset
         records.append(selected)
     return pd.concat(objs=records, ignore_index=True)
@@ -119,6 +124,7 @@ SENSITIVITY_COLUMNS = [
     "rank_without_source",
     "rank_movement",
     "status",
+    "comparison_group_id",
 ]
 
 
@@ -202,6 +208,8 @@ def source_omission_sensitivity(
     weights: Mapping[str, float] | None = None,
     min_sources: int = 2,
     min_cohorts: int = 3,
+    inspection_weight: float = 1.0,
+    breakdown_weight: float = 1.0,
 ) -> pd.DataFrame:
     """Measure descriptive score/rank changes when each active source is omitted.
 
@@ -210,6 +218,8 @@ def source_omission_sensitivity(
         weights: Current source weights; omitted sources receive zero.
         min_sources: Baseline source threshold.
         min_cohorts: Retained minimum scored source-cohort observation count.
+        inspection_weight: Current inspection outcome preference.
+        breakdown_weight: Current roadside-breakdown outcome preference.
 
     Returns:
         Results for baseline-eligible models. Both ranks are recomputed within
@@ -225,7 +235,10 @@ def source_omission_sensitivity(
         weights=weights,
         min_sources=min_sources,
         min_cohorts=min_cohorts,
+        inspection_weight=inspection_weight,
+        breakdown_weight=breakdown_weight,
     ).set_index(keys="model_id")
+    baseline = baseline.loc[baseline.comparison_models.ge(2)]
     if baseline.empty:
         return pd.DataFrame(columns=SENSITIVITY_COLUMNS)
     effective = {
@@ -244,12 +257,22 @@ def source_omission_sensitivity(
             weights=adjusted,
             min_sources=1,
             min_cohorts=min_cohorts,
+            inspection_weight=inspection_weight,
+            breakdown_weight=breakdown_weight,
         ).set_index(keys="model_id")
         common = baseline.index.intersection(other=alternative.index)
-        before_ranks = baseline.loc[common, "score"].rank(method="min", ascending=False)
-        after_ranks = alternative.loc[common, "score"].rank(
-            method="min", ascending=False
+        blocks = baseline.loc[common, "comparison_group_id"]
+        before_ranks = (
+            baseline.loc[common, "score"]
+            .groupby(by=blocks)
+            .rank(method="min", ascending=False)
         )
+        after_ranks = (
+            alternative.loc[common, "score"]
+            .groupby(by=blocks)
+            .rank(method="min", ascending=False)
+        )
+        paired_counts = blocks.groupby(by=blocks).transform(func="size")
         for model_id, row in baseline.iterrows():
             observed = model_id in common
             after = float(alternative.loc[model_id, "score"]) if observed else np.nan
@@ -262,7 +285,10 @@ def source_omission_sensitivity(
                     "baseline_score": row.score,
                     "score_without_source": after,
                     "score_change": after - row.score,
-                    "paired_models": len(common),
+                    "paired_models": int(paired_counts.loc[model_id])
+                    if observed
+                    else 0,
+                    "comparison_group_id": row.comparison_group_id,
                     "baseline_paired_rank": before_ranks.loc[model_id]
                     if observed
                     else np.nan,

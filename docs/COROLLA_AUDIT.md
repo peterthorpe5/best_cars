@@ -1,3 +1,5 @@
+Historical version 2.x documentation. Current comparison methods are in FAIR_COMPARISONS.md; old global ranks and source-weight defaults are not current app results.
+
 # Corolla source and ranking audit — 12 October 2026
 
 The supplied snapshot correctly maps Toyota Corolla, COROLLA and Toyota Corolla

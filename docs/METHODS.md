@@ -1,3 +1,5 @@
+> Version 3.0 ranking methodology is defined in [FAIR_COMPARISONS.md](FAIR_COMPARISONS.md). Earlier composite descriptions below are historical and superseded.
+
 # Reliability comparison methods
 
 Each row represents a source/model-series/cohort observation, not an individual car. Inspection percentages and breakdowns per 1,000 vehicles retain their original units. Unknown denominators stay missing; safety events stay separate. Canonical keys, finite numerical data, count fields and ordered age/cohort ranges are validated before saving.

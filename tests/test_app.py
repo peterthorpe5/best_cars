@@ -62,6 +62,7 @@ def test_registration_filter_and_shortlist_survive_display_search(
     app.checkbox(key="filter_registration").set_value(v=True).run()
     app.slider(key="filter_cohort_years").set_value(v=(2018, 2020)).run()
     app.radio(key="page").set_value(v="Find reliable cars").run()
+    app.selectbox(key="ranking_view").set_value(v="tuv").run()
     app.multiselect(key="saved_shortlist").set_value(v=["toyota:test0"]).run()
     app.text_input(key="find_query").set_value(v="no_model_matches").run()
     assert app.multiselect(key="saved_shortlist").value == ["toyota:test0"]

@@ -1,3 +1,5 @@
+Historical version 2.x documentation. Current comparison methods are in FAIR_COMPARISONS.md; old global ranks and source-weight defaults are not current app results.
+
 # Choosing sources and weights
 
 The scores are favourable **within-source cohort percentiles**, not the same

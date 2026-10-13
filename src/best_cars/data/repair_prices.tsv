@@ -1,0 +1,5 @@
+repair_job	unit_cost_gbp	currency	price_basis	source_url	retrieved_date	applicability
+12 V starter battery replacement	137.00	GBP	FixMyCar published marketplace average in last-12-months table	https://www.whocanfixmycar.com/car-repair	2026-10-12	UK general job context; not a Corolla-specific quote or traction-battery replacement
+Clutch repair	483.34	GBP	FixMyCar published marketplace average in last-12-months table	https://www.whocanfixmycar.com/car-repair	2026-10-12	UK general repair category; flywheel, exact parts, engine and location can change scope
+Brake repair	316.89	GBP	FixMyCar published marketplace average in last-12-months table	https://www.whocanfixmycar.com/car-repair	2026-10-12	UK broad repair category, not a specific pads/discs quote
+Timing chain repair	702.16	GBP	FixMyCar published marketplace average in last-12-months table	https://www.whocanfixmycar.com/car-repair	2026-10-12	UK job context; no assumption that any selected model needs this repair

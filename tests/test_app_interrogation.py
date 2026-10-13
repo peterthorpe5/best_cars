@@ -24,10 +24,8 @@ def test_heatmap_views_search_and_age_ordering(running_app):
     app = running_app
     app.radio(key="page").set_value(v="Evidence agreement").run()
     for view in [
-        "Weakest relative evidence",
         "Largest source disagreement",
-        "Strongest relative evidence",
-        "All qualifying models (up to 80)",
+        "Alphabetical source profiles (up to 80)",
     ]:
         app.selectbox(key="heatmap_view").set_value(v=view).run()
         assert not app.exception
@@ -92,7 +90,7 @@ def test_single_source_rankings_and_model_diagnostic(running_app):
     app.radio(key="page").set_value(v="Find reliable cars").run()
     assert app.selectbox(key="inspect_model").value
     app.selectbox(key="ranking_view").set_value(v="tuv").run()
-    app.number_input(key="single_source_cohorts").set_value(v=1).run()
+    assert app.selectbox(key="find_cohort").value
     assert not app.exception
     app.text_input(key="find_query").set_value(v="Test0").run()
     assert app.selectbox(key="inspect_model").value == "toyota:test0"
@@ -160,3 +158,76 @@ def test_electric_populated_page_and_mixed_family_opt_in(
     app.selectbox(key="deep_scenario_order").set_value(v="Largest rank movement").run()
     app.selectbox(key="deep_peer_model").set_value(v="tesla:model 3").run()
     assert not app.exception
+
+
+def test_ranking_wilson_and_scenario_visual_controls(running_app):
+    app = running_app
+    app.radio(key="page").set_value(v="Find reliable cars").run()
+    app.selectbox(key="ranking_view").set_value(v="tuv").run()
+    app.number_input(key="find_top_n").set_value(v=3).run()
+    app.selectbox(key="find_colour").set_value(v="make").run()
+    assert not app.exception
+    app.radio(key="page").set_value(v="Deeper analysis").run()
+    app.number_input(key="deep_scenario_count").set_value(v=6)
+    app.selectbox(key="deep_scenario_colour").set_value(v="make")
+    app.checkbox(key="deep_scenario_size").set_value(v=True).run()
+    app.multiselect(key="deep_scenario_models").set_value(
+        v=["toyota:test0", "toyota:test1"]
+    ).run()
+    assert not app.exception
+    app.selectbox(key="deep_count_sort").set_value(v="counted_rate_pct")
+    app.checkbox(key="deep_count_ascending").set_value(v=True)
+    app.selectbox(key="deep_count_colour").set_value(v="make")
+    app.number_input(key="deep_count_limit").set_value(v=12).run()
+    app.multiselect(key="deep_count_models").set_value(v=["toyota:test0"]).run()
+    app.slider(key="deep_count_age").set_value(v=(30, 40)).run()
+    assert not app.exception and app.info
+    app.selectbox(key="deep_spread_colour").set_value(v="make")
+    app.checkbox(key="deep_spread_size").set_value(v=True).run()
+    assert not app.exception
+
+
+def test_mileage_explorer_discovery_sizing_and_empty_filters(
+    evidence, tmp_path, monkeypatch
+):
+    mask = evidence.source_id.eq("tuv")
+    evidence.loc[mask, "mileage_km"] = 50000
+    evidence.loc[mask, "mileage_basis"] = "mean_odometer"
+    save_snapshot(directory=tmp_path, evidence=evidence, events=empty_events())
+    monkeypatch.setenv("BEST_CARS_DATA_DIR", str(tmp_path))
+    app = AppTest.from_file(script_path=APP, default_timeout=45).run()
+    app.radio(key="page").set_value(v="Mileage explorer").run()
+    assert app.selectbox(key="mileage_source").value == "tuv"
+    app.selectbox(key="mileage_colour").set_value(v="make")
+    app.checkbox(key="mileage_size_score").set_value(v=True).run()
+    app.multiselect(key="mileage_makes").set_value(v=["Toyota"]).run()
+    assert not app.exception
+    app.text_input(key="mileage_query").set_value(v="absent").run()
+    assert not app.exception and app.info
+    app.text_input(key="mileage_query").set_value(v="").run()
+    app.slider(key="mileage_age_range").set_value(v=(30, 40)).run()
+    assert not app.exception and app.info
+
+
+def test_source_first_defaults_profiles_and_repair_context(running_app):
+    app = running_app
+    app.text_input(key="overview_profile_query").set_value(v="Test0").run()
+    profiles = app.dataframe[-1].value
+    assert len(profiles) == 2 and set(profiles.source_id) == {"tuv", "adac"}
+    app.radio(key="page").set_value(v="Find reliable cars").run()
+    assert app.selectbox(key="ranking_view").value == "choose"
+    assert not app.get("plotly_chart")
+    app.radio(key="page").set_value(v="Data sources and fault definitions").run()
+    for source in [
+        "TÜV inspection defects",
+        "ADAC roadside breakdowns",
+        "Traficom Finnish inspections",
+        "UK MOT import",
+        "NHTSA safety events",
+    ]:
+        app.selectbox(key="source_definition").set_value(v=source).run()
+        assert not app.exception
+    app.radio(key="page").set_value(v="Repair costs").run()
+    assert not app.exception
+    assert any(item.value == "£0.00" for item in app.metric)
+    assert any("annual" in item.value.lower() for item in app.caption)
