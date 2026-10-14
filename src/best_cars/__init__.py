@@ -1,3 +1,3 @@
 """Best Cars: inspect reliability evidence without hiding its limitations."""
 
-__version__ = "3.1.0"
+__version__ = "3.2.0"

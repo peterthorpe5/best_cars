@@ -7,6 +7,7 @@ import plotly.graph_objects as go
 
 from best_cars.charts import PALETTE, SOURCE_NAMES, _make_colours, style_figure
 from best_cars.interrogation import MATCH_KEYS
+from best_cars.interval_evidence import source_rate_points
 
 
 def _chart_frame(*, evidence: pd.DataFrame) -> pd.DataFrame:
@@ -361,4 +362,122 @@ def matched_rate_chart(*, paired: pd.DataFrame, colour_by: str = "model") -> go.
         figure=figure,
         title="Matched cohorts: below the diagonal favours the compared model",
         height=max(460, len(panels) * 300),
+    )
+
+
+def source_rate_chart(
+    *,
+    evidence: pd.DataFrame,
+    top_n: int = 24,
+    sort_by: str = "point_rate",
+    ascending: bool = True,
+    colour_by: str = "make",
+) -> go.Figure:
+    """Plot one source/report's age-panel rates with available count intervals.
+
+    Args:
+        evidence: Canonical rows from one source/report/observation-year/unit.
+        top_n: Maximum rows, chosen after the requested within-panel sort.
+        sort_by: Point rate, sample size, age, make or original input order.
+        ascending: Direction of the within-panel ordering.
+        colour_by: Make colours or one uniform colour.
+
+    Returns:
+        Horizontal rate points. Solid points have actual-count Wilson intervals;
+        open points have published rates only, with no inferred error bars.
+
+    Raises:
+        ValueError: For invalid options or mixed source/outcome contexts.
+    """
+    if (
+        top_n < 1
+        or sort_by not in {"point_rate", "sample_size", "age_min", "make", "original"}
+        or colour_by not in {"make", "uniform"}
+    ):
+        raise ValueError(
+            "Choose a positive row limit and recognised rate-chart settings."
+        )
+    frame = source_rate_points(evidence=evidence)
+    if any(
+        frame[column].nunique() > 1
+        for column in ["source_id", "report_year", "observation_year", "unit", "metric"]
+    ):
+        raise ValueError(
+            "Rate panels must keep source, report, observation year and outcome separate."
+        )
+    if frame.empty:
+        return style_figure(
+            figure=go.Figure(), title="No published rates match these filters"
+        )
+    if sort_by != "original":
+        frame = frame.sort_values(
+            by=sort_by, ascending=ascending, kind="stable", na_position="last"
+        )
+    frame = frame.head(n=top_n)
+    frame["label"] = [
+        f"{row.make} {row.model} · age {row.age_min:g}–{row.age_max:g}"
+        for row in frame.itertuples()
+    ]
+    frame["has_interval"] = frame.interval_lower.notna()
+    colours = _make_colours(makes=frame.make.tolist())
+    figure = go.Figure()
+    for (make, known), rows in frame.groupby(by=["make", "has_interval"], sort=False):
+        details = [
+            f"Published rate: {row.value:g}<br>Point basis: {row.point_basis}"
+            + (
+                f"<br>Failed tests: {int(row.event_count):,} / {int(row.sample_size):,}<br>95% Wilson: {row.interval_lower:.2f}–{row.interval_upper:.2f}%"
+                if known
+                else f"<br>{row.interval_status}"
+            )
+            + f"<br>Observation year: {row.observation_year}<br>Registration: {row.cohort_year_start}–{row.cohort_year_end}"
+            for row in rows.itertuples()
+        ]
+        interval = (
+            {
+                "type": "data",
+                "symmetric": False,
+                "array": rows.interval_upper - rows.point_rate,
+                "arrayminus": rows.point_rate - rows.interval_lower,
+            }
+            if known
+            else None
+        )
+        figure.add_trace(
+            go.Scatter(
+                x=rows.point_rate,
+                y=rows.label,
+                mode="markers",
+                name=f"{make} · {'95% Wilson' if known else 'rate only'}",
+                marker={
+                    "color": colours[make] if colour_by == "make" else PALETTE[0],
+                    "size": 9,
+                    "symbol": "circle" if known else "circle-open",
+                },
+                error_x=interval,
+                customdata=details,
+                hovertemplate="%{y}<br>Plotted rate: %{x:.2f}<br>%{customdata}<extra></extra>",
+            )
+        )
+    row = frame.iloc[0]
+    unit = (
+        "Inspection outcome (%)"
+        if row.unit == "percent"
+        else "Breakdown events per 1,000 registered vehicles"
+    )
+    figure.update_xaxes(title_text=unit, rangemode="tozero")
+    figure.update_yaxes(
+        type="category",
+        autorange="reversed",
+        categoryorder="array",
+        categoryarray=frame.label.tolist(),
+    )
+    suffix = (
+        "available 95% Wilson intervals"
+        if frame.has_interval.any()
+        else "published rates · interval unavailable"
+    )
+    return style_figure(
+        figure=figure,
+        title=f"{SOURCE_NAMES.get(row.source_id, row.source_name)} · report {int(row.report_year)} · {suffix}",
+        height=max(420, len(frame) * 27 + 110),
     )

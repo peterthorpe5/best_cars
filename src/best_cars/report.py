@@ -28,6 +28,7 @@ from best_cars.comparison_charts import (
     evidence_coverage_chart,
     matched_rate_chart,
     peer_gap_chart,
+    source_rate_chart,
     temporal_chart,
 )
 from best_cars.fairness import (
@@ -38,6 +39,7 @@ from best_cars.fairness import (
     source_cohort_ranking,
 )
 from best_cars.interrogation import cohort_peer_benchmarks, weighting_scenarios
+from best_cars.interval_evidence import source_interval_availability, source_rate_points
 from best_cars.propulsion import propulsion_catalogue
 from best_cars.repair_costs import repair_references
 from best_cars.source_guide import SOURCE_GUIDE
@@ -204,6 +206,19 @@ def report_html(*, evidence: pd.DataFrame, events: pd.DataFrame) -> str:
             full_html=False, include_plotlyjs=False
         )
         for label, group in wilson_age_groups(counted=counted).items()
+    )
+    points = source_rate_points(evidence=scored)
+    rate_only = points.loc[points.interval_lower.isna()]
+    rate_only_charts = "".join(
+        f"<h3>{html.escape(s=label)}</h3>"
+        + source_rate_chart(evidence=group, top_n=24).to_html(
+            full_html=False, include_plotlyjs=False
+        )
+        for label, group in wilson_age_groups(counted=rate_only).items()
+    )
+    interval_table = report_table(
+        frame=source_interval_availability(evidence=scored),
+        table_id="interval-availability",
     )
     spread_chart = score_spread_chart(ranking=ranking).to_html(
         full_html=False, include_plotlyjs=False
@@ -383,8 +398,10 @@ def report_html(*, evidence: pd.DataFrame, events: pd.DataFrame) -> str:
     <p>The box centre is the median, the box spans the 25th–75th percentiles, and the dotted marker shows the mean. These distributions give every published model-cohort observation equal weight and mix the selected ages. They are not national fleet failure rates or lifespan estimates. Each source keeps its own units and definition.</p>
     {summary_table}<p>The counted-test failure percentage pools actual failures and tests only within the displayed source/year/metric group. Count coverage shows which observations contribute. Missing denominators are not inferred; the counted subset need not represent the whole fleet.</p></section>
     <section id="uncertainty"><h2>Actual test counts and uncertainty</h2>{uncertainty_chart}
+    <details><summary>Where do these data and interval bars come from?</summary><p>Traficom is Finland's transport authority. Its Transport Register records periodic inspection decisions. The import uses Number of periodic inspections as n and Failed as x, separated by model, registration year and inspection year. The point is 100 × x/n; the original rounded published rate remains on hover. Tests are not necessarily unique cars.</p><p>The app calculates a two-sided 95% Wilson score interval, without continuity correction, using z = 1.959963984540054. With p = x/n and d = 1 + z²/n, the centre is c = (p + z²/(2n))/d and the half-width is h = z × √[p(1 − p)/n + z²/(4n²)]/d. Bounds are 100 × (c − h) and 100 × (c + h), bounded by 0 and 100. The whiskers extend from the observed x/n point to those endpoints and can be asymmetric.</p><p>These are model-based binomial intervals, not a forecast or lifetime measure. The percentage of recorded tests is known; for census-like administrative coverage, the bars concern an assumed repeat-sampling process, not uncertainty about that observed percentage. Repeated inspections and systematic differences are not represented.</p><p>Our imported TÜV percentages lack model/cohort numerator–denominator pairs; the total report inspection count cannot be assigned to each model. ADAC values are events per 1,000 registered vehicles, and 1,000 is a scaling unit, not the actual model sample size. Missing bars mean unavailable intervals, not zero uncertainty.</p><p><a href="https://tieto.traficom.fi/en/statistics/statistics-inspections">Traficom definitions</a> · <a href="https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm">NIST Wilson method</a></p>{interval_table}</details>
     <p>Separate charts match exact recorded age/cohort, source, report and observation year. Each chart shows up to 24 model-cohort rows, chosen independently by largest test sample. Points use failures divided by tests; error bars are 95% Wilson intervals. Counts are never pooled between charts. Narrow intervals describe sampling precision under a binomial model; repeated vehicles, maintenance, usage and selection bias remain outside those intervals. The app also offers two-year groups and age-panel selection.</p>
     <details><summary>Search all counted cohorts and their intervals</summary>{counts_table}</details></section>
+    <section id="rate-only"><h2>Age-grouped published rates: intervals unavailable</h2><p>The same horizontal point-plot format is available for TÜV, ADAC and other rate-only observations. Open points retain the published value and units, with no inferred error bars. Panels keep sources, reports and exact age/cohort contexts separate; each shows up to 24 rows sorted by rate. These are cohort comparisons, not manufacturer verdicts.</p>{rate_only_charts}</section>
     <section id="age"><h2>Example age profiles from one coverage block</h2>{age_profiles}
     <h3>Source-specific cohort evidence across ages</h3>{"".join(age_heatmaps)}<p>Heatmaps show up to 30 model series alphabetically, not a general best-to-worst list. Each cell retains its source-cohort peer comparison. Red means a less favourable percentile, teal more favourable, and grey no score. Hover for the raw rate. The app supports search and other descriptive row orderings.</p>
     <p>Each point is a published age or registration cohort. Lines connect different cars and can span model generations; they do not track individual vehicles ageing. Source-specific vertical scales preserve percentages and breakdowns per 1,000 vehicles.</p></section>

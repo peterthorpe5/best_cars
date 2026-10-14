@@ -1,6 +1,6 @@
 # Best Cars — reliability evidence explorer
 
-An interactive **Streamlit** app and reproducible Python pipeline for comparing car reliability evidence. Version 3.1 includes a richer offline HTML report, current public MOT file support and a safer Mac update workflow. It includes model search, shortlists, comparisons, age/mileage graphics, source disagreement, safety context, provenance and expandable methods help.
+An interactive **Streamlit** app and reproducible Python pipeline for comparing car reliability evidence. Version 3.2 includes a richer offline HTML report, current public MOT file support and a safer Mac update workflow. It includes model search, shortlists, comparisons, age/mileage graphics, source disagreement, safety context, provenance and expandable methods help.
 
 Mac installation and overlay instructions are in [docs/MAC_INSTALL.md](docs/MAC_INSTALL.md). Saved-data browsing does not import PDF/native cryptography dependencies. ADAC PDF acquisition is an optional `pdf` extra.
 
@@ -16,7 +16,7 @@ conda create --name best_cars python=3.11 pip -y
 conda activate best_cars
 python -m pip install -e '.[dev]'
 best-cars-app \
-  --data-dir "$HOME/Downloads/best_cars_upgrade_20261012_v24/verified_data" \
+  --data-dir "$HOME/Downloads/best_cars_upgrade_20261013_v32/verified_data" \
   --server-port 8501
 ```
 
@@ -62,6 +62,18 @@ The verified 12 October 2026 dataset contains **8,924 reliability observations**
 The **2026 ADAC and TÜV summaries are published**, but complete accessible model-level numeric feeds were not verified for those editions. The default uses the actual accessible 2025 ADAC PDF and existing TÜV 2024/2025 tables, alongside newer Traficom data. It does not pass off older tables or selective winners as complete 2026 results.
 
 The UK recall service was inaccessible from the build environment; the app provides its direct check link without claiming a downloaded UK recall database. Which?, What Car? and Consumer Reports remain documented restricted/selective candidates, without invented rows or claimed bulk integrations. See [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md).
+
+## Source rates and interval bars
+
+Version 3.2 explains Traficom's actual failure/test fields, the 95% Wilson
+calculation, its assumptions and a worked example from loaded counts. **Deeper
+analysis** and **Compare cars → Rates and intervals** provide the help and source
+links, plus an interval-availability table. Age-separated horizontal point plots
+are now available for TÜV and ADAC too: open markers retain published rates
+without inventing denominator counts or error bars. Solid inspection points use
+actual counts and Wilson intervals. The offline report includes these views.
+
+See [Interval methods](docs/INTERVALS_AND_RATE_PLOTS.md).
 
 ## Compare one model or several
 

@@ -12,7 +12,7 @@ interpretation box and an interactive HTML download; tables export TSV and Excel
 | Age profiles | How do published rates vary across vehicle ages? | Each source has its own units and panel. Raw rates are the default; original peer percentiles are optional. Report years have separate line styles. |
 | Same-age peers | Does this model perform better than its contemporaries? | Negative bars mean a lower rate than the median of other models in the exact published cohort. This is descriptive, not a significance test. |
 | Matched models | How do two models compare on genuinely shared recorded contexts? | Choose a reference. Each point pairs source, report, observation year, outcome, age and registration bounds. Below the diagonal favours the compared model. |
-| Count uncertainty | How precise are the inspection estimates? | Separate panels match exact published age/cohort, source and report by default. Optional two-year groups retain nearby ages without pooling counts. Points use actual failures divided by tests, with 95% Wilson intervals. Published rounded rates are retained on hover. Unknown denominators have no invented intervals. |
+| Rates and intervals | How precise are the inspection estimates? | Separate panels match exact published age/cohort, source and report by default. Optional two-year groups retain nearby ages without pooling counts. Points use actual failures divided by tests, with 95% Wilson intervals. Published rounded rates are retained on hover. Unknown denominators have no invented intervals. |
 | Evidence coverage | Which observations and counts are available? | Grey: no row under current filters. Gold: rate only. Teal: rate with numerator and denominator; n means tests for that cell, not unique vehicles. |
 | Across years | Does the published picture change between observation years? | Hold the age band or the recorded registration cohort constant. Only series with at least two observation years are plotted. |
 
@@ -82,3 +82,6 @@ them as exactly matched. Wide source age bands stay intact. Mixed-age charts
 remain an explicit exploratory option. Sources, reports and observation years
 are separated in every mode. No counts are combined and no existing interval
 is recalculated by grouping.
+
+Version 3.2 adds age-separated published-rate points for every source and expanded
+source/count/interval help. See [INTERVALS_AND_RATE_PLOTS.md](INTERVALS_AND_RATE_PLOTS.md).

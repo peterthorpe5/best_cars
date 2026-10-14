@@ -1,7 +1,9 @@
 """Exercise expanded comparison views, historical context and missing evidence."""
 
+import json
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 from streamlit.testing.v1 import AppTest
 
@@ -32,6 +34,8 @@ def test_comparison_tabs_single_model_history_and_matched_reference(
     app = AppTest.from_file(script_path=APP, default_timeout=45).run()
     app.radio(key="page").set_value(v="Compare cars").run()
     assert len(app.tabs) == 6 and not app.exception
+    example = app.selectbox(key="comparison_interval_help_example")
+    example.select_index(index=len(example.options) - 1).run()
     app.multiselect(key="compare_models").set_value(v=["toyota:test0"]).run()
     assert not app.exception and app.multiselect(key="comparison_time_series").options
     assert any("two ungrouped" in item.value for item in app.info)
@@ -102,3 +106,65 @@ def test_empty_shared_support_retains_coverage_and_historical_explanation(
     assert not app.exception and any(
         "comparison chart filters" in item.value for item in app.info
     )
+
+
+def test_source_rate_plots_help_counts_and_rate_only_markers(
+    evidence, tmp_path, monkeypatch
+):
+    traficom = evidence.loc[evidence.source_id.eq("tuv")].assign(
+        source_id="traficom", source_name="Traficom inspections", country="Finland"
+    )
+    evidence.loc[evidence.source_id.eq("tuv"), ["sample_size", "event_count"]] = np.nan
+    save_snapshot(
+        directory=tmp_path,
+        evidence=pd.concat(objs=[evidence, traficom]),
+        events=empty_events(),
+    )
+    monkeypatch.setenv("BEST_CARS_DATA_DIR", str(tmp_path))
+    app = AppTest.from_file(script_path=APP, default_timeout=60).run()
+    app.radio(key="page").set_value(v="Deeper analysis").run()
+    assert not app.exception
+    assert app.selectbox(key="deep_published_rates_source").value == "tuv"
+    assert any("Number of periodic inspections" in item.value for item in app.markdown)
+    assert any("not the actual sample size" in item.value for item in app.markdown)
+    assert any(
+        "x =" in item.value and "Wilson interval" in item.value for item in app.markdown
+    )
+    charts = [
+        chart
+        for chart in app.get("plotly_chart")
+        if chart.key.startswith("deep_published_rates_")
+    ]
+    assert len(charts) == 2
+    assert all(
+        trace["marker"]["symbol"] == "circle-open" and "error_x" not in trace
+        for chart in charts
+        for trace in json.loads(chart.proto.spec)["data"]
+    )
+    app.text_input(key="deep_published_rates_query").set_value(v="Test0").run()
+    app.selectbox(key="deep_published_rates_order").set_value(v="sample_size").run()
+    app.checkbox(key="deep_published_rates_ascending").set_value(v=False).run()
+    app.selectbox(key="deep_published_rates_colour").set_value(v="uniform").run()
+    app.selectbox(key="deep_published_rates_source").set_value(v="adac").run()
+    assert not app.exception
+    app.selectbox(key="deep_published_rates_source").set_value(v="traficom").run()
+    charts = [
+        chart
+        for chart in app.get("plotly_chart")
+        if chart.key.startswith("deep_published_rates_")
+    ]
+    assert all(
+        trace["marker"]["symbol"] == "circle" and "error_x" in trace
+        for chart in charts
+        for trace in json.loads(chart.proto.spec)["data"]
+    )
+    app.text_input(key="deep_published_rates_query").set_value(v="absent_model").run()
+    assert not app.exception and any(
+        "make/model search" in item.value for item in app.info
+    )
+    app.radio(key="page").set_value(v="Compare cars").run()
+    app.selectbox(key="comparison_published_rates_source").set_value(v="tuv").run()
+    assert not app.exception and app.tabs[3].label == "Rates and intervals"
+    app.radio(key="page").set_value(v="Data sources and fault definitions").run()
+    app.checkbox(key="source_interval_explanation").set_value(v=True).run()
+    assert not app.exception

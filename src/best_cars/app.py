@@ -34,6 +34,7 @@ from best_cars.comparison_charts import (
     evidence_coverage_chart,
     matched_rate_chart,
     peer_gap_chart,
+    source_rate_chart,
     temporal_chart,
 )
 from best_cars.fairness import (
@@ -51,6 +52,7 @@ from best_cars.interrogation import (
     source_omission_sensitivity,
     weighting_scenarios,
 )
+from best_cars.interval_evidence import source_interval_availability, source_rate_points
 from best_cars.pipeline import nhtsa_lookup, refresh_sources
 from best_cars.propulsion import propulsion_catalogue, select_propulsion
 from best_cars.repair_costs import repair_budget, repair_references
@@ -827,7 +829,7 @@ def comparison_visualisations(
             "Age profiles",
             "Same-age peers",
             "Matched models",
-            "Count uncertainty",
+            "Rates and intervals",
             "Evidence coverage",
             "Across years",
         ]
@@ -897,6 +899,8 @@ def comparison_visualisations(
                 key="comparison_matched_table",
             )
     with tabs[3]:
+        show_interval_method_help(evidence=rows, key="comparison_interval_help")
+        show_source_rate_panels(evidence=rows, key="comparison_published_rates")
         counted = counted_failure_rates(evidence=rows)
         if counted.empty:
             st.info(
@@ -1013,6 +1017,191 @@ def comparison_visualisations(
                     name="comparison_historical_profiles",
                     key="comparison_history_table",
                 )
+
+
+def show_interval_method_help(*, evidence: pd.DataFrame, key: str) -> None:
+    """Explain source counts, Wilson calculations and unsupported intervals.
+
+    Args:
+        evidence: Selected original observations with provenance and counts.
+        key: Unique widget/download prefix for the containing page.
+    """
+    with st.expander(label="? Where do the points and interval bars come from?"):
+        st.markdown(
+            body="**Traficom** is Finland's official transport authority. Its Transport Register supplies periodic-inspection outcomes. Our API import reads **Number of periodic inspections** as n and **Failed** as x, for each model, registration year and inspection year. An inspection can fail on roadworthiness faults; this is not a count of every repair or a count of individual defect items. A car can appear in more than one inspection."
+        )
+        st.link_button(
+            label="Traficom's official data and statistical definitions",
+            url="https://tieto.traficom.fi/en/statistics/statistics-inspections",
+        )
+        st.markdown(
+            body="**The point is 100 × x/n.** We retain the source's rounded published percentage for comparison. **The bars are calculated by this app**, using a two-sided 95% Wilson score interval with z = 1.959963984540054, no continuity correction. We calculate a separate interval for each recorded count pair; grouping does not pool counts."
+        )
+        st.latex(body=r"\hat p = x/n,\quad d=1+z^2/n,\quad c=(\hat p+z^2/(2n))/d")
+        st.latex(
+            body=r"h=\frac{z\sqrt{\hat p(1-\hat p)/n+z^2/(4n^2)}}{d},\quad [L,U]=100[c-h,c+h]"
+        )
+        st.link_button(
+            label="NIST reference: Wilson intervals for proportions",
+            url="https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+        )
+        st.markdown(
+            body="**Interpretation:** the interval describes binomial repeat-sampling uncertainty under independent, comparable test outcomes. It is not a 95% probability that a particular car will fail, a prediction interval for next year's rate, or an engine-lifetime estimate. The observed percentage itself is known from the recorded tests. For near-complete administrative coverage, these model-based bars are not uncertainty about the observed census percentage. Repeat inspections, maintenance, model variants, selection and systematic differences remain outside them. Overlapping bars alone are not a formal test of differences."
+        )
+        st.markdown(
+            body="**TÜV:** our imported Car-Recalls.eu summaries report significant-defect percentages and odometer summaries but no model/age numerator–denominator pairs. The report's total inspection count cannot be assigned to each model. **ADAC:** published rates are attended breakdown events per 1,000 registered vehicles; the imported model exposure and event counts are unavailable. The value 1,000 is a scaling unit, not the actual sample size. Both sources can have rate plots, but these imports cannot support Wilson bars. **MOT:** genuine imported initial failure/test counts can support Wilson intervals automatically."
+        )
+        show_table(
+            frame=source_interval_availability(evidence=evidence),
+            name="interval_availability",
+            key=f"{key}_availability",
+        )
+        st.caption(
+            body="Availability counts above are observation rows, not vehicle or test denominators. Open points mean a published rate without a calculable interval, not a zero-width interval or evidence of perfect reliability."
+        )
+        counted = counted_failure_rates(evidence=evidence).reset_index(drop=True)
+        if not counted.empty:
+            examples = {
+                repr(
+                    (
+                        row.source_id,
+                        int(row.report_year),
+                        int(row.observation_year),
+                        row.comparison_group,
+                        row.model_id,
+                        row.metric,
+                    )
+                ): row
+                for row in counted.itertuples()
+            }
+            labels = {
+                identifier: f"{row.make} {row.model} · age {row.age_min:g}–{row.age_max:g} · {row.source_name} · observations {int(row.observation_year)}"
+                for identifier, row in examples.items()
+            }
+            preferred = [
+                identifier
+                for identifier, row in examples.items()
+                if row.model_id == "volkswagen:t roc" and row.age_min == 4
+            ]
+            example_key = f"{key}_example"
+            if st.session_state.get(example_key) not in examples:
+                st.session_state[example_key] = (
+                    preferred[0] if preferred else next(iter(examples))
+                )
+            chosen = st.selectbox(
+                label="Worked example from the actual loaded counts",
+                options=list(examples),
+                index=None,
+                format_func=lambda identifier: labels.get(identifier, identifier),
+                key=example_key,
+            )
+            row = examples[chosen]
+            st.write(
+                f"x = {int(row.event_count):,} failed tests; n = {int(row.sample_size):,} tests. The plotted rate is {row.counted_rate_pct:.4f}% (published: {row.value:g}%). The calculated 95% Wilson interval is {row.wilson_lower_pct:.4f}–{row.wilson_upper_pct:.4f}%. The left whisker spans {row.counted_rate_pct - row.wilson_lower_pct:.4f} percentage points and the right spans {row.wilson_upper_pct - row.counted_rate_pct:.4f}; Wilson bars can be asymmetric."
+            )
+            st.link_button(
+                label="Original source for this worked example", url=str(row.source_url)
+            )
+
+
+def show_source_rate_panels(*, evidence: pd.DataFrame, key: str) -> None:
+    """Plot original source rates by age, retaining honest interval availability.
+
+    Args:
+        evidence: Current page-filtered canonical observations.
+        key: Unique source, make, age-panel and chart widget prefix.
+    """
+    if evidence.empty:
+        st.info(body="No published rate observations match these filters.")
+        return
+    options = sorted(evidence.source_id.unique())
+    source = st.selectbox(
+        label="Source for age-grouped rate plots",
+        options=options,
+        index=options.index("tuv") if "tuv" in options else 0,
+        format_func=lambda value: SOURCE_NAMES.get(value, value),
+        key=f"{key}_source",
+    )
+    rows = evidence.loc[evidence.source_id.eq(source)].copy()
+    makes = st.multiselect(
+        label="Makes in these source-rate plots",
+        options=sorted(rows.make.unique()),
+        key=f"{key}_makes",
+    )
+    query = st.text_input(label="Search these source-rate plots", key=f"{key}_query")
+    if makes:
+        rows = rows.loc[rows.make.isin(makes)]
+    if query:
+        rows = rows.loc[
+            (rows.make + " " + rows.model).str.contains(
+                pat=query, case=False, regex=False
+            )
+        ]
+    limit = st.number_input(
+        label="Models per published-rate age chart",
+        min_value=1,
+        max_value=max(24, len(rows)),
+        value=24,
+        key=f"{key}_limit",
+    )
+    order = st.selectbox(
+        label="Published-rate chart ordering",
+        options=["point_rate", "make", "sample_size", "original"],
+        format_func=lambda value: {
+            "point_rate": "Observed rate",
+            "make": "Make",
+            "sample_size": "Known test count",
+            "original": "Original row order",
+        }[value],
+        key=f"{key}_order",
+    )
+    ascending = st.checkbox(
+        label="Sort published-rate charts ascending", value=True, key=f"{key}_ascending"
+    )
+    colour = st.selectbox(
+        label="Published-rate chart colours",
+        options=["make", "uniform"],
+        format_func=lambda value: "Make" if value == "make" else "One colour",
+        key=f"{key}_colour",
+    )
+    if order == "sample_size" and rows.sample_size.isna().all():
+        st.caption(
+            body="This selection has no published model-level test counts; test-count sorting retains original row order."
+        )
+    panels = wilson_age_groups(counted=rows, grouping="exact")
+    signature = tuple(panels)
+    if st.session_state.get(f"{key}_signature") != signature:
+        st.session_state[f"{key}_panels"] = list(panels)
+        st.session_state[f"{key}_signature"] = signature
+    selected = st.multiselect(
+        label="Published-rate age panels to display",
+        options=list(panels),
+        key=f"{key}_panels",
+    )
+    st.caption(
+        body="Open points: published rate, interval unavailable. Solid points with whiskers: actual failed/test counts and calculated 95% Wilson bounds. Missing bars indicate unavailable intervals. Each panel keeps its source, report, outcome and age/cohort separate; make colours do not indicate good or bad reliability."
+    )
+    if not panels:
+        st.info(body="No source-rate observations match this make/model search.")
+    for index, label in enumerate(selected):
+        st.markdown(body=f"**{label}**")
+        show_chart(
+            figure=source_rate_chart(
+                evidence=panels[label],
+                top_n=int(limit),
+                sort_by=order,
+                ascending=ascending,
+                colour_by=colour,
+            ),
+            key=f"{key}_{index}",
+            explanation="The horizontal coordinate is the source's rate in its own units, not a combined score. TÜV points describe significant inspection-defect percentages; ADAC points describe breakdown events per 1,000 registered vehicles. Counted inspection points use actual failed tests / tests. Error bars appear only when the imported numerator and denominator support a Wilson interval. No sample sizes are inferred from rates, overall report totals, mileage, fleet thresholds or scaling units. Lower rates are favourable within the specified outcome and cohort.",
+        )
+    with st.expander(label="Rates, interval status and source links for these panels"):
+        show_table(
+            frame=source_rate_points(evidence=rows),
+            name="published_rate_points",
+            key=f"{key}_table",
+        )
 
 
 def show_wilson_panels(
@@ -1608,6 +1797,7 @@ def deeper_analysis_page(
         key="deep_statistics",
     )
     st.subheader(body="Actual failure counts and sampling uncertainty")
+    show_interval_method_help(evidence=scored, key="deep_interval_help")
     counted = counted_failure_rates(evidence=scored)
     count_sources = st.multiselect(
         label="Wilson chart sources",
@@ -1704,6 +1894,8 @@ def deeper_analysis_page(
         show_table(
             frame=counted, name="counted_failure_intervals", key="deep_count_table"
         )
+    st.subheader(body="Published rates by age — TÜV, ADAC and other sources")
+    show_source_rate_panels(evidence=scored, key="deep_published_rates")
     st.subheader(body="How dependent is the ranking on one source?")
     spread_colour = st.selectbox(
         label="Score disagreement colours",
@@ -2164,6 +2356,13 @@ def source_information_page() -> None:
         key="source_definition",
     )
     guide = SOURCE_GUIDE[source]
+    if st.checkbox(
+        label="Explain interval bars and denominator availability",
+        key="source_interval_explanation",
+    ):
+        st.info(
+            body="Open Deeper analysis or Compare cars → Rates and intervals, then expand ‘Where do the points and interval bars come from?’ for the exact source fields, calculation, assumptions and a worked example from loaded counts."
+        )
     st.subheader(body="What the number measures")
     st.write(guide["meaning"])
     with st.expander(label="? What counts as a fault?", expanded=True):

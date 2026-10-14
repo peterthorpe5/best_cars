@@ -1,4 +1,4 @@
-# Mac update and launch — version 3.1
+# Mac update and launch — version 3.2
 
 These commands use your existing Miniforge environment and this checkout:
 `/Users/PThorpe001/github_repos/best_cars`.
@@ -11,13 +11,13 @@ and an already partly/applied previous upgrade; it does not run `git apply`.
 
 ## 1. Extract the new package
 
-Extract `best_cars_upgrade_20261013_v31.zip` with Finder. Check that Downloads
-contains `best_cars_upgrade_20261013_v31/UPDATE_FILES.tsv` and `overlay/`.
+Extract `best_cars_upgrade_20261013_v32.zip` with Finder. Check that Downloads
+contains `best_cars_upgrade_20261013_v32/UPDATE_FILES.tsv` and `overlay/`.
 Set these variables in the Terminal where you will run the following commands:
 
 ```bash
 conda activate best_cars
-CAR_UPDATE_DIR="$HOME/Downloads/best_cars_upgrade_20261013_v31"
+CAR_UPDATE_DIR="$HOME/Downloads/best_cars_upgrade_20261013_v32"
 CAR_REPO_DIR="/Users/PThorpe001/github_repos/best_cars"
 ```
 
@@ -64,23 +64,35 @@ python -m pip check
 python -c "import best_cars; print(best_cars.__version__); print(best_cars.__file__)"
 ```
 
-Expect `3.1.0` and a module path under
+Expect `3.2.0` and a module path under
 `/Users/PThorpe001/github_repos/best_cars/src/best_cars/`.
 
-## 5. Launch using the supplied actual data
+## 5. Launch using your existing data folder
+
+Before stopping your current app, note the **Data folder** shown in Data management.
+Keep using that folder after this code update, especially if you imported MOT data
+or refreshed sources. The overlay updates code; it does not replace external data.
+The example below assumes you used the previous v3.1 launch instructions. If your
+Data management page shows another location, change CAR_DATA_DIR to that location.
 
 ```bash
+CAR_DATA_DIR="$HOME/Downloads/best_cars_upgrade_20261013_v31/verified_data"
 best-cars-app \
-  --data-dir "$CAR_UPDATE_DIR/verified_data" \
+  --data-dir "$CAR_DATA_DIR" \
   --server-port 8501
 ```
+
+For a first installation with no existing dataset, set
+`CAR_DATA_DIR="$CAR_UPDATE_DIR/verified_data"` before launching instead.
+The bundled snapshot does not include UK MOT records; retain your existing folder
+to preserve any MOT imports or newer local refreshes.
 
 Open http://127.0.0.1:8501. If the port is occupied, stop your earlier app with
 Ctrl+C or choose `--server-port 8502`. Browsing saved data does not import
 `pdfplumber`, `pdfminer` or their native cryptography dependency. The HTML
 report also opens directly without Python.
 
-Keep the supplied data folder available while using this path. To store it
+Keep your selected data folder available while using this path. To store it
 outside Downloads, copy `verified_data/` to a durable data directory and pass
 that directory to `--data-dir`; avoid overwriting a different existing snapshot
 directory. App startup does not download new source files.
