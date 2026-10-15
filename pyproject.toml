@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "best-cars"
-version = "3.2.0"
+version = "3.3.0"
 description = "An evidence-led car reliability explorer and reproducible data pipeline"
 readme = "README.md"
 requires-python = ">=3.11"

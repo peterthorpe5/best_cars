@@ -17,7 +17,7 @@ def test_report_html_includes_real_coverage_and_explanations(evidence):
     assert "plotly" in content.lower()
     assert "<script src=" not in content
     soup = BeautifulSoup(markup=content, features="html.parser")
-    assert len(soup.select(".plotly-graph-div")) == 18
+    assert len(soup.select(".plotly-graph-div")) == 19
     assert soup.select_one("#interval-availability table") is not None
     assert soup.select_one("#rate-only") is not None
     assert "1,000 is a scaling unit" in soup.get_text()

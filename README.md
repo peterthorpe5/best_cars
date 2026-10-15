@@ -1,6 +1,6 @@
 # Best Cars — reliability evidence explorer
 
-An interactive **Streamlit** app and reproducible Python pipeline for comparing car reliability evidence. Version 3.2 includes a richer offline HTML report, current public MOT file support and a safer Mac update workflow. It includes model search, shortlists, comparisons, age/mileage graphics, source disagreement, safety context, provenance and expandable methods help.
+An interactive **Streamlit** app and reproducible Python pipeline for comparing car reliability evidence. Version 3.3 corrects diagnostic eligibility and comparison-group handling, improves chart colours and labels, and adds age-separated horizontal distributions and a rank matrix. It includes model search, shortlists, comparisons, age/mileage graphics, source disagreement, safety context, provenance and expandable methods help.
 
 Mac installation and overlay instructions are in [docs/MAC_INSTALL.md](docs/MAC_INSTALL.md). Saved-data browsing does not import PDF/native cryptography dependencies. ADAC PDF acquisition is an optional `pdf` extra.
 
@@ -16,7 +16,7 @@ conda create --name best_cars python=3.11 pip -y
 conda activate best_cars
 python -m pip install -e '.[dev]'
 best-cars-app \
-  --data-dir "$HOME/Downloads/best_cars_upgrade_20261013_v32/verified_data" \
+  --data-dir "$HOME/Downloads/best_cars_upgrade_20261014_v33/verified_data" \
   --server-port 8501
 ```
 
@@ -110,6 +110,12 @@ chart limits, stable make colours, optional score-sized scatter markers,
 Wilson-chart cohort/model/age filtering and sorting, and expanded weighting
 sensitivity controls. It fixes missing-value dashes drawn over observed heatmap
 numbers. See [docs/CHART_CONTROLS.md](docs/CHART_CONTROLS.md).
+
+Version 3.3 adds an explicit comparison-group selector and rank matrix for
+weighting sensitivity, excludes single-source profiles from disagreement plots,
+and aligns rate distributions by published age. Make highlighting retains
+competitors while muting other colours. See the
+[visual review and interpretation guide](docs/VISUAL_REVIEW_V33.md).
 
 Version 2.3 added explicit score-versus-published-rate heatmaps, same-cohort peer
 median gaps, visual weighting-scenario sensitivity and a dedicated **Electric

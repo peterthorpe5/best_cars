@@ -54,3 +54,14 @@ Very large selections can make legends and plots dense; use make/model filters,
 legend toggles and downloadable charts/tables to focus the inspection.
 Heatmap colours continue to represent scores or rates; manufacturer colouring
 is deliberately reserved for charts where it preserves that meaning.
+# Version 3.3 additions
+
+Make colours now use curated assignments shared across views. Ranking bars,
+published-rate panels and Deeper analysis Wilson plots support highlighting
+without removing competitors. Labels remain horizontal and rates are printed
+beside points. See [VISUAL_REVIEW_V33.md](VISUAL_REVIEW_V33.md) for interpretation.
+
+Weighting sensitivity selects one comparison group, defaults to a rank matrix,
+and is unavailable for single-source selections. Between-source disagreement
+omits single-source models. Horizontal rate distributions separate published
+ages by default; pooling ages requires an explicit checkbox change.

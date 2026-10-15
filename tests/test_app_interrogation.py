@@ -168,6 +168,7 @@ def test_ranking_wilson_and_scenario_visual_controls(running_app):
     app.selectbox(key="find_colour").set_value(v="make").run()
     assert not app.exception
     app.radio(key="page").set_value(v="Deeper analysis").run()
+    app.selectbox(key="deep_scenario_layout").set_value(v="lines").run()
     app.number_input(key="deep_scenario_count").set_value(v=6)
     app.selectbox(key="deep_scenario_colour").set_value(v="make")
     app.checkbox(key="deep_scenario_size").set_value(v=True).run()

@@ -5,7 +5,13 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-from best_cars.charts import PALETTE, SOURCE_NAMES, _make_colours, style_figure
+from best_cars.charts import (
+    PALETTE,
+    SOURCE_NAMES,
+    _make_colours,
+    _rate_axis_title,
+    style_figure,
+)
 from best_cars.interrogation import MATCH_KEYS
 from best_cars.interval_evidence import source_rate_points
 
@@ -372,6 +378,7 @@ def source_rate_chart(
     sort_by: str = "point_rate",
     ascending: bool = True,
     colour_by: str = "make",
+    highlight_makes: list[str] | None = None,
 ) -> go.Figure:
     """Plot one source/report's age-panel rates with available count intervals.
 
@@ -381,6 +388,7 @@ def source_rate_chart(
         sort_by: Point rate, sample size, age, make or original input order.
         ascending: Direction of the within-panel ordering.
         colour_by: Make colours or one uniform colour.
+        highlight_makes: Keep these makes coloured and mute other competitors.
 
     Returns:
         Horizontal rate points. Solid points have actual-count Wilson intervals;
@@ -414,14 +422,28 @@ def source_rate_chart(
             by=sort_by, ascending=ascending, kind="stable", na_position="last"
         )
     frame = frame.head(n=top_n)
+    same_age = all(
+        frame[column].nunique(dropna=False) == 1
+        for column in ["age_min", "age_max", "comparison_group"]
+    )
     frame["label"] = [
-        f"{row.make} {row.model} · age {row.age_min:g}–{row.age_max:g}"
+        f"{row.make} {row.model}"
+        + ("" if same_age else f" · age {row.age_min:g}–{row.age_max:g}")
         for row in frame.itertuples()
     ]
     frame["has_interval"] = frame.interval_lower.notna()
-    colours = _make_colours(makes=frame.make.tolist())
+    colours = _make_colours(makes=frame.make.tolist(), highlight_makes=highlight_makes)
     figure = go.Figure()
-    for (make, known), rows in frame.groupby(by=["make", "has_interval"], sort=False):
+    groups = (
+        list(frame.groupby(by=["make", "has_interval"], sort=False))
+        if colour_by == "make"
+        else [
+            (("Inspection rate" if known else "Published rate", known), rows)
+            for known, rows in frame.groupby(by="has_interval", sort=False)
+        ]
+    )
+    mixed_intervals = frame.has_interval.nunique() > 1
+    for (make, known), rows in groups:
         details = [
             f"Published rate: {row.value:g}<br>Point basis: {row.point_basis}"
             + (
@@ -446,12 +468,26 @@ def source_rate_chart(
             go.Scatter(
                 x=rows.point_rate,
                 y=rows.label,
-                mode="markers",
-                name=f"{make} · {'95% Wilson' if known else 'rate only'}",
+                mode="markers+text",
+                text=[
+                    f"{value:.1f}" + ("%" if rows.unit.iloc[0] == "percent" else "")
+                    for value in rows.point_rate
+                ],
+                textposition="middle right",
+                textfont={"size": 11, "color": "#243746"},
+                cliponaxis=False,
+                name=make
+                + (
+                    f" · {'95% Wilson' if known else 'rate only'}"
+                    if mixed_intervals
+                    else ""
+                ),
+                showlegend=colour_by == "make" or mixed_intervals,
                 marker={
                     "color": colours[make] if colour_by == "make" else PALETTE[0],
-                    "size": 9,
+                    "size": 11,
                     "symbol": "circle" if known else "circle-open",
+                    "line": {"width": 2},
                 },
                 error_x=interval,
                 customdata=details,
@@ -459,12 +495,9 @@ def source_rate_chart(
             )
         )
     row = frame.iloc[0]
-    unit = (
-        "Inspection outcome (%)"
-        if row.unit == "percent"
-        else "Breakdown events per 1,000 registered vehicles"
-    )
-    figure.update_xaxes(title_text=unit, rangemode="tozero")
+    unit = _rate_axis_title(source_id=row.source_id, unit=row.unit)
+    maximum = float(frame.interval_upper.fillna(value=frame.point_rate).max())
+    figure.update_xaxes(title_text=unit, range=[0, max(0.2, maximum * 1.12)])
     figure.update_yaxes(
         type="category",
         autorange="reversed",
@@ -476,8 +509,14 @@ def source_rate_chart(
         if frame.has_interval.any()
         else "published rates · interval unavailable"
     )
+    age = (
+        str(int(row.age_min))
+        if row.age_min == row.age_max
+        else f"{row.age_min:g}–{row.age_max:g}"
+    )
+    age_context = f" · age {age}" if same_age else ""
     return style_figure(
         figure=figure,
-        title=f"{SOURCE_NAMES.get(row.source_id, row.source_name)} · report {int(row.report_year)} · {suffix}",
-        height=max(420, len(frame) * 27 + 110),
+        title=f"{SOURCE_NAMES.get(row.source_id, row.source_name)}{age_context} · report {int(row.report_year)} · {suffix}",
+        height=max(420, len(frame) * 32 + 130),
     )

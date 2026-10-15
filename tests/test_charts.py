@@ -63,7 +63,7 @@ def test_mileage_requires_comparable_odometer_measurements(evidence):
 
 def test_distribution_panels_preserve_units_and_show_mean(evidence):
     figure = rate_distribution_chart(evidence=evidence)
-    assert len(figure.data) == 2
+    assert len(figure.data) == 4  # Two published ages in each source.
     assert all(trace.boxmean is True for trace in figure.data)
     assert figure.layout.yaxis.matches is None
     assert figure.layout.yaxis2.matches is None
@@ -92,7 +92,8 @@ def test_score_spread_keeps_all_models_and_source_metadata(evidence):
     figure = score_spread_chart(ranking=ranking)
     assert sum(len(trace.x) for trace in figure.data) == len(ranking)
     assert figure.layout.xaxis.range == (-2, 102)
-    assert figure.layout.yaxis.range == (-2, 102)
+    assert figure.layout.yaxis.range[0] < 0
+    assert figure.layout.yaxis.range[1] >= ranking.score_spread.max()
     assert not score_spread_chart(ranking=ranking.iloc[:0]).data
 
 

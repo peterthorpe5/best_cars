@@ -213,6 +213,34 @@ def show_chart(*, figure, explanation: str, key: str) -> None:
     )
 
 
+def make_highlights(
+    *, makes: list[str], label: str, key: str, enabled: bool
+) -> list[str]:
+    """Select display highlights while removing stale make selections.
+
+    Args:
+        makes: Makes available under the current chart filters.
+        label: Human-readable control label.
+        key: Unique widget identifier.
+        enabled: Whether the chart currently uses make colours.
+
+    Returns:
+        Selected available makes; this does not filter evidence or ranks.
+    """
+    available = sorted(set(makes))
+    current = st.session_state.get(key, [])
+    valid = [make for make in current if make in available]
+    if valid != current:
+        st.session_state[key] = valid
+    return st.multiselect(
+        label=label,
+        options=available,
+        key=key,
+        disabled=not enabled,
+        help="Choose Make colours to highlight manufacturers. Other competitors remain visible in grey; values and ranks do not change.",
+    )
+
+
 def sidebar_filters(
     *, evidence: pd.DataFrame
 ) -> tuple[pd.DataFrame, dict[str, float], int, int]:
@@ -550,9 +578,21 @@ def find_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
             ),
             key="find_colour",
         )
+        highlights = make_highlights(
+            label="Highlight makes without removing competitors",
+            makes=displayed.make.tolist(),
+            key="find_highlight_makes",
+            enabled=rank_colour == "make",
+        )
+        st.caption(
+            body="These are relative index scores, not percentages of reliable cars. A score of 99.6 does not mean a 99.6% chance of reliability. Make colours identify manufacturers, not better or worse outcomes."
+        )
         show_chart(
             figure=ranking_chart(
-                ranking=displayed, top_n=int(top_n), colour_by=rank_colour
+                ranking=displayed,
+                top_n=int(top_n),
+                colour_by=rank_colour,
+                highlight_makes=highlights,
             ),
             key="find_rank",
             explanation="Scores retain the full original peer cohort even when you search one make. Source count, cohort count, worst cohort and available weight help you judge breadth. Two scores based on different source sets may have different meanings.",
@@ -1164,6 +1204,12 @@ def show_source_rate_panels(*, evidence: pd.DataFrame, key: str) -> None:
         format_func=lambda value: "Make" if value == "make" else "One colour",
         key=f"{key}_colour",
     )
+    highlights = make_highlights(
+        label="Highlight published-rate makes",
+        makes=rows.make.tolist(),
+        key=f"{key}_highlight",
+        enabled=colour == "make",
+    )
     if order == "sample_size" and rows.sample_size.isna().all():
         st.caption(
             body="This selection has no published model-level test counts; test-count sorting retains original row order."
@@ -1192,6 +1238,7 @@ def show_source_rate_panels(*, evidence: pd.DataFrame, key: str) -> None:
                 sort_by=order,
                 ascending=ascending,
                 colour_by=colour,
+                highlight_makes=highlights,
             ),
             key=f"{key}_{index}",
             explanation="The horizontal coordinate is the source's rate in its own units, not a combined score. TÜV points describe significant inspection-defect percentages; ADAC points describe breakdown events per 1,000 registered vehicles. Counted inspection points use actual failed tests / tests. Error bars appear only when the imported numerator and denominator support a Wilson interval. No sample sizes are inferred from rates, overall report totals, mileage, fleet thresholds or scaling units. Lower rates are favourable within the specified outcome and cohort.",
@@ -1212,6 +1259,7 @@ def show_wilson_panels(
     ascending: bool,
     colour_by: str,
     key: str,
+    highlight_makes: list[str] | None = None,
 ) -> None:
     """Display independently sorted Wilson charts for selected age groups.
 
@@ -1222,6 +1270,7 @@ def show_wilson_panels(
         ascending: Ascending or descending ordering within every panel.
         colour_by: Uniform or make colours.
         key: Unique widget/chart key prefix for the containing app view.
+        highlight_makes: Emphasise selected makes while retaining competitors.
     """
     grouping = st.selectbox(
         label="Group Wilson charts by age",
@@ -1266,6 +1315,7 @@ def show_wilson_panels(
             sort_by=sort_by,
             ascending=ascending,
             colour_by=colour_by,
+            highlight_makes=highlight_makes,
         )
         first = rows.iloc[0]
         low, high = int(rows.age_min.min()), int(rows.age_max.max())
@@ -1584,6 +1634,156 @@ def agreement_page(*, scored: pd.DataFrame, ranking: pd.DataFrame) -> None:
         )
 
 
+def show_weighting_sensitivity(
+    *, scored: pd.DataFrame, ranking: pd.DataFrame, min_sources: int, min_cohorts: int
+) -> None:
+    """Explore preset ranks within one explicitly selected coverage group.
+
+    Args:
+        scored: Current evidence with original peer percentiles retained.
+        ranking: Baseline eligible model profiles.
+        min_sources: Minimum number of observed sources per scenario.
+        min_cohorts: Minimum number of source-cohort observations per model.
+    """
+    if scored.source_id.nunique() < 2:
+        st.info(
+            body="Weighting sensitivity requires at least two selected sources. With one source, changing the balance between sources or outcomes cannot test a different evidence priority."
+        )
+        return
+    scenarios = weighting_scenarios(
+        scored=scored, min_sources=min_sources, min_cohorts=min_cohorts
+    )
+    scenarios = scenarios.loc[scenarios.model_id.isin(ranking.model_id)]
+    if scenarios.empty:
+        st.info(
+            body="No models meet the current coverage thresholds in all three preference scenarios. Broaden the age/source filters or adjust coverage thresholds."
+        )
+        return
+    baseline = scenarios.loc[scenarios.scenario.eq("Balanced")]
+    selected = comparison_block_selector(ranking=baseline, key="deep_scenario_group")
+    if selected.empty:
+        return
+    scenarios = scenarios.loc[scenarios.model_id.isin(selected.model_id)].copy()
+    bounds = scenarios.groupby(by=["model_id", "make", "model"], as_index=False).agg(
+        best_rank=("scenario_rank", "min"),
+        worst_rank=("scenario_rank", "max"),
+        lowest_score=("score", "min"),
+        highest_score=("score", "max"),
+    )
+    bounds["rank_range"] = bounds.worst_rank - bounds.best_rank
+    competitors = int(scenarios.comparison_models.iloc[0])
+    bounds["comparison_models"] = competitors
+    order = st.selectbox(
+        label="Weighting sensitivity view",
+        options=["Strongest worst-case rank", "Largest rank movement"],
+        key="deep_scenario_order",
+    )
+    bounds = bounds.sort_values(
+        by=["worst_rank", "model"]
+        if order.startswith("Strongest")
+        else ["rank_range", "model"],
+        ascending=[order.startswith("Strongest"), True],
+        kind="stable",
+    )
+    signature = tuple(sorted(bounds.model_id))
+    if st.session_state.get("deep_scenario_signature") != signature:
+        st.session_state["deep_scenario_makes"] = []
+        st.session_state["deep_scenario_models"] = []
+        st.session_state["deep_scenario_count"] = min(20, len(bounds))
+        st.session_state["deep_scenario_signature"] = signature
+    scenario_count = st.number_input(
+        label="Models in weighting chart",
+        min_value=1,
+        max_value=len(bounds),
+        key="deep_scenario_count",
+    )
+    scenario_makes = st.multiselect(
+        label="Weighting chart makes",
+        options=sorted(bounds.make.unique()),
+        key="deep_scenario_makes",
+    )
+    names = dict(zip(bounds.model_id, bounds.make + " " + bounds.model, strict=True))
+    scenario_models = st.multiselect(
+        label="Specific weighting chart models (optional)",
+        options=list(names),
+        format_func=lambda value: names.get(value, value),
+        key="deep_scenario_models",
+    )
+    view = st.selectbox(
+        label="Weighting chart layout",
+        options=["matrix", "lines"],
+        format_func=lambda value: (
+            "Rank matrix · shows ties separately"
+            if value == "matrix"
+            else "Rank trajectories"
+        ),
+        key="deep_scenario_layout",
+    )
+    colour = st.selectbox(
+        label="Weighting chart colours",
+        options=["model", "make"],
+        format_func=lambda value: value.capitalize(),
+        key="deep_scenario_colour",
+        disabled=view == "matrix",
+    )
+    if view == "matrix":
+        st.caption(
+            body="Cell colours show rank within this comparison group. Make colours and point sizes apply to the trajectory layout."
+        )
+    size = st.checkbox(
+        label="Size weighting points by scenario score",
+        key="deep_scenario_size",
+        disabled=view == "matrix",
+    )
+    if bounds.rank_range.eq(0).all():
+        st.info(
+            body="Ranks did not change under these three presets. This describes only the tested preferences; it is not a confidence bound or proof of general robustness."
+        )
+    chosen = bounds.loc[bounds.make.isin(scenario_makes)] if scenario_makes else bounds
+    if scenario_models:
+        chosen = chosen.loc[chosen.model_id.isin(scenario_models)]
+    ids = chosen.head(n=int(scenario_count)).model_id.tolist()
+    if ids:
+        show_chart(
+            figure=scenario_rank_chart(
+                scenarios=scenarios,
+                model_ids=ids,
+                colour_by=colour,
+                size_by_score=size,
+                view=view,
+            ),
+            key="deep_scenario_chart",
+            explanation=f"All ranks belong to one identical-coverage group of {competitors} competitors. Display filters do not recompute ranks. Rank 1 is best; ties retain the same rank. The matrix uses rank colours, not make colours. Trajectories offer model/make colours and optional point sizes. These three presets are preference examples, not confidence intervals or calibrated source trust. Custom sidebar weights are examined in source omission below.",
+        )
+    else:
+        st.info(body="No models match these weighting-chart make/model filters.")
+    show_table(
+        frame=bounds, name="weighting_scenario_rank_ranges", key="deep_scenario_bounds"
+    )
+    with st.expander(label="Selected comparison group's scenarios and exact coverage"):
+        show_table(frame=scenarios, name="weighting_scenarios", key="deep_scenarios")
+        reference_id = selected.model_id.iloc[0]
+        show_table(
+            frame=scored.loc[
+                scored.model_id.eq(reference_id),
+                [
+                    "source_name",
+                    "report_year",
+                    "observation_year",
+                    "age_min",
+                    "age_max",
+                    "cohort_year_start",
+                    "cohort_year_end",
+                ],
+            ],
+            name="weighting_group_contexts",
+            key="deep_scenario_contexts",
+        )
+    LOGGER.debug(
+        "Rendered weighting sensitivity for one group of %d competitors", competitors
+    )
+
+
 def deeper_analysis_page(
     *,
     scored: pd.DataFrame,
@@ -1697,102 +1897,39 @@ def deeper_analysis_page(
             key="deep_peer_table",
         )
     st.subheader(body="Which models remain strong under different priorities?")
-    scenarios = weighting_scenarios(
-        scored=scored, min_sources=min_sources, min_cohorts=min_cohorts
+    show_weighting_sensitivity(
+        scored=scored, ranking=ranking, min_sources=min_sources, min_cohorts=min_cohorts
     )
-    scenarios = scenarios.loc[scenarios.model_id.isin(ranking.model_id)]
-    if scenarios.empty:
-        st.info(
-            body="No models meet the current coverage thresholds in all three preference scenarios. Lower the page's coverage thresholds or broaden age/source filters."
-        )
-    else:
-        bounds = scenarios.groupby(
-            by=["model_id", "make", "model"], as_index=False
-        ).agg(
-            best_rank=("scenario_rank", "min"),
-            worst_rank=("scenario_rank", "max"),
-            lowest_score=("score", "min"),
-            highest_score=("score", "max"),
-        )
-        bounds["rank_range"] = bounds.worst_rank - bounds.best_rank
-        order = st.selectbox(
-            label="Weighting sensitivity view",
-            options=["Strongest worst-case rank", "Largest rank movement"],
-            key="deep_scenario_order",
-        )
-        bounds = bounds.sort_values(
-            by="worst_rank" if order.startswith("Strongest") else "rank_range",
-            ascending=order.startswith("Strongest"),
-        )
-        scenario_count = st.number_input(
-            label="Models in weighting chart",
-            min_value=1,
-            max_value=max(1, len(bounds)),
-            value=min(20, len(bounds)),
-            key="deep_scenario_count",
-        )
-        scenario_makes = st.multiselect(
-            label="Weighting chart makes",
-            options=sorted(bounds.make.unique()),
-            key="deep_scenario_makes",
-        )
-        scenario_names = dict(
-            zip(bounds.model_id, bounds.make + " " + bounds.model, strict=True)
-        )
-        scenario_models = st.multiselect(
-            label="Specific weighting chart models (optional)",
-            options=list(scenario_names),
-            format_func=lambda key: scenario_names[key],
-            key="deep_scenario_models",
-        )
-        scenario_colour = st.selectbox(
-            label="Weighting chart colours",
-            options=["model", "make"],
-            format_func=lambda value: value.capitalize(),
-            key="deep_scenario_colour",
-        )
-        scenario_size = st.checkbox(
-            label="Size weighting points by scenario score", key="deep_scenario_size"
-        )
-        chosen_bounds = (
-            bounds.loc[bounds.make.isin(scenario_makes)] if scenario_makes else bounds
-        )
-        if scenario_models:
-            chosen_bounds = chosen_bounds.loc[
-                chosen_bounds.model_id.isin(scenario_models)
-            ]
-        plotted = scenarios.loc[
-            scenarios.model_id.isin(chosen_bounds.head(n=int(scenario_count)).model_id)
-        ].copy()
-        plotted["car"] = plotted.make + " " + plotted.model
-        figure = scenario_rank_chart(
-            scenarios=plotted,
-            model_ids=plotted.model_id.drop_duplicates().tolist(),
-            colour_by=scenario_colour,
-            size_by_score=scenario_size,
-        )
-        show_chart(
-            figure=figure,
-            key="deep_scenario_chart",
-            explanation="Ranks use the same eligible model set in all three illustrative weighting scenarios. Rank 1 is best; large movement indicates dependence on priorities. These scenarios are not confidence bounds and do not establish calibrated source trust. Your custom sidebar weights are examined separately in the source-omission analysis below.",
-        )
-        show_table(
-            frame=bounds,
-            name="weighting_scenario_rank_ranges",
-            key="deep_scenario_bounds",
-        )
-        with st.expander(label="All scenario scores and ranks"):
-            show_table(
-                frame=scenarios, name="weighting_scenarios", key="deep_scenarios"
-            )
     st.subheader(body="Rate distributions and data coverage")
+    distribution_sources = st.multiselect(
+        label="Distribution sources (empty shows all)",
+        options=sorted(scored.source_id.unique()),
+        format_func=lambda value: SOURCE_NAMES.get(value, value),
+        key="deep_distribution_sources",
+    )
+    separate_ages = st.checkbox(
+        label="Separate distributions by published age",
+        value=True,
+        key="deep_distribution_ages",
+    )
+    distributions = (
+        scored.loc[scored.source_id.isin(distribution_sources)]
+        if distribution_sources
+        else scored
+    )
+    if not separate_ages:
+        st.warning(
+            body="These boxes pool different ages. Their positions depend on the selected age mix; they do not rank manufacturers or individual-car reliability."
+        )
     show_chart(
-        figure=rate_distribution_chart(evidence=scored),
+        figure=rate_distribution_chart(
+            evidence=distributions, group_by_age=separate_ages
+        ),
         key="deep_distributions",
-        explanation="Each source keeps its outcome and units. Box centres are medians, boxes span quartiles, and dashed markers show means. Each published cohort gets equal weight; this is not a fleet-weighted rate and can mix ages.",
+        explanation="Sources, reports and observation years retain separate axes and units. Published ages are separated by default. Box centres are medians, boxes span quartiles, whiskers extend to the most extreme observations within 1.5 times the interquartile range, and dotted markers show means. Each published model-cohort row gets equal weight; row counts are not test counts or unique cars. Outliers are observations outside the whisker rule, not necessarily errors. These are descriptive distributions, not fleet-weighted failure rates.",
     )
     show_table(
-        frame=source_rate_summary(evidence=scored),
+        frame=source_rate_summary(evidence=distributions),
         name="source_rate_statistics",
         key="deep_statistics",
     )
@@ -1862,6 +1999,12 @@ def deeper_analysis_page(
         format_func=lambda value: "One colour" if value == "uniform" else "Make",
         key="deep_count_colour",
     )
+    count_highlights = make_highlights(
+        label="Highlight Wilson-chart makes",
+        makes=counted.make.tolist(),
+        key="deep_count_highlight",
+        enabled=count_colour == "make",
+    )
     plotted_counts = counted.loc[
         counted.age_max.ge(count_ages[0]) & counted.age_min.le(count_ages[1])
     ]
@@ -1889,6 +2032,7 @@ def deeper_analysis_page(
         ascending=count_ascending,
         colour_by=count_colour,
         key="deep_counts",
+        highlight_makes=count_highlights,
     )
     with st.expander(label="Inspect all counted rates and intervals"):
         show_table(
@@ -1897,23 +2041,38 @@ def deeper_analysis_page(
     st.subheader(body="Published rates by age — TÜV, ADAC and other sources")
     show_source_rate_panels(evidence=scored, key="deep_published_rates")
     st.subheader(body="How dependent is the ranking on one source?")
-    spread_colour = st.selectbox(
-        label="Score disagreement colours",
-        options=["sources", "make"],
-        format_func=lambda value: "Source breadth" if value == "sources" else "Make",
-        key="deep_spread_colour",
-    )
-    spread_size = st.checkbox(
-        label="Size disagreement points by optional preference score",
-        key="deep_spread_size",
-    )
-    show_chart(
-        figure=score_spread_chart(
-            ranking=ranking, colour_by=spread_colour, size_by_score=spread_size
-        ),
-        key="deep_spread",
-        explanation="Source-score spread measures disagreement, not statistical confidence. Hover for cohort count and evidence coverage. One-source models have no between-source comparison.",
-    )
+    comparable = ranking.loc[
+        ranking.sources.ge(2) & ranking.score.notna() & ranking.score_spread.notna()
+    ]
+    excluded = int(ranking.sources.lt(2).sum())
+    unscored = len(ranking) - len(comparable) - excluded
+    if comparable.empty:
+        st.info(
+            body="Between-source disagreement requires at least two observed sources per model. With one source, disagreement is unavailable, not zero."
+        )
+    else:
+        st.caption(
+            body=f"Showing {len(comparable):,} models with at least two observed sources; excluded {excluded:,} single-source models and {unscored:,} unscored profiles. Source means can still cover different ages and generations."
+        )
+        spread_colour = st.selectbox(
+            label="Score disagreement colours",
+            options=["sources", "make"],
+            format_func=lambda value: (
+                "Source breadth" if value == "sources" else "Make"
+            ),
+            key="deep_spread_colour",
+        )
+        spread_size = st.checkbox(
+            label="Size disagreement points by optional preference score",
+            key="deep_spread_size",
+        )
+        show_chart(
+            figure=score_spread_chart(
+                ranking=comparable, colour_by=spread_colour, size_by_score=spread_size
+            ),
+            key="deep_spread",
+            explanation="Only models with at least two observed sources are plotted. Source-score spread measures descriptive disagreement, not statistical confidence, precision or matched-age agreement. Single-source models are excluded, not plotted at zero. Hover for cohort count and coverage; make colours identify manufacturers. The optional composite remains a preference index, not a failure probability.",
+        )
     if ranking.empty:
         st.info(
             body="No ranked models meet the current weights or coverage thresholds. Broaden the filters to explore source sensitivity."
@@ -2132,6 +2291,7 @@ def comparison_block_selector(*, ranking: pd.DataFrame, key: str) -> pd.DataFram
         .groupby(by="comparison_group_id")
         .agg(
             models=("model_id", "size"),
+            competitors=("comparison_models", "first"),
             cohorts=("cohorts", "first"),
             sources=("sources", "first"),
         )
@@ -2143,13 +2303,16 @@ def comparison_block_selector(*, ranking: pd.DataFrame, key: str) -> pd.DataFram
         )
         return ranking.iloc[:0]
     labels = {
-        group: f"{row.models} comparable models · {row.sources} sources · {row.cohorts} source-cohorts · block {group}"
+        group: f"{row.models} shown / {int(row.competitors)} comparable models · {row.sources} sources · {row.cohorts} source-cohorts · block {group}"
         for group, row in groups.iterrows()
     }
+    if st.session_state.get(key) not in labels:
+        st.session_state[key] = next(iter(labels))
     chosen = st.selectbox(
         label="Identical-coverage comparison block",
         options=list(labels),
-        format_func=lambda value: labels[value],
+        format_func=lambda value: labels.get(value, value),
+        index=None,
         key=key,
     )
     selected = (
@@ -2158,7 +2321,7 @@ def comparison_block_selector(*, ranking: pd.DataFrame, key: str) -> pd.DataFram
         .copy()
     )
     st.caption(
-        body=f"Ranks use only these {len(selected)} competitors. Scores and ranks from different blocks must not be compared. Singleton evidence profiles have no rank."
+        body=f"Showing {len(selected)} models from a group of {int(selected.comparison_models.iloc[0])} competitors. Ranks retain that comparison population; display filters do not recompute them. Scores and ranks from different groups must not be compared. Singleton evidence profiles have no rank."
     )
     return selected
 

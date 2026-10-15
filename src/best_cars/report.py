@@ -17,6 +17,7 @@ from best_cars.charts import (
     mileage_chart,
     ranking_chart,
     rate_distribution_chart,
+    scenario_rank_chart,
     score_spread_chart,
 )
 from best_cars.comparison import (
@@ -189,7 +190,25 @@ def report_html(*, evidence: pd.DataFrame, events: pd.DataFrame) -> str:
     )
     scenarios = weighting_scenarios(scored=scored)
     scenarios = scenarios.loc[scenarios.model_id.isin(ranking.model_id)]
+    if scored.source_id.nunique() < 2:
+        scenarios = scenarios.iloc[:0]
+    scenario_note = (
+        "Weighting sensitivity requires at least two selected sources; one source cannot test a different evidence priority."
+        if scored.source_id.nunique() < 2
+        else "Scenario ranks belong to the selected identical-coverage group and retain its competitors. They express preferences, not confidence intervals or calibrated trust. Ranks from different groups must not be compared."
+    )
     scenario_table = report_table(frame=scenarios, table_id="weight-scenarios")
+    scenario_chart = (
+        scenario_rank_chart(
+            scenarios=scenarios,
+            model_ids=ranking.loc[ranking.model_id.isin(scenarios.model_id)]
+            .head(n=20)
+            .model_id.tolist(),
+            view="matrix",
+        ).to_html(full_html=False, include_plotlyjs=False)
+        if not scenarios.empty
+        else ""
+    )
     propulsion = propulsion_catalogue(evidence=scored)
     propulsion_table = report_table(
         frame=propulsion.loc[~propulsion.category.eq("Unclassified")],
@@ -220,8 +239,12 @@ def report_html(*, evidence: pd.DataFrame, events: pd.DataFrame) -> str:
         frame=source_interval_availability(evidence=scored),
         table_id="interval-availability",
     )
-    spread_chart = score_spread_chart(ranking=ranking).to_html(
-        full_html=False, include_plotlyjs=False
+    spread_chart = (
+        score_spread_chart(ranking=ranking).to_html(
+            full_html=False, include_plotlyjs=False
+        )
+        if ranking.sources.ge(2).any()
+        else '<p class="note">Between-source disagreement requires at least two observed sources per model. With one source, disagreement is unavailable, not zero.</p>'
     )
     age_profiles = age_chart(
         scored=scored, model_ids=ranking.head(n=6).model_id.tolist()
@@ -389,13 +412,13 @@ def report_html(*, evidence: pd.DataFrame, events: pd.DataFrame) -> str:
     <details><summary>Exploratory combined ranking with evidence gaps</summary><p>Missing source percentiles explicitly assume 50. Lower/upper score and possible-rank bounds substitute 0 and 100; they are missing-evidence sensitivity, not confidence intervals. Age mixes can still differ. Sample rows are not unique vehicles. No source is universally trusted.</p>{exploratory_table}</details><details><summary>Strict preference comparison: one identical-coverage block</summary>{first_chart}<p>This secondary comparison covers {len(ranking)} models in one coverage block. Every model has all active sources and identical published cohort coverage. Inspection sources are averaged within an inspection outcome, then inspection and breakdown receive equal outcome weights by default. Scores from different coverage blocks cannot be compared. Singleton profiles have no rank.</p>{ranking_table}{spread_chart}{all_preference_table}</details></section>
     <section id="deeper"><h2>Same-cohort peers and sensitivity to priorities</h2>
     <p>The example below compares one model with the median of other ungrouped models in its exact source, report, age and registration cohort. Negative gaps indicate a lower published rate. At least four other models are required; source units remain separate. The Streamlit app lets you choose any supported model.</p>{peer_table}
-    <details><summary>Browse all three preference scenarios</summary>{scenario_table}</details><p>Scenario ranks share the same common eligible competitors. They express preferences, not confidence intervals or calibrated trust.</p></section>
+    <details><summary>Browse all three preference scenarios</summary>{scenario_chart}{scenario_table}</details><p>{scenario_note}</p></section>
     <section id="electrified"><h2>Electric, plug-in hybrid and hybrid eligibility</h2>{propulsion_table}
     <p>This conservative catalogue is not exhaustive. Unreviewed identities are unclassified. Mixed-family rows are context only: their pooled reliability rates are not specific to a hybrid or electric variant. The dedicated Streamlit page excludes mixed families by default and provides age profiles, peer benchmarks and sensitivity analysis. No battery-health or battery-lifetime estimate is available.</p></section>
     <section id="comparison"><h2>Explore selected models in more detail</h2><p>Illustrative selection: {comparison_labels}. Choose any one model or up to twenty in the Streamlit Compare cars page. These examples are not a list of recommended purchases.</p>{comparison_html}<p>Source units stay separate. Peer-gap bars are negative when the selected model has a lower rate than the median of other models in its exact published cohort. Matched-model scatter points below the diagonal favour the compared model. Coverage colours indicate data availability, not reliability. Wilson intervals use actual inspection counts only.</p><p>The historical charts include earlier loaded reports where at least two observation years exist. Age mode compares different registration cohorts at the same age; registration mode follows repeated summaries of recorded registration cohorts, excludes approximate TÜV cohort estimates, and does not track individual cars. Observation years for TÜV label inspection-window endings. No trajectory estimates lifetime or a causal effect of ageing.</p></section>
     <section id="repair"><h2>Repair cost context, not a model ownership-cost ranking</h2>{repair_table}<p>These dated UK marketplace job averages are general context, not quotations for Corolla or any other model. The current inspection and breakdown data lack model-specific fault frequencies, severity and repair invoices. The Streamlit repair page supports explicit job/quote budget scenarios; it does not predict annual costs or assign repair-cost penalties to reliability scores.</p></section>
     <section id="rates"><h2>Means, medians and rate distributions</h2>{distribution_chart}
-    <p>The box centre is the median, the box spans the 25th–75th percentiles, and the dotted marker shows the mean. These distributions give every published model-cohort observation equal weight and mix the selected ages. They are not national fleet failure rates or lifespan estimates. Each source keeps its own units and definition.</p>
+    <p>Horizontal boxes separate published ages within each source, report and observation year. The centre is the median, the box spans the 25th–75th percentiles, and the dotted marker shows the mean. Whiskers extend to the most extreme recorded values within 1.5 times the interquartile range; markers outside them are observations, not automatically errors. Row counts describe published model-cohort records, not tests or unique cars. Every row receives equal weight. These are not national fleet failure rates or lifespan estimates. Each source keeps its own units and definition.</p>
     {summary_table}<p>The counted-test failure percentage pools actual failures and tests only within the displayed source/year/metric group. Count coverage shows which observations contribute. Missing denominators are not inferred; the counted subset need not represent the whole fleet.</p></section>
     <section id="uncertainty"><h2>Actual test counts and uncertainty</h2>{uncertainty_chart}
     <details><summary>Where do these data and interval bars come from?</summary><p>Traficom is Finland's transport authority. Its Transport Register records periodic inspection decisions. The import uses Number of periodic inspections as n and Failed as x, separated by model, registration year and inspection year. The point is 100 × x/n; the original rounded published rate remains on hover. Tests are not necessarily unique cars.</p><p>The app calculates a two-sided 95% Wilson score interval, without continuity correction, using z = 1.959963984540054. With p = x/n and d = 1 + z²/n, the centre is c = (p + z²/(2n))/d and the half-width is h = z × √[p(1 − p)/n + z²/(4n²)]/d. Bounds are 100 × (c − h) and 100 × (c + h), bounded by 0 and 100. The whiskers extend from the observed x/n point to those endpoints and can be asymmetric.</p><p>These are model-based binomial intervals, not a forecast or lifetime measure. The percentage of recorded tests is known; for census-like administrative coverage, the bars concern an assumed repeat-sampling process, not uncertainty about that observed percentage. Repeated inspections and systematic differences are not represented.</p><p>Our imported TÜV percentages lack model/cohort numerator–denominator pairs; the total report inspection count cannot be assigned to each model. ADAC values are events per 1,000 registered vehicles, and 1,000 is a scaling unit, not the actual model sample size. Missing bars mean unavailable intervals, not zero uncertainty.</p><p><a href="https://tieto.traficom.fi/en/statistics/statistics-inspections">Traficom definitions</a> · <a href="https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm">NIST Wilson method</a></p>{interval_table}</details>

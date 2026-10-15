@@ -1,4 +1,4 @@
-# Mac update and launch — version 3.2
+# Mac update and launch — version 3.3
 
 These commands use your existing Miniforge environment and this checkout:
 `/Users/PThorpe001/github_repos/best_cars`.
@@ -11,13 +11,13 @@ and an already partly/applied previous upgrade; it does not run `git apply`.
 
 ## 1. Extract the new package
 
-Extract `best_cars_upgrade_20261013_v32.zip` with Finder. Check that Downloads
-contains `best_cars_upgrade_20261013_v32/UPDATE_FILES.tsv` and `overlay/`.
+Extract `best_cars_upgrade_20261014_v33.zip` with Finder. Check that Downloads
+contains `best_cars_upgrade_20261014_v33/UPDATE_FILES.tsv` and `overlay/`.
 Set these variables in the Terminal where you will run the following commands:
 
 ```bash
 conda activate best_cars
-CAR_UPDATE_DIR="$HOME/Downloads/best_cars_upgrade_20261013_v32"
+CAR_UPDATE_DIR="$HOME/Downloads/best_cars_upgrade_20261014_v33"
 CAR_REPO_DIR="/Users/PThorpe001/github_repos/best_cars"
 ```
 
@@ -64,7 +64,7 @@ python -m pip check
 python -c "import best_cars; print(best_cars.__version__); print(best_cars.__file__)"
 ```
 
-Expect `3.2.0` and a module path under
+Expect `3.3.0` and a module path under
 `/Users/PThorpe001/github_repos/best_cars/src/best_cars/`.
 
 ## 5. Launch using your existing data folder
