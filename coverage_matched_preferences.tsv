@@ -1,0 +1,93 @@
+rank	make	model	score	sources	cohorts	score_spread	worst_cohort_score	weight_coverage	source_ids	model_id	comparison_group_id	inspection_score	breakdown_score	comparison_models	comparison_status
+	Toyota	Corolla		3	18	84.38264750458913	9.166666666666666	100.0	adac; traficom; tuv	toyota:corolla	0448d76c9f1c	61.70674436968886	11.060062014009382	1	No comparable competitor; no composite score or rank
+	Audi	A1		3	22	30.787385124642363	14.545454545454545	100.0	adac; traficom; tuv	audi:a1	0705410cd9f5	58.39479308885717	86.93085522321167	1	No comparable competitor; no composite score or rank
+	Mercedes-Benz	GLE		3	14	26.87526535684711	13.10344827586207	100.0	adac; traficom; tuv	mercedes benz:gle	0972771b8fbd	57.585094594303726	61.32538827149928	1	No comparable competitor; no composite score or rank
+	Volkswagen	T-Roc		3	12	8.431877972174007	76.66666666666667	100.0	adac; traficom; tuv	volkswagen:t roc	0a2de6fcf728	96.43338286033386	88.9857044454084	1	No comparable competitor; no composite score or rank
+	SEAT	Alhambra		3	15	19.451614327893218	3.5714285714285716	100.0	adac; traficom; tuv	seat:alhambra	0ed7b018724b	31.890055973636674	21.210399961551104	1	No comparable competitor; no composite score or rank
+	Mercedes-Benz	GLC		3	18	47.70227372461293	25.58139534883721	100.0	adac; traficom; tuv	mercedes benz:glc	1406b62a2845	62.56915192737772	88.66126462428221	1	No comparable competitor; no composite score or rank
+	Mitsubishi	ASX		3	21	22.995518442084617	54.666666666666664	100.0	adac; traficom; tuv	mitsubishi:asx	29969e135e01	81.56856566772353	93.62189953165877	1	No comparable competitor; no composite score or rank
+	Škoda	Rapid		3	16	32.95295555418729	26.74418604651163	100.0	adac; traficom; tuv	skoda:rapid	2c9cded75112	50.05402976224185	82.07820261483508	1	No comparable competitor; no composite score or rank
+	Škoda	Kodiaq		3	14	37.33176926764459	17.094017094017094	100.0	adac; traficom; tuv	skoda:kodiaq	2ce32e9ce4e9	58.951264329794896	31.372026936151617	1	No comparable competitor; no composite score or rank
+	Audi	Q2		3	13	13.45162451699278	72.5	100.0	adac; traficom; tuv	audi:q2	2d766b806f0f	92.14104090148052	83.1465689562007	1	No comparable competitor; no composite score or rank
+1	SEAT	Leon	66.63507270074018	3	23	27.049487760221133	16.818181818181817	100.0	adac; traficom; tuv	seat:leon	30735746a93e	63.71408395340198	69.5560614480784	3	Coverage-matched preference comparison
+2	Toyota	Aygo	55.70118243727914	3	23	22.63270489000883	4.929577464788732	100.0	adac; traficom; tuv	toyota:aygo	30735746a93e	44.89457479819232	66.50779007636595	3	Coverage-matched preference comparison
+3	Renault	Megane	16.695646858392823	3	23	7.3178231501656565	1.3071895424836601	100.0	adac; traficom; tuv	renault:megane	30735746a93e	13.837581872136774	19.553711844648873	3	Coverage-matched preference comparison
+1	Nissan	Micra	33.74139492915267	3	23	13.835511786212408	6.989247311827957	100.0	adac; traficom; tuv	nissan:micra	30d30a29bbae	29.889776915467507	37.59301294283783	2	Coverage-matched preference comparison
+2	Ford	Mondeo	27.14827195262687	3	23	40.52027129901589	0.9090909090909091	100.0	adac; traficom; tuv	ford:mondeo	30d30a29bbae	39.82787662796721	14.468667277286535	2	Coverage-matched preference comparison
+	Suzuki	Vitara		3	17	17.29129933349533	41.02564102564103	100.0	adac; traficom; tuv	suzuki:vitara	3389ebcc8661	91.27717269109974	74.90034657034747	1	No comparable competitor; no composite score or rank
+	Opel	Meriva		3	12	67.91591614465649	3.252032520325203	100.0	adac; traficom; tuv	opel:meriva	4e9fad5f6c5a	52.70419742714523	5.100573987106331	1	No comparable competitor; no composite score or rank
+	Hyundai	Tucson		3	15	14.18306736827062	23.076923076923077	100.0	adac; traficom; tuv	hyundai:tucson	5421fe78fdf8	52.83874437114274	51.062052921284135	1	No comparable competitor; no composite score or rank
+	Fiat	500		3	22	10.114307835980007	5.47945205479452	100.0	adac; traficom; tuv	fiat:500	54e457f0498d	25.463471451133223	34.92220923487972	1	No comparable competitor; no composite score or rank
+	Toyota	Auris		3	18	61.2233244226052	21.875	100.0	adac; traficom; tuv	toyota:auris	5f42427c9fc4	79.7675938646766	32.47905146947433	1	No comparable competitor; no composite score or rank
+	Opel	Adam		3	10	36.04816208797995	11.304347826086957	100.0	adac; traficom; tuv	opel:adam	666344793314	67.2350590907068	40.158734463744196	1	No comparable competitor; no composite score or rank
+	Volkswagen	ID.3		3	7	43.74177227625504	42.758620689655174	100.0	adac; traficom; tuv	volkswagen:id 3	6704afe3cfe5	63.49524079049941	93.82478632478633	1	No comparable competitor; no composite score or rank
+	Dacia	Sandero		3	21	50.94508757248593	0.684931506849315	100.0	adac; traficom; tuv	dacia:sandero	670c66814568	9.026816659559694	59.330774422687504	1	No comparable competitor; no composite score or rank
+	Opel	Crossland		3	9	39.59388478563703	5.909090909090909	100.0	adac; traficom; tuv	opel:crossland	678ff57adf68	16.762063367666816	46.56628738303963	1	No comparable competitor; no composite score or rank
+	Fiat	Panda		3	13	31.034393279065036	7.407407407407407	100.0	adac; traficom; tuv	fiat:panda	67ae5a59ac6b	23.712914985514587	53.56960454667067	1	No comparable competitor; no composite score or rank
+	Hyundai	i20		3	24	47.31280712848189	5.0	100.0	adac; traficom; tuv	hyundai:i20	73be5b9a0082	62.004069506201866	25.782249441006226	1	No comparable competitor; no composite score or rank
+	SEAT	Mii		3	10	25.340298136737612	25.714285714285715	100.0	adac; traficom; tuv	seat:mii	77145593df51	38.38372289751453	51.89202227466865	1	No comparable competitor; no composite score or rank
+	Kia	Picanto		3	22	16.958070501950886	10.0	100.0	adac; traficom; tuv	kia:picanto	77d3f7b3749e	41.17532149679268	28.568564762795454	1	No comparable competitor; no composite score or rank
+	Mazda	2		3	17	22.473970000253274	15.483870967741936	100.0	adac; traficom; tuv	mazda:2	7ac72147401b	68.64839262953055	79.86175244249368	1	No comparable competitor; no composite score or rank
+1	Škoda	Fabia	60.99733757714493	3	25	23.95107671328038	22.75862068965517	100.0	adac; traficom; tuv	skoda:fabia	7b56013404c9	51.48239760777109	70.51227754651877	6	Coverage-matched preference comparison
+2	Volkswagen	Tiguan	59.79680021419193	3	25	9.227187853295433	38.888888888888886	100.0	adac; traficom; tuv	volkswagen:tiguan	7b56013404c9	64.22506465785612	55.36853577052774	6	Coverage-matched preference comparison
+3	Volkswagen	Touran	44.76513178827078	3	25	22.1040505560153	16.27906976744186	100.0	adac; traficom; tuv	volkswagen:touran	7b56013404c9	41.96519049225194	47.56507308428962	6	Coverage-matched preference comparison
+4	Opel	Astra	42.671592315978316	3	25	27.38976389344655	14.957264957264957	100.0	adac; traficom; tuv	opel:astra	7b56013404c9	51.377597015887154	33.965587616069485	6	Coverage-matched preference comparison
+5	Hyundai	i30	32.61876965800941	3	25	17.0339201643506	8.602150537634408	100.0	adac; traficom; tuv	hyundai:i30	7b56013404c9	27.38876900042014	37.84877031559869	6	Coverage-matched preference comparison
+6	Opel	Insignia	18.133724459572623	3	25	35.09855145329281	0.8695652173913043	100.0	adac; traficom; tuv	opel:insignia	7b56013404c9	32.69491713196723	3.572531787178012	6	Coverage-matched preference comparison
+	Toyota	RAV4		3	24	85.85385584580735	0.0	100.0	adac; traficom; tuv	toyota:rav4	8041091daf98	83.74475529629132	1.928951107961814	1	No comparable competitor; no composite score or rank
+	SEAT	Ateca		3	15	8.882188237653082	51.75438596491228	100.0	adac; traficom; tuv	seat:ateca	833c2e98eefd	79.07283671039411	70.21683773637288	1	No comparable competitor; no composite score or rank
+	SEAT	Arona		3	11	61.59405678305254	5.517241379310345	100.0	adac; traficom; tuv	seat:arona	857fc50e45b0	34.74352357295662	79.65503000289183	1	No comparable competitor; no composite score or rank
+1	Kia	Sportage	31.65492939134678	3	24	5.51110007051469	3.225806451612903	100.0	adac; traficom; tuv	kia:sportage	85a3b96585fd	29.173607914008173	34.13625086868539	2	Coverage-matched preference comparison
+2	Dacia	Duster	19.71868989963627	3	24	31.872226923708133	0.6535947712418301	100.0	adac; traficom; tuv	dacia:duster	85a3b96585fd	4.74161023652848	34.69576956274406	2	Coverage-matched preference comparison
+	Dacia	Logan		3	17	35.83263885880767	0.0	100.0	adac; traficom; tuv	dacia:logan	98060af546eb	6.5784200521831036	38.346460788437156	1	No comparable competitor; no composite score or rank
+	Opel	Corsa		3	20	10.823501284901326	27.884615384615383	100.0	adac; traficom; tuv	opel:corsa	990e2e1320ff	43.39933931205907	46.57203411536325	1	No comparable competitor; no composite score or rank
+	Ford	S-Max		3	17	17.834335734140154	0.0	100.0	adac; traficom; tuv	ford:s max	995b070ea685	26.26402076619352	8.661898649061678	1	No comparable competitor; no composite score or rank
+	Volkswagen	Sharan		3	17	26.31733980122451	0.8928571428571429	100.0	adac; traficom; tuv	volkswagen:sharan	9a4e3f11bfde	32.45261084131483	18.884804884028735	1	No comparable competitor; no composite score or rank
+	SEAT	Ibiza		3	23	45.57280849713716	12.67605633802817	100.0	adac; traficom; tuv	seat:ibiza	9c4853074550	30.83162071723435	71.966608332848	1	No comparable competitor; no composite score or rank
+	Peugeot	208		3	21	18.60783724081469	23.178807947019866	100.0	adac; traficom; tuv	peugeot:208	9e5a1425663f	38.44276743303321	55.34167884116224	1	No comparable competitor; no composite score or rank
+	Audi	Q3		3	21	13.299575317788339	47.05882352941177	100.0	adac; traficom; tuv	audi:q3	a06e76a37eda	71.09092763372547	77.28239163477869	1	No comparable competitor; no composite score or rank
+	Hyundai	ix20		3	14	33.29345429059458	14.666666666666666	100.0	adac; traficom; tuv	hyundai:ix20	a0a59b2954f8	38.947555225880656	31.76083675851878	1	No comparable competitor; no composite score or rank
+	Škoda	Scala		3	8	59.64019167966536	1.8181818181818181	100.0	adac; traficom; tuv	skoda:scala	a5657eb068d9	10.50359921049576	61.45837349784718	1	No comparable competitor; no composite score or rank
+	Škoda	Yeti		3	14	21.95259186701616	34.31372549019608	100.0	adac; traficom; tuv	skoda:yeti	a92beaa20614	62.95742453464189	80.16647309330237	1	No comparable competitor; no composite score or rank
+	Mazda	CX-5		3	20	8.850022105564676	48.0	100.0	adac; traficom; tuv	mazda:cx 5	aa0fa0285a5e	66.69848047989419	59.937873299448114	1	No comparable competitor; no composite score or rank
+	Hyundai	i10		3	17	12.705861407505783	4.6875	100.0	adac; traficom; tuv	hyundai:i10	aef4b8c5d4ad	35.13995305220937	23.050921678588924	1	No comparable competitor; no composite score or rank
+	Suzuki	Swift		3	18	6.870208990410788	38.1578947368421	100.0	adac; traficom; tuv	suzuki:swift	b5ca5db47d0c	75.12740285052108	81.24197668759048	1	No comparable competitor; no composite score or rank
+	Mazda	CX-3		3	12	11.138284589467062	55.90909090909091	100.0	adac; traficom; tuv	mazda:cx 3	baa8bae78753	80.2609088615001	79.22710989430097	1	No comparable competitor; no composite score or rank
+1	Ford	Puma	47.149124123800846	3	6	79.52893211513901	9.401709401709402	100.0	adac; traficom; tuv	ford:puma	c30046e29da0	77.27545622480967	17.02279202279202	2	Coverage-matched preference comparison
+2	Škoda	Kamiq	46.13559722126532	3	6	62.72399056881815	9.090909090909092	100.0	adac; traficom; tuv	skoda:kamiq	c30046e29da0	15.754100425436633	76.51709401709401	2	Coverage-matched preference comparison
+	Peugeot	2008		3	20	34.86348276880568	11.03448275862069	100.0	adac; traficom; tuv	peugeot:2008	c8707c659070	24.089884420847397	50.2985485527778	1	No comparable competitor; no composite score or rank
+	Mercedes-Benz	B-Class		3	24	22.60241319864282	26.760563380281692	100.0	adac; traficom; tuv	mercedes benz:b class	cca98df830fb	82.1522537753581	65.50894970571466	1	No comparable competitor; no composite score or rank
+	Ford	B-Max		3	10	37.25664018744711	10.927152317880795	100.0	adac; traficom; tuv	ford:b max	cd223cb6e049	42.185692225110856	43.94250029456816	1	No comparable competitor; no composite score or rank
+	Škoda	Karoq		3	10	15.161668649333123	41.666666666666664	100.0	adac; traficom; tuv	skoda:karoq	cd9b0a3d0f45	73.65378113056789	63.55586381819934	1	No comparable competitor; no composite score or rank
+	Mazda	3		3	22	19.897812805551816	3.007518796992481	100.0	adac; traficom; tuv	mazda:3	ce850ccc4174	68.2144914922105	52.227260161438856	1	No comparable competitor; no composite score or rank
+	Ford	Ecosport		3	13	24.813502072406376	15.0	100.0	adac; traficom; tuv	ford:ecosport	d27ef7506f63	53.21798491766354	30.224180161347025	1	No comparable competitor; no composite score or rank
+	Ford	C-Max		3	18	56.50873587898495	13.043478260869565	100.0	adac; traficom; tuv	ford:c max	d4f72179df19	61.016736725385556	21.03186485567046	1	No comparable competitor; no composite score or rank
+	Renault	Twingo		3	16	18.98690331221491	0.0	100.0	adac; traficom; tuv	renault:twingo	d971c12189f8	18.335269156166227	33.77184954877405	1	No comparable competitor; no composite score or rank
+	Opel	Mokka		3	20	33.69887906665661	5.2631578947368425	100.0	adac; traficom; tuv	opel:mokka	deb2fd738ca2	53.963986762454695	30.21657521357153	1	No comparable competitor; no composite score or rank
+	Cupra	Formentor		3	4	9.059561128526646	58.18181818181818	100.0	adac; traficom; tuv	cupra:formentor	e05f2ce19273	62.711598746081506	66.51709401709401	1	No comparable competitor; no composite score or rank
+	Renault	Zoe		3	9	57.366947562671236	7.6923076923076925	100.0	adac; traficom; tuv	renault:zoe	e149a504765d	11.377681226819158	68.05334449906817	1	No comparable competitor; no composite score or rank
+1	Volkswagen	T-Cross	57.546979434253046	3	9	49.69330849289821	15.172413793103448	100.0	adac; traficom; tuv	volkswagen:t cross	e5e65a2081b6	44.14599601264852	70.94796285585758	2	Coverage-matched preference comparison
+2	Tesla	Model 3	45.98092372564923	3	9	91.84690492256283	0.0	100.0	adac; traficom; tuv	tesla:model 3	e5e65a2081b6	0.1149425287356322	91.84690492256283	2	Coverage-matched preference comparison
+1	Audi	Q5	82.468517985593	3	26	3.7576976024680846	34.883720930232556	100.0	adac; traficom; tuv	audi:q5	e6ca6f8aa1ee	82.23065861280816	82.70637735837784	17	Coverage-matched preference comparison
+2	Audi	A3	76.55919953445155	3	26	17.874807352942653	36.324786324786324	100.0	adac; traficom; tuv	audi:a3	e6ca6f8aa1ee	83.47197220837951	69.64642686052358	17	Coverage-matched preference comparison
+3	Volkswagen	Golf	73.89788300597047	3	26	6.939887498733867	41.02564102564103	100.0	adac; traficom; tuv	volkswagen:golf	e6ca6f8aa1ee	77.07613028618216	70.71963572575879	17	Coverage-matched preference comparison
+4	Mercedes-Benz	A-Class	70.76111131073812	3	26	25.922895980658964	40.625	100.0	adac; traficom; tuv	mercedes benz:a class	e6ca6f8aa1ee	80.81102909026976	60.711193531206476	17	Coverage-matched preference comparison
+5	Volvo	XC60	70.36221646561197	3	26	15.500898950068532	46.666666666666664	100.0	adac; traficom; tuv	volvo:xc60	e6ca6f8aa1ee	76.4506927870334	64.27374014419053	17	Coverage-matched preference comparison
+6	Volkswagen	Polo	62.4827008311254	3	26	26.920562683924437	23.972602739726028	100.0	adac; traficom; tuv	volkswagen:polo	e6ca6f8aa1ee	50.32254358502565	74.64285807722514	17	Coverage-matched preference comparison
+7	BMW	X1	61.26661237295562	3	26	25.71493954822779	4.464285714285714	100.0	adac; traficom; tuv	bmw:x1	e6ca6f8aa1ee	52.64825538915662	69.88496935675462	17	Coverage-matched preference comparison
+8	Mercedes-Benz	C-Class	60.14150469631353	3	26	50.06646460597442	9.30232558139535	100.0	adac; traficom; tuv	mercedes benz:c class	e6ca6f8aa1ee	45.7959857552346	74.48702363739247	17	Coverage-matched preference comparison
+9	Škoda	Octavia	52.26361830276693	3	26	14.641157731539906	11.11111111111111	100.0	adac; traficom; tuv	skoda:octavia	e6ca6f8aa1ee	53.18464886934777	51.34258773618608	17	Coverage-matched preference comparison
+10	Mercedes-Benz	E-Class	49.36417605563092	3	26	27.365553031643092	11.11111111111111	100.0	adac; traficom; tuv	mercedes benz:e class	e6ca6f8aa1ee	42.07116325230744	56.6571888589544	17	Coverage-matched preference comparison
+11	Volkswagen	Passat	46.00637083754755	3	26	25.160115474857868	8.181818181818182	100.0	adac; traficom; tuv	volkswagen:passat	e6ca6f8aa1ee	33.71386282229815	58.29887885279696	17	Coverage-matched preference comparison
+12	Volkswagen	Caddy	41.85818644502191	3	26	39.26346521562929	3.7037037037037037	100.0	adac; traficom; tuv	volkswagen:caddy	e6ca6f8aa1ee	24.935965288413154	58.78040760163066	17	Coverage-matched preference comparison
+13	Toyota	Yaris	39.896647330590724	3	26	50.58735479598716	0.0	100.0	adac; traficom; tuv	toyota:yaris	e6ca6f8aa1ee	64.7015829382517	15.09171172292974	17	Coverage-matched preference comparison
+14	Škoda	Superb	35.08397166394924	3	26	17.818911303130346	3.1818181818181817	100.0	adac; traficom; tuv	skoda:superb	e6ca6f8aa1ee	29.01475043171513	41.15319289618336	17	Coverage-matched preference comparison
+15	Ford	Kuga	32.176670437952865	3	26	50.741780246704536	2.5641025641025643	100.0	adac; traficom; tuv	ford:kuga	e6ca6f8aa1ee	52.973198994505005	11.380141881400725	17	Coverage-matched preference comparison
+16	Ford	Focus	25.121013667391527	3	26	41.12437796588617	4.545454545454546	100.0	adac; traficom; tuv	ford:focus	e6ca6f8aa1ee	33.333686813897096	16.908340520885957	17	Coverage-matched preference comparison
+17	Nissan	Qashqai	23.919114333265796	3	26	22.350385523020293	4.511278195488722	100.0	adac; traficom; tuv	nissan:qashqai	e6ca6f8aa1ee	31.827738889162763	16.010489777368825	17	Coverage-matched preference comparison
+	Volkswagen	Beetle		3	12	17.061480840992942	48.046875	100.0	adac; traficom; tuv	volkswagen:beetle	e921e809fa89	64.93249130316245	75.30099310237085	1	No comparable competitor; no composite score or rank
+	Volkswagen	Up!		3	21	5.442009580563756	17.93103448275862	100.0	adac; traficom; tuv	volkswagen:up	e9c825e1b23e	55.918056202973865	60.312605901029364	1	No comparable competitor; no composite score or rank
+	Hyundai	Kona		3	10	36.83587300857038	17.94871794871795	100.0	adac; traficom; tuv	hyundai:kona	ec3c4e1c1859	60.05858277981679	31.662503614806248	1	No comparable competitor; no composite score or rank
+	Volkswagen	Touareg		3	16	14.379681874642344	46.15384615384615	100.0	adac; traficom; tuv	volkswagen:touareg	ec40206a706a	82.35498990587811	73.33264214325801	1	No comparable competitor; no composite score or rank
+	Peugeot	308		3	20	10.499647223184951	7.2727272727272725	100.0	adac; traficom; tuv	peugeot:308	f7b9f424ae81	22.09952753315359	13.847162727205074	1	No comparable competitor; no composite score or rank
+	Škoda	Citigo		3	15	10.841256620768021	14.545454545454545	100.0	adac; traficom; tuv	skoda:citigo	f7f0d2bd5f88	57.6058610606733	59.278887834644934	1	No comparable competitor; no composite score or rank

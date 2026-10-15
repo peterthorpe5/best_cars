@@ -1,0 +1,4 @@
+source_id	source_name	report_year	unit	observation_rows	rows_with_wilson	known_denominator_rows	source_url	rate_only_rows
+adac	ADAC breakdown statistics	2025	per_1000_vehicles	969	0	0	https://assets.adac.de/image/upload/v1744788916/ADAC-eV/KOR/Text/PDF/Pannenstatistik_2025_final_nrmvls.pdf	969
+traficom	Traficom inspections	2026	percent	1595	1595	1595	https://trafi2.stat.fi/PXWeb/api/v1/en/TraFi/Katsastuksen_vikatilastot/040_kats_tau_104.px	0
+tuv	TÜV (Car-Recalls.eu tables)	2025	percent	603	0	0	https://car-recalls.eu/reliability/reliability-tuv-report-2025-2-3-years/	603

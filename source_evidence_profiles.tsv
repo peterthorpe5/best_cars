@@ -1,0 +1,575 @@
+model_id	make	model	source_id	source_name	unit	report_year	observation_year	mean_relative_score	mean_published_rate	observations	scored_cohorts	youngest_age	oldest_age	known_count_rows	outcome
+alfa romeo:giulietta	Alfa Romeo	GIULIETTA	traficom	Traficom inspections	percent	2026	2025	53.242368063280175	27.099999999999998	3	3	12	14	3	Inspection condition
+alfa romeo:mito	Alfa Romeo	MITO	traficom	Traficom inspections	percent	2026	2025	7.042253521126761	49.2	1	1	15	15	1	Inspection condition
+audi:a1	Audi	A1	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	86.93085522321167	4.0125	8	8	2	9	0	Roadside breakdowns
+audi:a1	Audi	A1	traficom	Traficom inspections	percent	2026	2025	56.1434700985693	21.225	8	8	6	15	8	Inspection condition
+audi:a1	Audi	A1	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	60.64611607914503	14.75	6	6	2	13	0	Inspection condition
+audi:a3	Audi	A3	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	69.64642686052358	6.6	8	8	2	9	0	Roadside breakdowns
+audi:a3	Audi	A3	traficom	Traficom inspections	percent	2026	2025	79.4227102032928	12.691666666666668	12	12	4	15	12	Inspection condition
+audi:a3	Audi	A3	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	87.52123421346623	11.733333333333334	6	6	2	13	0	Inspection condition
+audi:a4	Audi	A4	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	95.16144336174992	3.975	8	8	2	9	0	Roadside breakdowns
+audi:a4	Audi	A4	traficom	Traficom inspections	percent	2026	2025	72.59225136097398	13.233333333333334	12	12	4	15	12	Inspection condition
+audi:a5	Audi	A5	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	83.61706352374149	5.4	8	8	2	9	0	Roadside breakdowns
+audi:a5	Audi	A5	traficom	Traficom inspections	percent	2026	2025	77.68780809505961	12.854545454545455	11	11	4	15	11	Inspection condition
+audi:a6	Audi	A6	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	67.01944353360868	6.9375	8	8	2	9	0	Roadside breakdowns
+audi:a6	Audi	A6	traficom	Traficom inspections	percent	2026	2025	74.08296672258453	13.399999999999999	12	12	4	15	12	Inspection condition
+audi:a7	Audi	A7	traficom	Traficom inspections	percent	2026	2025	80.71698643615152	15.466666666666667	3	3	10	14	3	Inspection condition
+audi:a8	Audi	A8	traficom	Traficom inspections	percent	2026	2025	100.0	16.2	1	1	15	15	1	Inspection condition
+audi:e tron	Audi	E-TRON	traficom	Traficom inspections	percent	2026	2025	80.03855401459417	4.133333333333334	3	3	4	6	3	Inspection condition
+audi:q2	Audi	Q2	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	83.1465689562007	4.033333333333333	6	6	2	7	0	Roadside breakdowns
+audi:q2	Audi	Q2	traficom	Traficom inspections	percent	2026	2025	87.68388832976757	4.75	4	4	4	8	4	Inspection condition
+audi:q2	Audi	Q2	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	96.59819347319348	4.933333333333334	3	3	2	7	0	Inspection condition
+audi:q3	Audi	Q3	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	77.28239163477869	5.8	8	8	2	9	0	Roadside breakdowns
+audi:q3	Audi	Q3	traficom	Traficom inspections	percent	2026	2025	64.4411399748313	14.37142857142857	7	7	4	13	7	Inspection condition
+audi:q3	Audi	Q3	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	77.74071529261964	13.116666666666667	6	6	2	13	0	Inspection condition
+audi:q4	Audi	Q4	traficom	Traficom inspections	percent	2026	2025	21.03448275862069	10.0	1	1	4	4	1	Inspection condition
+audi:q4 e tron	Audi	Q4 e-tron	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	94.16666666666667	0.7	1	1	2	2	0	Roadside breakdowns
+audi:q5	Audi	Q5	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	82.70637735837784	5.7125	8	8	2	9	0	Roadside breakdowns
+audi:q5	Audi	Q5	traficom	Traficom inspections	percent	2026	2025	80.35180981157411	12.091666666666667	12	12	4	15	12	Inspection condition
+audi:q5	Audi	Q5	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	84.1095074140422	12.433333333333332	6	6	2	13	0	Inspection condition
+audi:q7	Audi	Q7	traficom	Traficom inspections	percent	2026	2025	76.43261878361898	15.028571428571428	7	7	4	15	7	Inspection condition
+audi:q8	Audi	Q8	traficom	Traficom inspections	percent	2026	2025	65.51724137931035	4.3	1	1	4	4	1	Inspection condition
+audi:s3	Audi	S3	traficom	Traficom inspections	percent	2026	2025	79.13907284768212	13.7	1	1	11	11	1	Inspection condition
+bmw:1	BMW	1	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	67.90123456790124	26.7	1	1	12	13	0	Inspection condition
+bmw:1 series	BMW	1 Series	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	90.61621789914054	4.1375	8	8	2	9	0	Roadside breakdowns
+bmw:1 series	BMW	1 Series	traficom	Traficom inspections	percent	2026	2025	63.374330446651605	17.036363636363635	11	11	4	15	11	Inspection condition
+bmw:2 active tourer	BMW	2 Active Tourer	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	27.998332209028085	16.225	4	4	2	9	0	Inspection condition
+bmw:2 series	BMW	2 Series	traficom	Traficom inspections	percent	2026	2025	70.1399660014332	10.571428571428571	7	7	4	11	7	Inspection condition
+bmw:3	BMW	3	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	62.96296296296296	27.4	1	1	12	13	0	Inspection condition
+bmw:3 series	BMW	3 Series	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	87.12573275427775	4.775	8	8	2	9	0	Roadside breakdowns
+bmw:3 series	BMW	3 Series	traficom	Traficom inspections	percent	2026	2025	37.277622014136305	21.258333333333333	12	12	4	15	12	Inspection condition
+bmw:4 series	BMW	4 Series	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	81.39877880641404	5.614285714285714	7	7	2	9	0	Roadside breakdowns
+bmw:4 series	BMW	4 Series	traficom	Traficom inspections	percent	2026	2025	49.76286274441729	16.580000000000002	5	5	7	11	5	Inspection condition
+bmw:5 series	BMW	5 Series	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	86.91939925396247	5.2875	8	8	2	9	0	Roadside breakdowns
+bmw:5 series	BMW	5 Series	traficom	Traficom inspections	percent	2026	2025	52.08197036123423	18.091666666666665	12	12	4	15	12	Inspection condition
+bmw:7 series	BMW	7 Series	traficom	Traficom inspections	percent	2026	2025	83.40488134285164	6.85	2	2	6	9	2	Inspection condition
+bmw:i3	BMW	I3	traficom	Traficom inspections	percent	2026	2025	62.62266614560006	13.25	4	4	6	11	4	Inspection condition
+bmw:i3	BMW	i3	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	97.21866096866097	0.6	3	3	2	4	0	Roadside breakdowns
+bmw:ix	BMW	IX	traficom	Traficom inspections	percent	2026	2025	17.24137931034483	11.0	1	1	4	4	1	Inspection condition
+bmw:ix3	BMW	IX3	traficom	Traficom inspections	percent	2026	2025	81.03448275862068	3.1	1	1	4	4	1	Inspection condition
+bmw:x1	BMW	X1	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	69.88496935675462	8.25	8	8	2	9	0	Roadside breakdowns
+bmw:x1	BMW	X1	traficom	Traficom inspections	percent	2026	2025	44.170029808526834	21.483333333333334	12	12	4	15	12	Inspection condition
+bmw:x1	BMW	X1	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	61.12648096978641	15.549999999999999	6	6	2	13	0	Inspection condition
+bmw:x2	BMW	X2	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	75.77103716824112	4.3	5	5	2	6	0	Roadside breakdowns
+bmw:x3	BMW	X3	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	93.09879577725975	3.2375	8	8	2	9	0	Roadside breakdowns
+bmw:x3	BMW	X3	traficom	Traficom inspections	percent	2026	2025	52.29257861624508	16.945454545454545	11	11	4	14	11	Inspection condition
+bmw:x4	BMW	X4	traficom	Traficom inspections	percent	2026	2025	39.01363795288797	21.5	3	3	9	11	3	Inspection condition
+bmw:x5	BMW	X5	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	85.43568004120701	5.7125	8	8	2	9	0	Roadside breakdowns
+bmw:x5	BMW	X5	traficom	Traficom inspections	percent	2026	2025	65.67124872815009	15.041666666666666	12	12	4	15	12	Inspection condition
+bmw:x6	BMW	X6	traficom	Traficom inspections	percent	2026	2025	75.27012874916234	20.099999999999998	3	3	10	15	3	Inspection condition
+chevrolet:aveo	Chevrolet	AVEO	traficom	Traficom inspections	percent	2026	2025	10.164661308600584	41.95	4	4	12	15	4	Inspection condition
+chevrolet:cruze	Chevrolet	CRUZE	traficom	Traficom inspections	percent	2026	2025	39.10689669352132	30.419999999999998	5	5	11	15	5	Inspection condition
+chevrolet:malibu	Chevrolet	MALIBU	traficom	Traficom inspections	percent	2026	2025	63.44827586206897	22.0	1	1	12	12	1	Inspection condition
+chevrolet:spark	Chevrolet	SPARK	traficom	Traficom inspections	percent	2026	2025	40.19195820081781	34.45	2	2	14	15	2	Inspection condition
+chevrolet:trax	Chevrolet	TRAX	traficom	Traficom inspections	percent	2026	2025	20.0	34.4	1	1	12	12	1	Inspection condition
+citroen:berlingo	Citroën	BERLINGO	traficom	Traficom inspections	percent	2026	2025	19.91681623543981	33.0625	8	8	6	15	8	Inspection condition
+citroen:berlingo	Citroën	Berlingo	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	20.59408193294865	20.266666666666666	6	6	2	13	0	Inspection condition
+citroen:c1	Citroën	C1	traficom	Traficom inspections	percent	2026	2025	72.98436047583954	21.34	5	5	11	15	5	Inspection condition
+citroen:c3	Citroën	C3	traficom	Traficom inspections	percent	2026	2025	14.59197625310232	31.19090909090909	11	11	4	15	11	Inspection condition
+citroen:c3	Citroën	C3	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	22.96654428333289	20.683333333333334	6	6	2	13	0	Inspection condition
+citroen:c3 aircross	Citroën	C3 AIRCROSS	traficom	Traficom inspections	percent	2026	2025	47.92982030111705	11.75	2	2	4	6	2	Inspection condition
+citroen:c3 picasso	Citroën	C3 PICASSO	traficom	Traficom inspections	percent	2026	2025	10.234887006528787	41.233333333333334	3	3	9	15	3	Inspection condition
+citroen:c4	Citroën	C4	traficom	Traficom inspections	percent	2026	2025	13.781846966257126	34.075	8	8	4	15	8	Inspection condition
+citroen:c4 cactus	Citroën	C4 CACTUS	traficom	Traficom inspections	percent	2026	2025	7.461993930844255	33.6	4	4	6	11	4	Inspection condition
+citroen:c4 picasso	Citroën	C4 PICASSO	traficom	Traficom inspections	percent	2026	2025	10.422611281340822	39.042857142857144	7	7	9	15	7	Inspection condition
+citroen:c5	Citroën	C5	traficom	Traficom inspections	percent	2026	2025	40.28064861629982	29.98	5	5	11	15	5	Inspection condition
+citroen:c5 aircross	Citroën	C5 AIRCROSS	traficom	Traficom inspections	percent	2026	2025	35.97377367654201	10.1	2	2	4	6	2	Inspection condition
+citroen:ds3	Citroën	DS3	traficom	Traficom inspections	percent	2026	2025	20.76553108043888	38.125	4	4	12	15	4	Inspection condition
+citroen:ds4	Citroën	DS4	traficom	Traficom inspections	percent	2026	2025	21.29032258064516	37.3	1	1	14	14	1	Inspection condition
+citroen:ds5	Citroën	DS5	traficom	Traficom inspections	percent	2026	2025	7.816091954022989	40.650000000000006	2	2	12	13	2	Inspection condition
+cupra:born	Cupra	Born	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	95.83333333333333	0.6	1	1	2	2	0	Roadside breakdowns
+cupra:formentor	Cupra	FORMENTOR	traficom	Traficom inspections	percent	2026	2025	67.24137931034483	4.2	1	1	4	4	1	Inspection condition
+cupra:formentor	Cupra	Formentor	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	66.51709401709401	2.45	2	2	2	3	0	Roadside breakdowns
+cupra:formentor	Cupra	Formentor	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	58.18181818181818	5.2	1	1	2	3	0	Inspection condition
+cupra:leon	Cupra	Leon	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	85.83333333333333	1.2	1	1	2	2	0	Roadside breakdowns
+cupra:leon sportstourer	Cupra	LEON SPORTSTOURER	traficom	Traficom inspections	percent	2026	2025	31.379310344827587	7.0	1	1	4	4	1	Inspection condition
+cupra:mallit yhteensa	Cupra	Mallit yhteensä	traficom	Traficom inspections	percent	2026	2025	52.06896551724138	4.9	1	1	4	4	1	Inspection condition
+dacia:dokker	Dacia	Dokker	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	76.85843528187958	7.5	6	6	4	9	0	Roadside breakdowns
+dacia:dokker	Dacia	Dokker	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	4.0625	20.9	4	4	2	9	0	Inspection condition
+dacia:duster	Dacia	DUSTER	traficom	Traficom inspections	percent	2026	2025	2.823542639035927	39.15	10	10	4	14	10	Inspection condition
+dacia:duster	Dacia	Duster	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	34.69576956274406	12.6125	8	8	2	9	0	Roadside breakdowns
+dacia:duster	Dacia	Duster	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	6.659677834021033	24.71666666666667	6	6	2	13	0	Inspection condition
+dacia:jogger	Dacia	Jogger	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	18.333333333333332	6.6	1	1	2	2	0	Roadside breakdowns
+dacia:logan	Dacia	LOGAN	traficom	Traficom inspections	percent	2026	2025	10.643018174736717	35.56666666666667	6	6	6	15	6	Inspection condition
+dacia:logan	Dacia	Logan	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	38.346460788437156	14.066666666666668	6	6	4	9	0	Roadside breakdowns
+dacia:logan	Dacia	Logan	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	2.5138219296294895	29.6	5	5	4	13	0	Inspection condition
+dacia:sandero	Dacia	SANDERO	traficom	Traficom inspections	percent	2026	2025	8.385686850201575	32.25714285714286	7	7	4	12	7	Inspection condition
+dacia:sandero	Dacia	Sandero	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	59.330774422687504	8.325	8	8	2	9	0	Roadside breakdowns
+dacia:sandero	Dacia	Sandero	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	9.667946468917814	23.333333333333332	6	6	2	13	0	Inspection condition
+dacia:spring	Dacia	Spring	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	46.666666666666664	2.9	1	1	2	2	0	Roadside breakdowns
+fiat:500	Fiat	500	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	34.92220923487972	12.6375	8	8	2	9	0	Roadside breakdowns
+fiat:500	Fiat	500	traficom	Traficom inspections	percent	2026	2025	26.119041503366727	29.8	8	8	4	15	8	Inspection condition
+fiat:500	Fiat	500	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	24.807901398899716	19.683333333333334	6	6	2	13	0	Inspection condition
+fiat:500l	Fiat	500L	traficom	Traficom inspections	percent	2026	2025	16.551724137931036	35.4	1	1	12	12	1	Inspection condition
+fiat:bravo	Fiat	BRAVO	traficom	Traficom inspections	percent	2026	2025	11.267605633802816	46.6	1	1	15	15	1	Inspection condition
+fiat:ducato	Fiat	Ducato	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	1.8520332285130183	37.300000000000004	7	7	3	9	0	Roadside breakdowns
+fiat:linea	Fiat	LINEA	traficom	Traficom inspections	percent	2026	2025	20.774647887323944	42.1	1	1	15	15	1	Inspection condition
+fiat:panda	Fiat	PANDA	traficom	Traficom inspections	percent	2026	2025	22.535211267605632	41.3	1	1	15	15	1	Inspection condition
+fiat:panda	Fiat	Panda	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	53.56960454667067	11.916666666666666	6	6	4	9	0	Roadside breakdowns
+fiat:panda	Fiat	Panda	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	24.890618703423545	19.666666666666668	6	6	2	13	0	Inspection condition
+fiat:punto	Fiat	PUNTO	traficom	Traficom inspections	percent	2026	2025	28.569246215147764	34.35	4	4	12	15	4	Inspection condition
+fiat:tipo	Fiat	Tipo	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	27.794834963203346	15.959999999999999	5	5	4	8	0	Roadside breakdowns
+ford:b max	Ford	B-MAX	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	43.94250029456816	16.933333333333334	3	3	7	9	0	Roadside breakdowns
+ford:b max	Ford	B-MAX	traficom	Traficom inspections	percent	2026	2025	23.557372131387297	28.95	4	4	9	12	4	Inspection condition
+ford:b max	Ford	B-Max	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	60.81401231883441	16.8	3	3	6	11	0	Inspection condition
+ford:c max	Ford	C-MAX	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	21.03186485567046	18.86	5	5	5	9	0	Roadside breakdowns
+ford:c max	Ford	C-MAX	traficom	Traficom inspections	percent	2026	2025	77.54060073465541	16.825	8	8	7	15	8	Inspection condition
+ford:c max	Ford	C-Max	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	44.492872716115706	19.0	5	5	4	13	0	Inspection condition
+ford:ecosport	Ford	ECOSPORT	traficom	Traficom inspections	percent	2026	2025	55.0376822337534	9.45	2	2	6	7	2	Inspection condition
+ford:ecosport	Ford	EcoSport	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	30.224180161347025	12.085714285714285	7	7	2	8	0	Roadside breakdowns
+ford:ecosport	Ford	Ecosport	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	51.398287601573685	11.675	4	4	2	9	0	Inspection condition
+ford:explorer	Ford	EXPLORER	traficom	Traficom inspections	percent	2026	2025	32.758620689655174	6.9	1	1	4	4	1	Inspection condition
+ford:fiesta	Ford	FIESTA	traficom	Traficom inspections	percent	2026	2025	40.75809391000855	24.358333333333334	12	12	4	15	12	Inspection condition
+ford:fiesta	Ford	Fiesta	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	34.63974907882411	18.683333333333334	6	6	2	13	0	Inspection condition
+ford:fiesta courier	Ford	Fiesta (Courier)	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	34.0626620143531	12.3875	8	8	2	9	0	Roadside breakdowns
+ford:focus	Ford	FOCUS	traficom	Traficom inspections	percent	2026	2025	53.89587579684018	17.383333333333333	12	12	4	15	12	Inspection condition
+ford:focus	Ford	Focus	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	16.908340520885957	16.4875	8	8	2	9	0	Roadside breakdowns
+ford:focus	Ford	Focus	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	12.77149783095401	21.633333333333336	6	6	2	13	0	Inspection condition
+ford:fusion	Ford	FUSION	traficom	Traficom inspections	percent	2026	2025	88.38482507950931	21.7	2	2	14	15	2	Inspection condition
+ford:galaxy	Ford	GALAXY	traficom	Traficom inspections	percent	2026	2025	36.95924055863863	29.76	5	5	9	15	5	Inspection condition
+ford:grand c max	Ford	GRAND C-MAX	traficom	Traficom inspections	percent	2026	2025	41.6724461789775	25.183333333333334	6	6	9	14	6	Inspection condition
+ford:ka	Ford	KA	traficom	Traficom inspections	percent	2026	2025	38.07133121308496	35.05	2	2	14	15	2	Inspection condition
+ford:ka	Ford	Ka	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	12.894193384161236	29.666666666666668	3	3	8	13	0	Inspection condition
+ford:ka	Ford	Ka+	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	24.690934065934066	13.3	2	2	4	7	0	Inspection condition
+ford:kuga	Ford	KUGA	traficom	Traficom inspections	percent	2026	2025	62.12192212810526	16.51666666666667	12	12	4	15	12	Inspection condition
+ford:kuga	Ford	Kuga	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	11.380141881400725	22.6625	8	8	2	9	0	Roadside breakdowns
+ford:kuga	Ford	Kuga	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	43.82447586090475	16.95	6	6	2	13	0	Inspection condition
+ford:mondeo	Ford	MONDEO	traficom	Traficom inspections	percent	2026	2025	54.988938576302424	18.154545454545453	11	11	4	15	11	Inspection condition
+ford:mondeo	Ford	Mondeo	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	14.468667277286535	21.3	6	6	4	9	0	Roadside breakdowns
+ford:mondeo	Ford	Mondeo	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	24.666814679631994	19.933333333333334	6	6	2	13	0	Inspection condition
+ford:mustang mach e	Ford	MUSTANG MACH-E	traficom	Traficom inspections	percent	2026	2025	59.6551724137931	4.6	1	1	4	4	1	Inspection condition
+ford:puma	Ford	PUMA	traficom	Traficom inspections	percent	2026	2025	96.55172413793103	1.6	1	1	4	4	1	Inspection condition
+ford:puma	Ford	Puma	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	17.02279202279202	11.966666666666667	3	3	2	4	0	Roadside breakdowns
+ford:puma	Ford	Puma	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	57.99918831168831	6.550000000000001	2	2	2	5	0	Inspection condition
+ford:ranger	Ford	Ranger	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	33.077911859593165	12.299999999999999	7	7	2	8	0	Roadside breakdowns
+ford:s max	Ford	S-MAX	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	8.661898649061678	33.7	4	4	5	8	0	Roadside breakdowns
+ford:s max	Ford	S-MAX	traficom	Traficom inspections	percent	2026	2025	26.03180714918521	31.38571428571429	7	7	9	15	7	Inspection condition
+ford:s max	Ford	S-Max	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	26.496234383201834	19.333333333333332	6	6	2	13	0	Inspection condition
+ford:tourneo connect	Ford	TOURNEO CONNECT	traficom	Traficom inspections	percent	2026	2025	26.027397260273972	25.0	1	1	9	9	1	Inspection condition
+ford:tourneo custom	Ford	TOURNEO CUSTOM	traficom	Traficom inspections	percent	2026	2025	12.413793103448276	37.6	1	1	12	12	1	Inspection condition
+ford:transit	Ford	Transit	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	27.868310176558474	15.4625	8	8	2	9	0	Roadside breakdowns
+honda:accord	Honda	ACCORD	traficom	Traficom inspections	percent	2026	2025	63.196010546528896	24.2	5	5	11	15	5	Inspection condition
+honda:civic	Honda	CIVIC	traficom	Traficom inspections	percent	2026	2025	89.63169414276578	10.879999999999999	10	10	6	15	10	Inspection condition
+honda:cr v	Honda	CR-V	traficom	Traficom inspections	percent	2026	2025	95.79392949781895	8.540000000000001	10	10	6	15	10	Inspection condition
+honda:hr v	Honda	HR-V	traficom	Traficom inspections	percent	2026	2025	87.1189905649576	6.9	5	5	6	10	5	Inspection condition
+honda:insight	Honda	INSIGHT	traficom	Traficom inspections	percent	2026	2025	32.312585188550656	36.05	2	2	14	15	2	Inspection condition
+honda:jazz	Honda	JAZZ	traficom	Traficom inspections	percent	2026	2025	87.81446385472321	15.549999999999999	6	6	9	15	6	Inspection condition
+honda:jazz	Honda	Jazz	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	92.66516661495507	11.433333333333332	6	6	2	13	0	Inspection condition
+hyundai:i10	Hyundai	I10	traficom	Traficom inspections	percent	2026	2025	35.75678308609471	11.9	3	3	4	7	3	Inspection condition
+hyundai:i10	Hyundai	i10	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	23.050921678588924	16.9625	8	8	2	9	0	Roadside breakdowns
+hyundai:i10	Hyundai	i10	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	34.523123018324036	19.083333333333332	6	6	2	13	0	Inspection condition
+hyundai:i20	Hyundai	I20	traficom	Traficom inspections	percent	2026	2025	73.09505656948812	14.545454545454545	11	11	4	15	11	Inspection condition
+hyundai:i20	Hyundai	i20	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	25.782249441006226	14.8125	8	8	2	9	0	Roadside breakdowns
+hyundai:i20	Hyundai	i20	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	50.91308244291561	19.4	5	5	4	13	0	Inspection condition
+hyundai:i30	Hyundai	I30	traficom	Traficom inspections	percent	2026	2025	33.962687849592186	24.045454545454547	11	11	4	15	11	Inspection condition
+hyundai:i30	Hyundai	i30	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	37.84877031559869	12.037500000000001	8	8	2	9	0	Roadside breakdowns
+hyundai:i30	Hyundai	i30	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	20.81485015124809	20.650000000000002	6	6	2	13	0	Inspection condition
+hyundai:i40	Hyundai	I40	traficom	Traficom inspections	percent	2026	2025	6.175430868965425	40.31666666666667	6	6	9	14	6	Inspection condition
+hyundai:ioniq	Hyundai	IONIQ	traficom	Traficom inspections	percent	2026	2025	44.441101209412764	11.84	5	5	4	8	5	Inspection condition
+hyundai:ioniq 5	Hyundai	IONIQ 5	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	3.824786324786325	20.35	2	2	2	3	0	Roadside breakdowns
+hyundai:ioniq 5	Hyundai	IONIQ5	traficom	Traficom inspections	percent	2026	2025	20.0	10.1	1	1	4	4	1	Inspection condition
+hyundai:ix20	Hyundai	IX20	traficom	Traficom inspections	percent	2026	2025	22.30082808058337	34.76666666666667	3	3	12	14	3	Inspection condition
+hyundai:ix20	Hyundai	ix20	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	31.76083675851878	16.22	5	5	5	9	0	Roadside breakdowns
+hyundai:ix20	Hyundai	ix20	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	55.59428237117795	16.483333333333334	6	6	2	13	0	Inspection condition
+hyundai:ix35	Hyundai	IX35	traficom	Traficom inspections	percent	2026	2025	27.85724883067226	32.15	6	6	10	15	6	Inspection condition
+hyundai:ix35	Hyundai	ix35	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	31.297274808711084	26.46666666666667	3	3	8	13	0	Inspection condition
+hyundai:kona	Hyundai	KONA	traficom	Traficom inspections	percent	2026	2025	51.618788936256955	7.433333333333334	3	3	4	6	3	Inspection condition
+hyundai:kona	Hyundai	Kona	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	31.662503614806248	9.08	5	5	2	6	0	Roadside breakdowns
+hyundai:kona	Hyundai	Kona	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	68.49837662337663	6.15	2	2	2	5	0	Inspection condition
+hyundai:kona elektro	Hyundai	Kona Elektro	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	74.2086038961039	5.95	2	2	2	5	0	Inspection condition
+hyundai:sonata	Hyundai	SONATA	traficom	Traficom inspections	percent	2026	2025	12.67605633802817	45.7	1	1	15	15	1	Inspection condition
+hyundai:tucson	Hyundai	TUCSON	traficom	Traficom inspections	percent	2026	2025	45.74721068700743	14.05	4	4	4	10	4	Inspection condition
+hyundai:tucson	Hyundai	Tucson	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	51.062052921284135	9.6625	8	8	2	9	0	Roadside breakdowns
+hyundai:tucson	Hyundai	Tucson	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	59.93027805527805	8.833333333333334	3	3	2	7	0	Inspection condition
+jaguar:i pace	Jaguar	I-PACE	traficom	Traficom inspections	percent	2026	2025	17.6056338028169	20.2	1	1	6	6	1	Inspection condition
+jaguar:xe	Jaguar	XE	traficom	Traficom inspections	percent	2026	2025	41.78082191780822	19.6	1	1	9	9	1	Inspection condition
+jaguar:xf	Jaguar	XF	traficom	Traficom inspections	percent	2026	2025	56.06439601643976	27.7	4	4	12	15	4	Inspection condition
+jeep:compass	Jeep	COMPASS	traficom	Traficom inspections	percent	2026	2025	0.0	53.1	1	1	13	13	1	Inspection condition
+kia:carens	Kia	CARENS	traficom	Traficom inspections	percent	2026	2025	10.813985943010834	37.9	4	4	9	12	4	Inspection condition
+kia:ceed	Kia	CEED	traficom	Traficom inspections	percent	2026	2025	35.01475459880725	22.566666666666666	12	12	4	15	12	Inspection condition
+kia:ceed	Kia	Ceed	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	33.48357432239254	18.8	6	6	2	13	0	Inspection condition
+kia:ev6	Kia	EV6	traficom	Traficom inspections	percent	2026	2025	84.48275862068965	2.8	1	1	4	4	1	Inspection condition
+kia:niro	Kia	NIRO	traficom	Traficom inspections	percent	2026	2025	41.94160628099298	13.700000000000001	6	6	4	9	6	Inspection condition
+kia:optima	Kia	OPTIMA	traficom	Traficom inspections	percent	2026	2025	28.686735507232957	21.657142857142855	7	7	5	12	7	Inspection condition
+kia:picanto	Kia	PICANTO	traficom	Traficom inspections	percent	2026	2025	36.824007728839014	21.211111111111112	9	9	4	14	9	Inspection condition
+kia:picanto	Kia	Picanto	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	28.568564762795454	14.05	8	8	2	9	0	Roadside breakdowns
+kia:picanto	Kia	Picanto	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	45.52663526474634	15.6	5	5	2	11	0	Inspection condition
+kia:proceed	Kia	PROCEED	traficom	Traficom inspections	percent	2026	2025	46.08305002428364	8.0	2	2	4	6	2	Inspection condition
+kia:rio	Kia	RIO	traficom	Traficom inspections	percent	2026	2025	65.19548131534309	14.727272727272727	11	11	4	14	11	Inspection condition
+kia:rio	Kia	Rio	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	52.92582423119503	14.319999999999999	5	5	2	11	0	Inspection condition
+kia:sorento	Kia	SORENTO	traficom	Traficom inspections	percent	2026	2025	11.649003166752985	35.225	8	8	4	15	8	Inspection condition
+kia:soul	Kia	SOUL	traficom	Traficom inspections	percent	2026	2025	24.392735285595215	30.919999999999998	5	5	9	15	5	Inspection condition
+kia:sportage	Kia	SPORTAGE	traficom	Traficom inspections	percent	2026	2025	29.722065029845645	24.85	10	10	4	14	10	Inspection condition
+kia:sportage	Kia	Sportage	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	34.13625086868539	12.45	8	8	2	9	0	Roadside breakdowns
+kia:sportage	Kia	Sportage	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	28.625150798170697	19.099999999999998	6	6	2	13	0	Inspection condition
+kia:stonic	Kia	STONIC	traficom	Traficom inspections	percent	2026	2025	54.489575079028306	8.533333333333333	3	3	4	7	3	Inspection condition
+kia:venga	Kia	VENGA	traficom	Traficom inspections	percent	2026	2025	58.24820026095636	22.771428571428572	7	7	9	15	7	Inspection condition
+kia:xceed	Kia	XCEED	traficom	Traficom inspections	percent	2026	2025	74.82758620689656	3.7	1	1	4	4	1	Inspection condition
+land rover:discovery sport	Land Rover	DISCOVERY SPORT	traficom	Traficom inspections	percent	2026	2025	28.358829807050096	19.933333333333334	3	3	4	10	3	Inspection condition
+land rover:range rover	Land Rover	RANGE ROVER	traficom	Traficom inspections	percent	2026	2025	75.82781456953643	14.2	1	1	11	11	1	Inspection condition
+land rover:range rover evoque	Land Rover	RANGE ROVER EVOQUE	traficom	Traficom inspections	percent	2026	2025	66.449263194659	18.8	4	4	10	13	4	Inspection condition
+land rover:range rover sport	Land Rover	RANGE ROVER SPORT	traficom	Traficom inspections	percent	2026	2025	30.281690140845072	13.4	1	1	6	6	1	Inspection condition
+lexus:ct	Lexus	CT	traficom	Traficom inspections	percent	2026	2025	97.69595416319345	10.125	4	4	10	14	4	Inspection condition
+lexus:is	Lexus	IS	traficom	Traficom inspections	percent	2026	2025	80.43690399962985	13.133333333333333	3	3	10	12	3	Inspection condition
+lexus:nx	Lexus	NX	traficom	Traficom inspections	percent	2026	2025	82.3496997859694	11.033333333333333	3	3	9	11	3	Inspection condition
+lexus:rx	Lexus	RX	traficom	Traficom inspections	percent	2026	2025	95.39446716139128	16.933333333333334	3	3	13	15	3	Inspection condition
+lexus:ux	Lexus	UX	traficom	Traficom inspections	percent	2026	2025	91.02112676056339	2.6999999999999997	2	2	4	6	2	Inspection condition
+mazda:2	Mazda	2	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	79.86175244249368	6.25	6	6	3	9	0	Roadside breakdowns
+mazda:2	Mazda	2	traficom	Traficom inspections	percent	2026	2025	57.41140762940391	21.119999999999997	5	5	6	15	5	Inspection condition
+mazda:2	Mazda	2	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	79.88537762965719	13.133333333333333	6	6	2	13	0	Inspection condition
+mazda:3	Mazda	3	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	52.227260161438856	17.48333333333333	6	6	4	9	0	Roadside breakdowns
+mazda:3	Mazda	3	traficom	Traficom inspections	percent	2026	2025	72.12507296699067	14.73	10	10	4	15	10	Inspection condition
+mazda:3	Mazda	3	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	64.30391001743033	14.300000000000002	6	6	2	13	0	Inspection condition
+mazda:5	Mazda	5	traficom	Traficom inspections	percent	2026	2025	18.125851885506588	41.8	2	2	14	15	2	Inspection condition
+mazda:6	Mazda	6	traficom	Traficom inspections	percent	2026	2025	56.25718245546156	21.675	8	8	6	15	8	Inspection condition
+mazda:cx 3	Mazda	CX-3	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	79.22710989430097	7.7	5	5	5	9	0	Roadside breakdowns
+mazda:cx 3	Mazda	CX-3	traficom	Traficom inspections	percent	2026	2025	85.83005115623362	7.475	4	4	6	10	4	Inspection condition
+mazda:cx 3	Mazda	CX-3	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	74.69176656676656	6.366666666666667	3	3	2	7	0	Inspection condition
+mazda:cx 30	Mazda	CX-30	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	8.265669515669515	18.233333333333334	3	3	2	4	0	Roadside breakdowns
+mazda:cx 30	Mazda	CX-30	traficom	Traficom inspections	percent	2026	2025	41.46794560466246	8.0	2	2	4	6	2	Inspection condition
+mazda:cx 5	Mazda	CX-5	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	59.937873299448114	8.35	8	8	2	9	0	Roadside breakdowns
+mazda:cx 5	Mazda	CX-5	traficom	Traficom inspections	percent	2026	2025	68.78789540501279	14.671428571428573	7	7	6	13	7	Inspection condition
+mazda:cx 5	Mazda	CX-5	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	64.60906555477557	12.48	5	5	2	11	0	Inspection condition
+mercedes benz:a class	Mercedes-Benz	A-Class	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	60.711193531206476	8.8	8	8	2	9	0	Roadside breakdowns
+mercedes benz:a class	Mercedes-Benz	A-Class	traficom	Traficom inspections	percent	2026	2025	74.98796866867407	12.666666666666666	12	12	4	15	12	Inspection condition
+mercedes benz:a class	Mercedes-Benz	A-Class	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	86.63408951186544	12.066666666666668	6	6	2	13	0	Inspection condition
+mercedes benz:b class	Mercedes-Benz	B-Class	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	65.50894970571466	8.1	8	8	2	9	0	Roadside breakdowns
+mercedes benz:b class	Mercedes-Benz	B-Class	traficom	Traficom inspections	percent	2026	2025	76.19314464635872	14.420000000000002	10	10	4	15	10	Inspection condition
+mercedes benz:b class	Mercedes-Benz	B-Class	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	88.11136290435748	11.666666666666666	6	6	2	13	0	Inspection condition
+mercedes benz:c class	Mercedes-Benz	C-Class	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	74.48702363739247	6.275	8	8	2	9	0	Roadside breakdowns
+mercedes benz:c class	Mercedes-Benz	C-Class	traficom	Traficom inspections	percent	2026	2025	24.420559031418055	25.308333333333334	12	12	4	15	12	Inspection condition
+mercedes benz:c class	Mercedes-Benz	C-Class	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	67.17141247905114	14.950000000000001	6	6	2	13	0	Inspection condition
+mercedes benz:citan	Mercedes-Benz	Citan	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	11.757350195478091	20.714285714285715	7	7	2	9	0	Roadside breakdowns
+mercedes benz:cla	Mercedes-Benz	CLA	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	46.59358513888582	11.350000000000001	8	8	2	9	0	Roadside breakdowns
+mercedes benz:cla	Mercedes-Benz	CLA	traficom	Traficom inspections	percent	2026	2025	59.713329758156	11.777777777777779	9	9	4	12	9	Inspection condition
+mercedes benz:cls	Mercedes-Benz	CLS	traficom	Traficom inspections	percent	2026	2025	53.69365754183868	23.1	5	5	10	14	5	Inspection condition
+mercedes benz:e class	Mercedes-Benz	E-Class	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	56.6571888589544	9.325	8	8	2	9	0	Roadside breakdowns
+mercedes benz:e class	Mercedes-Benz	E-Class	traficom	Traficom inspections	percent	2026	2025	29.291635827311307	24.525000000000002	12	12	4	15	12	Inspection condition
+mercedes benz:e class	Mercedes-Benz	E-Class	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	54.85069067730358	16.26666666666667	6	6	2	13	0	Inspection condition
+mercedes benz:eqa	Mercedes-Benz	EQA	traficom	Traficom inspections	percent	2026	2025	92.06896551724138	2.2	1	1	4	4	1	Inspection condition
+mercedes benz:eqc	Mercedes-Benz	EQC	traficom	Traficom inspections	percent	2026	2025	41.14942528735632	8.3	2	2	4	5	2	Inspection condition
+mercedes benz:gla	Mercedes-Benz	GLA	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	65.16302893233399	8.4875	8	8	2	9	0	Roadside breakdowns
+mercedes benz:gla	Mercedes-Benz	GLA	traficom	Traficom inspections	percent	2026	2025	83.68835113875089	7.733333333333333	6	6	4	11	6	Inspection condition
+mercedes benz:glb	Mercedes-Benz	GLB	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	73.85327635327636	2.733333333333333	3	3	2	4	0	Roadside breakdowns
+mercedes benz:glb	Mercedes-Benz	GLB	traficom	Traficom inspections	percent	2026	2025	41.03448275862069	5.8	1	1	4	4	1	Inspection condition
+mercedes benz:glc	Mercedes-Benz	GLC	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	88.66126462428221	4.214285714285714	7	7	2	8	0	Roadside breakdowns
+mercedes benz:glc	Mercedes-Benz	GLC	traficom	Traficom inspections	percent	2026	2025	40.95899089966928	15.328571428571427	7	7	4	10	7	Inspection condition
+mercedes benz:glc	Mercedes-Benz	GLC	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	84.17931295508615	8.75	4	4	2	9	0	Inspection condition
+mercedes benz:gle	Mercedes-Benz	GLE	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	61.32538827149928	7.371428571428572	7	7	2	8	0	Roadside breakdowns
+mercedes benz:gle	Mercedes-Benz	GLE	traficom	Traficom inspections	percent	2026	2025	44.14746191588017	13.440000000000001	5	5	4	10	5	Inspection condition
+mercedes benz:gle	Mercedes-Benz	GLE	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	71.02272727272728	5.550000000000001	2	2	2	5	0	Inspection condition
+mercedes benz:glk	Mercedes-Benz	GLK	traficom	Traficom inspections	percent	2026	2025	31.117603505296618	31.099999999999998	6	6	10	15	6	Inspection condition
+mercedes benz:glk	Mercedes-Benz	GLK	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	80.56551174830744	21.85	2	2	10	13	0	Inspection condition
+mercedes benz:ml	Mercedes-Benz	ML	traficom	Traficom inspections	percent	2026	2025	81.6338378304311	18.740000000000002	5	5	11	15	5	Inspection condition
+mercedes benz:r	Mercedes-Benz	R	traficom	Traficom inspections	percent	2026	2025	88.70967741935483	19.8	1	1	14	14	1	Inspection condition
+mercedes benz:s class	Mercedes-Benz	S-Class	traficom	Traficom inspections	percent	2026	2025	49.747525661471215	24.125	4	4	10	15	4	Inspection condition
+mercedes benz:slk	Mercedes-Benz	SLK	traficom	Traficom inspections	percent	2026	2025	100.0	7.1	1	1	14	14	1	Inspection condition
+mercedes benz:sprinter	Mercedes-Benz	SPRINTER	traficom	Traficom inspections	percent	2026	2025	3.295481888744829	38.4	10	10	4	13	10	Inspection condition
+mercedes benz:sprinter	Mercedes-Benz	Sprinter	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	68.46313173067595	7.325	8	8	2	9	0	Roadside breakdowns
+mercedes benz:v	Mercedes-Benz	V	traficom	Traficom inspections	percent	2026	2025	9.84287754837034	34.8	2	2	10	11	2	Inspection condition
+mercedes benz:vito	Mercedes-Benz	VITO	traficom	Traficom inspections	percent	2026	2025	4.366388724980735	41.1	8	8	6	14	8	Inspection condition
+mini:cooper	Mini	COOPER	traficom	Traficom inspections	percent	2026	2025	90.35686573023058	10.28	5	5	4	13	5	Inspection condition
+mini:cooper se	Mini	Cooper SE	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	80.45454545454545	4.4	1	1	2	3	0	Inspection condition
+mini:countryman	Mini	COUNTRYMAN	traficom	Traficom inspections	percent	2026	2025	87.71200139187681	9.360000000000001	5	5	4	14	5	Inspection condition
+mini:mini	Mini	MINI	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	72.87481217659261	8.2125	8	8	2	9	0	Roadside breakdowns
+mitsubishi:asx	Mitsubishi	ASX	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	93.62189953165877	5.216666666666667	6	6	4	9	0	Roadside breakdowns
+mitsubishi:asx	Mitsubishi	ASX	traficom	Traficom inspections	percent	2026	2025	70.62638108957415	17.6	9	9	6	15	9	Inspection condition
+mitsubishi:asx	Mitsubishi	ASX	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	92.51075024587293	11.25	6	6	2	13	0	Inspection condition
+mitsubishi:colt	Mitsubishi	COLT	traficom	Traficom inspections	percent	2026	2025	64.78873239436619	30.3	1	1	15	15	1	Inspection condition
+mitsubishi:eclipse cross	Mitsubishi	ECLIPSE CROSS	traficom	Traficom inspections	percent	2026	2025	74.61631860126275	4.45	2	2	4	6	2	Inspection condition
+mitsubishi:eclipse cross	Mitsubishi	Eclipse Cross	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	69.10778147291305	4.720000000000001	5	5	2	6	0	Roadside breakdowns
+mitsubishi:lancer	Mitsubishi	LANCER	traficom	Traficom inspections	percent	2026	2025	71.60321066182038	25.133333333333336	3	3	13	15	3	Inspection condition
+mitsubishi:outlander	Mitsubishi	OUTLANDER	traficom	Traficom inspections	percent	2026	2025	28.393285675693846	25.49166666666667	12	12	4	15	12	Inspection condition
+mitsubishi:outlander	Mitsubishi	Outlander	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	41.924995045702246	11.066666666666668	6	6	3	8	0	Roadside breakdowns
+mitsubishi:space star	Mitsubishi	SPACE STAR	traficom	Traficom inspections	percent	2026	2025	97.21572955893174	6.75	2	2	10	11	2	Inspection condition
+mitsubishi:space star	Mitsubishi	Space Star	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	53.671227989425816	9.774999999999999	8	8	2	9	0	Roadside breakdowns
+nissan:juke	Nissan	JUKE	traficom	Traficom inspections	percent	2026	2025	9.627948994198784	36.5375	8	8	4	15	8	Inspection condition
+nissan:leaf	Nissan	LEAF	traficom	Traficom inspections	percent	2026	2025	38.2668302616668	11.800000000000002	3	3	4	7	3	Inspection condition
+nissan:micra	Nissan	MICRA	traficom	Traficom inspections	percent	2026	2025	36.02205267430959	23.3	11	11	4	15	11	Inspection condition
+nissan:micra	Nissan	Micra	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	37.59301294283783	14.483333333333334	6	6	4	9	0	Roadside breakdowns
+nissan:micra	Nissan	Micra	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	23.757501156625423	20.283333333333335	6	6	2	13	0	Inspection condition
+nissan:note	Nissan	NOTE	traficom	Traficom inspections	percent	2026	2025	45.2405249178509	26.12857142857143	7	7	9	15	7	Inspection condition
+nissan:pulsar	Nissan	PULSAR	traficom	Traficom inspections	percent	2026	2025	5.133759734300849	37.699999999999996	3	3	9	11	3	Inspection condition
+nissan:qashqai	Nissan	QASHQAI	traficom	Traficom inspections	percent	2026	2025	25.294602477936408	25.65833333333333	12	12	4	15	12	Inspection condition
+nissan:qashqai	Nissan	Qashqai	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	16.010489777368825	19.4625	8	8	2	9	0	Roadside breakdowns
+nissan:qashqai	Nissan	Qashqai	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	38.36087530038912	18.75	6	6	2	13	0	Inspection condition
+nissan:qashqai 2	Nissan	QASHQAI+2	traficom	Traficom inspections	percent	2026	2025	0.39569892473118273	52.82000000000001	5	5	11	15	5	Inspection condition
+nissan:tiida	Nissan	TIIDA	traficom	Traficom inspections	percent	2026	2025	41.54929577464789	35.7	1	1	15	15	1	Inspection condition
+nissan:x trail	Nissan	X-TRAIL	traficom	Traficom inspections	percent	2026	2025	3.2283709637192586	40.17142857142857	7	7	6	15	7	Inspection condition
+opel:adam	Opel	ADAM	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	40.158734463744196	14.88	5	5	5	9	0	Roadside breakdowns
+opel:adam	Opel	ADAM	traficom	Traficom inspections	percent	2026	2025	76.20689655172414	19.1	1	1	12	12	1	Inspection condition
+opel:adam	Opel	Adam	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	58.263221629689454	15.225000000000001	4	4	4	11	0	Inspection condition
+opel:ampera	Opel	AMPERA	traficom	Traficom inspections	percent	2026	2025	43.689655172413794	27.3	2	2	12	13	2	Inspection condition
+opel:astra	Opel	ASTRA	traficom	Traficom inspections	percent	2026	2025	61.355351509516034	17.036363636363635	11	11	4	15	11	Inspection condition
+opel:astra	Opel	Astra	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	33.965587616069485	12.3375	8	8	2	9	0	Roadside breakdowns
+opel:astra	Opel	Astra	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	41.399842522258275	17.333333333333332	6	6	2	13	0	Inspection condition
+opel:combo	Opel	COMBO	traficom	Traficom inspections	percent	2026	2025	7.746478873239437	25.8	1	1	6	6	1	Inspection condition
+opel:combo	Opel	Combo	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	26.37224069789859	9.075	4	4	2	5	0	Roadside breakdowns
+opel:corsa	Opel	CORSA	traficom	Traficom inspections	percent	2026	2025	48.81108995450973	23.733333333333334	6	6	4	15	6	Inspection condition
+opel:corsa	Opel	Corsa	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	46.57203411536325	10.5	8	8	2	9	0	Roadside breakdowns
+opel:corsa	Opel	Corsa	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	37.98758866960841	17.616666666666667	6	6	2	13	0	Inspection condition
+opel:corsa e	Opel	CORSA-E	traficom	Traficom inspections	percent	2026	2025	24.174762773998907	21.580000000000002	5	5	6	10	5	Inspection condition
+opel:crossland	Opel	CROSSLAND	traficom	Traficom inspections	percent	2026	2025	26.551724137931036	8.1	1	1	4	4	1	Inspection condition
+opel:crossland	Opel	Crossland	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	46.56628738303963	7.75	6	6	2	7	0	Roadside breakdowns
+opel:crossland	Opel	Crossland	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	6.972402597402597	13.05	2	2	2	5	0	Inspection condition
+opel:crossland x	Opel	CROSSLAND X	traficom	Traficom inspections	percent	2026	2025	6.331850753644675	29.75	2	2	6	7	2	Inspection condition
+opel:e corsa	Opel	e-Corsa	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	20.0	8.3	1	1	2	3	0	Inspection condition
+opel:grandland	Opel	Grandland	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	29.8490336417968	10.26	5	5	2	6	0	Roadside breakdowns
+opel:grandland	Opel	Grandland	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	54.81997169497169	8.799999999999999	3	3	2	7	0	Inspection condition
+opel:grandland x	Opel	GRANDLAND X	traficom	Traficom inspections	percent	2026	2025	32.852716216638406	13.600000000000001	3	3	4	7	3	Inspection condition
+opel:insignia	Opel	INSIGNIA	traficom	Traficom inspections	percent	2026	2025	38.67108324047082	22.90909090909091	11	11	4	15	11	Inspection condition
+opel:insignia	Opel	Insignia	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	3.572531787178012	28.225	8	8	2	9	0	Roadside breakdowns
+opel:insignia	Opel	Insignia	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	26.71875102346364	19.416666666666668	6	6	2	13	0	Inspection condition
+opel:karl	Opel	KARL	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	43.020039951083966	14.339999999999998	5	5	5	9	0	Roadside breakdowns
+opel:karl	Opel	KARL	traficom	Traficom inspections	percent	2026	2025	67.90446772316233	13.9	2	2	9	10	2	Inspection condition
+opel:meriva	Opel	MERIVA	traficom	Traficom inspections	percent	2026	2025	32.391904722527634	31.959999999999997	5	5	11	15	5	Inspection condition
+opel:meriva	Opel	Meriva	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	5.100573987106331	30.5	3	3	7	9	0	Roadside breakdowns
+opel:meriva	Opel	Meriva	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	73.01649013176282	18.4	4	4	6	13	0	Inspection condition
+opel:mokka	Opel	MOKKA	traficom	Traficom inspections	percent	2026	2025	44.01251924468125	17.0875	8	8	4	12	8	Inspection condition
+opel:mokka	Opel	Mokka	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	30.21657521357153	16.17142857142857	7	7	2	9	0	Roadside breakdowns
+opel:mokka	Opel	Mokka	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	63.91545428022814	12.68	5	5	2	11	0	Inspection condition
+opel:zafira	Opel	ZAFIRA	traficom	Traficom inspections	percent	2026	2025	10.797364834166288	45.5	2	2	14	15	2	Inspection condition
+opel:zafira	Opel	Zafira	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	13.857763111383974	21.36	5	5	5	9	0	Roadside breakdowns
+opel:zafira tourer	Opel	ZAFIRA TOURER	traficom	Traficom inspections	percent	2026	2025	42.29556021236233	25.25	4	4	10	13	4	Inspection condition
+peugeot:107	Peugeot	107	traficom	Traficom inspections	percent	2026	2025	48.946236559139784	29.25	2	2	13	14	2	Inspection condition
+peugeot:2008	Peugeot	2008	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	50.2985485527778	9.5625	8	8	2	9	0	Roadside breakdowns
+peugeot:2008	Peugeot	2008	traficom	Traficom inspections	percent	2026	2025	15.435065783972117	26.97142857142857	7	7	4	12	7	Inspection condition
+peugeot:2008	Peugeot	2008	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	32.744703057722674	16.16	5	5	2	11	0	Inspection condition
+peugeot:206	Peugeot	206	traficom	Traficom inspections	percent	2026	2025	40.512595284971475	33.06666666666667	3	3	13	15	3	Inspection condition
+peugeot:207	Peugeot	207	traficom	Traficom inspections	percent	2026	2025	17.3943661971831	41.1	2	2	14	15	2	Inspection condition
+peugeot:207	Peugeot	207	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	9.25925925925926	35.7	1	1	12	13	0	Inspection condition
+peugeot:208	Peugeot	208	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	55.34167884116224	9.487499999999999	8	8	2	9	0	Roadside breakdowns
+peugeot:208	Peugeot	208	traficom	Traficom inspections	percent	2026	2025	36.73384160034755	20.325	8	8	4	13	8	Inspection condition
+peugeot:208	Peugeot	208	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	40.15169326571887	14.940000000000001	5	5	2	11	0	Inspection condition
+peugeot:3008	Peugeot	3008	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	26.503267505654378	13.083333333333334	6	6	2	7	0	Roadside breakdowns
+peugeot:3008	Peugeot	3008	traficom	Traficom inspections	percent	2026	2025	14.252747338979631	31.025000000000002	12	12	4	15	12	Inspection condition
+peugeot:308	Peugeot	308	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	13.847162727205074	21.86	5	5	5	9	0	Roadside breakdowns
+peugeot:308	Peugeot	308	traficom	Traficom inspections	percent	2026	2025	19.852245115917153	30.599999999999998	9	9	6	15	9	Inspection condition
+peugeot:308	Peugeot	308	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	24.346809950390025	19.433333333333334	6	6	2	13	0	Inspection condition
+peugeot:407	Peugeot	407	traficom	Traficom inspections	percent	2026	2025	51.40845070422535	33.3	1	1	15	15	1	Inspection condition
+peugeot:5008	Peugeot	5008	traficom	Traficom inspections	percent	2026	2025	10.827753869783106	33.12	5	5	4	15	5	Inspection condition
+peugeot:508	Peugeot	508	traficom	Traficom inspections	percent	2026	2025	37.802473623621346	24.514285714285712	7	7	6	14	7	Inspection condition
+peugeot:e 208	Peugeot	e-208	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	38.18181818181818	6.4	1	1	2	3	0	Inspection condition
+peugeot:rcz	Peugeot	RCZ	traficom	Traficom inspections	percent	2026	2025	28.70967741935484	35.1	1	1	14	14	1	Inspection condition
+peugeot:rifter	Peugeot	RIFTER	traficom	Traficom inspections	percent	2026	2025	15.492957746478874	20.4	1	1	6	6	1	Inspection condition
+polestar:2	Polestar	2	traficom	Traficom inspections	percent	2026	2025	61.00255427841635	5.550000000000001	2	2	4	5	2	Inspection condition
+porsche:911 carrera	Porsche	911 Carrera	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	99.62121212121212	4.383333333333334	6	6	2	13	0	Inspection condition
+porsche:cayenne	Porsche	CAYENNE	traficom	Traficom inspections	percent	2026	2025	71.46734232815888	13.1	5	5	4	15	5	Inspection condition
+porsche:macan	Porsche	MACAN	traficom	Traficom inspections	percent	2026	2025	95.36423841059603	8.7	1	1	11	11	1	Inspection condition
+porsche:panamera	Porsche	PANAMERA	traficom	Traficom inspections	percent	2026	2025	64.91228070175438	8.7	1	1	7	7	1	Inspection condition
+porsche:taycan	Porsche	TAYCAN	traficom	Traficom inspections	percent	2026	2025	12.068965517241379	12.5	1	1	4	4	1	Inspection condition
+renault:captur	Renault	CAPTUR	traficom	Traficom inspections	percent	2026	2025	13.126770889532759	28.5	8	8	4	12	8	Inspection condition
+renault:captur	Renault	Captur	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	76.54619778846583	11.48	5	5	2	11	0	Inspection condition
+renault:clio	Renault	CLIO	traficom	Traficom inspections	percent	2026	2025	8.01274774677564	36.14545454545454	11	11	4	15	11	Inspection condition
+renault:clio	Renault	Clio	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	20.47978797886421	21.333333333333332	6	6	2	13	0	Inspection condition
+renault:kadjar	Renault	KADJAR	traficom	Traficom inspections	percent	2026	2025	34.89847269004187	18.3	6	6	4	10	6	Inspection condition
+renault:kadjar	Renault	Kadjar	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	17.813029059924467	18.240000000000002	5	5	4	8	0	Roadside breakdowns
+renault:laguna	Renault	LAGUNA	traficom	Traficom inspections	percent	2026	2025	63.225806451612904	27.5	1	1	14	14	1	Inspection condition
+renault:master	Renault	Master	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	26.33949704716393	19.575	8	8	2	9	0	Roadside breakdowns
+renault:megane	Renault	MEGANE	traficom	Traficom inspections	percent	2026	2025	12.235888694483217	34.96666666666667	9	9	4	15	9	Inspection condition
+renault:megane	Renault	Megane	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	15.43927504979033	21.600000000000005	6	6	2	13	0	Inspection condition
+renault:megane	Renault	Mégane	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	19.553711844648873	18.875	8	8	2	9	0	Roadside breakdowns
+renault:megane scenic	Renault	MEGANE SCENIC	traficom	Traficom inspections	percent	2026	2025	3.947801504366702	47.96666666666667	3	3	13	15	3	Inspection condition
+renault:scenic	Renault	Scenic	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	39.74215099467981	18.05	6	6	2	13	0	Inspection condition
+renault:scenic	Renault	Scénic	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	4.3300610520202945	30.525	4	4	5	9	0	Roadside breakdowns
+renault:talisman	Renault	TALISMAN	traficom	Traficom inspections	percent	2026	2025	30.136986301369863	23.7	1	1	9	9	1	Inspection condition
+renault:trafic	Renault	Trafic	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	19.435195432442505	15.8875	8	8	2	9	0	Roadside breakdowns
+renault:twingo	Renault	TWINGO	traficom	Traficom inspections	percent	2026	2025	14.78494623655914	39.349999999999994	2	2	13	14	2	Inspection condition
+renault:twingo	Renault	Twingo	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	33.77184954877405	12.7	8	8	2	9	0	Roadside breakdowns
+renault:twingo	Renault	Twingo	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	21.885592075773317	21.349999999999998	6	6	2	13	0	Inspection condition
+renault:zoe	Renault	ZOE	traficom	Traficom inspections	percent	2026	2025	12.068965517241379	12.5	1	1	4	4	1	Inspection condition
+renault:zoe	Renault	Zoe	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	68.05334449906817	4.34	5	5	2	6	0	Roadside breakdowns
+renault:zoe	Renault	Zoe	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	10.686396936396937	14.433333333333332	3	3	2	7	0	Inspection condition
+saab:9 3	Saab	9-3	traficom	Traficom inspections	percent	2026	2025	47.99409359382099	32.5	2	2	14	15	2	Inspection condition
+saab:9 5	Saab	9-5	traficom	Traficom inspections	percent	2026	2025	98.2985006815084	15.95	2	2	14	15	2	Inspection condition
+seat:alhambra	SEAT	ALHAMBRA	traficom	Traficom inspections	percent	2026	2025	40.66201428944432	28.833333333333332	3	3	11	14	3	Inspection condition
+seat:alhambra	SEAT	Alhambra	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	21.210399961551104	17.666666666666668	6	6	4	9	0	Roadside breakdowns
+seat:alhambra	SEAT	Alhambra	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	23.118097657829026	20.383333333333333	6	6	2	13	0	Inspection condition
+seat:altea xl	SEAT	ALTEA XL	traficom	Traficom inspections	percent	2026	2025	71.41637639456813	25.099999999999998	3	3	13	15	3	Inspection condition
+seat:arona	SEAT	ARONA	traficom	Traficom inspections	percent	2026	2025	18.0609732198393	16.966666666666665	3	3	4	7	3	Inspection condition
+seat:arona	SEAT	Arona	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	79.65503000289183	3.28	5	5	2	6	0	Roadside breakdowns
+seat:arona	SEAT	Arona	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	51.42607392607393	9.0	3	3	2	7	0	Inspection condition
+seat:ateca	SEAT	ATECA	traficom	Traficom inspections	percent	2026	2025	79.04664744676228	6.88	5	5	4	9	5	Inspection condition
+seat:ateca	SEAT	Ateca	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	70.21683773637288	6.042857142857143	7	7	2	8	0	Roadside breakdowns
+seat:ateca	SEAT	Ateca	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	79.09902597402596	6.533333333333334	3	3	2	7	0	Inspection condition
+seat:exeo st	SEAT	EXEO ST	traficom	Traficom inspections	percent	2026	2025	44.286687869150384	34.1	2	2	14	15	2	Inspection condition
+seat:ibiza	SEAT	IBIZA	traficom	Traficom inspections	percent	2026	2025	35.269441598757865	25.255555555555556	9	9	6	15	9	Inspection condition
+seat:ibiza	SEAT	Ibiza	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	71.966608332848	7.1625	8	8	2	9	0	Roadside breakdowns
+seat:ibiza	SEAT	Ibiza	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	26.393799835710837	19.400000000000002	6	6	2	13	0	Inspection condition
+seat:ibiza st	SEAT	IBIZA ST	traficom	Traficom inspections	percent	2026	2025	43.259290012787346	26.114285714285717	7	7	9	15	7	Inspection condition
+seat:leon	SEAT	LEON	traficom	Traficom inspections	percent	2026	2025	77.23882783351254	14.788888888888888	9	9	4	15	9	Inspection condition
+seat:leon	SEAT	Leon	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	69.5560614480784	6.6125	8	8	2	9	0	Roadside breakdowns
+seat:leon	SEAT	Leon	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	50.18934007329141	16.333333333333332	6	6	2	13	0	Inspection condition
+seat:leon st	SEAT	LEON ST	traficom	Traficom inspections	percent	2026	2025	71.981419411134	9.685714285714285	7	7	4	11	7	Inspection condition
+seat:leon x perience	SEAT	LEON X-PERIENCE	traficom	Traficom inspections	percent	2026	2025	74.50980392156863	13.2	1	1	10	10	1	Inspection condition
+seat:mii	SEAT	MII	traficom	Traficom inspections	percent	2026	2025	26.551724137931036	8.1	1	1	4	4	1	Inspection condition
+seat:mii	SEAT	Mii	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	51.89202227466865	13.440000000000001	5	5	5	9	0	Roadside breakdowns
+seat:mii	SEAT	Mii	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	50.21572165709803	15.7	4	4	4	11	0	Inspection condition
+seat:tarraco	SEAT	TARRACO	traficom	Traficom inspections	percent	2026	2025	43.519912578921804	10.2	2	2	4	6	2	Inspection condition
+seat:tarraco	SEAT	Tarraco	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	45.351861223571746	6.0	4	4	2	5	0	Roadside breakdowns
+seat:toledo	SEAT	TOLEDO	traficom	Traficom inspections	percent	2026	2025	50.06449348199375	20.175	4	4	9	12	4	Inspection condition
+skoda:citigo	Škoda	CITIGO	traficom	Traficom inspections	percent	2026	2025	63.02648937105731	18.259999999999998	5	5	9	13	5	Inspection condition
+skoda:citigo	Škoda	Citigo	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	59.278887834644934	11.74	5	5	5	9	0	Roadside breakdowns
+skoda:citigo	Škoda	Citigo	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	52.18523275028929	13.419999999999998	5	5	2	11	0	Inspection condition
+skoda:enyaq	Škoda	ENYAQ	traficom	Traficom inspections	percent	2026	2025	28.275862068965516	7.8	1	1	4	4	1	Inspection condition
+skoda:enyaq	Škoda	Enyaq	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	78.6698717948718	1.9	2	2	2	3	0	Roadside breakdowns
+skoda:fabia	Škoda	FABIA	traficom	Traficom inspections	percent	2026	2025	46.561200833238395	19.87272727272727	11	11	4	15	11	Inspection condition
+skoda:fabia	Škoda	Fabia	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	70.51227754651877	6.6375	8	8	2	9	0	Roadside breakdowns
+skoda:fabia	Škoda	Fabia	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	56.40359438230379	15.783333333333333	6	6	2	13	0	Inspection condition
+skoda:kamiq	Škoda	KAMIQ	traficom	Traficom inspections	percent	2026	2025	13.793103448275861	12.2	1	1	4	4	1	Inspection condition
+skoda:kamiq	Škoda	Kamiq	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	76.51709401709401	2.3666666666666667	3	3	2	4	0	Roadside breakdowns
+skoda:kamiq	Škoda	Kamiq	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	17.715097402597404	10.149999999999999	2	2	2	5	0	Inspection condition
+skoda:karoq	Škoda	KAROQ	traficom	Traficom inspections	percent	2026	2025	68.59002979360332	6.433333333333334	3	3	4	7	3	Inspection condition
+skoda:karoq	Škoda	Karoq	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	63.55586381819934	4.78	5	5	2	6	0	Roadside breakdowns
+skoda:karoq	Škoda	Karoq	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	78.71753246753246	5.1	2	2	2	5	0	Inspection condition
+skoda:kodiaq	Škoda	KODIAQ	traficom	Traficom inspections	percent	2026	2025	49.19873245579358	10.02	5	5	4	8	5	Inspection condition
+skoda:kodiaq	Škoda	Kodiaq	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	31.372026936151617	10.216666666666667	6	6	2	7	0	Roadside breakdowns
+skoda:kodiaq	Škoda	Kodiaq	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	68.7037962037962	7.3	3	3	2	7	0	Inspection condition
+skoda:octavia	Škoda	OCTAVIA	traficom	Traficom inspections	percent	2026	2025	60.50522773511772	15.975	12	12	4	15	12	Inspection condition
+skoda:octavia	Škoda	Octavia	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	51.34258773618608	9.2875	8	8	2	9	0	Roadside breakdowns
+skoda:octavia	Škoda	Octavia	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	45.864070003577815	17.2	6	6	2	13	0	Inspection condition
+skoda:rapid	Škoda	RAPID	traficom	Traficom inspections	percent	2026	2025	49.12524706064779	17.02857142857143	7	7	6	12	7	Inspection condition
+skoda:rapid	Škoda	Rapid	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	82.07820261483508	7.76	5	5	5	9	0	Roadside breakdowns
+skoda:rapid	Škoda	Rapid	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	50.98281246383591	15.975	4	4	4	11	0	Inspection condition
+skoda:roomster	Škoda	ROOMSTER	traficom	Traficom inspections	percent	2026	2025	41.3168090223959	29.419999999999998	5	5	11	15	5	Inspection condition
+skoda:roomster	Škoda	Roomster	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	42.62167425526994	24.400000000000002	3	3	8	13	0	Inspection condition
+skoda:scala	Škoda	SCALA	traficom	Traficom inspections	percent	2026	2025	19.189016602809705	13.799999999999999	3	3	4	6	3	Inspection condition
+skoda:scala	Škoda	Scala	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	61.45837349784718	4.15	4	4	2	5	0	Roadside breakdowns
+skoda:scala	Škoda	Scala	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	1.8181818181818181	11.8	1	1	2	3	0	Inspection condition
+skoda:superb	Škoda	SUPERB	traficom	Traficom inspections	percent	2026	2025	23.334281593053017	26.650000000000002	12	12	4	15	12	Inspection condition
+skoda:superb	Škoda	Superb	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	41.15319289618336	11.0	8	8	2	9	0	Roadside breakdowns
+skoda:superb	Škoda	Superb	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	34.69521927037724	18.099999999999998	6	6	2	13	0	Inspection condition
+skoda:yeti	Škoda	YETI	traficom	Traficom inspections	percent	2026	2025	58.21388122628621	22.657142857142855	7	7	9	15	7	Inspection condition
+skoda:yeti	Škoda	Yeti	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	80.16647309330237	9.700000000000001	3	3	7	9	0	Roadside breakdowns
+skoda:yeti	Škoda	Yeti	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	67.70096784299756	18.725	4	4	6	13	0	Inspection condition
+smart:forfour	Smart	forfour	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	13.72115828178419	21.983333333333334	6	6	3	9	0	Roadside breakdowns
+smart:fortwo	Smart	ForTwo	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	58.93805304821961	15.433333333333335	6	6	2	13	0	Inspection condition
+smart:fortwo	Smart	fortwo	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	20.175304520007483	17.35	8	8	2	9	0	Roadside breakdowns
+subaru:forester	Subaru	FORESTER	traficom	Traficom inspections	percent	2026	2025	36.4744575346568	24.73	10	10	6	15	10	Inspection condition
+subaru:legacy	Subaru	LEGACY	traficom	Traficom inspections	percent	2026	2025	27.047835476790052	32.1	7	7	9	15	7	Inspection condition
+subaru:outback	Subaru	OUTBACK	traficom	Traficom inspections	percent	2026	2025	74.4845763429133	6.033333333333332	3	3	4	7	3	Inspection condition
+subaru:xv	Subaru	XV	traficom	Traficom inspections	percent	2026	2025	41.130863332433094	24.3	5	5	9	13	5	Inspection condition
+suzuki:alto	Suzuki	ALTO	traficom	Traficom inspections	percent	2026	2025	91.6416780251401	18.433333333333334	3	3	13	15	3	Inspection condition
+suzuki:grand vitara	Suzuki	GRAND VITARA	traficom	Traficom inspections	percent	2026	2025	86.85824625170378	22.1	2	2	14	15	2	Inspection condition
+suzuki:grand vitara	Suzuki	Grand Vitara	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	68.50856232576663	23.7	2	2	10	13	0	Inspection condition
+suzuki:ignis	Suzuki	Ignis	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	88.54666327913279	4.14	5	5	3	7	0	Roadside breakdowns
+suzuki:swace	Suzuki	SWACE	traficom	Traficom inspections	percent	2026	2025	87.93103448275862	2.5	1	1	4	4	1	Inspection condition
+suzuki:swift	Suzuki	SWIFT	traficom	Traficom inspections	percent	2026	2025	75.88303800386247	11.216666666666667	6	6	4	14	6	Inspection condition
+suzuki:swift	Suzuki	Swift	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	81.24197668759048	7.6499999999999995	6	6	3	9	0	Roadside breakdowns
+suzuki:swift	Suzuki	Swift	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	74.37176769717969	13.883333333333333	6	6	2	13	0	Inspection condition
+suzuki:sx4	Suzuki	SX4	traficom	Traficom inspections	percent	2026	2025	81.80177133169543	16.9	7	7	9	15	7	Inspection condition
+suzuki:vitara	Suzuki	VITARA	traficom	Traficom inspections	percent	2026	2025	92.1916459038428	5.083333333333333	6	6	4	10	6	Inspection condition
+suzuki:vitara	Suzuki	Vitara	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	74.90034657034747	4.6571428571428575	7	7	2	8	0	Roadside breakdowns
+suzuki:vitara	Suzuki	Vitara	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	90.36269947835669	7.4	4	4	2	9	0	Inspection condition
+tesla:model 3	Tesla	MODEL 3	traficom	Traficom inspections	percent	2026	2025	0.2298850574712644	55.93333333333334	3	3	4	6	3	Inspection condition
+tesla:model 3	Tesla	Model 3	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	91.84690492256283	2.2	4	4	2	5	0	Roadside breakdowns
+tesla:model 3	Tesla	Model 3	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	0.0	16.95	2	2	2	5	0	Inspection condition
+tesla:model s	Tesla	MODEL S	traficom	Traficom inspections	percent	2026	2025	3.685830988172957	37.25714285714286	7	7	5	11	7	Inspection condition
+tesla:model x	Tesla	MODEL X	traficom	Traficom inspections	percent	2026	2025	10.627069913018161	26.266666666666666	3	3	6	8	3	Inspection condition
+tesla:model y	Tesla	MODEL Y	traficom	Traficom inspections	percent	2026	2025	0.0	62.7	1	1	4	4	1	Inspection condition
+tesla:model y	Tesla	Model Y	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	90.83333333333333	0.9	1	1	2	2	0	Roadside breakdowns
+toyota:auris	Toyota	AURIS	traficom	Traficom inspections	percent	2026	2025	93.70237589207953	9.940000000000001	10	10	6	15	10	Inspection condition
+toyota:auris	Toyota	Auris	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	32.47905146947433	17.95	4	4	6	9	0	Roadside breakdowns
+toyota:auris	Toyota	Auris	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	65.83281183727365	18.65	4	4	6	13	0	Inspection condition
+toyota:avensis	Toyota	AVENSIS	traficom	Traficom inspections	percent	2026	2025	90.07605468377909	12.444444444444445	9	9	7	15	9	Inspection condition
+toyota:aygo	Toyota	AYGO	traficom	Traficom inspections	percent	2026	2025	43.87508518635712	23.311111111111114	9	9	4	15	9	Inspection condition
+toyota:aygo	Toyota	Aygo	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	66.50779007636595	7.1875	8	8	2	9	0	Roadside breakdowns
+toyota:aygo	Toyota	Aygo	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	45.91406441002753	16.566666666666666	6	6	2	13	0	Inspection condition
+toyota:c hr	Toyota	C-HR	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	2.0458207386561047	38.766666666666666	6	6	2	7	0	Roadside breakdowns
+toyota:c hr	Toyota	C-HR	traficom	Traficom inspections	percent	2026	2025	93.1938455841052	4.35	6	6	4	9	6	Inspection condition
+toyota:camry	Toyota	CAMRY	traficom	Traficom inspections	percent	2026	2025	56.70656977197368	7.266666666666667	3	3	4	6	3	Inspection condition
+toyota:corolla	Toyota	COROLLA	traficom	Traficom inspections	percent	2026	2025	95.4427095185985	7.708333333333333	12	12	4	15	12	Inspection condition
+toyota:corolla	Toyota	Corolla	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	11.060062014009382	14.075	4	4	2	5	0	Roadside breakdowns
+toyota:corolla	Toyota	Corolla	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	27.97077922077922	9.0	2	2	2	5	0	Inspection condition
+toyota:land cruiser	Toyota	LAND CRUISER	traficom	Traficom inspections	percent	2026	2025	89.687763702376	15.36	5	5	10	15	5	Inspection condition
+toyota:prius	Toyota	PRIUS	traficom	Traficom inspections	percent	2026	2025	61.76627505955374	24.0	5	5	9	15	5	Inspection condition
+toyota:prius plug in hybrid	Toyota	PRIUS PLUG-IN HYBRID	traficom	Traficom inspections	percent	2026	2025	61.48850574712644	23.700000000000003	2	2	12	13	2	Inspection condition
+toyota:prius plus	Toyota	PRIUS PLUS	traficom	Traficom inspections	percent	2026	2025	39.50889397748878	22.380000000000003	5	5	6	13	5	Inspection condition
+toyota:proace	Toyota	PROACE	traficom	Traficom inspections	percent	2026	2025	5.860556563823351	24.5	2	2	4	7	2	Inspection condition
+toyota:rav4	Toyota	RAV4	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	1.928951107961814	32.714285714285715	7	7	2	8	0	Roadside breakdowns
+toyota:rav4	Toyota	RAV4	traficom	Traficom inspections	percent	2026	2025	79.70670363881347	12.200000000000001	12	12	4	15	12	Inspection condition
+toyota:rav4	Toyota	RAV4	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	87.78280695376915	11.080000000000002	5	5	2	13	0	Inspection condition
+toyota:urban cruiser	Toyota	URBAN CRUISER	traficom	Traficom inspections	percent	2026	2025	68.41925387450149	25.900000000000002	3	3	13	15	3	Inspection condition
+toyota:verso	Toyota	VERSO	traficom	Traficom inspections	percent	2026	2025	82.11713175911832	16.9	7	7	9	15	7	Inspection condition
+toyota:verso s	Toyota	VERSO-S	traficom	Traficom inspections	percent	2026	2025	96.6316648127549	10.1	5	5	10	14	5	Inspection condition
+toyota:yaris	Toyota	YARIS	traficom	Traficom inspections	percent	2026	2025	65.6790665189169	14.691666666666668	12	12	4	15	12	Inspection condition
+toyota:yaris	Toyota	Yaris	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	15.09171172292974	24.6625	8	8	2	9	0	Roadside breakdowns
+toyota:yaris	Toyota	Yaris	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	63.7240993575865	15.199999999999998	6	6	2	13	0	Inspection condition
+toyota:yaris cross	Toyota	YARIS CROSS	traficom	Traficom inspections	percent	2026	2025	98.62068965517241	1.4	1	1	4	4	1	Inspection condition
+toyota:yaris cross	Toyota	Yaris Cross	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	0.0	40.0	1	1	2	2	0	Roadside breakdowns
+volkswagen:arteon	Volkswagen	ARTEON	traficom	Traficom inspections	percent	2026	2025	25.09114172836982	13.333333333333334	3	3	4	7	3	Inspection condition
+volkswagen:arteon	Volkswagen	Arteon	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	48.06623931623932	3.8499999999999996	2	2	2	3	0	Roadside breakdowns
+volkswagen:beetle	Volkswagen	BEETLE	traficom	Traficom inspections	percent	2026	2025	71.62547034494699	17.275	4	4	10	13	4	Inspection condition
+volkswagen:beetle	Volkswagen	Beetle	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	75.30099310237085	9.225000000000001	4	4	6	9	0	Roadside breakdowns
+volkswagen:beetle	Volkswagen	Beetle	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	58.23951226137791	15.2	4	4	4	11	0	Inspection condition
+volkswagen:caddy	Volkswagen	CADDY	traficom	Traficom inspections	percent	2026	2025	19.516942386001368	28.21666666666667	12	12	4	15	12	Inspection condition
+volkswagen:caddy	Volkswagen	Caddy	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	58.78040760163066	8.0625	8	8	2	9	0	Roadside breakdowns
+volkswagen:caddy	Volkswagen	Caddy	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	30.35498819082494	18.566666666666666	6	6	2	13	0	Inspection condition
+volkswagen:caravelle	Volkswagen	CARAVELLE	traficom	Traficom inspections	percent	2026	2025	39.2445071626082	30.339999999999996	5	5	11	15	5	Inspection condition
+volkswagen:cc	Volkswagen	CC	traficom	Traficom inspections	percent	2026	2025	50.10024701415762	28.95	4	4	12	15	4	Inspection condition
+volkswagen:e golf	Volkswagen	e-Golf	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	94.13149350649351	4.0	2	2	2	5	0	Inspection condition
+volkswagen:e up	Volkswagen	e-Up!	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	37.52029220779221	8.25	2	2	2	5	0	Inspection condition
+volkswagen:golf	Volkswagen	GOLF	traficom	Traficom inspections	percent	2026	2025	77.65952322449266	13.491666666666667	12	12	4	15	12	Inspection condition
+volkswagen:golf	Volkswagen	Golf	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	70.71963572575879	6.525	8	8	2	9	0	Roadside breakdowns
+volkswagen:golf	Volkswagen	Golf	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	76.49273734787167	13.066666666666668	6	6	2	13	0	Inspection condition
+volkswagen:golf plus	Volkswagen	GOLF PLUS	traficom	Traficom inspections	percent	2026	2025	85.74288525526104	18.119999999999997	5	5	11	15	5	Inspection condition
+volkswagen:golf plus	Volkswagen	Golf Plus	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	96.07726005575468	18.4	2	2	10	13	0	Inspection condition
+volkswagen:golf sportsvan	Volkswagen	GOLF SPORTSVAN	traficom	Traficom inspections	percent	2026	2025	95.8220876962037	5.55	6	6	6	11	6	Inspection condition
+volkswagen:golf sportsvan	Volkswagen	Golf Sportsvan	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	98.57062718209626	5.725	4	4	2	9	0	Inspection condition
+volkswagen:id 3	Volkswagen	ID.3	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	93.82478632478633	1.4333333333333333	3	3	2	4	0	Roadside breakdowns
+volkswagen:id 3	Volkswagen	ID.3	traficom	Traficom inspections	percent	2026	2025	50.08301404853129	6.5	2	2	4	5	2	Inspection condition
+volkswagen:id 3	Volkswagen	ID.3	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	76.90746753246754	5.2	2	2	2	5	0	Inspection condition
+volkswagen:id 4	Volkswagen	ID.4	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	88.17307692307693	1.4	2	2	2	3	0	Roadside breakdowns
+volkswagen:id 4	Volkswagen	ID.4	traficom	Traficom inspections	percent	2026	2025	44.48275862068966	5.6	1	1	4	4	1	Inspection condition
+volkswagen:jetta	Volkswagen	JETTA	traficom	Traficom inspections	percent	2026	2025	33.83619215622012	29.342857142857145	7	7	9	15	7	Inspection condition
+volkswagen:passat	Volkswagen	PASSAT	traficom	Traficom inspections	percent	2026	2025	34.2889622666572	22.375	12	12	4	15	12	Inspection condition
+volkswagen:passat	Volkswagen	Passat	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	58.29887885279696	8.1875	8	8	2	9	0	Roadside breakdowns
+volkswagen:passat	Volkswagen	Passat	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	33.13876337793909	18.45	6	6	2	13	0	Inspection condition
+volkswagen:polo	Volkswagen	POLO	traficom	Traficom inspections	percent	2026	2025	47.722295393300705	19.166666666666668	12	12	4	15	12	Inspection condition
+volkswagen:polo	Volkswagen	Polo	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	74.64285807722514	6.85	8	8	2	9	0	Roadside breakdowns
+volkswagen:polo	Volkswagen	Polo	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	52.92279177675059	16.133333333333333	6	6	2	13	0	Inspection condition
+volkswagen:scirocco	Volkswagen	SCIROCCO	traficom	Traficom inspections	percent	2026	2025	70.40322580645162	27.0	2	2	14	15	2	Inspection condition
+volkswagen:sharan	Volkswagen	SHARAN	traficom	Traficom inspections	percent	2026	2025	45.202144685253245	24.099999999999998	6	6	9	14	6	Inspection condition
+volkswagen:sharan	Volkswagen	Sharan	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	18.884804884028735	19.86	5	5	5	9	0	Roadside breakdowns
+volkswagen:sharan	Volkswagen	Sharan	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	19.70307699737641	21.2	6	6	2	13	0	Inspection condition
+volkswagen:t cross	Volkswagen	T-CROSS	traficom	Traficom inspections	percent	2026	2025	21.254654362959368	13.433333333333332	3	3	4	6	3	Inspection condition
+volkswagen:t cross	Volkswagen	T-Cross	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	70.94796285585758	3.375	4	4	2	5	0	Roadside breakdowns
+volkswagen:t cross	Volkswagen	T-Cross	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	67.03733766233766	5.85	2	2	2	5	0	Inspection condition
+volkswagen:t roc	Volkswagen	T-ROC	traficom	Traficom inspections	percent	2026	2025	95.4491833030853	2.65	4	4	4	7	4	Inspection condition
+volkswagen:t roc	Volkswagen	T-Roc	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	88.9857044454084	2.7	5	5	2	6	0	Roadside breakdowns
+volkswagen:t roc	Volkswagen	T-Roc	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	97.41758241758241	4.3	3	3	2	7	0	Inspection condition
+volkswagen:taigo	Volkswagen	Taigo	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	89.16666666666667	1.0	1	1	2	2	0	Roadside breakdowns
+volkswagen:tiguan	Volkswagen	TIGUAN	traficom	Traficom inspections	percent	2026	2025	64.59572362382318	15.672727272727274	11	11	4	15	11	Inspection condition
+volkswagen:tiguan	Volkswagen	Tiguan	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	55.36853577052774	8.35	8	8	2	9	0	Roadside breakdowns
+volkswagen:tiguan	Volkswagen	Tiguan	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	63.85440569188906	15.15	6	6	2	13	0	Inspection condition
+volkswagen:touareg	Volkswagen	TOUAREG	traficom	Traficom inspections	percent	2026	2025	87.71232401790036	16.975	4	4	10	15	4	Inspection condition
+volkswagen:touareg	Volkswagen	Touareg	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	73.33264214325801	9.25	6	6	4	9	0	Roadside breakdowns
+volkswagen:touareg	Volkswagen	Touareg	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	76.99765579385587	12.700000000000001	6	6	2	13	0	Inspection condition
+volkswagen:touran	Volkswagen	TOURAN	traficom	Traficom inspections	percent	2026	2025	30.91316521424429	24.972727272727273	11	11	4	15	11	Inspection condition
+volkswagen:touran	Volkswagen	Touran	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	47.56507308428962	9.9875	8	8	2	9	0	Roadside breakdowns
+volkswagen:touran	Volkswagen	Touran	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	53.01721577025959	16.066666666666666	6	6	2	13	0	Inspection condition
+volkswagen:transporter	Volkswagen	TRANSPORTER	traficom	Traficom inspections	percent	2026	2025	22.35515395975903	27.822222222222223	9	9	4	15	9	Inspection condition
+volkswagen:transporter	Volkswagen	Transporter	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	39.52283289828627	11.35	8	8	2	9	0	Roadside breakdowns
+volkswagen:up	Volkswagen	UP!	traficom	Traficom inspections	percent	2026	2025	56.96551608548212	15.957142857142857	7	7	4	13	7	Inspection condition
+volkswagen:up	Volkswagen	Up!	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	54.87059632046561	15.65	6	6	2	13	0	Inspection condition
+volkswagen:up	Volkswagen	up!	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	60.312605901029364	8.8	8	8	2	9	0	Roadside breakdowns
+volvo:c30	Volvo	C30	traficom	Traficom inspections	percent	2026	2025	58.90390731485688	30.0	2	2	14	15	2	Inspection condition
+volvo:s40	Volvo	S40	traficom	Traficom inspections	percent	2026	2025	51.541218637992834	30.133333333333336	3	3	13	15	3	Inspection condition
+volvo:s60	Volvo	S60	traficom	Traficom inspections	percent	2026	2025	80.6420887863162	11.8	11	11	4	15	11	Inspection condition
+volvo:s80	Volvo	S80	traficom	Traficom inspections	percent	2026	2025	83.82775828455256	16.733333333333334	6	6	10	15	6	Inspection condition
+volvo:s90	Volvo	S90	traficom	Traficom inspections	percent	2026	2025	50.511195162848765	12.219999999999999	5	5	4	9	5	Inspection condition
+volvo:v40	Volvo	V40	traficom	Traficom inspections	percent	2026	2025	60.2355519046414	15.6875	8	8	6	13	8	Inspection condition
+volvo:v40 cross country	Volvo	V40 CROSS COUNTRY	traficom	Traficom inspections	percent	2026	2025	64.93572351451088	13.5	7	7	6	12	7	Inspection condition
+volvo:v50	Volvo	V50	traficom	Traficom inspections	percent	2026	2025	36.7964561562926	33.6	3	3	13	15	3	Inspection condition
+volvo:v60	Volvo	V60	traficom	Traficom inspections	percent	2026	2025	66.0516654567319	15.366666666666667	12	12	4	15	12	Inspection condition
+volvo:v60 cross country	Volvo	V60 CROSS COUNTRY	traficom	Traficom inspections	percent	2026	2025	90.82264408421888	4.266666666666667	6	6	4	10	6	Inspection condition
+volvo:v70	Volvo	V70	traficom	Traficom inspections	percent	2026	2025	65.1211646276913	21.228571428571428	7	7	9	15	7	Inspection condition
+volvo:v90	Volvo	V90	traficom	Traficom inspections	percent	2026	2025	42.51162396186492	13.166666666666666	6	6	4	9	6	Inspection condition
+volvo:v90 cross country	Volvo	V90 CROSS COUNTRY	traficom	Traficom inspections	percent	2026	2025	66.87554851188193	8.85	4	4	4	8	4	Inspection condition
+volvo:xc40	Volvo	XC40	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	68.70348949296317	3.475	4	4	2	5	0	Roadside breakdowns
+volvo:xc40	Volvo	XC40	traficom	Traficom inspections	percent	2026	2025	87.08544690878348	4.175	4	4	4	7	4	Inspection condition
+volvo:xc60	Volvo	XC60	adac	ADAC breakdown statistics	per_1000_vehicles	2025	2024	64.27374014419053	8.1875	8	8	2	9	0	Roadside breakdowns
+volvo:xc60	Volvo	XC60	traficom	Traficom inspections	percent	2026	2025	73.12674647980775	13.883333333333333	12	12	4	15	12	Inspection condition
+volvo:xc60	Volvo	XC60	tuv	TÜV (Car-Recalls.eu tables)	percent	2025	2024	79.77463909425906	12.983333333333334	6	6	2	13	0	Inspection condition
+volvo:xc70	Volvo	XC70	traficom	Traficom inspections	percent	2026	2025	74.97242063698755	18.257142857142856	7	7	9	15	7	Inspection condition
+volvo:xc90	Volvo	XC90	traficom	Traficom inspections	percent	2026	2025	34.545999395137486	23.869999999999997	10	10	4	15	10	Inspection condition

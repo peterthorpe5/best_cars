@@ -1,430 +1,103 @@
-rank	model_id	make	model	score	sources	cohorts	score_spread	worst_cohort_score	weight_coverage	source_ids	scenario_rank	scenario
-1	volkswagen:golf sportsvan	Volkswagen	Golf Sportsvan	97.19635743914998	2	10	2.7485394858925645	93.30985915492958	66.66666666666667	traficom; tuv	1.0	Balanced
-2	volkswagen:t roc	Volkswagen	T-Roc	93.95082338869203	3	12	8.431877972174007	76.66666666666667	100.0	adac; traficom; tuv	2.0	Balanced
-3	volkswagen:golf plus	Volkswagen	Golf Plus	90.91007265550786	2	7	10.334374800493634	81.33333333333333	66.66666666666667	traficom; tuv	3.0	Balanced
-4	honda:jazz	Honda	Jazz	90.23981523483914	2	12	4.850702760231854	77.41935483870968	66.66666666666667	traficom; tuv	4.0	Balanced
-5	audi:q2	Audi	Q2	89.14288358638726	3	13	13.45162451699278	72.5	100.0	adac; traficom; tuv	5.0	Balanced
-6	suzuki:vitara	Suzuki	Vitara	85.81823065084897	3	17	17.29129933349533	41.02564102564103	100.0	adac; traficom; tuv	6.0	Balanced
-7	mitsubishi:asx	Mitsubishi	ASX	85.58634362236863	3	21	22.995518442084617	54.666666666666664	100.0	adac; traficom; tuv	7.0	Balanced
-8	audi:a4	Audi	A4	83.87684736136194	2	20	22.569192000775942	47.36842105263158	66.66666666666667	adac; traficom	8.0	Balanced
-9	audi:q5	Audi	Q5	82.38923152799805	3	26	3.7576976024680846	34.883720930232556	100.0	adac; traficom; tuv	9.0	Balanced
-10	audi:a5	Audi	A5	80.65243580940054	2	19	5.929255428681884	40.0	66.66666666666667	adac; traficom	10.0	Balanced
-11	bmw:i3	BMW	i3	79.92066355713051	2	7	34.59599482306091	56.16438356164384	66.66666666666667	adac; traficom	11.0	Balanced
-12	mazda:cx 3	Mazda	CX-3	79.91630920576705	3	12	11.138284589467062	55.90909090909091	100.0	adac; traficom; tuv	12.0	Balanced
-13	volkswagen:touareg	Volkswagen	Touareg	79.34754065167141	3	16	14.379681874642344	46.15384615384615	100.0	adac; traficom; tuv	13.0	Balanced
-14	audi:a3	Audi	A3	78.86345709242754	3	26	17.874807352942653	36.324786324786324	100.0	adac; traficom; tuv	14.0	Balanced
-15	volvo:xc40	Volvo	XC40	77.89446820087332	2	8	18.38195741582031	44.166666666666664	66.66666666666667	adac; traficom	15.0	Balanced
-16	suzuki:grand vitara	Suzuki	Grand Vitara	77.6834042887352	2	4	18.349683925937143	66.04938271604938	66.66666666666667	traficom; tuv	16.0	Balanced
-17	suzuki:swift	Suzuki	Swift	77.16559412954422	3	18	6.870208990410788	38.1578947368421	100.0	adac; traficom; tuv	17.0	Balanced
-18	bmw:1 series	BMW	1 Series	76.99527417289607	2	19	27.241887452488932	43.604651162790695	66.66666666666667	adac; traficom	18.0	Balanced
-19	mercedes benz:b class	Mercedes-Benz	B-Class	76.60448575214362	3	24	22.60241319864282	26.760563380281692	100.0	adac; traficom; tuv	19.0	Balanced
-20	seat:ateca	SEAT	Ateca	76.12083705238705	3	15	8.882188237653082	51.75438596491228	100.0	adac; traficom; tuv	20.0	Balanced
-21	bmw:x5	BMW	X5	75.55346438467855	2	20	19.764431313056917	32.89473684210526	66.66666666666667	adac; traficom	21.0	Balanced
-22	mitsubishi:space star	Mitsubishi	Space Star	75.44347877417877	2	10	43.544501569505925	10.952380952380953	66.66666666666667	adac; traficom	22.0	Balanced
-23	volkswagen:golf	Volkswagen	Golf	74.95729876604103	3	26	6.939887498733867	41.02564102564103	100.0	adac; traficom; tuv	23.0	Balanced
-24	mercedes benz:gla	Mercedes-Benz	GLA	74.42569003554243	2	14	18.525322206416902	30.08130081300813	66.66666666666667	adac; traficom	24.0	Balanced
-25	mercedes benz:a class	Mercedes-Benz	A-Class	74.11108390391534	3	26	25.922895980658964	40.625	100.0	adac; traficom; tuv	25.0	Balanced
-26	volkswagen:id 3	Volkswagen	ID.3	73.60508930192839	3	7	43.74177227625504	42.758620689655174	100.0	adac; traficom; tuv	26.0	Balanced
-27	audi:q3	Audi	Q3	73.15474896740989	3	21	13.299575317788339	47.05882352941177	100.0	adac; traficom; tuv	27.0	Balanced
-28	bmw:x3	BMW	X3	72.69568719675242	2	19	40.80621716101467	34.21052631578947	66.66666666666667	adac; traficom	28.0	Balanced
-29	volvo:xc60	Volvo	XC60	72.39170857275245	3	26	15.500898950068532	46.666666666666664	100.0	adac; traficom; tuv	29.0	Balanced
-30	mazda:2	Mazda	2	72.38617923385159	3	17	22.473970000253274	15.483870967741936	100.0	adac; traficom; tuv	30.0	Balanced
-31	mitsubishi:eclipse cross	Mitsubishi	Eclipse Cross	71.8620500370879	2	7	5.508537128349701	53.38345864661654	66.66666666666667	adac; traficom	31.0	Balanced
-32	mercedes benz:glc	Mercedes-Benz	GLC	71.26652282634588	3	18	47.70227372461293	25.58139534883721	100.0	adac; traficom; tuv	32.0	Balanced
-33	audi:a6	Audi	A6	70.5512051280966	2	20	7.06352318897585	37.21804511278196	66.66666666666667	adac; traficom	33.0	Balanced
-34	skoda:karoq	Škoda	Karoq	70.2878086931117	3	10	15.161668649333123	41.666666666666664	100.0	adac; traficom; tuv	34.0	Balanced
-35	bmw:5 series	BMW	5 Series	69.50068480759835	2	20	34.83742889272824	37.2093023255814	66.66666666666667	adac; traficom	35.0	Balanced
-36	skoda:yeti	Škoda	Yeti	68.69377405419537	3	14	21.95259186701616	34.31372549019608	100.0	adac; traficom; tuv	36.0	Balanced
-37	volkswagen:beetle	Volkswagen	Beetle	68.38865856956525	3	12	17.061480840992942	48.046875	100.0	adac; traficom; tuv	37.0	Balanced
-38	audi:a1	Audi	A1	67.90681380030867	3	22	30.787385124642363	14.545454545454545	100.0	adac; traficom; tuv	38.0	Balanced
-39	volkswagen:id 4	Volkswagen	ID.4	66.32791777188329	2	3	43.690318302387276	44.48275862068966	66.66666666666667	adac; traficom	39.0	Balanced
-40	seat:leon	SEAT	Leon	65.66140978496078	3	23	27.049487760221133	16.818181818181817	100.0	adac; traficom; tuv	40.0	Balanced
-41	bmw:4 series	BMW	4 Series	65.58082077541567	2	12	31.635916061996753	27.906976744186046	66.66666666666667	adac; traficom	41.0	Balanced
-42	mazda:cx 5	Mazda	CX-5	64.44494475307881	3	20	8.850022105564676	48.0	100.0	adac; traficom; tuv	42.0	Balanced
-43	toyota:auris	Toyota	Auris	64.00474639960918	3	18	61.2233244226052	21.875	100.0	adac; traficom; tuv	43.0	Balanced
-44	cupra:formentor	Cupra	Formentor	63.980097169752334	3	4	9.059561128526646	58.18181818181818	100.0	adac; traficom; tuv	44.0	Balanced
-45	mazda:3	Mazda	3	62.88541438195329	3	22	19.897812805551816	3.007518796992481	100.0	adac; traficom; tuv	45.0	Balanced
-46	bmw:3 series	BMW	3 Series	62.20167738420703	2	20	49.84811074014144	12.962962962962964	66.66666666666667	adac; traficom	46.0	Balanced
-47	volkswagen:tiguan	Volkswagen	Tiguan	61.27288836207999	3	25	9.227187853295433	38.888888888888886	100.0	adac; traficom; tuv	47.0	Balanced
-48	skoda:rapid	Škoda	Rapid	60.7287540464396	3	16	32.95295555418729	26.74418604651163	100.0	adac; traficom; tuv	48.0	Balanced
-49	kia:rio	Kia	Rio	59.060652773269055	2	16	12.269657084148058	21.50537634408602	66.66666666666667	traficom; tuv	49.0	Balanced
-50	mercedes benz:gle	Mercedes-Benz	GLE	58.83185915336892	3	14	26.87526535684711	13.10344827586207	100.0	adac; traficom; tuv	50.0	Balanced
-51	volkswagen:polo	Volkswagen	Polo	58.42931508242548	3	26	26.920562683924437	23.972602739726028	100.0	adac; traficom; tuv	51.0	Balanced
-52	bmw:x1	BMW	X1	58.393826711689286	3	26	25.71493954822779	4.464285714285714	100.0	adac; traficom; tuv	52.0	Balanced
-53	opel:adam	Opel	Adam	58.20961754838593	3	10	36.04816208797995	11.304347826086957	100.0	adac; traficom; tuv	53.0	Balanced
-54	skoda:citigo	Škoda	Citigo	58.163536651997184	3	15	10.841256620768021	14.545454545454545	100.0	adac; traficom; tuv	54.0	Balanced
-55	skoda:fabia	Škoda	Fabia	57.82569092068699	3	25	23.95107671328038	22.75862068965517	100.0	adac; traficom; tuv	55.0	Balanced
-56	mercedes benz:glb	Mercedes-Benz	GLB	57.44387955594853	2	4	32.818793594655666	41.03448275862069	66.66666666666667	adac; traficom	56.0	Balanced
-57	volkswagen:up	Volkswagen	Up!	57.3829061023257	3	21	5.442009580563756	17.93103448275862	100.0	adac; traficom; tuv	57.0	Balanced
-58	ford:puma	Ford	Puma	57.19123482413712	3	6	79.52893211513901	9.401709401709402	100.0	adac; traficom; tuv	58.0	Balanced
-59	toyota:rav4	Toyota	RAV4	56.472820566848135	3	24	85.85385584580735	0.0	100.0	adac; traficom; tuv	59.0	Balanced
-60	mercedes benz:glk	Mercedes-Benz	GLK	55.84155762680203	2	8	49.44790824301083	11.437908496732026	66.66666666666667	traficom; tuv	60.0	Balanced
-61	opel:karl	Opel	KARL	55.46225383712314	2	7	24.88442777207836	30.859375	66.66666666666667	adac; traficom	61.0	Balanced
-62	mercedes benz:c class	Mercedes-Benz	C-Class	55.35966504928722	3	26	50.06646460597442	9.30232558139535	100.0	adac; traficom; tuv	62.0	Balanced
-63	skoda:enyaq	Škoda	Enyaq	53.47286693191866	2	3	50.39400972590628	28.275862068965516	66.66666666666667	adac; traficom	63.0	Balanced
-64	mercedes benz:cla	Mercedes-Benz	CLA	53.15345744852091	2	17	13.119744619270179	18.69918699186992	66.66666666666667	adac; traficom	64.0	Balanced
-65	volkswagen:t cross	Volkswagen	T-Cross	53.07998496038488	3	9	49.69330849289821	15.172413793103448	100.0	adac; traficom; tuv	65.0	Balanced
-66	skoda:octavia	Škoda	Octavia	52.57062849162721	3	26	14.641157731539906	11.11111111111111	100.0	adac; traficom; tuv	66.0	Balanced
-67	hyundai:tucson	Hyundai	Tucson	52.24651388785654	3	15	14.18306736827062	23.076923076923077	100.0	adac; traficom; tuv	67.0	Balanced
-68	toyota:aygo	Toyota	Aygo	52.098979890916866	3	23	22.63270489000883	4.929577464788732	100.0	adac; traficom; tuv	68.0	Balanced
-69	hyundai:kona	Hyundai	Kona	50.59322305814661	3	10	36.83587300857038	17.94871794871795	100.0	adac; traficom; tuv	69.0	Balanced
-70	hyundai:i20	Hyundai	i20	49.93012948446998	3	24	47.31280712848189	5.0	100.0	adac; traficom; tuv	70.0	Balanced
-71	skoda:kodiaq	Škoda	Kodiaq	49.75818519858046	3	14	37.33176926764459	17.094017094017094	100.0	adac; traficom; tuv	71.0	Balanced
-72	seat:arona	SEAT	Arona	49.71402571626836	3	11	61.59405678305254	5.517241379310345	100.0	adac; traficom; tuv	72.0	Balanced
-73	toyota:yaris	Toyota	Yaris	48.16495919981105	3	26	50.58735479598716	0.0	100.0	adac; traficom; tuv	73.0	Balanced
-74	ford:c max	Ford	C-Max	47.688446102147196	3	18	56.50873587898495	13.043478260869565	100.0	adac; traficom; tuv	74.0	Balanced
-75	toyota:c hr	Toyota	C-HR	47.619833161380654	2	12	91.1480248454491	0.0	66.66666666666667	adac; traficom	75.0	Balanced
-76	mercedes benz:e class	Mercedes-Benz	E-Class	46.93317178785643	3	26	27.365553031643092	11.11111111111111	100.0	adac; traficom; tuv	76.0	Balanced
-77	opel:mokka	Opel	Mokka	46.048182912826974	3	20	33.69887906665661	5.2631578947368425	100.0	adac; traficom; tuv	77.0	Balanced
-78	opel:astra	Opel	Astra	45.573593882614595	3	25	27.38976389344655	14.957264957264957	100.0	adac; traficom; tuv	78.0	Balanced
-79	ford:ecosport	Ford	Ecosport	45.553383332224705	3	13	24.813502072406376	15.0	100.0	adac; traficom; tuv	79.0	Balanced
-80	renault:captur	Renault	Captur	44.8364843389993	2	13	63.419426898933075	4.137931034482759	66.66666666666667	traficom; tuv	80.0	Balanced
-81	toyota:corolla	Toyota	Corolla	44.8245169177957	3	18	84.38264750458913	9.166666666666666	100.0	adac; traficom; tuv	81.0	Balanced
-82	seat:ibiza	SEAT	Ibiza	44.54328325577223	3	23	45.57280849713716	12.67605633802817	100.0	adac; traficom; tuv	82.0	Balanced
-83	opel:corsa	Opel	Corsa	44.4569042464938	3	20	10.823501284901326	27.884615384615383	100.0	adac; traficom; tuv	83.0	Balanced
-84	seat:tarraco	SEAT	Tarraco	44.435886901246775	2	6	1.8319486446499411	23.591549295774648	66.66666666666667	adac; traficom	84.0	Balanced
-85	peugeot:208	Peugeot	208	44.07573790240955	3	21	18.60783724081469	23.178807947019866	100.0	adac; traficom; tuv	85.0	Balanced
-86	volkswagen:touran	Volkswagen	Touran	43.83181802293117	3	25	22.1040505560153	16.27906976744186	100.0	adac; traficom; tuv	86.0	Balanced
-87	seat:mii	SEAT	Mii	42.8864893565659	3	10	25.340298136737612	25.714285714285715	100.0	adac; traficom; tuv	87.0	Balanced
-88	ford:b max	Ford	B-Max	42.77129491492996	3	10	37.25664018744711	10.927152317880795	100.0	adac; traficom; tuv	88.0	Balanced
-89	opel:grandland	Opel	Grandland	42.334502668384246	2	8	24.97093805317489	14.0625	66.66666666666667	adac; tuv	89.0	Balanced
-90	skoda:roomster	Škoda	Roomster	41.96924163883292	2	8	1.304865232874036	19.35483870967742	66.66666666666667	traficom; tuv	90.0	Balanced
-91	volkswagen:passat	Volkswagen	Passat	41.90886816579775	3	26	25.160115474857868	8.181818181818182	100.0	adac; traficom; tuv	91.0	Balanced
-92	dacia:dokker	Dacia	Dokker	40.46046764093979	2	10	72.79593528187958	0.0	66.66666666666667	adac; tuv	92.0	Balanced
-93	smart:fortwo	Smart	ForTwo	39.556678784113544	2	14	38.76274852821213	6.504065040650406	66.66666666666667	adac; tuv	93.0	Balanced
-94	ford:kuga	Ford	Kuga	39.10884662347024	3	26	50.741780246704536	2.5641025641025643	100.0	adac; traficom; tuv	94.0	Balanced
-95	ford:fiesta	Ford	Fiesta	37.698921494416325	2	18	6.118344831184437	8.219178082191782	66.66666666666667	traficom; tuv	95.0	Balanced
-96	kia:picanto	Kia	Picanto	36.97306925212694	3	22	16.958070501950886	10.0	100.0	adac; traficom; tuv	96.0	Balanced
-97	opel:meriva	Opel	Meriva	36.83632294713226	3	12	67.91591614465649	3.252032520325203	100.0	adac; traficom; tuv	97.0	Balanced
-98	volkswagen:arteon	Volkswagen	Arteon	36.57869052230457	2	5	22.9750975878695	11.03448275862069	66.66666666666667	adac; traficom	98.0	Balanced
-99	hyundai:ix20	Hyundai	ix20	36.5519824034267	3	14	33.29345429059458	14.666666666666666	100.0	adac; traficom; tuv	99.0	Balanced
-100	volkswagen:caddy	Volkswagen	Caddy	36.21744605948566	3	26	39.26346521562929	3.7037037037037037	100.0	adac; traficom; tuv	100.0	Balanced
-101	skoda:kamiq	Škoda	Kamiq	36.008431622655756	3	6	62.72399056881815	9.090909090909092	100.0	adac; traficom; tuv	101.0	Balanced
-102	mercedes benz:sprinter	Mercedes-Benz	Sprinter	35.87930680971039	2	18	65.16764984193112	0.0	66.66666666666667	adac; traficom	102.0	Balanced
-103	mitsubishi:outlander	Mitsubishi	Outlander	35.159140360698046	2	18	13.5317093700084	2.7586206896551726	66.66666666666667	adac; traficom	103.0	Balanced
-104	kia:ceed	Kia	Ceed	34.2491644605999	2	18	1.5311802764147089	13.402061855670103	66.66666666666667	traficom; tuv	104.0	Balanced
-105	fiat:panda	Fiat	Panda	33.66514483923328	3	13	31.034393279065036	7.407407407407407	100.0	adac; traficom; tuv	105.0	Balanced
-106	skoda:superb	Škoda	Superb	33.0608979198712	3	26	17.818911303130346	3.1818181818181817	100.0	adac; traficom; tuv	106.0	Balanced
-107	peugeot:2008	Peugeot	2008	32.826105798157535	3	20	34.86348276880568	11.03448275862069	100.0	adac; traficom; tuv	107.0	Balanced
-108	nissan:micra	Nissan	Micra	32.45752225792428	3	23	13.835511786212408	6.989247311827957	100.0	adac; traficom; tuv	108.0	Balanced
-109	ford:mondeo	Ford	Mondeo	31.374806844406987	3	23	40.52027129901589	0.9090909090909091	100.0	adac; traficom; tuv	109.0	Balanced
-110	hyundai:i10	Hyundai	i10	31.11027592766922	3	17	12.705861407505783	4.6875	100.0	adac; traficom; tuv	110.0	Balanced
-111	volkswagen:transporter	Volkswagen	Transporter	30.93899342902265	2	17	17.16767893852724	8.0	66.66666666666667	adac; traficom	111.0	Balanced
-112	hyundai:i30	Hyundai	i30	30.87543610547966	3	25	17.0339201643506	8.602150537634408	100.0	adac; traficom; tuv	112.0	Balanced
-113	kia:sportage	Kia	Sportage	30.82782223223391	3	24	5.51110007051469	3.225806451612903	100.0	adac; traficom; tuv	113.0	Balanced
-114	tesla:model 3	Tesla	Model 3	30.69226332667803	3	9	91.84690492256283	0.0	100.0	adac; traficom; tuv	114.0	Balanced
-115	renault:zoe	Renault	Zoe	30.269568984235494	3	9	57.366947562671236	7.6923076923076925	100.0	adac; traficom; tuv	115.0	Balanced
-116	hyundai:ix35	Hyundai	ix35	29.57726181969167	2	9	3.4400259780388254	8.709677419354838	66.66666666666667	traficom; tuv	116.0	Balanced
-117	fiat:500	Fiat	500	28.61638404571539	3	22	10.114307835980007	5.47945205479452	100.0	adac; traficom; tuv	117.0	Balanced
-118	seat:alhambra	SEAT	Alhambra	28.33017063627482	3	15	19.451614327893218	3.5714285714285716	100.0	adac; traficom; tuv	118.0	Balanced
-119	volkswagen:sharan	Volkswagen	Sharan	27.9300088555528	3	17	26.31733980122451	0.8928571428571429	100.0	adac; traficom; tuv	119.0	Balanced
-120	ford:focus	Ford	Focus	27.858571382893384	3	26	41.12437796588617	4.545454545454546	100.0	adac; traficom; tuv	120.0	Balanced
-121	ford:ka	Ford	Ka+	27.842110434977663	2	7	20.45844155621459	6.185567010309279	66.66666666666667	traficom; tuv	121.0	Balanced
-122	skoda:scala	Škoda	Scala	27.48852397294623	3	8	59.64019167966536	1.8181818181818181	100.0	adac; traficom; tuv	122.0	Balanced
-123	opel:crossland	Opel	Crossland	26.69680470612442	3	9	39.59388478563703	5.909090909090909	100.0	adac; traficom; tuv	123.0	Balanced
-124	nissan:qashqai	Nissan	Qashqai	26.555322518564783	3	26	22.350385523020293	4.511278195488722	100.0	adac; traficom; tuv	124.0	Balanced
-125	renault:kadjar	Renault	Kadjar	26.35575087498317	2	11	17.085443630117403	4.3478260869565215	66.66666666666667	adac; traficom	125.0	Balanced
-126	dacia:sandero	Dacia	Sandero	25.794802580602298	3	21	50.94508757248593	0.684931506849315	100.0	adac; traficom; tuv	126.0	Balanced
-127	mazda:cx 30	Mazda	CX-30	24.866807560165988	2	5	33.202276088992946	3.3333333333333335	66.66666666666667	adac; traficom	127.0	Balanced
-128	renault:twingo	Renault	Twingo	23.48079595370217	3	16	18.98690331221491	0.0	100.0	adac; traficom; tuv	128.0	Balanced
-129	opel:insignia	Opel	Insignia	22.987455350370823	3	25	35.09855145329281	0.8695652173913043	100.0	adac; traficom; tuv	129.0	Balanced
-130	renault:scenic	Renault	Scenic	22.03610602335005	2	10	35.41208994265952	2.255639097744361	66.66666666666667	adac; tuv	130.0	Balanced
-131	ford:s max	Ford	S-Max	20.396646727149573	3	17	17.834335734140154	0.0	100.0	adac; traficom; tuv	131.0	Balanced
-132	peugeot:3008	Peugeot	3008	20.378007422317005	2	18	12.250520166674747	3.5211267605633805	66.66666666666667	adac; traficom	132.0	Balanced
-133	citroen:berlingo	Citroën	Berlingo	20.255449084194233	2	14	0.6772656975088402	7.042253521126761	66.66666666666667	traficom; tuv	133.0	Balanced
-134	peugeot:308	Peugeot	308	19.348739264504086	3	20	10.499647223184951	7.2727272727272725	100.0	adac; traficom; tuv	134.0	Balanced
-135	citroen:c3	Citroën	C3	18.779260268217605	2	17	8.37456803023057	4.301075268817204	66.66666666666667	traficom; tuv	135.0	Balanced
-136	dacia:logan	Dacia	Logan	17.167766964267788	3	17	35.83263885880767	0.0	100.0	adac; traficom; tuv	136.0	Balanced
-137	opel:combo	Opel	Combo	17.059359785569015	2	5	18.625761824659154	7.746478873239437	66.66666666666667	adac; traficom	137.0	Balanced
-138	renault:megane	Renault	Megane	15.742958529640807	3	23	7.3178231501656565	1.3071895424836601	100.0	adac; traficom; tuv	138.0	Balanced
-139	dacia:duster	Dacia	Duster	14.726330011933674	3	24	31.872226923708133	0.6535947712418301	100.0	adac; traficom; tuv	139.0	Balanced
-140	renault:clio	Renault	Clio	14.246267862819924	2	17	12.46704023208857	1.935483870967742	66.66666666666667	traficom; tuv	140.0	Balanced
-141	peugeot:207	Peugeot	207	13.32681272822118	2	3	8.13510693792384	9.25925925925926	66.66666666666667	traficom; tuv	141.0	Balanced
-142	opel:zafira	Opel	Zafira	12.327563972775131	2	7	3.0603982772176863	2.5806451612903225	66.66666666666667	adac; traficom	142.0	Balanced
-143	hyundai:ioniq 5	Hyundai	IONIQ 5	11.912393162393162	2	3	16.175213675213676	1.6666666666666667	66.66666666666667	adac; traficom	143.0	Balanced
-1	volkswagen:golf sportsvan	Volkswagen	Golf Sportsvan	97.19635743914998	2	10	2.7485394858925645	93.30985915492958	50.0	traficom; tuv	1.0	Emphasise avoiding breakdowns
-2	volkswagen:t roc	Volkswagen	T-Roc	92.70954365287113	3	12	8.431877972174007	76.66666666666667	100.0	adac; traficom; tuv	2.0	Emphasise avoiding breakdowns
-3	volkswagen:golf plus	Volkswagen	Golf Plus	90.91007265550786	2	7	10.334374800493634	81.33333333333333	50.0	traficom; tuv	3.0	Emphasise avoiding breakdowns
-4	honda:jazz	Honda	Jazz	90.23981523483914	2	12	4.850702760231854	77.41935483870968	50.0	traficom; tuv	4.0	Emphasise avoiding breakdowns
-5	audi:q2	Audi	Q2	87.64380492884061	3	13	13.45162451699278	72.5	100.0	adac; traficom; tuv	5.0	Emphasise avoiding breakdowns
-6	audi:a4	Audi	A4	87.63837936149127	2	20	22.569192000775942	47.36842105263158	75.0	adac; traficom	6.0	Emphasise avoiding breakdowns
-7	mitsubishi:asx	Mitsubishi	ASX	87.59523259969116	3	21	22.995518442084617	54.666666666666664	100.0	adac; traficom; tuv	7.0	Emphasise avoiding breakdowns
-8	bmw:i3	BMW	i3	85.68666269430734	2	7	34.59599482306091	56.16438356164384	75.0	adac; traficom	8.0	Emphasise avoiding breakdowns
-9	suzuki:vitara	Suzuki	Vitara	83.08875963072362	3	17	17.29129933349533	41.02564102564103	100.0	adac; traficom; tuv	9.0	Emphasise avoiding breakdowns
-10	audi:q5	Audi	Q5	82.468517985593	3	26	3.7576976024680846	34.883720930232556	100.0	adac; traficom; tuv	10.0	Emphasise avoiding breakdowns
-11	audi:a5	Audi	A5	81.6406450475142	2	19	5.929255428681884	40.0	75.0	adac; traficom	11.0	Emphasise avoiding breakdowns
-12	bmw:1 series	BMW	1 Series	81.5355887483109	2	19	27.241887452488932	43.604651162790695	75.0	adac; traficom	12.0	Emphasise avoiding breakdowns
-13	mazda:cx 3	Mazda	CX-3	79.74400937790053	3	12	11.138284589467062	55.90909090909091	100.0	adac; traficom; tuv	13.0	Emphasise avoiding breakdowns
-14	bmw:x3	BMW	X3	79.49672339025487	2	19	40.80621716101467	34.21052631578947	75.0	adac; traficom	14.0	Emphasise avoiding breakdowns
-15	bmw:x5	BMW	X5	78.84753627018803	2	20	19.764431313056917	32.89473684210526	75.0	adac; traficom	15.0	Emphasise avoiding breakdowns
-16	volkswagen:id 3	Volkswagen	ID.3	78.66001355764287	3	7	43.74177227625504	42.758620689655174	100.0	adac; traficom; tuv	16.0	Emphasise avoiding breakdowns
-17	suzuki:swift	Suzuki	Swift	78.18468976905578	3	18	6.870208990410788	38.1578947368421	100.0	adac; traficom; tuv	17.0	Emphasise avoiding breakdowns
-18	volkswagen:touareg	Volkswagen	Touareg	77.84381602456807	3	16	14.379681874642344	46.15384615384615	100.0	adac; traficom; tuv	18.0	Emphasise avoiding breakdowns
-19	suzuki:grand vitara	Suzuki	Grand Vitara	77.6834042887352	2	4	18.349683925937143	66.04938271604938	50.0	traficom; tuv	19.0	Emphasise avoiding breakdowns
-20	audi:a3	Audi	A3	76.55919953445155	3	26	17.874807352942653	36.324786324786324	100.0	adac; traficom; tuv	20.0	Emphasise avoiding breakdowns
-21	mercedes benz:glc	Mercedes-Benz	GLC	75.61520827582996	3	18	47.70227372461293	25.58139534883721	100.0	adac; traficom; tuv	21.0	Emphasise avoiding breakdowns
-22	bmw:5 series	BMW	5 Series	75.30692295638639	2	20	34.83742889272824	37.2093023255814	75.0	adac; traficom	22.0	Emphasise avoiding breakdowns
-23	volvo:xc40	Volvo	XC40	74.83080863156994	2	8	18.38195741582031	44.166666666666664	75.0	adac; traficom	23.0	Emphasise avoiding breakdowns
-24	seat:ateca	SEAT	Ateca	74.6448372233835	3	15	8.882188237653082	51.75438596491228	100.0	adac; traficom; tuv	24.0	Emphasise avoiding breakdowns
-25	mazda:2	Mazda	2	74.25507253601211	3	17	22.473970000253274	15.483870967741936	100.0	adac; traficom; tuv	25.0	Emphasise avoiding breakdowns
-26	audi:q3	Audi	Q3	74.18665963425208	3	21	13.299575317788339	47.05882352941177	100.0	adac; traficom; tuv	26.0	Emphasise avoiding breakdowns
-27	volkswagen:golf	Volkswagen	Golf	73.89788300597047	3	26	6.939887498733867	41.02564102564103	100.0	adac; traficom; tuv	27.0	Emphasise avoiding breakdowns
-28	mercedes benz:b class	Mercedes-Benz	B-Class	73.83060174053638	3	24	22.60241319864282	26.760563380281692	100.0	adac; traficom; tuv	28.0	Emphasise avoiding breakdowns
-29	volkswagen:id 4	Volkswagen	ID.4	73.60963748894784	2	3	43.690318302387276	44.48275862068966	75.0	adac; traficom	29.0	Emphasise avoiding breakdowns
-30	audi:a1	Audi	A1	72.66282415603442	3	22	30.787385124642363	14.545454545454545	100.0	adac; traficom; tuv	30.0	Emphasise avoiding breakdowns
-31	skoda:yeti	Škoda	Yeti	71.56194881397212	3	14	21.95259186701616	34.31372549019608	100.0	adac; traficom; tuv	31.0	Emphasise avoiding breakdowns
-32	mercedes benz:gla	Mercedes-Benz	GLA	71.33813633447295	2	14	18.525322206416902	30.08130081300813	75.0	adac; traficom	32.0	Emphasise avoiding breakdowns
-33	mitsubishi:eclipse cross	Mitsubishi	Eclipse Cross	70.94396051569628	2	7	5.508537128349701	53.38345864661654	75.0	adac; traficom	33.0	Emphasise avoiding breakdowns
-34	bmw:4 series	BMW	4 Series	70.85347345241513	2	12	31.635916061996753	27.906976744186046	75.0	adac; traficom	34.0	Emphasise avoiding breakdowns
-35	mercedes benz:a class	Mercedes-Benz	A-Class	70.76111131073812	3	26	25.922895980658964	40.625	100.0	adac; traficom; tuv	35.0	Emphasise avoiding breakdowns
-36	bmw:3 series	BMW	3 Series	70.50969584089727	2	20	49.84811074014144	12.962962962962964	75.0	adac; traficom	36.0	Emphasise avoiding breakdowns
-37	volvo:xc60	Volvo	XC60	70.36221646561197	3	26	15.500898950068532	46.666666666666664	100.0	adac; traficom; tuv	37.0	Emphasise avoiding breakdowns
-38	volkswagen:beetle	Volkswagen	Beetle	70.11674220276666	3	12	17.061480840992942	48.046875	100.0	adac; traficom; tuv	38.0	Emphasise avoiding breakdowns
-39	audi:a6	Audi	A6	69.3739512632673	2	20	7.06352318897585	37.21804511278196	75.0	adac; traficom	39.0	Emphasise avoiding breakdowns
-40	skoda:karoq	Škoda	Karoq	68.60482247438361	3	10	15.161668649333123	41.666666666666664	100.0	adac; traficom; tuv	40.0	Emphasise avoiding breakdowns
-41	mitsubishi:space star	Mitsubishi	Space Star	68.1860618459278	2	10	43.544501569505925	10.952380952380953	75.0	adac; traficom	41.0	Emphasise avoiding breakdowns
-42	seat:leon	SEAT	Leon	66.63507270074018	3	23	27.049487760221133	16.818181818181817	100.0	adac; traficom; tuv	42.0	Emphasise avoiding breakdowns
-43	skoda:rapid	Škoda	Rapid	66.06611618853846	3	16	32.95295555418729	26.74418604651163	100.0	adac; traficom; tuv	43.0	Emphasise avoiding breakdowns
-44	cupra:formentor	Cupra	Formentor	64.61434638158775	3	4	9.059561128526646	58.18181818181818	100.0	adac; traficom; tuv	44.0	Emphasise avoiding breakdowns
-45	mazda:cx 5	Mazda	CX-5	63.31817688967115	3	20	8.850022105564676	48.0	100.0	adac; traficom; tuv	45.0	Emphasise avoiding breakdowns
-46	mercedes benz:glb	Mercedes-Benz	GLB	62.913678488391135	2	4	32.818793594655666	41.03448275862069	75.0	adac; traficom	46.0	Emphasise avoiding breakdowns
-47	volkswagen:polo	Volkswagen	Polo	62.48270083112539	3	26	26.920562683924437	23.972602739726028	100.0	adac; traficom; tuv	47.0	Emphasise avoiding breakdowns
-48	skoda:enyaq	Škoda	Enyaq	61.87186855290304	2	3	50.39400972590628	28.275862068965516	75.0	adac; traficom	48.0	Emphasise avoiding breakdowns
-49	bmw:x1	BMW	X1	61.26661237295562	3	26	25.71493954822779	4.464285714285714	100.0	adac; traficom; tuv	49.0	Emphasise avoiding breakdowns
-50	skoda:fabia	Škoda	Fabia	60.99733757714493	3	25	23.95107671328038	22.75862068965517	100.0	adac; traficom; tuv	50.0	Emphasise avoiding breakdowns
-51	mazda:3	Mazda	3	60.22087582682468	3	22	19.897812805551816	3.007518796992481	100.0	adac; traficom; tuv	51.0	Emphasise avoiding breakdowns
-52	mercedes benz:c class	Mercedes-Benz	C-Class	60.14150469631353	3	26	50.06646460597442	9.30232558139535	100.0	adac; traficom; tuv	52.0	Emphasise avoiding breakdowns
-53	volkswagen:tiguan	Volkswagen	Tiguan	59.79680021419193	3	25	9.227187853295433	38.888888888888886	100.0	adac; traficom; tuv	53.0	Emphasise avoiding breakdowns
-54	mercedes benz:gle	Mercedes-Benz	GLE	59.4552414329015	3	14	26.87526535684711	13.10344827586207	100.0	adac; traficom; tuv	54.0	Emphasise avoiding breakdowns
-55	kia:rio	Kia	Rio	59.060652773269055	2	16	12.269657084148058	21.50537634408602	50.0	traficom; tuv	55.0	Emphasise avoiding breakdowns
-56	skoda:citigo	Škoda	Citigo	58.44237444765912	3	15	10.841256620768021	14.545454545454545	100.0	adac; traficom; tuv	56.0	Emphasise avoiding breakdowns
-57	volkswagen:up	Volkswagen	Up!	58.115331052001615	3	21	5.442009580563756	17.93103448275862	100.0	adac; traficom; tuv	57.0	Emphasise avoiding breakdowns
-58	volkswagen:t cross	Volkswagen	T-Cross	57.546979434253046	3	9	49.69330849289821	15.172413793103448	100.0	adac; traficom; tuv	58.0	Emphasise avoiding breakdowns
-59	seat:arona	SEAT	Arona	57.19927678792423	3	11	61.59405678305254	5.517241379310345	100.0	adac; traficom; tuv	59.0	Emphasise avoiding breakdowns
-60	toyota:auris	Toyota	Auris	56.123322667075456	3	18	61.2233244226052	21.875	100.0	adac; traficom; tuv	60.0	Emphasise avoiding breakdowns
-61	mercedes benz:glk	Mercedes-Benz	GLK	55.84155762680203	2	8	49.44790824301083	11.437908496732026	50.0	traficom; tuv	61.0	Emphasise avoiding breakdowns
-62	toyota:aygo	Toyota	Aygo	55.70118243727914	3	23	22.63270489000883	4.929577464788732	100.0	adac; traficom; tuv	62.0	Emphasise avoiding breakdowns
-63	opel:adam	Opel	Adam	53.69689677722549	3	10	36.04816208797995	11.304347826086957	100.0	adac; traficom; tuv	63.0	Emphasise avoiding breakdowns
-64	dacia:dokker	Dacia	Dokker	52.593123521253055	2	10	72.79593528187958	0.0	75.0	adac; tuv	64.0	Emphasise avoiding breakdowns
-65	skoda:octavia	Škoda	Octavia	52.26361830276692	3	26	14.641157731539906	11.11111111111111	100.0	adac; traficom; tuv	65.0	Emphasise avoiding breakdowns
-66	hyundai:tucson	Hyundai	Tucson	51.950398646213436	3	15	14.18306736827062	23.076923076923077	100.0	adac; traficom; tuv	66.0	Emphasise avoiding breakdowns
-67	seat:ibiza	SEAT	Ibiza	51.39911452504118	3	23	45.57280849713716	12.67605633802817	100.0	adac; traficom; tuv	67.0	Emphasise avoiding breakdowns
-68	opel:karl	Opel	KARL	51.31484920844341	2	7	24.88442777207836	30.859375	75.0	adac; traficom	68.0	Emphasise avoiding breakdowns
-69	mercedes benz:cla	Mercedes-Benz	CLA	50.96683334530922	2	17	13.119744619270179	18.69918699186992	75.0	adac; traficom	69.0	Emphasise avoiding breakdowns
-70	mercedes benz:e class	Mercedes-Benz	E-Class	49.36417605563092	3	26	27.365553031643092	11.11111111111111	100.0	adac; traficom; tuv	70.0	Emphasise avoiding breakdowns
-71	ford:puma	Ford	Puma	47.149124123800846	3	6	79.52893211513901	9.401709401709402	100.0	adac; traficom; tuv	71.0	Emphasise avoiding breakdowns
-72	peugeot:208	Peugeot	208	46.89222313709773	3	21	18.60783724081469	23.178807947019866	100.0	adac; traficom; tuv	72.0	Emphasise avoiding breakdowns
-73	mercedes benz:sprinter	Mercedes-Benz	Sprinter	46.74058178336558	2	18	65.16764984193112	0.0	75.0	adac; traficom	73.0	Emphasise avoiding breakdowns
-74	skoda:kamiq	Škoda	Kamiq	46.13559722126532	3	6	62.72399056881815	9.090909090909092	100.0	adac; traficom; tuv	74.0	Emphasise avoiding breakdowns
-75	volkswagen:passat	Volkswagen	Passat	46.00637083754755	3	26	25.160115474857868	8.181818181818182	100.0	adac; traficom; tuv	75.0	Emphasise avoiding breakdowns
-76	tesla:model 3	Tesla	Model 3	45.98092372564923	3	9	91.84690492256283	0.0	100.0	adac; traficom; tuv	76.0	Emphasise avoiding breakdowns
-77	hyundai:kona	Hyundai	Kona	45.86054319731152	3	10	36.83587300857038	17.94871794871795	100.0	adac; traficom; tuv	77.0	Emphasise avoiding breakdowns
-78	skoda:kodiaq	Škoda	Kodiaq	45.161645632973254	3	14	37.33176926764459	17.094017094017094	100.0	adac; traficom; tuv	78.0	Emphasise avoiding breakdowns
-79	seat:mii	SEAT	Mii	45.13787258609159	3	10	25.340298136737612	25.714285714285715	100.0	adac; traficom; tuv	79.0	Emphasise avoiding breakdowns
-80	opel:corsa	Opel	Corsa	44.98568671371116	3	20	10.823501284901326	27.884615384615383	100.0	adac; traficom; tuv	80.0	Emphasise avoiding breakdowns
-81	renault:captur	Renault	Captur	44.8364843389993	2	13	63.419426898933075	4.137931034482759	50.0	traficom; tuv	81.0	Emphasise avoiding breakdowns
-82	volkswagen:touran	Volkswagen	Touran	44.76513178827078	3	25	22.1040505560153	16.27906976744186	100.0	adac; traficom; tuv	82.0	Emphasise avoiding breakdowns
-83	seat:tarraco	SEAT	Tarraco	44.741211675355096	2	6	1.8319486446499411	23.591549295774648	75.0	adac; traficom	83.0	Emphasise avoiding breakdowns
-84	hyundai:i20	Hyundai	i20	43.893159473604044	3	24	47.31280712848189	5.0	100.0	adac; traficom; tuv	84.0	Emphasise avoiding breakdowns
-85	ford:b max	Ford	B-Max	43.06409625983951	3	10	37.25664018744711	10.927152317880795	100.0	adac; traficom; tuv	85.0	Emphasise avoiding breakdowns
-86	toyota:rav4	Toyota	RAV4	42.83685320212656	3	24	85.85385584580735	0.0	100.0	adac; traficom; tuv	86.0	Emphasise avoiding breakdowns
-87	opel:astra	Opel	Astra	42.671592315978316	3	25	27.38976389344655	14.957264957264957	100.0	adac; traficom; tuv	87.0	Emphasise avoiding breakdowns
-88	opel:mokka	Opel	Mokka	42.09028098801311	3	20	33.69887906665661	5.2631578947368425	100.0	adac; traficom; tuv	88.0	Emphasise avoiding breakdowns
-89	skoda:roomster	Škoda	Roomster	41.96924163883292	2	8	1.304865232874036	19.35483870967742	50.0	traficom; tuv	89.0	Emphasise avoiding breakdowns
-90	volkswagen:caddy	Volkswagen	Caddy	41.85818644502191	3	26	39.26346521562929	3.7037037037037037	100.0	adac; traficom; tuv	90.0	Emphasise avoiding breakdowns
-91	ford:ecosport	Ford	Ecosport	41.72108253950528	3	13	24.813502072406376	15.0	100.0	adac; traficom; tuv	91.0	Emphasise avoiding breakdowns
-92	ford:c max	Ford	C-Max	41.02430079052801	3	18	56.50873587898495	13.043478260869565	100.0	adac; traficom; tuv	92.0	Emphasise avoiding breakdowns
-93	volkswagen:arteon	Volkswagen	Arteon	40.407873453616155	2	5	22.9750975878695	11.03448275862069	75.0	adac; traficom	93.0	Emphasise avoiding breakdowns
-94	toyota:yaris	Toyota	Yaris	39.89664733059072	3	26	50.58735479598716	0.0	100.0	adac; traficom; tuv	94.0	Emphasise avoiding breakdowns
-95	renault:zoe	Renault	Zoe	39.71551286294366	3	9	57.366947562671236	7.6923076923076925	100.0	adac; traficom; tuv	95.0	Emphasise avoiding breakdowns
-96	fiat:panda	Fiat	Panda	38.641259766092624	3	13	31.034393279065036	7.407407407407407	100.0	adac; traficom; tuv	96.0	Emphasise avoiding breakdowns
-97	opel:grandland	Opel	Grandland	38.17267965952177	2	8	24.97093805317489	14.0625	75.0	adac; tuv	97.0	Emphasise avoiding breakdowns
-98	ford:fiesta	Ford	Fiesta	37.698921494416325	2	18	6.118344831184437	8.219178082191782	50.0	traficom; tuv	98.0	Emphasise avoiding breakdowns
-99	mitsubishi:outlander	Mitsubishi	Outlander	37.41442525569945	2	18	13.5317093700084	2.7586206896551726	75.0	adac; traficom	99.0	Emphasise avoiding breakdowns
-100	peugeot:2008	Peugeot	2008	37.1942164868126	3	20	34.86348276880568	11.03448275862069	100.0	adac; traficom; tuv	100.0	Emphasise avoiding breakdowns
-101	toyota:corolla	Toyota	Corolla	36.383403191849126	3	18	84.38264750458913	9.166666666666666	100.0	adac; traficom; tuv	101.0	Emphasise avoiding breakdowns
-102	skoda:scala	Škoda	Scala	35.98098635417147	3	8	59.64019167966536	1.8181818181818181	100.0	adac; traficom; tuv	102.0	Emphasise avoiding breakdowns
-103	hyundai:ix20	Hyundai	ix20	35.35419599219972	3	14	33.29345429059458	14.666666666666666	100.0	adac; traficom; tuv	103.0	Emphasise avoiding breakdowns
-104	skoda:superb	Škoda	Superb	35.08397166394924	3	26	17.818911303130346	3.1818181818181817	100.0	adac; traficom; tuv	104.0	Emphasise avoiding breakdowns
-105	kia:picanto	Kia	Picanto	34.87194312979407	3	22	16.958070501950886	10.0	100.0	adac; traficom; tuv	105.0	Emphasise avoiding breakdowns
-106	kia:ceed	Kia	Ceed	34.2491644605999	2	18	1.5311802764147089	13.402061855670103	50.0	traficom; tuv	106.0	Emphasise avoiding breakdowns
-107	dacia:sandero	Dacia	Sandero	34.1787955411236	3	21	50.94508757248593	0.684931506849315	100.0	adac; traficom; tuv	107.0	Emphasise avoiding breakdowns
-108	volkswagen:transporter	Volkswagen	Transporter	33.80027325211052	2	17	17.16767893852724	8.0	75.0	adac; traficom	108.0	Emphasise avoiding breakdowns
-109	nissan:micra	Nissan	Micra	33.74139492915267	3	23	13.835511786212408	6.989247311827957	100.0	adac; traficom; tuv	109.0	Emphasise avoiding breakdowns
-110	smart:fortwo	Smart	ForTwo	33.09622069607819	2	14	38.76274852821213	6.504065040650406	75.0	adac; tuv	110.0	Emphasise avoiding breakdowns
-111	hyundai:i30	Hyundai	i30	32.61876965800941	3	25	17.0339201643506	8.602150537634408	100.0	adac; traficom; tuv	111.0	Emphasise avoiding breakdowns
-112	toyota:c hr	Toyota	C-HR	32.42849568713914	2	12	91.1480248454491	0.0	75.0	adac; traficom	112.0	Emphasise avoiding breakdowns
-113	ford:kuga	Ford	Kuga	32.176670437952865	3	26	50.741780246704536	2.5641025641025643	100.0	adac; traficom; tuv	113.0	Emphasise avoiding breakdowns
-114	opel:crossland	Opel	Crossland	31.66417537535322	3	9	39.59388478563703	5.909090909090909	100.0	adac; traficom; tuv	114.0	Emphasise avoiding breakdowns
-115	kia:sportage	Kia	Sportage	31.654929391346776	3	24	5.51110007051469	3.225806451612903	100.0	adac; traficom; tuv	115.0	Emphasise avoiding breakdowns
-116	fiat:500	Fiat	500	30.192840343006473	3	22	10.114307835980007	5.47945205479452	100.0	adac; traficom; tuv	116.0	Emphasise avoiding breakdowns
-117	hyundai:ix35	Hyundai	ix35	29.57726181969167	2	9	3.4400259780388254	8.709677419354838	50.0	traficom; tuv	117.0	Emphasise avoiding breakdowns
-118	hyundai:i10	Hyundai	i10	29.09543736539915	3	17	12.705861407505783	4.6875	100.0	adac; traficom; tuv	118.0	Emphasise avoiding breakdowns
-119	opel:meriva	Opel	Meriva	28.90238570712578	3	12	67.91591614465649	3.252032520325203	100.0	adac; traficom; tuv	119.0	Emphasise avoiding breakdowns
-120	ford:ka	Ford	Ka+	27.842110434977663	2	7	20.45844155621459	6.185567010309279	50.0	traficom; tuv	120.0	Emphasise avoiding breakdowns
-121	ford:mondeo	Ford	Mondeo	27.148271952626875	3	23	40.52027129901589	0.9090909090909091	100.0	adac; traficom; tuv	121.0	Emphasise avoiding breakdowns
-122	seat:alhambra	SEAT	Alhambra	26.55022796759389	3	15	19.451614327893218	3.5714285714285716	100.0	adac; traficom; tuv	122.0	Emphasise avoiding breakdowns
-123	renault:twingo	Renault	Twingo	26.05355935247014	3	16	18.98690331221491	0.0	100.0	adac; traficom; tuv	123.0	Emphasise avoiding breakdowns
-124	volkswagen:sharan	Volkswagen	Sharan	25.668707862671784	3	17	26.31733980122451	0.8928571428571429	100.0	adac; traficom; tuv	124.0	Emphasise avoiding breakdowns
-125	ford:focus	Ford	Focus	25.121013667391527	3	26	41.12437796588617	4.545454545454546	100.0	adac; traficom; tuv	125.0	Emphasise avoiding breakdowns
-126	nissan:qashqai	Nissan	Qashqai	23.919114333265796	3	26	22.350385523020293	4.511278195488722	100.0	adac; traficom; tuv	126.0	Emphasise avoiding breakdowns
-127	renault:kadjar	Renault	Kadjar	23.508176936630267	2	11	17.085443630117403	4.3478260869565215	75.0	adac; traficom	127.0	Emphasise avoiding breakdowns
-128	dacia:logan	Dacia	Logan	22.462440420310127	3	17	35.83263885880767	0.0	100.0	adac; traficom; tuv	128.0	Emphasise avoiding breakdowns
-129	peugeot:3008	Peugeot	3008	22.419760783429464	2	18	12.250520166674747	3.5211267605633805	75.0	adac; traficom	129.0	Emphasise avoiding breakdowns
-130	citroen:berlingo	Citroën	Berlingo	20.255449084194233	2	14	0.6772656975088402	7.042253521126761	50.0	traficom; tuv	130.0	Emphasise avoiding breakdowns
-131	opel:combo	Opel	Combo	20.163653423012207	2	5	18.625761824659154	7.746478873239437	75.0	adac; traficom	131.0	Emphasise avoiding breakdowns
-132	dacia:duster	Dacia	Duster	19.71868989963627	3	24	31.872226923708133	0.6535947712418301	100.0	adac; traficom; tuv	132.0	Emphasise avoiding breakdowns
-133	mazda:cx 30	Mazda	CX-30	19.333094878667165	2	5	33.202276088992946	3.3333333333333335	75.0	adac; traficom	133.0	Emphasise avoiding breakdowns
-134	citroen:c3	Citroën	C3	18.779260268217605	2	17	8.37456803023057	4.301075268817204	50.0	traficom; tuv	134.0	Emphasise avoiding breakdowns
-135	opel:insignia	Opel	Insignia	18.13372445957262	3	25	35.09855145329281	0.8695652173913043	100.0	adac; traficom; tuv	135.0	Emphasise avoiding breakdowns
-136	peugeot:308	Peugeot	308	17.973345130179332	3	20	10.499647223184951	7.2727272727272725	100.0	adac; traficom; tuv	136.0	Emphasise avoiding breakdowns
-137	ford:s max	Ford	S-Max	17.4629597076276	3	17	17.834335734140154	0.0	100.0	adac; traficom; tuv	137.0	Emphasise avoiding breakdowns
-138	renault:megane	Renault	Megane	16.695646858392823	3	23	7.3178231501656565	1.3071895424836601	100.0	adac; traficom; tuv	138.0	Emphasise avoiding breakdowns
-139	renault:scenic	Renault	Scenic	16.1340910329068	2	10	35.41208994265952	2.255639097744361	75.0	adac; tuv	139.0	Emphasise avoiding breakdowns
-140	renault:clio	Renault	Clio	14.246267862819924	2	17	12.46704023208857	1.935483870967742	50.0	traficom; tuv	140.0	Emphasise avoiding breakdowns
-141	peugeot:207	Peugeot	207	13.32681272822118	2	3	8.13510693792384	9.25925925925926	50.0	traficom; tuv	141.0	Emphasise avoiding breakdowns
-142	opel:zafira	Opel	Zafira	12.837630352311413	2	7	3.0603982772176863	2.5806451612903225	75.0	adac; traficom	142.0	Emphasise avoiding breakdowns
-143	hyundai:ioniq 5	Hyundai	IONIQ 5	9.216524216524217	2	3	16.175213675213676	1.6666666666666667	75.0	adac; traficom	143.0	Emphasise avoiding breakdowns
-1	volkswagen:golf sportsvan	Volkswagen	Golf Sportsvan	96.73826752483455	2	10	2.7485394858925645	93.30985915492958	85.71428571428571	traficom; tuv	1.0	Emphasise inspection condition
-2	volkswagen:t roc	Volkswagen	T-Roc	95.0882289275592	3	12	8.431877972174007	76.66666666666667	100.0	adac; traficom; tuv	2.0	Emphasise inspection condition
-3	audi:q2	Audi	Q2	89.58264417452256	3	13	13.45162451699278	72.5	100.0	adac; traficom; tuv	3.0	Emphasise inspection condition
-4	honda:jazz	Honda	Jazz	89.4313647748005	2	12	4.850702760231854	77.41935483870968	85.71428571428571	traficom; tuv	4.0	Emphasise inspection condition
-5	suzuki:vitara	Suzuki	Vitara	89.19890416320459	3	17	17.29129933349533	41.02564102564103	100.0	adac; traficom; tuv	5.0	Emphasise inspection condition
-6	volkswagen:golf plus	Volkswagen	Golf Plus	89.1876768554256	2	7	10.334374800493634	81.33333333333333	85.71428571428571	traficom; tuv	6.0	Emphasise inspection condition
-7	mitsubishi:space star	Mitsubishi	Space Star	88.50682924503056	2	10	43.544501569505925	10.952380952380953	71.42857142857143	adac; traficom	7.0	Emphasise inspection condition
-8	volvo:xc40	Volvo	XC40	83.40905542561941	2	8	18.38195741582031	44.166666666666664	71.42857142857143	adac; traficom	8.0	Emphasise inspection condition
-9	volkswagen:touareg	Volkswagen	Touareg	82.59674997179589	3	16	14.379681874642344	46.15384615384615	100.0	adac; traficom; tuv	9.0	Emphasise inspection condition
-10	audi:q5	Audi	Q5	81.7618044903941	3	26	3.7576976024680846	34.883720930232556	100.0	adac; traficom; tuv	10.0	Emphasise inspection condition
-11	mazda:cx 3	Mazda	CX-3	81.70440680753836	3	12	11.138284589467062	55.90909090909091	100.0	adac; traficom; tuv	11.0	Emphasise inspection condition
-12	suzuki:grand vitara	Suzuki	Grand Vitara	80.74168494305806	2	4	18.349683925937143	66.04938271604938	85.71428571428571	traficom; tuv	12.0	Emphasise inspection condition
-13	audi:a3	Audi	A3	80.33996230008961	3	26	17.874807352942653	36.324786324786324	100.0	adac; traficom; tuv	13.0	Emphasise inspection condition
-14	mitsubishi:asx	Mitsubishi	ASX	80.16413205452875	3	21	22.995518442084617	54.666666666666664	100.0	adac; traficom; tuv	14.0	Emphasise inspection condition
-15	mercedes benz:gla	Mercedes-Benz	GLA	79.9832866974675	2	14	18.525322206416902	30.08130081300813	71.42857142857143	adac; traficom	15.0	Emphasise inspection condition
-16	audi:a5	Audi	A5	78.87365918079598	2	19	5.929255428681884	40.0	71.42857142857143	adac; traficom	16.0	Emphasise inspection condition
-17	mercedes benz:b class	Mercedes-Benz	B-Class	78.07203629998064	3	24	22.60241319864282	26.760563380281692	100.0	adac; traficom; tuv	17.0	Emphasise inspection condition
-18	seat:ateca	SEAT	Ateca	77.8002113530677	3	15	8.882188237653082	51.75438596491228	100.0	adac; traficom; tuv	18.0	Emphasise inspection condition
-19	audi:a4	Audi	A4	77.10608976112917	2	20	22.569192000775942	47.36842105263158	71.42857142857143	adac; traficom	19.0	Emphasise inspection condition
-20	toyota:auris	Toyota	Auris	76.99345410176282	3	18	61.2233244226052	21.875	100.0	adac; traficom; tuv	20.0	Emphasise inspection condition
-21	volkswagen:golf	Volkswagen	Golf	76.33474333135325	3	26	6.939887498733867	41.02564102564103	100.0	adac; traficom; tuv	21.0	Emphasise inspection condition
-22	mercedes benz:a class	Mercedes-Benz	A-Class	76.27589246137623	3	26	25.922895980658964	40.625	100.0	adac; traficom; tuv	22.0	Emphasise inspection condition
-23	suzuki:swift	Suzuki	Swift	76.21680915677139	3	18	6.870208990410788	38.1578947368421	100.0	adac; traficom; tuv	23.0	Emphasise inspection condition
-24	toyota:c hr	Toyota	C-HR	74.96424061501538	2	12	91.1480248454491	0.0	71.42857142857143	adac; traficom	24.0	Emphasise inspection condition
-25	ford:puma	Ford	Puma	74.17543788541325	3	6	79.52893211513901	9.401709401709402	100.0	adac; traficom; tuv	25.0	Emphasise inspection condition
-26	volvo:xc60	Volvo	XC60	73.76142917884852	3	26	15.500898950068532	46.666666666666664	100.0	adac; traficom; tuv	26.0	Emphasise inspection condition
-27	mitsubishi:eclipse cross	Mitsubishi	Eclipse Cross	73.51461117559282	2	7	5.508537128349701	53.38345864661654	71.42857142857143	adac; traficom	27.0	Emphasise inspection condition
-28	audi:a6	Audi	A6	72.67026208478936	2	20	7.06352318897585	37.21804511278196	71.42857142857143	adac; traficom	28.0	Emphasise inspection condition
-29	toyota:rav4	Toyota	RAV4	70.90305422439343	3	24	85.85385584580735	0.0	100.0	adac; traficom; tuv	29.0	Emphasise inspection condition
-30	skoda:karoq	Škoda	Karoq	70.76443541823964	3	10	15.161668649333123	41.666666666666664	100.0	adac; traficom; tuv	30.0	Emphasise inspection condition
-31	audi:q3	Audi	Q3	70.07548315990617	3	21	13.299575317788339	47.05882352941177	100.0	adac; traficom; tuv	31.0	Emphasise inspection condition
-32	bmw:x5	BMW	X5	69.62413499076146	2	20	19.764431313056917	32.89473684210526	71.42857142857143	adac; traficom	32.0	Emphasise inspection condition
-33	bmw:i3	BMW	i3	69.54186511021223	2	7	34.59599482306091	56.16438356164384	71.42857142857143	adac; traficom	33.0	Emphasise inspection condition
-34	bmw:1 series	BMW	1 Series	68.82270793714939	2	19	27.241887452488932	43.604651162790695	71.42857142857143	adac; traficom	34.0	Emphasise inspection condition
-35	seat:leon	SEAT	Leon	68.41286470410162	3	23	27.049487760221133	16.818181818181817	100.0	adac; traficom; tuv	35.0	Emphasise inspection condition
-36	volkswagen:beetle	Volkswagen	Beetle	68.32598557213066	3	12	17.061480840992942	48.046875	100.0	adac; traficom; tuv	36.0	Emphasise inspection condition
-37	mazda:3	Mazda	3	67.04791029489459	3	22	19.897812805551816	3.007518796992481	100.0	adac; traficom; tuv	37.0	Emphasise inspection condition
-38	mazda:2	Mazda	2	67.03973403134624	3	17	22.473970000253274	15.483870967741936	100.0	adac; traficom; tuv	38.0	Emphasise inspection condition
-39	mazda:cx 5	Mazda	CX-5	66.3296551470072	3	20	8.850022105564676	48.0	100.0	adac; traficom; tuv	39.0	Emphasise inspection condition
-40	opel:adam	Opel	Adam	65.93039484714566	3	10	36.04816208797995	11.304347826086957	100.0	adac; traficom; tuv	40.0	Emphasise inspection condition
-41	cupra:formentor	Cupra	Formentor	64.54946394601566	3	4	9.059561128526646	58.18181818181818	100.0	adac; traficom; tuv	41.0	Emphasise inspection condition
-42	toyota:corolla	Toyota	Corolla	64.11035121856597	3	18	84.38264750458913	9.166666666666666	100.0	adac; traficom; tuv	42.0	Emphasise inspection condition
-43	skoda:yeti	Škoda	Yeti	64.06056195492033	3	14	21.95259186701616	34.31372549019608	100.0	adac; traficom; tuv	43.0	Emphasise inspection condition
-44	volkswagen:id 3	Volkswagen	ID.3	63.9959682262638	3	7	43.74177227625504	42.758620689655174	100.0	adac; traficom; tuv	44.0	Emphasise inspection condition
-45	volkswagen:tiguan	Volkswagen	Tiguan	63.06574880708551	3	25	9.227187853295433	38.888888888888886	100.0	adac; traficom; tuv	45.0	Emphasise inspection condition
-46	opel:karl	Opel	KARL	62.92758216874665	2	7	24.88442777207836	30.859375	71.42857142857143	adac; traficom	46.0	Emphasise inspection condition
-47	audi:a1	Audi	A1	61.82813825368271	3	22	30.787385124642363	14.545454545454545	100.0	adac; traficom; tuv	47.0	Emphasise inspection condition
-48	kia:rio	Kia	Rio	61.10559562062707	2	16	12.269657084148058	21.50537634408602	85.71428571428571	traficom; tuv	48.0	Emphasise inspection condition
-49	bmw:x3	BMW	X3	60.45382204844801	2	19	40.80621716101467	34.21052631578947	71.42857142857143	adac; traficom	49.0	Emphasise inspection condition
-50	mercedes benz:glc	Mercedes-Benz	GLC	60.12226487616166	3	18	47.70227372461293	25.58139534883721	100.0	adac; traficom; tuv	50.0	Emphasise inspection condition
-51	ford:c max	Ford	C-Max	60.025716175217646	3	18	56.50873587898495	13.043478260869565	100.0	adac; traficom; tuv	51.0	Emphasise inspection condition
-52	hyundai:i20	Hyundai	i20	59.9983772292557	3	24	47.31280712848189	5.0	100.0	adac; traficom; tuv	52.0	Emphasise inspection condition
-53	skoda:citigo	Škoda	Citigo	59.393615831350395	3	15	10.841256620768021	14.545454545454545	100.0	adac; traficom; tuv	53.0	Emphasise inspection condition
-54	bmw:5 series	BMW	5 Series	59.04945613977988	2	20	34.83742889272824	37.2093023255814	71.42857142857143	adac; traficom	54.0	Emphasise inspection condition
-55	toyota:yaris	Toyota	Yaris	57.8937395019672	3	26	50.58735479598716	0.0	100.0	adac; traficom; tuv	55.0	Emphasise inspection condition
-56	mercedes benz:cla	Mercedes-Benz	CLA	57.08938083430196	2	17	13.119744619270179	18.69918699186992	71.42857142857143	adac; traficom	56.0	Emphasise inspection condition
-57	volkswagen:up	Volkswagen	Up!	56.84512326912701	3	21	5.442009580563756	17.93103448275862	100.0	adac; traficom; tuv	57.0	Emphasise inspection condition
-58	bmw:4 series	BMW	4 Series	56.09004595681664	2	12	31.635916061996753	27.906976744186046	71.42857142857143	adac; traficom	58.0	Emphasise inspection condition
-59	skoda:octavia	Škoda	Octavia	55.013091240544654	3	26	14.641157731539906	11.11111111111111	100.0	adac; traficom; tuv	59.0	Emphasise inspection condition
-60	skoda:rapid	Škoda	Rapid	54.36354511215687	3	16	32.95295555418729	26.74418604651163	100.0	adac; traficom; tuv	60.0	Emphasise inspection condition
-61	mercedes benz:gle	Mercedes-Benz	GLE	54.280098640067784	3	14	26.87526535684711	13.10344827586207	100.0	adac; traficom; tuv	61.0	Emphasise inspection condition
-62	hyundai:kona	Hyundai	Kona	53.59063037236962	3	10	36.83587300857038	17.94871794871795	100.0	adac; traficom; tuv	62.0	Emphasise inspection condition
-63	volkswagen:id 4	Volkswagen	ID.4	53.220822281167116	2	3	43.690318302387276	44.48275862068966	71.42857142857143	adac; traficom	63.0	Emphasise inspection condition
-64	volkswagen:polo	Volkswagen	Polo	53.05394617198988	3	26	26.920562683924437	23.972602739726028	100.0	adac; traficom; tuv	64.0	Emphasise inspection condition
-65	skoda:fabia	Škoda	Fabia	52.794895663439995	3	25	23.95107671328038	22.75862068965517	100.0	adac; traficom; tuv	65.0	Emphasise inspection condition
-66	bmw:x1	BMW	X1	52.68829293291925	3	26	25.71493954822779	4.464285714285714	100.0	adac; traficom; tuv	66.0	Emphasise inspection condition
-67	skoda:kodiaq	Škoda	Kodiaq	52.224935595274054	3	14	37.33176926764459	17.094017094017094	100.0	adac; traficom; tuv	67.0	Emphasise inspection condition
-68	opel:astra	Opel	Astra	51.74095409980716	3	25	27.38976389344655	14.957264957264957	100.0	adac; traficom; tuv	68.0	Emphasise inspection condition
-69	hyundai:tucson	Hyundai	Tucson	50.558778825695704	3	15	14.18306736827062	23.076923076923077	100.0	adac; traficom; tuv	69.0	Emphasise inspection condition
-70	ford:ecosport	Ford	Ecosport	50.453069185644	3	13	24.813502072406376	15.0	100.0	adac; traficom; tuv	70.0	Emphasise inspection condition
-71	ford:kuga	Ford	Kuga	49.64525458794732	3	26	50.741780246704536	2.5641025641025643	100.0	adac; traficom; tuv	71.0	Emphasise inspection condition
-72	opel:mokka	Opel	Mokka	47.72822296467898	3	20	33.69887906665661	5.2631578947368425	100.0	adac; traficom; tuv	72.0	Emphasise inspection condition
-73	toyota:aygo	Toyota	Aygo	47.69089423454993	3	23	22.63270489000883	4.929577464788732	100.0	adac; traficom; tuv	73.0	Emphasise inspection condition
-74	mercedes benz:glk	Mercedes-Benz	GLK	47.600239586300226	2	8	49.44790824301083	11.437908496732026	85.71428571428571	traficom; tuv	74.0	Emphasise inspection condition
-75	mercedes benz:glb	Mercedes-Benz	GLB	47.598241477551824	2	4	32.818793594655666	41.03448275862069	71.42857142857143	adac; traficom	75.0	Emphasise inspection condition
-76	bmw:3 series	BMW	3 Series	47.24724416216459	2	20	49.84811074014144	12.962962962962964	71.42857142857143	adac; traficom	76.0	Emphasise inspection condition
-77	opel:grandland	Opel	Grandland	46.49632567724672	2	8	24.97093805317489	14.0625	42.857142857142854	adac; tuv	77.0	Emphasise inspection condition
-78	smart:fortwo	Smart	ForTwo	46.0171368721489	2	14	38.76274852821213	6.504065040650406	42.857142857142854	adac; tuv	78.0	Emphasise inspection condition
-79	opel:corsa	Opel	Corsa	45.39879589608843	3	20	10.823501284901326	27.884615384615383	100.0	adac; traficom; tuv	79.0	Emphasise inspection condition
-80	seat:tarraco	SEAT	Tarraco	43.88630230785179	2	6	1.8319486446499411	23.591549295774648	71.42857142857143	adac; traficom	80.0	Emphasise inspection condition
-81	mercedes benz:c class	Mercedes-Benz	C-Class	43.78744067445242	3	26	50.06646460597442	9.30232558139535	100.0	adac; traficom; tuv	81.0	Emphasise inspection condition
-82	skoda:roomster	Škoda	Roomster	41.75176410002058	2	8	1.304865232874036	19.35483870967742	85.71428571428571	traficom; tuv	82.0	Emphasise inspection condition
-83	volkswagen:t cross	Volkswagen	T-Cross	41.43446509033863	3	9	49.69330849289821	15.172413793103448	100.0	adac; traficom; tuv	83.0	Emphasise inspection condition
-84	ford:mondeo	Ford	Mondeo	40.536864420251455	3	23	40.52027129901589	0.9090909090909091	100.0	adac; traficom; tuv	84.0	Emphasise inspection condition
-85	mercedes benz:e class	Mercedes-Benz	E-Class	40.50358764611526	3	26	27.365553031643092	11.11111111111111	100.0	adac; traficom; tuv	85.0	Emphasise inspection condition
-86	peugeot:208	Peugeot	208	40.36863311057003	3	21	18.60783724081469	23.178807947019866	100.0	adac; traficom; tuv	86.0	Emphasise inspection condition
-87	opel:meriva	Opel	Meriva	40.10016759153465	3	12	67.91591614465649	3.252032520325203	100.0	adac; traficom; tuv	87.0	Emphasise inspection condition
-88	volkswagen:touran	Volkswagen	Touran	39.60745221168371	3	25	22.1040505560153	16.27906976744186	100.0	adac; traficom; tuv	88.0	Emphasise inspection condition
-89	ford:fiesta	Ford	Fiesta	38.718645632947066	2	18	6.118344831184437	8.219178082191782	85.71428571428571	traficom; tuv	89.0	Emphasise inspection condition
-90	skoda:enyaq	Škoda	Enyaq	38.35466401414677	2	3	50.39400972590628	28.275862068965516	71.42857142857143	adac; traficom	90.0	Emphasise inspection condition
-91	kia:picanto	Kia	Picanto	38.13112374394917	3	22	16.958070501950886	10.0	100.0	adac; traficom; tuv	91.0	Emphasise inspection condition
-92	seat:ibiza	SEAT	Ibiza	37.975996342757306	3	23	45.57280849713716	12.67605633802817	100.0	adac; traficom; tuv	92.0	Emphasise inspection condition
-93	volkswagen:passat	Volkswagen	Passat	37.39032209647199	3	26	25.160115474857868	8.181818181818182	100.0	adac; traficom; tuv	93.0	Emphasise inspection condition
-94	ford:b max	Ford	B-Max	37.114287636826596	3	10	37.25664018744711	10.927152317880795	100.0	adac; traficom; tuv	94.0	Emphasise inspection condition
-95	seat:mii	SEAT	Mii	36.93290887722698	3	10	25.340298136737612	25.714285714285715	100.0	adac; traficom; tuv	95.0	Emphasise inspection condition
-96	ford:focus	Ford	Focus	36.8621199100221	3	26	41.12437796588617	4.545454545454546	100.0	adac; traficom; tuv	96.0	Emphasise inspection condition
-97	seat:arona	SEAT	Arona	36.39301010491385	3	11	61.59405678305254	5.517241379310345	100.0	adac; traficom; tuv	97.0	Emphasise inspection condition
-98	mazda:cx 30	Mazda	CX-30	34.82749038686387	2	5	33.202276088992946	3.3333333333333335	71.42857142857143	adac; traficom	98.0	Emphasise inspection condition
-99	kia:ceed	Kia	Ceed	34.50436117333568	2	18	1.5311802764147089	13.402061855670103	85.71428571428571	traficom; tuv	99.0	Emphasise inspection condition
-100	renault:captur	Renault	Captur	34.26657985584378	2	13	63.419426898933075	4.137931034482759	85.71428571428571	traficom; tuv	100.0	Emphasise inspection condition
-101	volkswagen:sharan	Volkswagen	Sharan	34.157076802827795	3	17	26.31733980122451	0.8928571428571429	100.0	adac; traficom; tuv	101.0	Emphasise inspection condition
-102	hyundai:i10	Hyundai	i10	33.58918572280226	3	17	12.705861407505783	4.6875	100.0	adac; traficom; tuv	102.0	Emphasise inspection condition
-103	hyundai:ix20	Hyundai	ix20	33.164673403315454	3	14	33.29345429059458	14.666666666666666	100.0	adac; traficom; tuv	103.0	Emphasise inspection condition
-104	seat:alhambra	SEAT	Alhambra	32.87066463356949	3	15	19.451614327893218	3.5714285714285716	100.0	adac; traficom; tuv	104.0	Emphasise inspection condition
-105	nissan:micra	Nissan	Micra	32.742317993332435	3	23	13.835511786212408	6.989247311827957	100.0	adac; traficom; tuv	105.0	Emphasise inspection condition
-106	renault:kadjar	Renault	Kadjar	31.48138396401839	2	11	17.085443630117403	4.3478260869565215	71.42857142857143	adac; traficom	106.0	Emphasise inspection condition
-107	ford:ka	Ford	Ka+	31.25185069434676	2	7	20.45844155621459	6.185567010309279	85.71428571428571	traficom; tuv	107.0	Emphasise inspection condition
-108	mitsubishi:outlander	Mitsubishi	Outlander	31.099627549695526	2	18	13.5317093700084	2.7586206896551726	71.42857142857143	adac; traficom	108.0	Emphasise inspection condition
-109	hyundai:i30	Hyundai	i30	30.761317430923377	3	25	17.0339201643506	8.602150537634408	100.0	adac; traficom; tuv	109.0	Emphasise inspection condition
-110	opel:insignia	Opel	Insignia	30.24205239942694	3	25	35.09855145329281	0.8695652173913043	100.0	adac; traficom; tuv	110.0	Emphasise inspection condition
-111	kia:sportage	Kia	Sportage	30.039258940629907	3	24	5.51110007051469	3.225806451612903	100.0	adac; traficom; tuv	111.0	Emphasise inspection condition
-112	volkswagen:arteon	Volkswagen	Arteon	29.68616124594372	2	5	22.9750975878695	11.03448275862069	71.42857142857143	adac; traficom	112.0	Emphasise inspection condition
-113	skoda:superb	Škoda	Superb	29.125822544164272	3	26	17.818911303130346	3.1818181818181817	100.0	adac; traficom; tuv	113.0	Emphasise inspection condition
-114	hyundai:ix35	Hyundai	ix35	29.0039241566852	2	9	3.4400259780388254	8.709677419354838	85.71428571428571	traficom; tuv	114.0	Emphasise inspection condition
-115	dacia:dokker	Dacia	Dokker	28.327811760626528	2	10	72.79593528187958	0.0	42.857142857142854	adac; tuv	115.0	Emphasise inspection condition
-116	volkswagen:caddy	Volkswagen	Caddy	28.222593361040857	3	26	39.26346521562929	3.7037037037037037	100.0	adac; traficom; tuv	116.0	Emphasise inspection condition
-117	renault:scenic	Renault	Scenic	27.938121013793307	2	10	35.41208994265952	2.255639097744361	42.857142857142854	adac; tuv	117.0	Emphasise inspection condition
-118	nissan:qashqai	Nissan	Qashqai	27.701521469984673	3	26	22.350385523020293	4.511278195488722	100.0	adac; traficom; tuv	118.0	Emphasise inspection condition
-119	fiat:panda	Fiat	Panda	27.64166957484861	3	13	31.034393279065036	7.407407407407407	100.0	adac; traficom; tuv	119.0	Emphasise inspection condition
-120	fiat:500	Fiat	500	27.002025435163723	3	22	10.114307835980007	5.47945205479452	100.0	adac; traficom; tuv	120.0	Emphasise inspection condition
-121	volkswagen:transporter	Volkswagen	Transporter	25.78868974746448	2	17	17.16767893852724	8.0	71.42857142857143	adac; traficom	121.0	Emphasise inspection condition
-122	peugeot:2008	Peugeot	2008	25.361173972015944	3	20	34.86348276880568	11.03448275862069	100.0	adac; traficom; tuv	122.0	Emphasise inspection condition
-123	skoda:kamiq	Škoda	Kamiq	23.874243230770325	3	6	62.72399056881815	9.090909090909092	100.0	adac; traficom; tuv	123.0	Emphasise inspection condition
-124	opel:crossland	Opel	Crossland	23.816855589938424	3	9	39.59388478563703	5.909090909090909	100.0	adac; traficom; tuv	124.0	Emphasise inspection condition
-125	ford:s max	Ford	S-Max	23.683085144600884	3	17	17.834335734140154	0.0	100.0	adac; traficom; tuv	125.0	Emphasise inspection condition
-126	peugeot:308	Peugeot	308	20.27853758452196	3	20	10.499647223184951	7.2727272727272725	100.0	adac; traficom; tuv	126.0	Emphasise inspection condition
-127	skoda:scala	Škoda	Scala	20.2644005064928	3	8	59.64019167966536	1.8181818181818181	100.0	adac; traficom; tuv	127.0	Emphasise inspection condition
-128	citroen:berlingo	Citroën	Berlingo	20.14257146794276	2	14	0.6772656975088402	7.042253521126761	85.71428571428571	traficom; tuv	128.0	Emphasise inspection condition
-129	renault:zoe	Renault	Zoe	19.67171434868965	3	9	57.366947562671236	7.6923076923076925	100.0	adac; traficom; tuv	129.0	Emphasise inspection condition
-130	renault:twingo	Renault	Twingo	19.52611694950818	3	16	18.98690331221491	0.0	100.0	adac; traficom; tuv	130.0	Emphasise inspection condition
-131	citroen:c3	Citroën	C3	17.383498929845842	2	17	8.37456803023057	4.301075268817204	85.71428571428571	traficom; tuv	131.0	Emphasise inspection condition
-132	hyundai:ioniq 5	Hyundai	IONIQ 5	16.764957264957268	2	3	16.175213675213676	1.6666666666666667	71.42857142857143	adac; traficom	132.0	Emphasise inspection condition
-133	peugeot:3008	Peugeot	3008	16.70285137231458	2	18	12.250520166674747	3.5211267605633805	71.42857142857143	adac; traficom	133.0	Emphasise inspection condition
-134	mercedes benz:sprinter	Mercedes-Benz	Sprinter	16.329011857131054	2	18	65.16764984193112	0.0	71.42857142857143	adac; traficom	134.0	Emphasise inspection condition
-135	dacia:sandero	Dacia	Sandero	16.02991639447563	3	21	50.94508757248593	0.684931506849315	100.0	adac; traficom; tuv	135.0	Emphasise inspection condition
-136	peugeot:207	Peugeot	207	14.68266388454182	2	3	8.13510693792384	9.25925925925926	85.71428571428571	traficom; tuv	136.0	Emphasise inspection condition
-137	renault:megane	Renault	Megane	14.196545246023202	3	23	7.3178231501656565	1.3071895424836601	100.0	adac; traficom; tuv	137.0	Emphasise inspection condition
-138	tesla:model 3	Tesla	Model 3	13.252349307492555	3	9	91.84690492256283	0.0	100.0	adac; traficom; tuv	138.0	Emphasise inspection condition
-139	dacia:logan	Dacia	Logan	12.278025335234714	3	17	35.83263885880767	0.0	100.0	adac; traficom; tuv	139.0	Emphasise inspection condition
-140	renault:clio	Renault	Clio	12.168427824138496	2	17	12.46704023208857	1.935483870967742	85.71428571428571	traficom; tuv	140.0	Emphasise inspection condition
-141	opel:combo	Opel	Combo	11.471631238171266	2	5	18.625761824659154	7.746478873239437	71.42857142857143	adac; traficom	141.0	Emphasise inspection condition
-142	opel:zafira	Opel	Zafira	11.409444489609825	2	7	3.0603982772176863	2.5806451612903225	71.42857142857143	adac; traficom	142.0	Emphasise inspection condition
-143	dacia:duster	Dacia	Duster	8.472756540989977	3	24	31.872226923708133	0.6535947712418301	100.0	adac; traficom; tuv	143.0	Emphasise inspection condition
+rank	make	model	score	sources	cohorts	score_spread	worst_cohort_score	weight_coverage	source_ids	model_id	comparison_group_id	inspection_score	breakdown_score	comparison_models	comparison_status	scenario_rank	scenario
+1	SEAT	Leon	66.63507270074018	3	23	27.049487760221133	16.818181818181817	100.0	adac; traficom; tuv	seat:leon	30735746a93e	63.71408395340198	69.5560614480784	3	Coverage-matched preference comparison	1	Balanced
+2	Toyota	Aygo	55.70118243727914	3	23	22.63270489000883	4.929577464788732	100.0	adac; traficom; tuv	toyota:aygo	30735746a93e	44.89457479819232	66.50779007636595	3	Coverage-matched preference comparison	2	Balanced
+3	Renault	Megane	16.695646858392823	3	23	7.3178231501656565	1.3071895424836601	100.0	adac; traficom; tuv	renault:megane	30735746a93e	13.837581872136774	19.553711844648873	3	Coverage-matched preference comparison	3	Balanced
+1	Nissan	Micra	33.74139492915267	3	23	13.835511786212408	6.989247311827957	100.0	adac; traficom; tuv	nissan:micra	30d30a29bbae	29.889776915467507	37.59301294283783	2	Coverage-matched preference comparison	1	Balanced
+2	Ford	Mondeo	27.14827195262687	3	23	40.52027129901589	0.9090909090909091	100.0	adac; traficom; tuv	ford:mondeo	30d30a29bbae	39.82787662796721	14.468667277286535	2	Coverage-matched preference comparison	2	Balanced
+1	Škoda	Fabia	60.99733757714493	3	25	23.95107671328038	22.75862068965517	100.0	adac; traficom; tuv	skoda:fabia	7b56013404c9	51.48239760777109	70.51227754651877	6	Coverage-matched preference comparison	1	Balanced
+2	Volkswagen	Tiguan	59.79680021419193	3	25	9.227187853295433	38.888888888888886	100.0	adac; traficom; tuv	volkswagen:tiguan	7b56013404c9	64.22506465785612	55.36853577052774	6	Coverage-matched preference comparison	2	Balanced
+3	Volkswagen	Touran	44.76513178827078	3	25	22.1040505560153	16.27906976744186	100.0	adac; traficom; tuv	volkswagen:touran	7b56013404c9	41.96519049225194	47.56507308428962	6	Coverage-matched preference comparison	3	Balanced
+4	Opel	Astra	42.671592315978316	3	25	27.38976389344655	14.957264957264957	100.0	adac; traficom; tuv	opel:astra	7b56013404c9	51.377597015887154	33.965587616069485	6	Coverage-matched preference comparison	4	Balanced
+5	Hyundai	i30	32.61876965800941	3	25	17.0339201643506	8.602150537634408	100.0	adac; traficom; tuv	hyundai:i30	7b56013404c9	27.38876900042014	37.84877031559869	6	Coverage-matched preference comparison	5	Balanced
+6	Opel	Insignia	18.133724459572623	3	25	35.09855145329281	0.8695652173913043	100.0	adac; traficom; tuv	opel:insignia	7b56013404c9	32.69491713196723	3.572531787178012	6	Coverage-matched preference comparison	6	Balanced
+1	Kia	Sportage	31.65492939134678	3	24	5.51110007051469	3.225806451612903	100.0	adac; traficom; tuv	kia:sportage	85a3b96585fd	29.173607914008173	34.13625086868539	2	Coverage-matched preference comparison	1	Balanced
+2	Dacia	Duster	19.71868989963627	3	24	31.872226923708133	0.6535947712418301	100.0	adac; traficom; tuv	dacia:duster	85a3b96585fd	4.74161023652848	34.69576956274406	2	Coverage-matched preference comparison	2	Balanced
+1	Ford	Puma	47.149124123800846	3	6	79.52893211513901	9.401709401709402	100.0	adac; traficom; tuv	ford:puma	c30046e29da0	77.27545622480967	17.02279202279202	2	Coverage-matched preference comparison	1	Balanced
+2	Škoda	Kamiq	46.13559722126532	3	6	62.72399056881815	9.090909090909092	100.0	adac; traficom; tuv	skoda:kamiq	c30046e29da0	15.754100425436633	76.51709401709401	2	Coverage-matched preference comparison	2	Balanced
+1	Volkswagen	T-Cross	57.546979434253046	3	9	49.69330849289821	15.172413793103448	100.0	adac; traficom; tuv	volkswagen:t cross	e5e65a2081b6	44.14599601264852	70.94796285585758	2	Coverage-matched preference comparison	1	Balanced
+2	Tesla	Model 3	45.98092372564923	3	9	91.84690492256283	0.0	100.0	adac; traficom; tuv	tesla:model 3	e5e65a2081b6	0.1149425287356322	91.84690492256283	2	Coverage-matched preference comparison	2	Balanced
+1	Audi	Q5	82.468517985593	3	26	3.7576976024680846	34.883720930232556	100.0	adac; traficom; tuv	audi:q5	e6ca6f8aa1ee	82.23065861280816	82.70637735837784	17	Coverage-matched preference comparison	1	Balanced
+2	Audi	A3	76.55919953445155	3	26	17.874807352942653	36.324786324786324	100.0	adac; traficom; tuv	audi:a3	e6ca6f8aa1ee	83.47197220837951	69.64642686052358	17	Coverage-matched preference comparison	2	Balanced
+3	Volkswagen	Golf	73.89788300597047	3	26	6.939887498733867	41.02564102564103	100.0	adac; traficom; tuv	volkswagen:golf	e6ca6f8aa1ee	77.07613028618216	70.71963572575879	17	Coverage-matched preference comparison	3	Balanced
+4	Mercedes-Benz	A-Class	70.76111131073812	3	26	25.922895980658964	40.625	100.0	adac; traficom; tuv	mercedes benz:a class	e6ca6f8aa1ee	80.81102909026976	60.711193531206476	17	Coverage-matched preference comparison	4	Balanced
+5	Volvo	XC60	70.36221646561197	3	26	15.500898950068532	46.666666666666664	100.0	adac; traficom; tuv	volvo:xc60	e6ca6f8aa1ee	76.4506927870334	64.27374014419053	17	Coverage-matched preference comparison	5	Balanced
+6	Volkswagen	Polo	62.4827008311254	3	26	26.920562683924437	23.972602739726028	100.0	adac; traficom; tuv	volkswagen:polo	e6ca6f8aa1ee	50.32254358502565	74.64285807722514	17	Coverage-matched preference comparison	6	Balanced
+7	BMW	X1	61.26661237295562	3	26	25.71493954822779	4.464285714285714	100.0	adac; traficom; tuv	bmw:x1	e6ca6f8aa1ee	52.64825538915662	69.88496935675462	17	Coverage-matched preference comparison	7	Balanced
+8	Mercedes-Benz	C-Class	60.14150469631353	3	26	50.06646460597442	9.30232558139535	100.0	adac; traficom; tuv	mercedes benz:c class	e6ca6f8aa1ee	45.7959857552346	74.48702363739247	17	Coverage-matched preference comparison	8	Balanced
+9	Škoda	Octavia	52.26361830276693	3	26	14.641157731539906	11.11111111111111	100.0	adac; traficom; tuv	skoda:octavia	e6ca6f8aa1ee	53.18464886934777	51.34258773618608	17	Coverage-matched preference comparison	9	Balanced
+10	Mercedes-Benz	E-Class	49.36417605563092	3	26	27.365553031643092	11.11111111111111	100.0	adac; traficom; tuv	mercedes benz:e class	e6ca6f8aa1ee	42.07116325230744	56.6571888589544	17	Coverage-matched preference comparison	10	Balanced
+11	Volkswagen	Passat	46.00637083754755	3	26	25.160115474857868	8.181818181818182	100.0	adac; traficom; tuv	volkswagen:passat	e6ca6f8aa1ee	33.71386282229815	58.29887885279696	17	Coverage-matched preference comparison	11	Balanced
+12	Volkswagen	Caddy	41.85818644502191	3	26	39.26346521562929	3.7037037037037037	100.0	adac; traficom; tuv	volkswagen:caddy	e6ca6f8aa1ee	24.935965288413154	58.78040760163066	17	Coverage-matched preference comparison	12	Balanced
+13	Toyota	Yaris	39.896647330590724	3	26	50.58735479598716	0.0	100.0	adac; traficom; tuv	toyota:yaris	e6ca6f8aa1ee	64.7015829382517	15.09171172292974	17	Coverage-matched preference comparison	13	Balanced
+14	Škoda	Superb	35.08397166394924	3	26	17.818911303130346	3.1818181818181817	100.0	adac; traficom; tuv	skoda:superb	e6ca6f8aa1ee	29.01475043171513	41.15319289618336	17	Coverage-matched preference comparison	14	Balanced
+15	Ford	Kuga	32.176670437952865	3	26	50.741780246704536	2.5641025641025643	100.0	adac; traficom; tuv	ford:kuga	e6ca6f8aa1ee	52.973198994505005	11.380141881400725	17	Coverage-matched preference comparison	15	Balanced
+16	Ford	Focus	25.121013667391527	3	26	41.12437796588617	4.545454545454546	100.0	adac; traficom; tuv	ford:focus	e6ca6f8aa1ee	33.333686813897096	16.908340520885957	17	Coverage-matched preference comparison	16	Balanced
+17	Nissan	Qashqai	23.919114333265796	3	26	22.350385523020293	4.511278195488722	100.0	adac; traficom; tuv	nissan:qashqai	e6ca6f8aa1ee	31.827738889162763	16.010489777368825	17	Coverage-matched preference comparison	17	Balanced
+1	SEAT	Leon	67.6087356165196	3	23	27.049487760221133	16.818181818181817	100.0	adac; traficom; tuv	seat:leon	30735746a93e	63.71408395340198	69.5560614480784	3	Coverage-matched preference comparison	1	Emphasise avoiding breakdowns
+2	Toyota	Aygo	59.3033849836414	3	23	22.63270489000883	4.929577464788732	100.0	adac; traficom; tuv	toyota:aygo	30735746a93e	44.89457479819232	66.50779007636595	3	Coverage-matched preference comparison	2	Emphasise avoiding breakdowns
+3	Renault	Megane	17.64833518714484	3	23	7.3178231501656565	1.3071895424836601	100.0	adac; traficom; tuv	renault:megane	30735746a93e	13.837581872136774	19.553711844648873	3	Coverage-matched preference comparison	3	Emphasise avoiding breakdowns
+1	Nissan	Micra	35.025267600381056	3	23	13.835511786212408	6.989247311827957	100.0	adac; traficom; tuv	nissan:micra	30d30a29bbae	29.889776915467507	37.59301294283783	2	Coverage-matched preference comparison	1	Emphasise avoiding breakdowns
+2	Ford	Mondeo	22.921737060846755	3	23	40.52027129901589	0.9090909090909091	100.0	adac; traficom; tuv	ford:mondeo	30d30a29bbae	39.82787662796721	14.468667277286535	2	Coverage-matched preference comparison	2	Emphasise avoiding breakdowns
+1	Škoda	Fabia	64.16898423360288	3	25	23.95107671328038	22.75862068965517	100.0	adac; traficom; tuv	skoda:fabia	7b56013404c9	51.48239760777109	70.51227754651877	6	Coverage-matched preference comparison	1	Emphasise avoiding breakdowns
+2	Volkswagen	Tiguan	58.32071206630386	3	25	9.227187853295433	38.888888888888886	100.0	adac; traficom; tuv	volkswagen:tiguan	7b56013404c9	64.22506465785612	55.36853577052774	6	Coverage-matched preference comparison	2	Emphasise avoiding breakdowns
+3	Volkswagen	Touran	45.69844555361039	3	25	22.1040505560153	16.27906976744186	100.0	adac; traficom; tuv	volkswagen:touran	7b56013404c9	41.96519049225194	47.56507308428962	6	Coverage-matched preference comparison	3	Emphasise avoiding breakdowns
+4	Opel	Astra	39.769590749342036	3	25	27.38976389344655	14.957264957264957	100.0	adac; traficom; tuv	opel:astra	7b56013404c9	51.377597015887154	33.965587616069485	6	Coverage-matched preference comparison	4	Emphasise avoiding breakdowns
+5	Hyundai	i30	34.362103210539175	3	25	17.0339201643506	8.602150537634408	100.0	adac; traficom; tuv	hyundai:i30	7b56013404c9	27.38876900042014	37.84877031559869	6	Coverage-matched preference comparison	5	Emphasise avoiding breakdowns
+6	Opel	Insignia	13.279993568774417	3	25	35.09855145329281	0.8695652173913043	100.0	adac; traficom; tuv	opel:insignia	7b56013404c9	32.69491713196723	3.572531787178012	6	Coverage-matched preference comparison	6	Emphasise avoiding breakdowns
+1	Kia	Sportage	32.48203655045965	3	24	5.51110007051469	3.225806451612903	100.0	adac; traficom; tuv	kia:sportage	85a3b96585fd	29.173607914008173	34.13625086868539	2	Coverage-matched preference comparison	1	Emphasise avoiding breakdowns
+2	Dacia	Duster	24.71104978733887	3	24	31.872226923708133	0.6535947712418301	100.0	adac; traficom; tuv	dacia:duster	85a3b96585fd	4.74161023652848	34.69576956274406	2	Coverage-matched preference comparison	2	Emphasise avoiding breakdowns
+1	Škoda	Kamiq	56.26276281987489	3	6	62.72399056881815	9.090909090909092	100.0	adac; traficom; tuv	skoda:kamiq	c30046e29da0	15.754100425436633	76.51709401709401	2	Coverage-matched preference comparison	1	Emphasise avoiding breakdowns
+2	Ford	Puma	37.10701342346457	3	6	79.52893211513901	9.401709401709402	100.0	adac; traficom; tuv	ford:puma	c30046e29da0	77.27545622480967	17.02279202279202	2	Coverage-matched preference comparison	2	Emphasise avoiding breakdowns
+1	Volkswagen	T-Cross	62.01397390812122	3	9	49.69330849289821	15.172413793103448	100.0	adac; traficom; tuv	volkswagen:t cross	e5e65a2081b6	44.14599601264852	70.94796285585758	2	Coverage-matched preference comparison	1	Emphasise avoiding breakdowns
+2	Tesla	Model 3	61.26958412462043	3	9	91.84690492256283	0.0	100.0	adac; traficom; tuv	tesla:model 3	e5e65a2081b6	0.1149425287356322	91.84690492256283	2	Coverage-matched preference comparison	2	Emphasise avoiding breakdowns
+1	Audi	Q5	82.54780444318794	3	26	3.7576976024680846	34.883720930232556	100.0	adac; traficom; tuv	audi:q5	e6ca6f8aa1ee	82.23065861280816	82.70637735837784	17	Coverage-matched preference comparison	1	Emphasise avoiding breakdowns
+2	Audi	A3	74.25494197647555	3	26	17.874807352942653	36.324786324786324	100.0	adac; traficom; tuv	audi:a3	e6ca6f8aa1ee	83.47197220837951	69.64642686052358	17	Coverage-matched preference comparison	2	Emphasise avoiding breakdowns
+3	Volkswagen	Golf	72.8384672458999	3	26	6.939887498733867	41.02564102564103	100.0	adac; traficom; tuv	volkswagen:golf	e6ca6f8aa1ee	77.07613028618216	70.71963572575879	17	Coverage-matched preference comparison	3	Emphasise avoiding breakdowns
+4	Volvo	XC60	68.33272435847148	3	26	15.500898950068532	46.666666666666664	100.0	adac; traficom; tuv	volvo:xc60	e6ca6f8aa1ee	76.4506927870334	64.27374014419053	17	Coverage-matched preference comparison	4	Emphasise avoiding breakdowns
+5	Mercedes-Benz	A-Class	67.4111387175609	3	26	25.922895980658964	40.625	100.0	adac; traficom; tuv	mercedes benz:a class	e6ca6f8aa1ee	80.81102909026976	60.711193531206476	17	Coverage-matched preference comparison	5	Emphasise avoiding breakdowns
+6	Volkswagen	Polo	66.53608657982531	3	26	26.920562683924437	23.972602739726028	100.0	adac; traficom; tuv	volkswagen:polo	e6ca6f8aa1ee	50.32254358502565	74.64285807722514	17	Coverage-matched preference comparison	6	Emphasise avoiding breakdowns
+7	Mercedes-Benz	C-Class	64.92334434333985	3	26	50.06646460597442	9.30232558139535	100.0	adac; traficom; tuv	mercedes benz:c class	e6ca6f8aa1ee	45.7959857552346	74.48702363739247	17	Coverage-matched preference comparison	7	Emphasise avoiding breakdowns
+8	BMW	X1	64.13939803422195	3	26	25.71493954822779	4.464285714285714	100.0	adac; traficom; tuv	bmw:x1	e6ca6f8aa1ee	52.64825538915662	69.88496935675462	17	Coverage-matched preference comparison	8	Emphasise avoiding breakdowns
+9	Škoda	Octavia	51.95660811390665	3	26	14.641157731539906	11.11111111111111	100.0	adac; traficom; tuv	skoda:octavia	e6ca6f8aa1ee	53.18464886934777	51.34258773618608	17	Coverage-matched preference comparison	9	Emphasise avoiding breakdowns
+10	Mercedes-Benz	E-Class	51.79518032340542	3	26	27.365553031643092	11.11111111111111	100.0	adac; traficom; tuv	mercedes benz:e class	e6ca6f8aa1ee	42.07116325230744	56.6571888589544	17	Coverage-matched preference comparison	10	Emphasise avoiding breakdowns
+11	Volkswagen	Passat	50.10387350929736	3	26	25.160115474857868	8.181818181818182	100.0	adac; traficom; tuv	volkswagen:passat	e6ca6f8aa1ee	33.71386282229815	58.29887885279696	17	Coverage-matched preference comparison	11	Emphasise avoiding breakdowns
+12	Volkswagen	Caddy	47.498926830558155	3	26	39.26346521562929	3.7037037037037037	100.0	adac; traficom; tuv	volkswagen:caddy	e6ca6f8aa1ee	24.935965288413154	58.78040760163066	17	Coverage-matched preference comparison	12	Emphasise avoiding breakdowns
+13	Škoda	Superb	37.10704540802728	3	26	17.818911303130346	3.1818181818181817	100.0	adac; traficom; tuv	skoda:superb	e6ca6f8aa1ee	29.01475043171513	41.15319289618336	17	Coverage-matched preference comparison	13	Emphasise avoiding breakdowns
+14	Toyota	Yaris	31.628335461370394	3	26	50.58735479598716	0.0	100.0	adac; traficom; tuv	toyota:yaris	e6ca6f8aa1ee	64.7015829382517	15.09171172292974	17	Coverage-matched preference comparison	14	Emphasise avoiding breakdowns
+15	Ford	Kuga	25.244494252435487	3	26	50.741780246704536	2.5641025641025643	100.0	adac; traficom; tuv	ford:kuga	e6ca6f8aa1ee	52.973198994505005	11.380141881400725	17	Coverage-matched preference comparison	15	Emphasise avoiding breakdowns
+16	Ford	Focus	22.38345595188967	3	26	41.12437796588617	4.545454545454546	100.0	adac; traficom; tuv	ford:focus	e6ca6f8aa1ee	33.333686813897096	16.908340520885957	17	Coverage-matched preference comparison	16	Emphasise avoiding breakdowns
+17	Nissan	Qashqai	21.282906147966802	3	26	22.350385523020293	4.511278195488722	100.0	adac; traficom; tuv	nissan:qashqai	e6ca6f8aa1ee	31.827738889162763	16.010489777368825	17	Coverage-matched preference comparison	17	Emphasise avoiding breakdowns
+1	SEAT	Leon	68.66690842498535	3	23	27.049487760221133	16.818181818181817	100.0	adac; traficom; tuv	seat:leon	30735746a93e	68.22233191343884	69.5560614480784	3	Coverage-matched preference comparison	1	Emphasise inspection condition
+2	Toyota	Aygo	51.87242664384238	3	23	22.63270489000883	4.929577464788732	100.0	adac; traficom; tuv	toyota:aygo	30735746a93e	44.55474492758059	66.50779007636595	3	Coverage-matched preference comparison	2	Emphasise inspection condition
+3	Renault	Megane	15.38702671238446	3	23	7.3178231501656565	1.3071895424836601	100.0	adac; traficom; tuv	renault:megane	30735746a93e	13.303684146252253	19.553711844648873	3	Coverage-matched preference comparison	3	Emphasise inspection condition
+1	Ford	Mondeo	34.74393172181481	3	23	40.52027129901589	0.9090909090909091	100.0	adac; traficom; tuv	ford:mondeo	30d30a29bbae	44.88156394407895	14.468667277286535	2	Coverage-matched preference comparison	1	Emphasise inspection condition
+2	Nissan	Micra	33.82025020433363	3	23	13.835511786212408	6.989247311827957	100.0	adac; traficom; tuv	nissan:micra	30d30a29bbae	31.933868835081537	37.59301294283783	2	Coverage-matched preference comparison	2	Emphasise inspection condition
+1	Volkswagen	Tiguan	61.355257021183796	3	25	9.227187853295433	38.888888888888886	100.0	adac; traficom; tuv	volkswagen:tiguan	7b56013404c9	64.34861764651181	55.36853577052774	6	Coverage-matched preference comparison	1	Emphasise inspection condition
+2	Škoda	Fabia	56.73209163745749	3	25	23.95107671328038	22.75862068965517	100.0	adac; traficom; tuv	skoda:fabia	7b56013404c9	49.84199868292686	70.51227754651877	6	Coverage-matched preference comparison	2	Emphasise inspection condition
+3	Opel	Astra	47.790872658976575	3	25	27.38976389344655	14.957264957264957	100.0	adac; traficom; tuv	opel:astra	7b56013404c9	54.70351518043012	33.965587616069485	6	Coverage-matched preference comparison	3	Emphasise inspection condition
+4	Volkswagen	Touran	41.375812405596136	3	25	22.1040505560153	16.27906976744186	100.0	adac; traficom; tuv	volkswagen:touran	7b56013404c9	38.28118206624939	47.56507308428962	6	Coverage-matched preference comparison	4	Emphasise inspection condition
+5	Hyundai	i30	32.336306960851225	3	25	17.0339201643506	8.602150537634408	100.0	adac; traficom; tuv	hyundai:i30	7b56013404c9	29.580075283477488	37.84877031559869	6	Coverage-matched preference comparison	5	Emphasise inspection condition
+6	Opel	Insignia	24.31549226337162	3	25	35.09855145329281	0.8695652173913043	100.0	adac; traficom; tuv	opel:insignia	7b56013404c9	34.686972501468425	3.572531787178012	6	Coverage-matched preference comparison	6	Emphasise inspection condition
+1	Kia	Sportage	30.949701591308905	3	24	5.51110007051469	3.225806451612903	100.0	adac; traficom; tuv	kia:sportage	85a3b96585fd	29.356426952620662	34.13625086868539	2	Coverage-matched preference comparison	1	Emphasise inspection condition
+2	Dacia	Duster	14.30009276804644	3	24	31.872226923708133	0.6535947712418301	100.0	adac; traficom; tuv	dacia:duster	85a3b96585fd	4.102254370697629	34.69576956274406	2	Coverage-matched preference comparison	2	Emphasise inspection condition
+1	Ford	Puma	61.47484991594187	3	6	79.52893211513901	9.401709401709402	100.0	adac; traficom; tuv	ford:puma	c30046e29da0	83.70087886251679	17.02279202279202	2	Coverage-matched preference comparison	1	Emphasise inspection condition
+2	Škoda	Kamiq	35.57265451662003	3	6	62.72399056881815	9.090909090909092	100.0	adac; traficom; tuv	skoda:kamiq	c30046e29da0	15.10043476638304	76.51709401709401	2	Coverage-matched preference comparison	2	Emphasise inspection condition
+1	Volkswagen	T-Cross	47.99302014934284	3	9	49.69330849289821	15.172413793103448	100.0	adac; traficom; tuv	volkswagen:t cross	e5e65a2081b6	36.51554879608546	70.94796285585758	2	Coverage-matched preference comparison	1	Emphasise inspection condition
+2	Tesla	Model 3	30.717806110841504	3	9	91.84690492256283	0.0	100.0	adac; traficom; tuv	tesla:model 3	e5e65a2081b6	0.15325670498084293	91.84690492256283	2	Coverage-matched preference comparison	2	Emphasise inspection condition
+1	Audi	Q5	81.97170957216827	3	26	3.7576976024680846	34.883720930232556	100.0	adac; traficom; tuv	audi:q5	e6ca6f8aa1ee	81.60437567906348	82.70637735837784	17	Coverage-matched preference comparison	1	Emphasise inspection condition
+2	Audi	A3	77.96362109129716	3	26	17.874807352942653	36.324786324786324	100.0	adac; traficom; tuv	audi:a3	e6ca6f8aa1ee	82.12221820668394	69.64642686052358	17	Coverage-matched preference comparison	2	Emphasise inspection condition
+3	Volkswagen	Golf	75.08694164122115	3	26	6.939887498733867	41.02564102564103	100.0	adac; traficom; tuv	volkswagen:golf	e6ca6f8aa1ee	77.27059459895233	70.71963572575879	17	Coverage-matched preference comparison	3	Emphasise inspection condition
+4	Mercedes-Benz	A-Class	72.81707047689406	3	26	25.922895980658964	40.625	100.0	adac; traficom; tuv	mercedes benz:a class	e6ca6f8aa1ee	78.87000894973785	60.711193531206476	17	Coverage-matched preference comparison	4	Emphasise inspection condition
+5	Volvo	XC60	71.65305383781342	3	26	15.500898950068532	46.666666666666664	100.0	adac; traficom; tuv	volvo:xc60	e6ca6f8aa1ee	75.34271068462486	64.27374014419053	17	Coverage-matched preference comparison	5	Emphasise inspection condition
+6	Volkswagen	Polo	57.85148215093105	3	26	26.920562683924437	23.972602739726028	100.0	adac; traficom; tuv	volkswagen:polo	e6ca6f8aa1ee	49.455794187784	74.64285807722514	17	Coverage-matched preference comparison	6	Emphasise inspection condition
+7	BMW	X1	56.50977658266044	3	26	25.71493954822779	4.464285714285714	100.0	adac; traficom; tuv	bmw:x1	e6ca6f8aa1ee	49.822180195613356	69.88496935675462	17	Coverage-matched preference comparison	7	Emphasise inspection condition
+8	Škoda	Octavia	54.19742379513164	3	26	14.641157731539906	11.11111111111111	100.0	adac; traficom; tuv	skoda:octavia	e6ca6f8aa1ee	55.624841824604424	51.34258773618608	17	Coverage-matched preference comparison	8	Emphasise inspection condition
+9	Mercedes-Benz	C-Class	50.60957022177244	3	26	50.06646460597442	9.30232558139535	100.0	adac; traficom; tuv	mercedes benz:c class	e6ca6f8aa1ee	38.67084351396242	74.48702363739247	17	Coverage-matched preference comparison	9	Emphasise inspection condition
+10	Toyota	Yaris	48.382177773292206	3	26	50.58735479598716	0.0	100.0	adac; traficom; tuv	toyota:yaris	e6ca6f8aa1ee	65.02741079847344	15.09171172292974	17	Coverage-matched preference comparison	10	Emphasise inspection condition
+11	Mercedes-Benz	E-Class	44.09327680452395	3	26	27.365553031643092	11.11111111111111	100.0	adac; traficom; tuv	mercedes benz:e class	e6ca6f8aa1ee	37.81132077730873	56.6571888589544	17	Coverage-matched preference comparison	11	Emphasise inspection condition
+12	Volkswagen	Passat	42.036668042321985	3	26	25.160115474857868	8.181818181818182	100.0	adac; traficom; tuv	volkswagen:passat	e6ca6f8aa1ee	33.9055626370845	58.29887885279696	17	Coverage-matched preference comparison	12	Emphasise inspection condition
+13	Ford	Kuga	41.14189620871474	3	26	50.741780246704536	2.5641025641025643	100.0	adac; traficom; tuv	ford:kuga	e6ca6f8aa1ee	56.02277337237175	11.380141881400725	17	Coverage-matched preference comparison	13	Emphasise inspection condition
+14	Volkswagen	Caddy	35.013218747838586	3	26	39.26346521562929	3.7037037037037037	100.0	adac; traficom; tuv	volkswagen:caddy	e6ca6f8aa1ee	23.129624320942558	58.78040760163066	17	Coverage-matched preference comparison	14	Emphasise inspection condition
+15	Ford	Focus	32.42794671243629	3	26	41.12437796588617	4.545454545454546	100.0	adac; traficom; tuv	ford:focus	e6ca6f8aa1ee	40.18774980821146	16.908340520885957	17	Coverage-matched preference comparison	15	Emphasise inspection condition
+16	Škoda	Superb	31.79857151127963	3	26	17.818911303130346	3.1818181818181817	100.0	adac; traficom; tuv	skoda:superb	e6ca6f8aa1ee	27.12126081882776	41.15319289618336	17	Coverage-matched preference comparison	16	Emphasise inspection condition
+17	Nissan	Qashqai	25.103514427181153	3	26	22.350385523020293	4.511278195488722	100.0	adac; traficom; tuv	nissan:qashqai	e6ca6f8aa1ee	29.650026752087314	16.010489777368825	17	Coverage-matched preference comparison	17	Emphasise inspection condition
